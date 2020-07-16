@@ -2,13 +2,17 @@
 " REMEMBER THIS
 " =========================
 
-" leader leader (space i guess) will bring a help menu
+" leader leader, <space> in my cfg, will bring a help menu
 " this setup is built around fzf and coc
 " you will need vim 8.2+ or neovim
 " c-p will bring a list of files
 " c-f will search in files
 " leader p will bring a list of open files
 " most of the time you will be able to go up and down with c-j and c-k
+" but c-n and c-p will be better when in tmux
+" c-o and c-i to go to previous and next position of cursor
+" c-w followed by v or h will split pane
+" gh see info, gd go to definition, gt gT next previous tab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
 silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -50,6 +54,8 @@ Plug 'junegunn/goyo.vim'       " distraction free writing in vim
 Plug 'junegunn/gv.vim'         " git commit browser 
 Plug 'junegunn/limelight.vim'  " git commit browser 
 Plug 'junegunn/vim-peekaboo'   " use  and @ in normal mode and C-t in insert mode to see registers
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+  let g:tagbar_sort = 0
 
 Plug 'laher/fuzzymenu.vim'     " fuzzy menu search
 Plug 'preservim/nerdtree'      " File tree explorer
@@ -78,6 +84,8 @@ nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>p :Buffers<CR>
 " FIND IN FILES
 nnoremap <silent> <C-f> :Rg<CR>
+" SEARCH LINE
+nnoremap <silent> <Leader>L :Lines<CR>
 " CLOSE
 nnoremap <silent> <Leader>q :q<CR>
 " SAVE
@@ -98,6 +106,25 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 let g:tmux_navigator_save_on_switch = 1
 let g:fzf_prefer_tmux = 1
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let options = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  let options = fzf#vim#with_preview(options, 'right', 'ctrl-/')
+  call fzf#vim#grep(initial_command, 1, options, a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview('right', 'ctrl-/'), <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right', 'ctrl-/'), <bang>0)
 
 " =========================
 " STYLE
@@ -324,6 +351,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+
 " ==========================
 " Mappings for CoCList
 " ==========================
@@ -377,7 +405,7 @@ autocmd! FileType fzf
 autocmd  FileType fzf set noshowmode noruler nonu
 
 if exists('$TMUX')
-  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+  let g:fzf_layout = { 'tmux': '-p50%,50%' }
 else
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 endif
