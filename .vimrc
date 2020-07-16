@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 
 " Editing
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-repeat'       " Enable repeating supported plugin maps with .
 Plug 'tpope/vim-unimpaired'   " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'     " Quoting parenthesing made simple
@@ -41,6 +42,7 @@ Plug 'neoclide/denite-git'    " git
 Plug 'chemzqm/denite-extra'   " extra sources (session, project, commands, location, quickfix, history)
 
 " File system
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf'            " fuzzy file search
 Plug 'junegunn/fzf.vim'        " fuzzy file search
 Plug 'antoinemadec/coc-fzf'    " coc interaction using fzf
@@ -52,17 +54,11 @@ Plug 'junegunn/vim-peekaboo'   " use  and @ in normal mode and C-t in insert mod
 Plug 'laher/fuzzymenu.vim'     " fuzzy menu search
 Plug 'preservim/nerdtree'      " File tree explorer
 Plug 'tpope/vim-projectionist' " Semantic based navigation configurable per project
-Plug 'mhinz/vim-grepper'       " Search files
 
 " Support for other tools
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'tpope/vim-dispatch'     " dispatch other tools such as compilers, linters, etc
-Plug 'radenling/vim-dispatch-neovim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'yuki-ycino/fzf-preview.vim', { 'build': 'yarn install' }
-Plug 'honza/vim-snippets'              " collection of snippets
-Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -92,10 +88,16 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 inoremap jk <Esc>
 xnoremap jk <Esc>
 cnoremap jk <C-c>
-" " TMUX
-" let g:tmux_navigator_no_mappings = 1
-" let g:tmux_navigator_save_on_switch = 1
-" let g:fzf_prefer_tmux = 1
+
+" TMUX
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+let g:tmux_navigator_save_on_switch = 1
+let g:fzf_prefer_tmux = 1
 
 " =========================
 " STYLE
