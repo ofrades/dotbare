@@ -21,7 +21,10 @@ plugins=(
 # Oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Dotbare completion
+_dotbare_completion_cmd
+
+# User Configuration
 
 # Find string in files
 fif() {
@@ -55,13 +58,6 @@ fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf-down +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-tsh() {
-  tmux split -h
-}
-
-tsv() {
-  tmux split -v
-}
 
 # Tmux Session
 ft() {
