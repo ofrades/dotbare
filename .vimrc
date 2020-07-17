@@ -7,7 +7,7 @@
 " you will need vim 8.2+ or neovim
 " c-p will bring a list of files
 " c-f will search in files
-" leader p will bring a list of open files
+" leader p will bring a list of open buffers
 " most of the time you will be able to go up and down with c-j and c-k
 " but c-n and c-p will be better when in tmux
 " c-o and c-i to go to previous and next position of cursor
@@ -30,35 +30,39 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 
 " Editing
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-surround'     " Quoting parenthesing made simple
-Plug 'tpope/vim-commentary'     " Comments
-Plug 'scrooloose/nerdcommenter' " Comments
+Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
+Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
+Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
+Plug 'scrooloose/nerdcommenter'                    " Comments
+Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 2 characters
+  let g:sneak#label = 1
 
 " File system
-Plug 'christoomey/vim-tmux-navigator' " interaction with tmux
-Plug 'junegunn/fzf'            " fuzzy file search
-Plug 'junegunn/fzf.vim'        " fuzzy file search
-Plug 'antoinemadec/coc-fzf'    " coc interaction using fzf
-Plug 'junegunn/goyo.vim'       " distraction free writing in vim
-Plug 'junegunn/limelight.vim'  " focus where you are and darkens the rest - zen
-Plug 'junegunn/vim-peekaboo'   " use  and @ in normal mode and C-t in insert mode to see registers
+Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
+Plug 'junegunn/fzf'                                   " fuzzy file search
+Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
+Plug 'antoinemadec/coc-fzf'                           " coc interaction using fzf - :CocFzfList
+Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
+Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
+Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mode and C-t in insert mode to see registers
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
   let g:tagbar_sort = 0
-Plug 'laher/fuzzymenu.vim'     " fuzzy menu search
-Plug 'preservim/nerdtree'      " File tree explorer
-Plug 'terryma/vim-multiple-cursors'
+Plug 'laher/fuzzymenu.vim'                            " fuzzy menu search - Leader Leader
+Plug 'preservim/nerdtree'                             " File tree explorer - F3
+Plug 'terryma/vim-multiple-cursors'                   " Multiple cursors - add cursor next/previous C-n/p, skip next match C-x, Leader n select all
+Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
-Plug 'junegunn/gv.vim'         " commit window
+Plug 'junegunn/gv.vim'        " commit window
 
 call plug#end()
 
 " ========================
 " KEYMAPS
 " ========================
-
+" Leader Key
+nnoremap <SPACE> <Nop>
 let mapleader = " "
 " SIDEBAR
 nmap <F3> :NERDTreeToggle<CR>
@@ -88,6 +92,22 @@ xnoremap jk <Esc>
 cnoremap jk <C-c>
 " COC FZF
 nmap <Leader>c :CocFzfList<CR>
+" Goyo
+nnoremap <silent> <Leader>G :Goyo<CR>
+" Limelight
+nnoremap <silent> <Leader>L :Limelight!!<CR>
+" Edit .vimrc quickly
+map <Leader>v :sp ~/.vimrc<cr>
+
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<Leader>a'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
 
 " TMUX
 let g:tmux_navigator_no_mappings = 1

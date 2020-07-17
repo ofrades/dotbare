@@ -80,22 +80,14 @@ fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-
-# Tmux Session
+# List Tmux Sessions
+# if args provided(e.g. ft my-session), attach to that session if exists, else will create session my-session
 ft() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
   fi
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
-}
-
-# Switch Current Tmux Session
-fts() {
-  local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf --reverse --query="$1" --select-1 --exit-0) &&
-  tmux switch-client -t "$session"
 }
 
 # Kill Tmux Session
