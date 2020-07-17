@@ -56,6 +56,10 @@ Plug 'terryma/vim-expand-region'                      " Expand selection - +/_
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'junegunn/gv.vim'        " commit window
 
+" Languages
+" C#
+source ~/.vimrc-omnisharp
+
 call plug#end()
 
 " ========================
@@ -225,7 +229,6 @@ function! s:statusline_expr()
   return '[%n] %F %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
 endfunction
 let &statusline = s:statusline_expr()
-
 
 " ================================ 
 " coc.nvim

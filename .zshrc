@@ -25,8 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Find in files
 fif(){
-  [[ -n $1 ]] && cd $1 # go to provided folder or noop
-  RG_DEFAULT_COMMAND="rg -i -l --hidden --no-ignore-vcs"
+  rg="rg -i -l --hidden --no-ignore-vcs"
 
   selected=$(
   FZF_DEFAULT_COMMAND="rg --files" fzf \
@@ -37,11 +36,11 @@ fif(){
     --reverse \
     --bind "ctrl-a:select-all" \
     --bind "f12:execute-silent:(subl -b {})" \
-    --bind "change:reload:$RG_DEFAULT_COMMAND {q} || true" \
+    --bind "change:reload:$rg {q} || true" \
     --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2
   )
 
-  [[ -n $selected ]] && vim $selected # open multiple files in editor
+  [[ -n $selected ]] && vim $selected
 }
 
 # Find files
@@ -50,7 +49,7 @@ ff() {
     rg --files-with-matches --no-messages " " | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
   )
 
-  [[ -n $selected ]] && vim $selected # open multiple files in editor
+  [[ -n $selected ]] && vim $selected
 }
 
 # Navigate directories
@@ -113,20 +112,26 @@ is_in_git_repo() {
 # Git Status
 fgs() {
   is_in_git_repo || return
+  selected=$(
   git -c color.status=always status --short |
   fzf -m --ansi --nth 2..,.. \
     --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
   cut -c4- | sed 's/.* -> //'
+  )
+
+  [[ -n $selected ]] && vim $selected
 }
 
 # Git Branch
 fgb() {
-  is_in_git_repo || return
+  selected=$(is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
   fzf --ansi --multi --tac --preview-window right:70% \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##'
+)
+  [[ -n $selected ]] && vim $selected # open multiple files in editor
 }
 
 # Git Tag
@@ -195,14 +200,14 @@ fkp() {
 # Chrome history (change browser and browser history path)
 ch() {
   local cols sep
-  browser='google-chrome'
-  browser-path='~/.config/google-chrome/Default/History'
+  browser="google-chrome"
+  browserpath="~/.config/google-chrome/Default/History"
   export cols=$(( COLUMNS / 3 ))
   export sep='{::}'
 
-  cp -f browser-path /tmp/h
+  cp -f ~/.config/google-chrome/Default/History /tmp/h
   sqlite3 -separator $sep /tmp/h \
-    "select title, url from urls order by last_visit_time desc" |
+    "select title, url  from urls order by last_visit_time desc" |
   ruby -ne '
     cols = ENV["cols"].to_i
     title, url = $_.split(ENV["sep"])
@@ -213,7 +218,7 @@ ch() {
       end
     }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
   fzf --ansi --multi --no-hscroll --tiebreak=index |
-  sed 's#.*\(https*://\)#\1#' | xargs browser
+  sed 's#.*\(https*://\)#\1#' | xargs $browser
 }
 
 # FZF Defaults
