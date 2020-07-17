@@ -21,15 +21,36 @@ plugins=(
 # Oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Dotbare completion
-_dotbare_completion_cmd
-
 # User Configuration
 
-# Find string in files
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Missing string to search for"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf-down --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+# Find in files
+fif(){
+  [[ -n $1 ]] && cd $1 # go to provided folder or noop
+  RG_DEFAULT_COMMAND="rg -i -l --hidden --no-ignore-vcs"
+
+  selected=$(
+  FZF_DEFAULT_COMMAND="rg --files" fzf \
+    -m \
+    -e \
+    --ansi \
+    --phony \
+    --reverse \
+    --bind "ctrl-a:select-all" \
+    --bind "f12:execute-silent:(subl -b {})" \
+    --bind "change:reload:$RG_DEFAULT_COMMAND {q} || true" \
+    --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2
+  )
+
+  [[ -n $selected ]] && vim $selected # open multiple files in editor
+}
+
+# Find files
+ff() {
+  selected=$(
+    rg --files-with-matches --no-messages " " | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  )
+
+  [[ -n $selected ]] && vim $selected # open multiple files in editor
 }
 
 # Navigate directories
@@ -41,9 +62,10 @@ fcd() {
     while true; do
         local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
         local dir="$(printf '%s\n' "${lsd[@]}" |
-            fzf-down --reverse --preview '
+            fzf --preview '
                 __cd_nxt="$(echo {})";
                 __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
+                tree -C {} | less;
                 echo $__cd_path;
                 echo;
                 ls -p --color=always "${__cd_path}";
@@ -55,7 +77,7 @@ fcd() {
   
 # Command history
 fh() {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf-down +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
 
@@ -65,21 +87,21 @@ ft() {
   if [ $1 ]; then
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
   fi
-  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf-down --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
 # Switch Current Tmux Session
 fts() {
   local session
   session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf-down --reverse --query="$1" --select-1 --exit-0) &&
+    fzf --reverse --query="$1" --select-1 --exit-0) &&
   tmux switch-client -t "$session"
 }
 
 # Kill Tmux Session
 ftk () {
     local sessions
-    sessions="$(tmux ls|fzf-down --exit-0 --multi)"  || return $?
+    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
     local i
     for i in "${(f@)sessions}"
     do
@@ -100,7 +122,7 @@ is_in_git_repo() {
 fgs() {
   is_in_git_repo || return
   git -c color.status=always status --short |
-  fzf-down -m --ansi --nth 2..,.. \
+  fzf -m --ansi --nth 2..,.. \
     --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
   cut -c4- | sed 's/.* -> //'
 }
@@ -109,7 +131,7 @@ fgs() {
 fgb() {
   is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
-  fzf-down --ansi --multi --tac --preview-window right:70% \
+  fzf --ansi --multi --tac --preview-window right:70% \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##'
@@ -119,7 +141,7 @@ fgb() {
 fgt() {
   is_in_git_repo || return
   git tag --sort -version:refname |
-  fzf-down --multi --preview-window right:70% \
+  fzf --multi --preview-window right:70% \
     --preview 'git show --color=always {} | head -'$LINES
 }
 
@@ -127,7 +149,7 @@ fgt() {
 fgl() {
   is_in_git_repo || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
-  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+  fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |
   grep -o "[a-f0-9]\{7,\}"
@@ -137,7 +159,7 @@ fgl() {
 fgr() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
-  fzf-down --tac \
+  fzf --tac \
     --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
   cut -d$'\t' -f1
 }
@@ -147,7 +169,7 @@ fgstash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
-    fzf-down --ansi --no-sort --query="$q" --print-query \
+    fzf --ansi --no-sort --query="$q" --print-query \
         --expect=ctrl-d,ctrl-b);
   do
     mapfile -t out <<< "$out"
@@ -170,7 +192,7 @@ fgstash() {
 # Kill process
 fkp() {
   local pid
-  pid=$(ps -ef | sed 1d | fzf-down -m | awk '{print $2}')
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
   if [ "x$pid" != "x" ]
   then
@@ -198,30 +220,25 @@ ch() {
         len += e =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/ ? 2 : 1
       end
     }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
-  fzf-down --ansi --multi --no-hscroll --tiebreak=index |
+  fzf --ansi --multi --no-hscroll --tiebreak=index |
   sed 's#.*\(https*://\)#\1#' | xargs browser
 }
 
 # FZF Defaults
-# Window Size
-fzf-down() {
-  fzf --height 50% "$@" --border
-}
 
 export FZF_DEFAULT_OPTS='
+    --height 50% --border
     --multi
     --reverse
     --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
     --color="hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008"
     --bind "?:toggle-preview"
-    --bind "ctrl-a:select-all"
     --bind "alt-j:preview-down,alt-k:preview-up"
-    --bind "ctrl-y:execute-silent(echo {+} | pbcopy)"
-    --bind "ctrl-v:execute(echo {+} | xargs -o vim)"
-    --bind "ctrl-c:execute(code-insiders {+})"
 '
 
 #export FZF_DEFAULT_COMMAND='rg --files'
+
+export FZF_COMPLETION_TRIGGER=".."
 
 eval "$(starship init zsh)"
 

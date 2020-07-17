@@ -25,46 +25,33 @@ endif
 " ==========================
 
 call plug#begin('~/.vim/plugged')
-"Plug 'OmniSharp/omnisharp-vim'
 
 " Theme
 Plug 'junegunn/seoul256.vim'
 
 " Editing
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-repeat'       " Enable repeating supported plugin maps with .
-Plug 'tpope/vim-unimpaired'   " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'     " Quoting parenthesing made simple
 Plug 'tpope/vim-commentary'     " Comments
-Plug 'wellle/targets.vim'     " Extend and enhances text-objects
 Plug 'scrooloose/nerdcommenter' " Comments
 
-" Denite - all purpose list search and actions
-Plug 'Shougo/denite.nvim'     " denite
-Plug 'Shougo/neomru.vim'      " most recently used
-Plug 'neoclide/denite-git'    " git
-Plug 'chemzqm/denite-extra'   " extra sources (session, project, commands, location, quickfix, history)
-
 " File system
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator' " interaction with tmux
 Plug 'junegunn/fzf'            " fuzzy file search
 Plug 'junegunn/fzf.vim'        " fuzzy file search
 Plug 'antoinemadec/coc-fzf'    " coc interaction using fzf
 Plug 'junegunn/goyo.vim'       " distraction free writing in vim
-Plug 'junegunn/gv.vim'         " git commit browser 
-Plug 'junegunn/limelight.vim'  " git commit browser 
+Plug 'junegunn/limelight.vim'  " focus where you are and darkens the rest - zen
 Plug 'junegunn/vim-peekaboo'   " use  and @ in normal mode and C-t in insert mode to see registers
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
   let g:tagbar_sort = 0
-
 Plug 'laher/fuzzymenu.vim'     " fuzzy menu search
 Plug 'preservim/nerdtree'      " File tree explorer
-Plug 'tpope/vim-projectionist' " Semantic based navigation configurable per project
+Plug 'terryma/vim-multiple-cursors'
 
-" Support for other tools
+" Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
-Plug 'tpope/vim-dispatch'     " dispatch other tools such as compilers, linters, etc
-
+Plug 'junegunn/gv.vim'         " commit window
 
 call plug#end()
 
@@ -76,8 +63,10 @@ let mapleader = " "
 " SIDEBAR
 nmap <F3> :NERDTreeToggle<CR>
 " FZF MENU
-nmap <Leader><Leader> <Plug>Fzm
-vmap <Leader><Leader> <Plug>FzmVisual
+nmap <F1> <Plug>Fzm
+vmap <F1> <Plug>FzmVisual
+" TERMINAL
+nmap <F4> :terminal<CR>
 " FILES IN PROJECT
 nnoremap <silent> <C-p> :Files<CR>
 " OPEN FILES IN PROJECT
@@ -90,12 +79,15 @@ nnoremap <silent> <Leader>L :Lines<CR>
 nnoremap <silent> <Leader>q :q<CR>
 " SAVE
 nnoremap <silent> <Leader>w :w<CR>
+" NAVIGATE OPTIONS
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 " jk TO ESCAPE
 inoremap jk <Esc>
 xnoremap jk <Esc>
 cnoremap jk <C-c>
+" COC FZF
+nmap <Leader>c :CocFzfList<CR>
 
 " TMUX
 let g:tmux_navigator_no_mappings = 1
