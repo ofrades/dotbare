@@ -16,6 +16,7 @@ plugins=(
 	zsh-syntax-highlighting
   zsh-autosuggestions
   dotbare
+  zsh-z
 )
 
 # Oh-my-zsh
