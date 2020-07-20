@@ -1,14 +1,15 @@
 " =========================
 " REMEMBER THIS
 " =========================
-
-" leader leader, <space> in my cfg, will bring a help menu
-" this setup is built around fzf and coc
 " you will need vim 8.2+ or neovim
-" F1 will open all commands available :Commands
-" c-p will bring a list of files :Files
-" c-f will search in files :Rg
-" leader p will bring a list of open buffers :Buffers
+" FZF KEYMAPS
+"     F1 - All commands
+"     C-p - open files
+"     C-f - find in files
+"     Leader p - Open buffers
+"       C-t - tab split
+"       C-x - h split
+"       C-v - v split
 " most of the time you will be able to go up and down with c-j and c-k
 " but c-n and c-p will be better when in tmux
 " c-o and c-i to go to previous and next position of cursor
@@ -28,9 +29,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Style
-Plug 'mhinz/vim-startify'
 Plug 'junegunn/seoul256.vim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
+Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
+Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
 
 " Editing
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
@@ -43,13 +45,7 @@ Plug 'justinmk/vim-sneak'                          " Jump to any location specif
 Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy file search
 Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
-Plug 'antoinemadec/coc-fzf'                           " coc interaction using fzf - :CocFzfList
-Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
-Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
 Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mode and C-t in insert mode to see registers
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-  let g:tagbar_sort = 0
-Plug 'laher/fuzzymenu.vim'                            " fuzzy menu search - Leader Leader
 Plug 'preservim/nerdtree'                             " File tree explorer - F3
 Plug 'terryma/vim-multiple-cursors'                   " Multiple cursors - add cursor next/previous C-n/p, skip next match C-x, Leader n select all
 Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
@@ -94,8 +90,6 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 inoremap jk <Esc>
 xnoremap jk <Esc>
 cnoremap jk <C-c>
-" COC FZF
-nmap <Leader>c :CocFzfList<CR>
 " Goyo
 nnoremap <silent> <Leader>G :Goyo<CR>
 " Limelight
@@ -156,12 +150,12 @@ color seoul256-light
 " Switch
 set background=dark
 set t_Co=256
-syntax on
+syntax enable
 
 let g:echodoc#enable_at_startup = 1
 
-set completeopt=popup,preview
-set completepopup=highlight:Pmenu,border:on
+" set completeopt=popup,preview
+" set completepopup=highlight:Pmenu,border:on
 
 set previewheight=5
 
@@ -171,13 +165,12 @@ filetype plugin indent on
 set autoindent   " Copy indent from current line when starting a new line
 set smartindent
 filetype indent on
-
-set clipboard+=unnamedplus " use system clipboard
+set clipboard=unnamed " use system clipboard
 set showcmd      " display incomplete commands
 set showmode     " display the mode you're in
 set backspace=indent,eol,start "intuitive backspacing"
 set wildmenu     " enhanced command line completion
-set wildmode=list:longest " complete files like a shell
+" set wildmode=list:longest,full"
 
 """ Search
 set ignorecase   " case-insensitive search
@@ -191,7 +184,7 @@ set hlsearch     " highlight matches
 """ Regex
 set gdefault     " use global option in regex by default
 
-set wrap         " turn on line wrapping
+set nowrap         " turn on line wrapping
 set scrolloff=3  " show 3 lines of context around cursor
 set display+=lastline "Display as much as possible of a window's last line
 set title        " show terminal title
@@ -259,6 +252,10 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+set pumheight=10    " Makes popup smaller
+set ruler
+set cursorline
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -456,6 +453,16 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right', 'ctrl-/'), <bang>0)
 
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 " ============================================================================
 " SNIPPETS
 " ============================================================================
@@ -472,33 +479,3 @@ let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <TAB> <Plug>(coc-snippets-expand-jump)
-
-
-" =============================
-" PEEKABOO
-" ============================
-" function! CreateCenteredFloatingWindow()
-"     let width = float2nr(&columns * 0.6)
-"     let height = float2nr(&lines * 0.6)
-"     let top = ((&lines - height) / 2) - 1
-"     let left = (&columns - width) / 2
-"     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
-
-"     let top = "╭" . repeat("─", width - 2) . "╮"
-"     let mid = "│" . repeat(" ", width - 2) . "│"
-"     let bot = "╰" . repeat("─", width - 2) . "╯"
-"     let lines = [top] + repeat([mid], height - 2) + [bot]
-"     let s:buf = nvim_create_buf(v:false, v:true)
-"     call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-"     call nvim_open_win(s:buf, v:true, opts)
-"     set winhl=Normal:Floating
-"     let opts.row += 1
-"     let opts.height -= 2
-"     let opts.col += 2
-"     let opts.width -= 4
-"     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-"     au BufWipeout <buffer> exe 'bw '.s:buf
-" endfunction
-" let g:peekaboo_window="call CreateCenteredFloatingWindow()"

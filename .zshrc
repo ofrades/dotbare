@@ -236,7 +236,6 @@ export FZF_DEFAULT_OPTS='
 
 #export FZF_DEFAULT_COMMAND='rg --files'
 
-export FZF_COMPLETION_TRIGGER=".."
 
 eval "$(starship init zsh)"
 
