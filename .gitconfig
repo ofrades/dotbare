@@ -1,8 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = ofrades
+	name = miguel/ofrades
 	email = mig.silva@gmail.com
+
+[commit]
+  template = ~/.commit.txt
 
 [alias]
 
@@ -94,7 +97,7 @@
 	whitespace = fix
 
 [core]
-
+  editor = vim
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
