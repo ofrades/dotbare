@@ -240,4 +240,3 @@ export FZF_DEFAULT_OPTS='
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export TERM=xterm-256color-italic

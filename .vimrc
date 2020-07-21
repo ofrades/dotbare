@@ -147,7 +147,7 @@ command! -bang -nargs=* Ag
 set nocompatible
 syntax enable
 let g:seoul256_srgb = 1
-
+set termguicolors
 "" Unified color scheme (default: dark)
 color seoul256
 
@@ -158,9 +158,9 @@ set background=dark
 set t_Co=256
 
 " Italics
-    highlight htmlArg cterm=italic
-    highlight Comment cterm=italic
-    highlight Type    cterm=italic
+    highlight htmlArg cterm=italic gui=italic
+    highlight Comment cterm=italic gui=italic
+    highlight Type    cterm=italic gui=italic
 
 let g:echodoc#enable_at_startup = 1
 
