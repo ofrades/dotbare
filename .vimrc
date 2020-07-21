@@ -30,7 +30,10 @@ call plug#begin('~/.vim/plugged')
 
 " Style
 Plug 'junegunn/seoul256.vim'
-Plug 'mhinz/vim-startify'
+Plug 'morhetz/gruvbox'
+  let g:gruvbox_italic=1
+Plug 'ap/vim-css-color'                               " show color preview
+Plug 'mhinz/vim-startify'                             " nice start when vim is called without file
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
 
@@ -49,14 +52,16 @@ Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mod
 Plug 'preservim/nerdtree'                             " File tree explorer - F3
 Plug 'terryma/vim-multiple-cursors'                   " Multiple cursors - add cursor next/previous C-n/p, skip next match C-x, Leader n select all
 Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
+Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
-Plug 'junegunn/gv.vim'        " commit window
+Plug 'airblade/vim-gitgutter'  " git diff in the sign column
+Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! commits affected current file
+Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
 
 " Languages
-" C#
-source ~/.vimrc-omnisharp
+source ~/.vimrc-omnisharp       " C#
 
 call plug#end()
 
@@ -139,7 +144,8 @@ command! -bang -nargs=* Ag
 " =========================
 " STYLE
 " =========================
-
+set nocompatible
+syntax enable
 let g:seoul256_srgb = 1
 
 "" Unified color scheme (default: dark)
@@ -150,7 +156,11 @@ color seoul256-light
 " Switch
 set background=dark
 set t_Co=256
-syntax enable
+
+" Italics
+    highlight htmlArg cterm=italic
+    highlight Comment cterm=italic
+    highlight Type    cterm=italic
 
 let g:echodoc#enable_at_startup = 1
 
@@ -159,12 +169,14 @@ let g:echodoc#enable_at_startup = 1
 
 set previewheight=5
 
+" vim-highlightedyank different color
+hi HighlightedyankRegion cterm=NONE ctermbg=239 guibg=#4e4e4e
+
 " This enables file type detection (like filetype on)
 filetype plugin indent on
 
 set autoindent   " Copy indent from current line when starting a new line
 set smartindent
-filetype indent on
 set clipboard=unnamed " use system clipboard
 set showcmd      " display incomplete commands
 set showmode     " display the mode you're in

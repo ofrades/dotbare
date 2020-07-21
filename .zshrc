@@ -11,8 +11,8 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-	git
   fzf-tab
+	git
 	zsh-syntax-highlighting
   zsh-autosuggestions
   dotbare
@@ -240,3 +240,4 @@ export FZF_DEFAULT_OPTS='
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export TERM=xterm-256color-italic

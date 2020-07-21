@@ -3,19 +3,16 @@ font:
   # The normal (roman) font face to use.
   normal:
     family: FantasqueSansMono Nerd Font
-    # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
     family: FantasqueSansMono Nerd Font
-    # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
     family: FantasqueSansMono Nerd Font
-    # Style can be specified to pick a specific face.
     # style: Italic
 
 
@@ -23,32 +20,34 @@ font:
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
-    background: '#282828'
-    # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
+    background: '#333233'
+    foreground: '#cccccc'
+
+  cursor:
+    text:   '0xf1c1c1'
+    cursor: '0x4Ca585'
 
   # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    black:   '#171717'
+    red:     '#9B1300'
+    green:   '#5FD2BE'
+    yellow:  '#D9C679'
+    blue:    '#58659A'
+    magenta: '#D88E78'
+    cyan:    '#719899'
+    white:   '#C8C8C8'
 
   # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '#555555'
+    red:     '#CF7357'
+    green:   '#4CA585'
+    yellow:  '#9D936B'
+    blue:    '#588E9A'
+    magenta: '#E09B99'
+    cyan:    '#98BCBD'
+    white:   '#E1E1E1'
 
 # Window
 window:
@@ -61,16 +60,31 @@ window:
   #  y: 0
 
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
 
   dynamic_padding: true
   decorations: full
   startup_mode: Fullscreen
 
+
+# Vi mode cursor colors
+#vi_mode_cursor:
+#  text: '#000000'
+#  cursor: '#ffffff'
+#
+#
 selection:
   save_to_clipboard: true
 cursor:
   style: Block
-  text: '0x000000'
-  cursor: '0xffffff'
+vi_mode_cursor:
+  text: CellBackground
+  cursor: CellForeground
+
+live_config_reload: true
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
