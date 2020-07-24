@@ -3,9 +3,13 @@
 # Please adapt and uncomment the following lines:
 	name = miguel/ofrades
 	email = mig.silva@gmail.com
+	signingkey = FC30C47517A36F25
 
 [commit]
   template = ~/.commit.txt
+  
+	# https://help.github.com/articles/signing-commits-using-gpg/
+	gpgsign = true
 
 [alias]
 

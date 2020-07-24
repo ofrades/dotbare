@@ -6,7 +6,6 @@
 "     F1 - All commands
 "     C-p - open files
 "     C-f - find in files
-"     Leader p - Open buffers
 "       C-t - tab split
 "       C-x - h split
 "       C-v - v split
@@ -15,6 +14,7 @@
 " c-o and c-i to go to previous and next position of cursor
 " c-w followed by v or h will split pane
 " gh see info, gd go to definition, gt gT next previous tab
+" toggle popup TERMINAL - F4
 
 if empty(glob('~/.vim/autoload/plug.vim'))
 silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -36,6 +36,8 @@ Plug 'ap/vim-css-color'                               " show color preview
 Plug 'mhinz/vim-startify'                             " nice start when vim is called without file
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
+Plug 'liuchengxu/vim-which-key'                       " menu
+Plug 'liuchengxu/vista.vim'                           " list of symbols
 
 " Editing
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
@@ -53,6 +55,7 @@ Plug 'preservim/nerdtree'                             " File tree explorer - F3
 Plug 'terryma/vim-multiple-cursors'                   " Multiple cursors - add cursor next/previous C-n/p, skip next match C-x, Leader n select all
 Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
+Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
@@ -71,37 +74,27 @@ call plug#end()
 " Leader Key
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
-" SIDEBAR
+
+source ~/.vimrc-which-key
+" Some F keymaps = vscode
+nmap <F1> :Commands<CR>
+nmap <F2> :Files<CR>
 nmap <F3> :NERDTreeToggle<CR>
 nmap <F4> :terminal<CR>
-" SHOW COMMANDS
-nnoremap <silent> <F1> :Commands<CR>
+let g:floaterm_keymap_toggle = '<F4>'
+
 " FILES IN PROJECT
 nnoremap <silent> <C-p> :Files<CR>
-" OPEN FILES IN PROJECT
-nnoremap <silent> <Leader>p :Buffers<CR>
 " FIND IN FILES
 nnoremap <silent> <C-f> :Rg<CR>
-" SEARCH LINE
-nnoremap <silent> <Leader>L :Lines<CR>
-" CLOSE
-nnoremap <silent> <Leader>q :q<CR>
-" SAVE
-nnoremap <silent> <Leader>w :w<CR>
 " NAVIGATE OPTIONS
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 " jk TO ESCAPE
 inoremap jk <Esc>
-xnoremap jk <Esc>
-cnoremap jk <C-c>
-" Goyo
-nnoremap <silent> <Leader>G :Goyo<CR>
-" Limelight
-nnoremap <silent> <Leader>L :Limelight!!<CR>
-" Edit .vimrc quickly
-map <Leader>v :sp ~/.vimrc<cr>
 
+
+" Multi-cursor
 let g:multi_cursor_use_default_mapping=0
 
 let g:multi_cursor_start_word_key      = '<C-n>'
@@ -283,23 +276,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <F1> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -323,79 +299,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
-" ==========================
-" Mappings for CoCList
-" ==========================
-
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " ============================================================================
 " FZF
