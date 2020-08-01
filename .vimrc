@@ -40,10 +40,9 @@ Plug 'liuchengxu/vim-which-key'                       " menu
 Plug 'liuchengxu/vista.vim'                           " list of symbols
 
 " Editing
-Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
-Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 2 characters
+Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 3 characters
   let g:sneak#label = 1
 
 " File system
@@ -51,11 +50,11 @@ Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy file search
 Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
 Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mode and C-t in insert mode to see registers
-Plug 'preservim/nerdtree'                             " File tree explorer - F3
-Plug 'terryma/vim-multiple-cursors'                   " Multiple cursors - add cursor next/previous C-n/p, skip next match C-x, Leader n select all
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}   " Multiple cursors C-n, C-up/down to create cursors and \\A to select all occurrences
 Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
 Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}       " Ranger in vim supports C-T(open to tag) C-X(horizontal) /C-V(vertical) and q to close
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
@@ -64,7 +63,10 @@ Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! co
 Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
 
 " Languages
-source ~/.vimrc-omnisharp       " C#
+" source ~/.vimrc-omnisharp       " C#
+source ~/.vimrc-coc             " Conquer of Completion + explorer = vscode
+
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -79,7 +81,7 @@ source ~/.vimrc-which-key
 " Some F keymaps = vscode
 nmap <F1> :Commands<CR>
 nmap <F2> :Files<CR>
-nmap <F3> :NERDTreeToggle<CR>
+nmap <F3> :CocCommand explorer<CR>
 nmap <F4> :terminal<CR>
 let g:floaterm_keymap_toggle = '<F4>'
 
@@ -92,18 +94,6 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 " jk TO ESCAPE
 inoremap jk <Esc>
-
-
-" Multi-cursor
-let g:multi_cursor_use_default_mapping=0
-
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<Leader>a'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
 
 " TMUX
 let g:tmux_navigator_no_mappings = 1
@@ -228,82 +218,6 @@ function! s:statusline_expr()
 endfunction
 let &statusline = s:statusline_expr()
 
-" ================================ 
-" coc.nvim
-" ================================
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-set pumheight=10    " Makes popup smaller
-set ruler
-set cursorline
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use gh to show documentation in preview window.
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " ============================================================================
@@ -383,20 +297,4 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-" ============================================================================
-" SNIPPETS
-" ============================================================================
-
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
 
