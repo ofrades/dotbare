@@ -25,38 +25,27 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['/'] = [ ':call Comment()'            , 'comment' ]
-let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open settings' ]
 let g:which_key_map['b'] = [ ':Buffers'                   , 'buffers' ]
-let g:which_key_map['F1'] = [ ':Commands'                 , 'commands' ]
-let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
-let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
-let g:which_key_map['e'] = [ ':NERDTreeToggle'            , 'explorer' ]
+let g:which_key_map['c'] = [ ':Commands'                  , 'commands' ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['p'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'horizontal split']
-let g:which_key_map['r'] = [ ':RnvimrToggle'               , 'ranger']
+let g:which_key_map['m'] = [ ':Magit'                     , 'magit']
+let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger']
 let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
 let g:which_key_map['f'] = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['t'] = [ ':FloatermToggle'            , 'terminal']
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'vertical split']
 let g:which_key_map['w'] = [ ':w'                         , 'write' ]
+let g:which_key_map[','] = [ ':e $MYVIMRC'                , 'open settings' ]
 
 " Group mappings
 let g:which_key_map.z = {
       \ 'name' : '+style' ,
-      \ 'g' : [':Goyo'        , 'goyo'],
+      \ 'g' : [':Goyo'           , 'goyo'],
       \ 'l' : [':Limelight!!'    , 'limelight'],
       \ }
-" a is for actions
-let g:which_key_map.a = {
-      \ 'name' : '+actions' ,
-      \ 'c' : [':ColorizerToggle'        , 'colorizer'],
-      \ 'e' : [':CocCommand explorer'    , 'explorer'],
-      \ 'n' : [':set nonumber!'          , 'line-numbers'],
-      \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
-      \ 's' : [':let @/ = ""'            , 'remove search highlight'],
-      \ 't' : [':FloatermToggle'         , 'terminal'],
-      \ 'v' : [':Vista!!'                , 'tag viewer'],
-      \ }
+"
 " n is for navigate
 let g:which_key_map.n = {
       \ 'name' : '+navigate' ,
@@ -159,8 +148,8 @@ let g:which_key_map.l = {
       \ }
 
 " t is for terminal
-let g:which_key_map.t = {
-      \ 'name' : '+terminal' ,
+let g:which_key_map.T = {
+      \ 'name' : '+terminal options' ,
       \ 's' : [':FloatermNew --wintype=popup --height=6'        , 'small terminal'],
       \ 'g' : [':FloatermNew lazygit'                           , 'lazygit'],
       \ 't' : [':FloatermToggle'                                , 'terminal'],

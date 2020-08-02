@@ -2,19 +2,7 @@
 " REMEMBER THIS
 " =========================
 " you will need vim 8.2+ or neovim
-" FZF KEYMAPS
-"     F1 - All commands
-"     C-p - open files
-"     C-f - find in files
-"       C-t - tab split
-"       C-x - h split
-"       C-v - v split
-" most of the time you will be able to go up and down with c-j and c-k
-" but c-n and c-p will be better when in tmux
-" c-o and c-i to go to previous and next position of cursor
-" c-w followed by v or h will split pane
-" gh see info, gd go to definition, gt gT next previous tab
-" toggle popup TERMINAL - F4
+" press space <leader> to see available keybindings
 
 if empty(glob('~/.vim/autoload/plug.vim'))
 silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -36,16 +24,12 @@ Plug 'ap/vim-css-color'                               " show color preview
 Plug 'mhinz/vim-startify'                             " nice start when vim is called without file
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
-Plug 'liuchengxu/vim-which-key'                       " menu
-Plug 'liuchengxu/vista.vim'                           " list of symbols
 
-" Editing
+" Features
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
 Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 3 characters
   let g:sneak#label = 1
-
-" File system
 Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy file search
 Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
@@ -63,10 +47,12 @@ Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! co
 Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
 
 " Languages
-" source ~/.vimrc-omnisharp       " C#
-source ~/.vimrc-coc             " Conquer of Completion + explorer = vscode
+" source ~/.vimrc-omnisharp     " OmniSharp
+Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
+Plug 'liuchengxu/vista.vim'                        " list of symbols
 
-Plug 'SirVer/ultisnips'
+" Keymaps
+Plug 'liuchengxu/vim-which-key'       " menu
 
 call plug#end()
 
@@ -77,13 +63,8 @@ call plug#end()
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 
-source ~/.vimrc-which-key
-" Some F keymaps = vscode
-nmap <F1> :Commands<CR>
-nmap <F2> :Files<CR>
-nmap <F3> :CocCommand explorer<CR>
-nmap <F4> :terminal<CR>
-let g:floaterm_keymap_toggle = '<F4>'
+source ~/.vimrc-which-key       " options for which_key
+source ~/.vimrc-coc             " options for coc.nvim
 
 " FILES IN PROJECT
 nnoremap <silent> <C-p> :Files<CR>

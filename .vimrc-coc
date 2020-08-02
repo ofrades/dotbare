@@ -1,5 +1,3 @@
-Plug 'neoclide/coc.nvim', {'branch': 'release'}    " Conquer of Completion
-Plug 'sheerun/vim-polyglot'
 " ================================ 
 " coc.nvim
 " ================================

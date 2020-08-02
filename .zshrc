@@ -41,7 +41,7 @@ fif(){
     --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2
   )
 
-  [[ -n $selected ]] && vim $selected
+  [[ -n $selected ]] && $EDITOR $selected
 }
 
 # Find files
@@ -50,7 +50,7 @@ ff() {
     rg --files-with-matches --no-messages " " | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
   )
 
-  [[ -n $selected ]] && vim $selected
+  [[ -n $selected ]] && $EDITOR $selected
 }
 
 # Navigate directories
@@ -120,7 +120,7 @@ fgs() {
   cut -c4- | sed 's/.* -> //'
   )
 
-  [[ -n $selected ]] && vim $selected
+  [[ -n $selected ]] && $EDITOR $selected
 }
 
 # Git Branch
@@ -132,7 +132,7 @@ fgb() {
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##'
 )
-  [[ -n $selected ]] && vim $selected # open multiple files in editor
+  [[ -n $selected ]] && $EDITOR $selected # open multiple files in editor
 }
 
 # Git Tag
@@ -234,9 +234,21 @@ export FZF_DEFAULT_OPTS='
     --bind "alt-j:preview-down,alt-k:preview-up"
 '
 
+run_ranger () {
+    echo
+    ranger --choosedir=$HOME/.rangerdir < $TTY
+    LASTDIR=`cat $HOME/.rangerdir`
+    cd "$LASTDIR"
+    zle reset-prompt
+}
+zle -N run_ranger
+bindkey '^f' run_ranger
+
+
 #export FZF_DEFAULT_COMMAND='rg --files'
 
 
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export EDITOR=nvim
