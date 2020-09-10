@@ -1,3 +1,4 @@
+set -o vi
 # Delete % symbol
 unsetopt PROMPT_SP
 
@@ -11,8 +12,10 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-  fzf-tab
+  vi-mode
 	git
+  node
+  npm
 	zsh-syntax-highlighting
   zsh-autosuggestions
   dotbare
@@ -244,6 +247,13 @@ run_ranger () {
 zle -N run_ranger
 bindkey '^f' run_ranger
 
+pac(){
+  pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
+}
+
+keyboard(){
+  setxkbmap $1
+}
 
 #export FZF_DEFAULT_COMMAND='rg --files'
 
@@ -252,3 +262,8 @@ eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export EDITOR=nvim
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

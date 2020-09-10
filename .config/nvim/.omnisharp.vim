@@ -1,6 +1,7 @@
-" OMNISHARP
-"
+"""""OMNISHARP""""
+
 Plug 'OmniSharp/omnisharp-vim'                         " coc-omnisharp does not yet have this fixed
+Plug 'Shougo/echodoc.vim'
 
 let g:OmniSharp_selector_ui = 'fzf'                  " Use fzf.vim
 let g:OmniSharp_popup_options = {

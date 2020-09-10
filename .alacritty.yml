@@ -20,7 +20,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#333233'
+    background: '#1a2933'
     foreground: '#cccccc'
 
   cursor:
@@ -60,8 +60,8 @@ window:
     y: 10
 
   dynamic_padding: true
-  decorations: full
-  startup_mode: Fullscreen
+  decorations: none
+  # startup_mode: Fullscreen
 
 
 # Vi mode cursor colors
