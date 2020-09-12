@@ -81,10 +81,8 @@ bindsym $mod+r exec $term -e ranger
 bindsym $mod+b exec --no-startup-id firefox
 
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+g layout toggle split
-bindsym $alt+t floating toggle
+bindsym $mod+t layout toggle
+bindsym $alt+f floating toggle
 
 # Switch to workspace
 bindsym $mod+1 workspace I

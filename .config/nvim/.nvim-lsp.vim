@@ -1,5 +1,9 @@
 """"NVIM-LSP""""
 
+
+"""TREESITTER""""
+ source ~/.config/nvim/.treesitter.vim
+
 autocmd Filetype cs setl omnifunc=v:lua.vim.lsp.omnifunc
 " Add keybindings for LSP
 nnoremap <silent> gd      <cmd>lua vim.lsp.buf.definition()<CR>
@@ -60,7 +64,7 @@ sign define LspDiagnosticsWarningSign text=x
 sign define LspDiagnosticsInformationSign text=i
 sign define LspDiagnosticsHintSign text=>
 
-let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_snippet = 'ultisnips'
 
 set omnifunc=v:lua.vim.lsp.omnifunc
 "autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
@@ -84,3 +88,6 @@ nnoremap <Leader>tr :lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <Leader>tq :lua require'telescope.builtin'.quickfix{}<CR>
 nnoremap <Leader>tl :lua require'telescope.builtin'.loclist{}<CR>
 
+""""SUPERTAB"""""
+" Press Tab to scroll _down_ a list of auto-completions
+let g:SuperTabDefaultCompletionType = "<c-n>"

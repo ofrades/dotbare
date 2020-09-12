@@ -10,6 +10,7 @@ Plug 'ap/vim-css-color'                               " show color preview
 Plug 'mhinz/vim-startify'                             " nice start when vim is called without file
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
+Plug 'ryanoasis/vim-devicons'
 
 " Features
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
@@ -25,17 +26,19 @@ Plug 'terryma/vim-expand-region'                      " Expand selection - +/_
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
 Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}       " Ranger in vim supports C-T(open to tag) C-X(horizontal) /C-V(vertical) and q to close
+Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
+
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'airblade/vim-gitgutter'  " git diff in the sign column
 Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! commits affected current file
 Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
 
-" Languages
+" LSP
+
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
-
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -43,11 +46,14 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
+
 " source ~/.config/nvim/.omnisharp.vim     " OmniSharp
-" source ~/.config/nvim/.coc.vim             " options for coc.nvim
 Plug 'liuchengxu/vista.vim'                        " list of symbols
 
 " Keymaps
 Plug 'liuchengxu/vim-which-key'       " menu
 
 call plug#end()
+
+"""LSP""""
+ source ~/.config/nvim/.nvim-lsp.vim
