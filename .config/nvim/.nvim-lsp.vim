@@ -1,9 +1,5 @@
 """"NVIM-LSP""""
 
-
-"""TREESITTER""""
- source ~/.config/nvim/.treesitter.vim
-
 autocmd Filetype cs setl omnifunc=v:lua.vim.lsp.omnifunc
 " Add keybindings for LSP
 nnoremap <silent> gd      <cmd>lua vim.lsp.buf.definition()<CR>
@@ -43,7 +39,9 @@ lua << EOF
   end
 
   local lsp = require'nvim_lsp'
-
+  lsp.vuels.setup{ on_attach=on_attach_vim }
+  lsp.html.setup{ on_attach=on_attach_vim }
+  lsp.jsonls.setup{ on_attach=on_attach_vim }
   lsp.omnisharp.setup{ on_attach=on_attach_vim }
   lsp.tsserver.setup{ on_attach=on_attach_vim }
   lsp.cssls.setup{ on_attach=on_attach_vim }
@@ -75,18 +73,6 @@ lua vim.lsp.set_log_level("debug")
 command! OpenLspLog execute '!open ' . v:lua.vim.lsp.get_log_path()
 
 command! OpenInFinder execute '!open ' . expand("%:p:h")
-
-
-
-"-----------------------------------------------------------------------------
-" telescope
-"-----------------------------------------------------------------------------
-
-nnoremap <Leader>tf :lua require'telescope.builtin'.git_files{}<CR>
-nnoremap <Leader>tg :lua require'telescope.builtin'.live_grep{}<CR>
-nnoremap <Leader>tr :lua require'telescope.builtin'.lsp_references{}<CR>
-nnoremap <Leader>tq :lua require'telescope.builtin'.quickfix{}<CR>
-nnoremap <Leader>tl :lua require'telescope.builtin'.loclist{}<CR>
 
 """"SUPERTAB"""""
 " Press Tab to scroll _down_ a list of auto-completions

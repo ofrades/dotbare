@@ -2,9 +2,9 @@
 add_newline = false
 
 [character]
-symbol = "🕇 ~"
+symbol = "✝️ ~>"
 error_symbol = "🞬 ~"
-vicmd_symbol = "[N]"
+vicmd_symbol = "[NORMAL]"
 use_symbol_for_status = true
 
 [package]

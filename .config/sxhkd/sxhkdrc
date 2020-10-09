@@ -1,0 +1,106 @@
+e#---------- Keybindings for bspwm ----------##
+
+# Terminal (termite)
+super + Return
+	kitty
+
+super + t
+	kitty -f
+
+super + e
+	kitty -e nvim
+
+# Floating terminal
+
+##---------- Rofi Launcher & Menus ----------##
+
+# Rofi App Launcher
+super + d
+	sh ~/.config/bspwm/rofi/bin/launcher
+
+super + x
+	sh ~/.config/bspwm/rofi/bin/powermenu
+
+alt + {_,shift + }Tab
+	sh ~/.config/bspwm/rofi/bin/windows
+
+ctrl + alt + n
+	sh ~/.config/bspwm/rofi/bin/network
+
+super + s
+	exec flameshot gui
+
+##---------- Applications ----------##
+
+super + f
+	pcmanfm
+
+super + b
+	firefox
+
+super + r
+    kitty -e ranger
+
+##---------- System ----------##
+
+# Take a screenshot
+Print
+	scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
+	
+# Take a screenshot in 5 second
+alt + Print	
+	scrot -d 5 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
+
+# Brighness control
+XF86MonBrightness{Up,Down}
+	backlight{-up,-down}
+	
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume}
+	volume{-up,-down}
+
+XF86AudioMute
+	amixer set Master toggle
+	
+# Music control
+XF86Audio{Next,Prev,Play,Stop}
+	mpc {next,prev,toggle,stop}
+
+##---------- Bspwm ----------##
+
+# Close App
+super + q
+	bspc node -c
+
+# Fullscreen or Monocle
+super + m
+	bspc desktop -l next
+	
+# Toggle beetwen floating & tiled
+super + space
+    bspc node -t "~"{floating,tiled}
+
+# Send the window to another edge of the screen
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Send focused window to another workspace
+super + {_,shift + }{1-8}
+	bspc {desktop -f,node -d} '^{1-8}'
+
+super + alt + {h,j,k,l}
+	sh ~/.config/bspwm/bspwm_resize.sh {west,south,north,east} 20
+
+## Move floating windows
+alt + shift + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Reload Keybindings
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Quit/Restart bspwm
+ctrl + alt + {q,r}
+	bspc {quit,wm -r}
+
+##---------- EOF ----------##

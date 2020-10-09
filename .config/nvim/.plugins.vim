@@ -3,18 +3,26 @@
 call plug#begin('~/.vim/plugged')
 
 " Style
-Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
   let g:gruvbox_italic=1
-Plug 'ap/vim-css-color'                               " show color preview
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'skammer/vim-css-color'
 Plug 'mhinz/vim-startify'                             " nice start when vim is called without file
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
+Plug 'franbach/miramare'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'flrnd/candid.vim'
+Plug 'vim-airline/vim-airline'
 
 " Features
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
+Plug 'tpope/vim-unimpaired'
+Plug 'brooth/far.vim'
+Plug 'preservim/nerdcommenter'
 Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 3 characters
   let g:sneak#label = 1
 Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
@@ -28,15 +36,27 @@ Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}       " Ranger in vim supports C-T(open to tag) C-X(horizontal) /C-V(vertical) and q to close
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
+Plug 'sheerun/vim-polyglot'
+Plug 'easymotion/vim-easymotion'
+Plug 'cohama/lexima.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'mattn/vim-gist'
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
+Plug 'tpope/vim-rhubarb'
+Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'  " git diff in the sign column
 Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! commits affected current file
 Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
 
 " LSP
-
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -47,13 +67,21 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
-" source ~/.config/nvim/.omnisharp.vim     " OmniSharp
+Plug 'OmniSharp/omnisharp-vim'                         " coc-omnisharp does not yet have this fixed
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Shougo/echodoc.vim'
+Plug 'w0rp/ale'
+Plug 'nickspoons/vim-sharpenup'
+
 Plug 'liuchengxu/vista.vim'                        " list of symbols
 
-" Keymaps
-Plug 'liuchengxu/vim-which-key'       " menu
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'nickspoons/vim-cs'
 
 call plug#end()
 
-"""LSP""""
- source ~/.config/nvim/.nvim-lsp.vim
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif

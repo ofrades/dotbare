@@ -1,15 +1,14 @@
 """"STYLE""""
+" important!!
+set termguicolors
 
+" the configuration options should be placed before `colorscheme miramare`
+let g:teppz_enable_italic = 1
+let g:teppz_disable_italic_comment = 0
 set nocompatible
 syntax enable
-let g:seoul256_srgb = 1
-set termguicolors
 "" Unified color scheme (default: dark)
-color seoul256
-
-" Light color scheme
-color seoul256-light
-" Switch
+colorscheme teppz
 set background=dark
 set t_Co=256
 
@@ -21,18 +20,18 @@ set t_Co=256
 let g:echodoc#enable_at_startup = 1
 
 set completeopt=preview,longest,menuone,noinsert,noselect
-" set completepopup=highlight:Pmenu,border:on
+let g:completion_matching_strategy_list = ['exact', 'subtring', 'fuzzy']
 
 set previewheight=5
 set cmdheight=2
 
 " vim-highlightedyank different color
-hi HighlightedyankRegion cterm=none guibg=#333333
+hi HighlightedyankRegion cterm=none guibg=#497c6c
 hi Normal ctermbg=none guibg=none
 hi LineNr guibg=none ctermbg=none
 
 " center cursor middle of screen
-set so=999
+set scrolloff=15
 
 " This enables file type detection (like filetype on)
 filetype plugin indent on

@@ -1,6 +1,10 @@
+" Leader Key Maps
+
 " Map leader to which_key
-nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <Leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <Leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+set timeoutlen=100
 
 " Create map to add keys to
 let g:which_key_map =  {}
@@ -8,6 +12,9 @@ let g:which_key_map =  {}
 let g:which_key_sep = '→'
 " set timeoutlen=100
 
+" Coc Search & refactor
+nnoremap <leader>? :CocSearch <C-R>=expand("<cword>")<CR><CR>
+let g:which_key_map['?'] = 'search word'
 
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
@@ -23,38 +30,30 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Single mappings
-let g:which_key_map['b'] = [ ':Buffers'                   , 'buffers' ]
-let g:which_key_map['c'] = [ ':Commands'                  , 'commands' ]
-let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
-let g:which_key_map['p'] = [ ':Files'                     , 'search files' ]
-let g:which_key_map['h'] = [ '<C-W>s'                     , 'horizontal split']
-let g:which_key_map['m'] = [ ':Magit'                     , 'magit']
-let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger']
-let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
-let g:which_key_map['f'] = [ ':Rg'                        , 'search text' ]
-let g:which_key_map['v'] = [ '<C-W>v'                     , 'vertical split']
-let g:which_key_map['w'] = [ ':w'                         , 'write' ]
-let g:which_key_map[','] = [ ':e $MYVIMRC'                , 'open settings' ]
+let g:which_key_map['/'] = [ ':call Comment()'                    , 'comment' ]
+let g:which_key_map['.'] = [ ':e $MYVIMRC'                        , 'open init' ]
+let g:which_key_map['b'] = [ ':Buffers'                           , 'buffers' ]
+let g:which_key_map['c'] = [ ':Commands'                          , 'commands' ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
+let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
+let g:which_key_map['p'] = [ ':Files'                             , 'search files' ]
+let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
+let g:which_key_map['v'] = [ '<C-W>v'                             , 'split right']
+let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
 
 " Group mappings
-let g:which_key_map.z = {
-      \ 'name' : '+style' ,
-      \ 'g' : [':Goyo'           , 'goyo'],
-      \ 'l' : [':Limelight!!'    , 'limelight'],
+
+" f is for find and replace
+let g:which_key_map.f = {
+      \ 'name' : '+find & replace' ,
+      \ 'b' : [':Farr --source=vimgrep'    , 'buffer'],
+      \ 'p' : [':Farr --source=rgnvim'     , 'project'],
       \ }
-"
-" n is for navigate
-let g:which_key_map.n = {
-      \ 'name' : '+navigate' ,
-      \ 'r' : [':RnvimrToggle'          , 'ranger'],
-      \ 'f' : [':Files'                 , 'files'],
-      \ 'w' : [':Windows'               , 'search windows'],
-      \ 'g' : [':GFiles'                , 'git files'],
-      \ 'G' : [':GFiles?'               , 'modified git files'],
-      \ 'b' : [':Buffers'               , 'open buffers'],
-      \ }
+
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
@@ -62,8 +61,12 @@ let g:which_key_map.s = {
       \ ';' : [':Commands'              , 'commands'],
       \ 'a' : [':Ag'                    , 'text Ag'],
       \ 'b' : [':BLines'                , 'current buffer'],
+      \ 'B' : [':Buffers'               , 'open buffers'],
       \ 'c' : [':Commits'               , 'commits'],
       \ 'C' : [':BCommits'              , 'buffer commits'],
+      \ 'f' : [':Files'                 , 'files'],
+      \ 'g' : [':GFiles'                , 'git files'],
+      \ 'G' : [':GFiles?'               , 'modified git files'],
       \ 'h' : [':History'               , 'file history'],
       \ 'H' : [':History:'              , 'command history'],
       \ 'l' : [':Lines'                 , 'lines'] ,
@@ -75,6 +78,7 @@ let g:which_key_map.s = {
       \ 'S' : [':Colors'                , 'color schemes'],
       \ 't' : [':Rg'                    , 'text Rg'],
       \ 'T' : [':BTags'                 , 'buffer tags'],
+      \ 'w' : [':Windows'               , 'search windows'],
       \ 'y' : [':Filetypes'             , 'file types'],
       \ 'z' : [':FZF'                   , 'FZF'],
       \ }
@@ -94,14 +98,17 @@ let g:which_key_map.g = {
       \ 'G' : [':Gstatus'                          , 'status'],
       \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
       \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
+      \ 'i' : [':Gist -b'                          , 'post gist'],
       \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
       \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
       \ 'l' : [':Git log'                          , 'log'],
+      \ 'm' : ['<Plug>(git-messenger)'             , 'message'],
       \ 'p' : [':Git push'                         , 'push'],
       \ 'P' : [':Git pull'                         , 'pull'],
       \ 'r' : [':GRemove'                          , 'remove'],
       \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
-      \ 't' : [':GitGutterToggle'             , 'toggle signs'],
+      \ 'S' : [':!git status'                      , 'status'],
+      \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
       \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
       \ 'v' : [':GV'                               , 'view commits'],
       \ 'V' : [':GV!'                              , 'view buffer commits'],
@@ -129,38 +136,39 @@ let g:which_key_map.l = {
       \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
       \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
-      \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
+      \ 'o' : [':Vista!!'                            , 'outline'],
       \ 'O' : [':CocList outline'                    , 'outline'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
-      \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
-      \ 'R' : ['<Plug>(coc-references)'              , 'references'],
+      \ 'r' : ['<Plug>(coc-references)'              , 'references'],
+      \ 'R' : ['<Plug>(coc-rename)'                  , 'rename'],
       \ 's' : [':CocList -I symbols'                 , 'references'],
       \ 'S' : [':CocList snippets'                   , 'snippets'],
       \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'u' : [':CocListResume'                      , 'resume list'],
       \ 'U' : [':CocUpdate'                          , 'update CoC'],
-      \ 'v' : [':Vista!!'                            , 'tag viewer'],
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
+      " \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
 
 " t is for terminal
 let g:which_key_map.t = {
-      \ 'name' : '+telescope' ,
-      \ 'f' : [":lua require'telescope.builtin'.git_files{}"       , 'git-files'],
-      \ 'g' : [":lua require'telescope.builtin'.live_grep{}"       , 'live-grep'],
-      \ 'r' : [":lua require'telescope.builtin'.lsp_references{}"   , 'lsp-references'],
-      \ 'q' : [":lua require'telescope.builtin'.quickfix{}"         , 'quickfix'],
-      \ 'l' : [":lua require'telescope.builtin'.loclist{}"          , 'loclist'],
+      \ 'name' : '+terminal' ,
+      \ ';' : [':FloatermNew --wintype=normal --height=6'        , 'terminal'],
+      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
+      \ 'n' : [':FloatermNew node'                              , 'node'],
+      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
+      \ 'p' : [':FloatermNew python'                            , 'python'],
+      \ 'm' : [':FloatermNew lazynpm'                           , 'npm'],
+      \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
+      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
+      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 
-" t is for telescope
-let g:which_key_map.T = {
-      \ 'name' : '+terminal' ,
-      \ 's' : [':FloatermNew --wintype=popup --height=6'        , 'small terminal'],
-      \ 'g' : [':FloatermNew lazygit'                           , 'lazygit'],
-      \ 't' : [':FloatermToggle'                                , 'terminal'],
-      \ }
+" Register which key map
 call which_key#register('<Space>', "g:which_key_map")

@@ -1,34 +1,134 @@
+# Vi-mode
 set -o vi
-# Delete % symbol
-unsetopt PROMPT_SP
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ofrades/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
-# Theme
-ZSH_THEME="robbyrussell"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="archcraft"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME="archcraft"
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(
-  vi-mode
-	git
-  node
-  npm
-	zsh-syntax-highlighting
-  zsh-autosuggestions
-  dotbare
-  zsh-z
-)
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Oh-my-zsh
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(vi-mode git node npm zsh-syntax-highlighting zsh-autosuggestions dotbare zsh-z)
+
 source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='nvim'
+ fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+# omz
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="thunar ~/.oh-my-zsh"
+alias vimconfig="nvim ~/.vimrc"
+
+# ls
+alias l='ls -lh'
+alias ll='ls -lah'
+alias la='ls -A'
+alias lm='ls -m'
+alias lr='ls -R'
+alias lg='ls -l --group-directories-first'
+
+# git
+alias gcl='git clone --depth 1'
+alias gi='git init'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push origin master'
+
+alias e='nvim'
+alias pt='keyboard pt'
+alias us='keyboard us'
+alias mail='neomutt'
+
 
 # User Configuration
 
 # Find in files
-fif(){
+zfif(){
   rg="rg -i -l --hidden --no-ignore-vcs"
 
   selected=$(
@@ -48,7 +148,7 @@ fif(){
 }
 
 # Find files
-ff() {
+zfind() {
   selected=$(
     rg --files-with-matches --no-messages " " | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
   )
@@ -57,7 +157,7 @@ ff() {
 }
 
 # Navigate directories
-fcd() {
+zcd() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
         return
@@ -79,13 +179,13 @@ fcd() {
 }
   
 # Command history
-fh() {
+zhistory() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
 # List Tmux Sessions
 # if args provided(e.g. ft my-session), attach to that session if exists, else will create session my-session
-ft() {
+ztmux() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
@@ -94,7 +194,7 @@ ft() {
 }
 
 # Kill Tmux Session
-ftk () {
+ztmuxkill () {
     local sessions
     sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
     local i
@@ -114,7 +214,7 @@ is_in_git_repo() {
 }
 
 # Git Status
-fgs() {
+zstatus() {
   is_in_git_repo || return
   selected=$(
   git -c color.status=always status --short |
@@ -127,7 +227,7 @@ fgs() {
 }
 
 # Git Branch
-fgb() {
+zbranch() {
   selected=$(is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
   fzf --ansi --multi --tac --preview-window right:70% \
@@ -139,7 +239,7 @@ fgb() {
 }
 
 # Git Tag
-fgt() {
+ztag() {
   is_in_git_repo || return
   git tag --sort -version:refname |
   fzf --multi --preview-window right:70% \
@@ -147,7 +247,7 @@ fgt() {
 }
 
 # Git Log
-fgl() {
+zlog() {
   is_in_git_repo || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
   fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
@@ -157,7 +257,7 @@ fgl() {
 }
 
 # Git Remote
-fgr() {
+zremote() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
   fzf --tac \
@@ -166,7 +266,7 @@ fgr() {
 }
 
 # Git Stash
-fgstash() {
+zstash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
@@ -191,7 +291,7 @@ fgstash() {
 }
 
 # Kill process
-fkp() {
+zkill() {
   local pid
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
@@ -199,30 +299,6 @@ fkp() {
   then
     echo $pid | xargs kill -${1:-9}
   fi
-}
-
-# Chrome history (change browser and browser history path)
-ch() {
-  local cols sep
-  browser="google-chrome"
-  browserpath="~/.config/google-chrome/Default/History"
-  export cols=$(( COLUMNS / 3 ))
-  export sep='{::}'
-
-  cp -f ~/.config/google-chrome/Default/History /tmp/h
-  sqlite3 -separator $sep /tmp/h \
-    "select title, url  from urls order by last_visit_time desc" |
-  ruby -ne '
-    cols = ENV["cols"].to_i
-    title, url = $_.split(ENV["sep"])
-    len = 0
-    puts "\x1b[36m" + title.each_char.take_while { |e|
-      if len < cols
-        len += e =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/ ? 2 : 1
-      end
-    }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
-  fzf --ansi --multi --no-hscroll --tiebreak=index |
-  sed 's#.*\(https*://\)#\1#' | xargs $browser
 }
 
 # FZF Defaults
@@ -237,7 +313,7 @@ export FZF_DEFAULT_OPTS='
     --bind "alt-j:preview-down,alt-k:preview-up"
 '
 
-run_ranger () {
+zranger () {
     echo
     ranger --choosedir=$HOME/.rangerdir < $TTY
     LASTDIR=`cat $HOME/.rangerdir`
@@ -247,7 +323,7 @@ run_ranger () {
 zle -N run_ranger
 bindkey '^f' run_ranger
 
-pac(){
+zpac(){
   pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
 }
 
@@ -261,9 +337,16 @@ keyboard(){
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export EDITOR=nvim
 
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NNN_FALLBACK_OPENER=nvim
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+export PATH=$HOME/.local/bin:$PATH
