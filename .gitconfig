@@ -9,7 +9,6 @@
   template = ~/.commit.txt
   
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
 
 [alias]
 

@@ -7,7 +7,7 @@ nnoremap <SPACE> <Nop>
  nnoremap <silent> <C-p> :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
  nnoremap <silent> <C-b> :Buffers<CR>
- nnoremap <silent> <C-m> :Maps<CR>
+ " nnoremap <silent> <C-m> :Maps<CR>
  nnoremap <silent> <C-c> :Commands<CR>
 
 " NAVIGATE OPTIONS

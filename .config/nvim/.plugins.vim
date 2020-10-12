@@ -34,8 +34,8 @@ Plug 'terryma/vim-expand-region'                      " Expand selection - +/_
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
 Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}       " Ranger in vim supports C-T(open to tag) C-X(horizontal) /C-V(vertical) and q to close
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
+" Plug 'ervandew/supertab'
+" Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
@@ -48,35 +48,50 @@ Plug 'mattn/vim-gist'
 
 " Git 
 Plug 'tpope/vim-fugitive'     " git wrapper
+Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'  " git diff in the sign column
 Plug 'junegunn/gv.vim'        " commit window - :GV open commit browser, :GV! commits affected current file
 Plug 'jreybert/vimagit'       " git workflow in new buffer - :Magit
 Plug 'luochen1990/rainbow'
+Plug 'lambdalisue/gina.vim'
 let g:rainbow_active = 1
 
 " LSP
-Plug 'neovim/nvim-lsp'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
-
-Plug 'OmniSharp/omnisharp-vim'                         " coc-omnisharp does not yet have this fixed
+" vim
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'mattn/vim-lsp-settings'
+" nvim
+" Plug 'neovim/nvim-lsp'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/diagnostic-nvim'
+" Plug 'nvim-lua/lsp-status.nvim'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-lua/telescope.nvim'
+" Plug 'nvim-treesitter/nvim-treesitter'
+" coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Plug 'OmniSharp/omnisharp-vim'                         " coc-omnisharp does not yet have this fixed
+" Plug 'w0rp/ale'
 Plug 'Shougo/echodoc.vim'
-Plug 'w0rp/ale'
-Plug 'nickspoons/vim-sharpenup'
+" Plug 'nickspoons/vim-sharpenup'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'liuchengxu/vista.vim'                        " list of symbols
 
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'nickspoons/vim-cs'
+
+" TypeScript
+Plug 'jelera/vim-javascript-syntax'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
