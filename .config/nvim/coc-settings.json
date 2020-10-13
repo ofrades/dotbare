@@ -1,9 +1,12 @@
 {
+  "suggest.removeDuplicateItems": true,
+  "git.showCommitInFloating": true,
+  "git.addGBlameToVirtualText": false,
   "coc.preferences.hoverTarget": "float",
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.useQuickfixForLocations": true,
-  "suggest.numberSelect": true,
+  "suggest.numberSelect": false,
   "suggest.labelMaxLength": 30,
   "suggest.detailMaxLength": 30,
   "suggest.noselect": true,

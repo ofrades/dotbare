@@ -9,7 +9,6 @@
     \ 'coc-highlight',
     \ 'coc-calc',
     \ 'coc-todolist',
-    \ 'coc-spell-checker',
     \ 'coc-lists',
     \ 'coc-emmet',
     \ 'coc-tasks',
