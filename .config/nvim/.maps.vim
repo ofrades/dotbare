@@ -73,7 +73,5 @@ nnoremap <silent> <A-j> :<C-u>move+<CR>==
 xnoremap <silent> <A-j> :move'>+<CR>gv=gv
  
 " Resize Splits
-nnoremap <A-h> :vertical resize -5<CR>
-nnoremap <A-j> :resize +5<CR>
-nnoremap <A-k> :resize -5<CR>
-nnoremap <A-h> :vertical resize +5<CR>
+nnoremap <silent> <A-h> <C-W><
+nnoremap <silent> <A-l> <C-W>>
