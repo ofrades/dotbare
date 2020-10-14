@@ -1,3 +1,5 @@
+set undodir=~/.vim/undodir
+set undofile
 """"STYLE""""
 " important!!
 set termguicolors

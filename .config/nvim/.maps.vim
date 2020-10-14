@@ -4,7 +4,8 @@ let mapleader = " "
 nnoremap <SPACE> <Nop>
 
 " FZF
- nnoremap <silent> <C-p> :Files<CR>
+ nnoremap <silent> <C-p> :GFiles<CR>
+ nnoremap <leader>p :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
  nnoremap <silent> <C-b> :Buffers<CR>
  " nnoremap <silent> <C-m> :Maps<CR>
@@ -70,3 +71,9 @@ nnoremap <silent> <A-k>   :<C-u>move-2<CR>==
 xnoremap <silent> <A-k>   :move-2<CR>gv=gv
 nnoremap <silent> <A-j> :<C-u>move+<CR>==
 xnoremap <silent> <A-j> :move'>+<CR>gv=gv
+ 
+" Resize Splits
+nnoremap <A-h> :vertical resize -5<CR>
+nnoremap <A-j> :resize +5<CR>
+nnoremap <A-k> :resize -5<CR>
+nnoremap <A-h> :vertical resize +5<CR>

@@ -18,6 +18,7 @@ Plug 'flrnd/candid.vim'
 Plug 'vim-airline/vim-airline'
 
 " Features
+Plug 'puremourning/vimspector'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
 Plug 'tpope/vim-unimpaired'

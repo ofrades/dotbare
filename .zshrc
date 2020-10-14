@@ -301,18 +301,6 @@ zkill() {
   fi
 }
 
-# FZF Defaults
-
-export FZF_DEFAULT_OPTS='
-    --height 50% --border
-    --multi
-    --reverse
-    --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
-    --color="hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008"
-    --bind "?:toggle-preview"
-    --bind "alt-j:preview-down,alt-k:preview-up"
-'
-
 zranger () {
     echo
     ranger --choosedir=$HOME/.rangerdir < $TTY
@@ -331,8 +319,19 @@ keyboard(){
   setxkbmap $1
 }
 
-#export FZF_DEFAULT_COMMAND='rg --files'
+# FZF Defaults
 
+export FZF_DEFAULT_OPTS='
+    --height 50% --border
+    --multi
+    --reverse
+    --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
+    --color="hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008"
+    --bind "?:toggle-preview"
+    --bind "alt-j:preview-down,alt-k:preview-up"
+'
+
+export FZF_DEFAULT_COMMAND='rg --files'
 
 eval "$(starship init zsh)"
 
