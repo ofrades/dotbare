@@ -102,7 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # omz
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
-alias vimconfig="nvim ~/.vimrc"
+alias vconfig="nvim ~/.vimrc"
+alias vmaps="nvim ~/.config/nvim/.maps.vim"
+alias vcoc="nvim ~/.config/nvim/coc-settings.json"
 
 # ls
 alias l='ls -lh'
