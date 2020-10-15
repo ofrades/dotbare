@@ -10,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="archcraft"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME="archcraft"
@@ -103,7 +103,8 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
 alias vconfig="nvim ~/.vimrc"
-alias vmaps="nvim ~/.config/nvim/.maps.vim"
+alias vplug="nvim ~/.config/nvim/plug.vim"
+alias vmaps="nvim ~/.config/nvim/maps.vim"
 alias vcoc="nvim ~/.config/nvim/coc-settings.json"
 
 # ls
@@ -348,6 +349,8 @@ export NNN_FALLBACK_OPENER=nvim
 
 autoload -Uz compinit
 compinit
+
 # Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
+
 export PATH=$HOME/.local/bin:$PATH

@@ -1,53 +1,47 @@
-""""MAPS""""
-
+" === === MAPS === === "
 let mapleader = " "
 nnoremap <SPACE> <Nop>
 
-" FZF
- nnoremap <silent> <C-p> :GFiles<CR>
- nnoremap <leader>p :Files<CR>
+" === FZF === "
+ nnoremap <silent> <C-p> :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
- nnoremap <silent> <C-b> :Buffers<CR>
- " nnoremap <silent> <C-m> :Maps<CR>
- nnoremap <silent> <C-c> :Commands<CR>
+ nnoremap <silent> <A-b> :Buffers<CR>
+ nnoremap <silent> <A-m> :Maps<CR>
+ nnoremap <silent> <A-c> :Commands<CR>
 
-" NAVIGATE OPTIONS
+" === Terminal === "
+ nnoremap <silent> <A-t> :FloatermToggle<CR>
+" === Lazygit === "
+ nnoremap <silent> <A-g> :FloatermNew lazygit<CR>
+" === Ranger === "
+ nnoremap <silent> <A-r> :FloatermNew ranger<CR>
+
+" === Navigate list === " 
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
-" jk TO ESCAPE
-inoremap jk <Esc>
 
+" === Scroll === "
 nnoremap <Up> <C-y>
 nnoremap <Down> <C-e>
-" Switch between tabs
+
+" === Switch between tabs === "
 nnoremap <Right> gt
 nnoremap <Left>  gT
 
-" TMUX
+" === TMUX === "
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
+" === easymotion === "
 nmap s <Plug>(easymotion-s2)
-" JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-" For long, wrapped lines
-nnoremap k gk
-" For long, wrapped lines
-nnoremap j gj
-
-" For moving quickly up and down,
-" Goes to the first line above/below that isn't whitespace
-" Thanks to: http://vi.stackexchange.com/a/213
-nnoremap gj :let _=&lazyredraw<CR>:set lazyredraw<CR>/\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
-nnoremap gk :let _=&lazyredraw<CR>:set lazyredraw<CR>?\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
-
-" Telescope
-" nnoremap <Leader>tb <cmd>lua require'telescope.builtin'.builtin{}<CR>
+" === Telescope === "
+nnoremap <Leader>tb <cmd>lua require'telescope.builtin'.builtin{}<CR>
 nnoremap <Leader>p <cmd>lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.quickfix{}<CR>
 nnoremap <Leader>b <cmd>lua require'telescope.builtin'.buffers{}<CR>
@@ -66,12 +60,12 @@ nnoremap <Leader>tt <cmd>lua require'telescope.builtin'.treesitter{}<CR>
 nnoremap <Leader>tp <cmd>lua require'telescope.builtin'.planets{}<CR>
 nnoremap <Leader>tcb <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 
-" Move lines up and down
+" === Move lines up and down === "
 nnoremap <silent> <A-k>   :<C-u>move-2<CR>==
 xnoremap <silent> <A-k>   :move-2<CR>gv=gv
 nnoremap <silent> <A-j> :<C-u>move+<CR>==
 xnoremap <silent> <A-j> :move'>+<CR>gv=gv
  
-" Resize Splits
+" === Resize Splits === "
 nnoremap <silent> <A-h> <C-W><
 nnoremap <silent> <A-l> <C-W>>

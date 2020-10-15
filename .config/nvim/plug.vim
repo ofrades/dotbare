@@ -1,8 +1,8 @@
-""""PLUGINS""""
+" === === PLUGINS === === "
 
 call plug#begin('~/.vim/plugged')
 
-" Style
+" === Style === "
   let g:gruvbox_italic=1
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'skammer/vim-css-color'
@@ -17,7 +17,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'flrnd/candid.vim'
 Plug 'vim-airline/vim-airline'
 
-" Features
+" === Features === "
 Plug 'puremourning/vimspector'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-surround'                          " Quoting parenthesing made simple - ysiw
 Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
@@ -30,6 +30,9 @@ Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy file search
 Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
 Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mode and C-t in insert mode to see registers
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}   " Multiple cursors C-n, C-up/down to create cursors and \\A to select all occurrences
 Plug 'terryma/vim-expand-region'                      " Expand selection - +/_ 
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
@@ -47,7 +50,7 @@ Plug 'AndrewRadev/tagalong.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'mattn/vim-gist'
 
-" Git 
+" === Git === "
 Plug 'tpope/vim-fugitive'     " git wrapper
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-rhubarb'
@@ -59,20 +62,19 @@ Plug 'luochen1990/rainbow'
 Plug 'lambdalisue/gina.vim'
 let g:rainbow_active = 1
 
-" LSP
-" vim
+" === LSP === "
+
+" = vim = "
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'mattn/vim-lsp-settings'
-" nvim
+
+" = nvim = "
 " Plug 'neovim/nvim-lsp'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-lua/diagnostic-nvim'
 " Plug 'nvim-lua/lsp-status.nvim'
-" Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-lua/telescope.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -89,14 +91,14 @@ Plug 'liuchengxu/vista.vim'                        " list of symbols
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'nickspoons/vim-cs'
 
-" TypeScript
+" === TypeScript === "
 Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
-" Automatically install missing plugins on startup
+" === Automatically install missing plugins on startup === "
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
