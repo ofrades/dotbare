@@ -4,9 +4,6 @@ e#---------- Keybindings for bspwm ----------##
 super + Return
 	kitty
 
-super + t
-	kitty -f
-
 super + e
 	kitty -e nvim
 

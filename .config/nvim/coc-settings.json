@@ -89,6 +89,5 @@
   "javascript.showUnused": true,
   "javascript.suggest.names": true,
   "javascript.suggestionActions.enabled": true,
-  "json.format.enable": true,
-  "prettier.eslintIntegration": true
+  "json.format.enable": true
 }

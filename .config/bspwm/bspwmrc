@@ -61,9 +61,14 @@ bspc rule -a 'Firefox Developer Edition' desktop='^5' follow=on focus=on
 bspc rule -a 'Google Chrome' desktop='^5' follow=on focus=on
 bspc rule -a Slack desktop='^6' follow=on focus=on
 bspc rule -a 'Microsoft Teams - Preview' desktop='^6' follow=on focus=on
+bspc rule -a WhatsApp desktop='^6' follow=on focus=on
+bspc rule -a whatsapp-nativefier desktop='^6' follow=on focus=on
+bspc rule -a 'WhatsApp Dark' desktop='^6' follow=on focus=on
 bspc rule -a Skype desktop='^6' follow=on focus=on
 bspc rule -a 'Google Play Music Desktop Player' desktop='^7' follow=on focus=on
 bspc rule -a Vlc desktop='^8' follow=on focus=on
+
+bspc rule -a Peek center=true state=floating focus=on follow=on rectangle=1920x1080+0+0
 
 # Special rules
 bspc rule -a kitty-float state=floating follow=on focus=on center=true rectangle=700x400+0+0
@@ -75,7 +80,7 @@ killall -9 sxhkd xsettingsd dunst xfce4-power-manager
 
 # Lauch notification daemon
 dunst \
--geom "280x50-10+40" -frame_width "1" -font "JetBrainsMono Nerd Font" \
+-geom "280x50-10+40" -frame_width "1" -font "CaskaydiaCove Nerd Font" \
 -lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
 -nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
 -cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &

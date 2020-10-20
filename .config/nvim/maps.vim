@@ -7,12 +7,12 @@ nnoremap <SPACE> <Nop>
  nnoremap <silent> <C-f> :Rg<CR>
  nnoremap <silent> <A-b> :Buffers<CR>
  nnoremap <silent> <A-m> :Maps<CR>
- nnoremap <silent> <A-c> :Commands<CR>
+ nnoremap <silent> <C-c> :Commands<CR>
 
 " === Terminal === "
- nnoremap <silent> <A-t> :FloatermToggle<CR>
+ nnoremap <silent> <C-t> :FloatermToggle<CR>
 " === Lazygit === "
- nnoremap <silent> <A-g> :FloatermNew lazygit<CR>
+ nnoremap <silent> <C-g> :FloatermNew lazygit<CR>
 " === Ranger === "
  nnoremap <silent> <A-r> :FloatermNew ranger<CR>
 

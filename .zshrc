@@ -97,12 +97,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconf="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # omz
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
-alias vconfig="nvim ~/.vimrc"
+alias vsconf="nvim ~/.config/Code/User/settings.json"
+alias vconf="nvim ~/.vimrc"
 alias vplug="nvim ~/.config/nvim/plug.vim"
 alias vmaps="nvim ~/.config/nvim/maps.vim"
 alias vcoc="nvim ~/.config/nvim/coc-settings.json"

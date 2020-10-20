@@ -49,8 +49,10 @@ padding = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "JetBrainsMono Nerd Font:size=11;3"
-font-1 = "JetBrainsMono Nerd Font:size=11;3"
+# font-0 = "JetBrainsMono Nerd Font:size=11;3"
+# font-1 = "JetBrainsMono Nerd Font:size=11;3"
+font-0 = "CaskaydiaCove Nerd Font:size=11;3"
+font-1 = "CaskaydiaCove Nerd Font:size=11;3"
 
 modules-left = menu sep mod bspwm sep gmail user temperature
 modules-center = spotify-prev spotify-play spotify-next spotify 

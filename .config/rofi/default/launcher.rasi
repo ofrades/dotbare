@@ -39,7 +39,7 @@ textbox-prompt-colon {
     background-color:               @BGA;
     text-color:                     @IMG;
     padding:                        4px 0px 0px 8px;
-	font:							"JetBrainsMono Nerd Font 10";
+	font:							"CaskaydiaCove Nerd Font 10";
 }
 
 inputbar {

@@ -1,33 +1,33 @@
+" === persist undo === "
 set undodir=~/.vim/undodir
 set undofile
-""""STYLE""""
-" important!!
-set termguicolors
 
-" the configuration options should be placed before `colorscheme miramare`
+" === style === "
+set termguicolors
+syntax enable
+
+" === teppz === "
 let g:teppz_enable_italic = 1
 let g:teppz_disable_italic_comment = 0
-set nocompatible
-syntax enable
-"" Unified color scheme (default: dark)
 colorscheme teppz
 set background=dark
 set t_Co=256
 
-" Italics
-    highlight htmlArg cterm=italic gui=italic
-    highlight Comment cterm=italic gui=italic
-    highlight Type    cterm=italic gui=italic
+" === italics === "
+highlight htmlArg cterm=italic gui=italic
+highlight Comment cterm=italic gui=italic
+highlight Type    cterm=italic gui=italic
 
 let g:echodoc#enable_at_startup = 1
 
+" === list === "
 set completeopt=preview,longest,menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'subtring', 'fuzzy']
-
 set previewheight=5
+
 set cmdheight=2
 
-" vim-highlightedyank different color
+" === highlightedyank === "
 hi HighlightedyankRegion cterm=none guibg=#497c6c
 hi Normal ctermbg=none guibg=none
 hi LineNr guibg=none ctermbg=none
@@ -40,14 +40,14 @@ filetype plugin indent on
 
 set autoindent   " Copy indent from current line when starting a new line
 set smartindent
-set clipboard=unnamed " use system clipboard
+set clipboard=unnamedplus " use system clipboard
 set showcmd      " display incomplete commands
 set showmode     " display the mode you're in
 set backspace=indent,eol,start "intuitive backspacing"
 set wildmenu     " enhanced command line completion
 " set wildmode=list:longest,full"
 
-""" Search
+" === Search === "
 set ignorecase   " case-insensitive search
 set smartcase    " but case-sensitive if expression contains a capital letter
 set relativenumber "show relative line number
@@ -60,9 +60,7 @@ set hlsearch     " highlight matches
 set gdefault     " use global option in regex by default
 
 set nowrap         " turn on line wrapping
-set scrolloff=3  " show 3 lines of context around cursor
 set display+=lastline "Display as much as possible of a window's last line
-set title        " show terminal title
 set visualbell   " no beeping
 
 "" Global tabs/spaces
@@ -78,4 +76,5 @@ set autoread " Automatically re-read files changed outside of vim
 
 set encoding=utf-8
 
+" === enable mouse === "
 set mouse=a

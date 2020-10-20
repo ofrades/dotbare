@@ -75,7 +75,7 @@ let g:rainbow_active = 1
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-lua/diagnostic-nvim'
 " Plug 'nvim-lua/lsp-status.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -98,7 +98,7 @@ Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
-" === Automatically install missing plugins on startup === "
+" === Automatically install === "
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
