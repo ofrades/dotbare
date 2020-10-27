@@ -10,7 +10,8 @@ nnoremap <SPACE> <Nop>
  nnoremap <silent> <C-c> :Commands<CR>
 
 " === Terminal === "
- nnoremap <silent> <C-t> :FloatermToggle<CR>
+nnoremap   <silent>   <C-t>   :FloatermToggle<CR>
+tnoremap   <silent>   <C-t>   <C-\><C-n>:FloatermToggle<CR>
 " === Lazygit === "
  nnoremap <silent> <C-g> :FloatermNew lazygit<CR>
 " === Ranger === "

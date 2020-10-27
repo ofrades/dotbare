@@ -1,4 +1,4 @@
-# Vi-mode
+# vi-mode
 set -o vi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -70,7 +70,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git node npm zsh-syntax-highlighting zsh-autosuggestions dotbare zsh-z)
+plugins=(vi-mode archlinux fzf git gitignore node npm zsh-syntax-highlighting zsh-autosuggestions dotbare zsh-z z)
 
 source $ZSH/oh-my-zsh.sh
 

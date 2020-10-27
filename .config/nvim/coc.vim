@@ -196,6 +196,7 @@ let g:coc_global_extensions = [
   \ 'coc-cssmodules',
   \ 'coc-tailwindcss',
   \ 'coc-vetur',
+  \ 'coc-svelte',
   \ 'coc-angular',
   \ 'coc-omnisharp',
   \ 'coc-sql',
