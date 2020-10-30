@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Name:         Teppz
-" Description:  Colors that have meaning
-" Author:       Miguel Silva <mig.silva@gmail.com>
+" Description:  Colors that do have meaning
+" Author:       Miguel Bastos <mig.silva@gmail.com>
 " Website:      https://github.com/ofrades/teppz.vim
 " License:      MIT
 " -----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ let s:configuration = {}
 let s:configuration.palette = get(g:, 'teppz_palette', {})
 let s:configuration.transparent_background = get(g:, 'teppz_transparent_background', 1)
 let s:configuration.disable_italic_comment = get(g:, 'teppz_disable_italic_comment', 0)
-let s:configuration.enable_italic_string = get(g:, 'teppz_enable_italic_string', 0)
+let s:configuration.enable_italic_string = get(g:, 'teppz_enable_italic_string', 1)
 let s:configuration.enable_italic = get(g:, 'teppz_enable_italic', 1)
 let s:configuration.enable_bold = get(g:, 'teppz_enable_bold', 1)
 let s:configuration.cursor = get(g:, 'teppz_cursor', 'auto')
@@ -31,23 +31,23 @@ let s:configuration.current_word = get(g:, 'teppz_current_word', get(g:, 'teppz_
 " Palette: {{{
 let s:palette = {
       \ 'bg0':        ['#1d2a39',   '235',  'Black'],
-      \ 'bg1':        ['#2B2D35',   '236',  'DarkGrey'],
-      \ 'bg2':        ['#242021',   '237',  'DarkGrey'],
-      \ 'bg3':        ['#575B65',   '238',  'DarkGrey'],
-      \ 'bg4':        ['#63676F',   '239',  'Grey'],
-      \ 'bg_red':     ['#392f32',   '52',   'DarkRed'],
+      \ 'bg1':        ['#2B2D35',   '236',  'BG1'],
+      \ 'bg2':        ['#242021',   '237',  'BG2'],
+      \ 'bg3':        ['#575B65',   '238',  'BG3'],
+      \ 'bg4':        ['#63676F',   '239',  'BG4'],
+      \ 'bg_red':     ['#80342b',   '52',   'DarkRed'],
       \ 'bg_green':   ['#497C6C',   '22',   'DarkGreen'],
       \ 'bg_blue':    ['#6173D1',   '23',   'DarkBlue'],
       \ 'fg':         ['#e6d6ac',   '223',  'White'],
       \ 'red':        ['#CF7357',   '167',  'Red'],
-      \ 'orange':     ['#D88E78',   '208',  'Red'],
+      \ 'orange':     ['#D88E78',   '208',  'Orange'],
       \ 'yellow':     ['#d9bb80',   '214',  'Yellow'],
       \ 'green':      ['#4CA585',   '107',  'Green'],
       \ 'cyan':       ['#60C1D2',   '108',  'Cyan'],
       \ 'blue':       ['#609AD2',   '109',  'Blue'],
       \ 'purple':     ['#d3a0bc',   '175',  'Magenta'],
-      \ 'grey':       ['#888888',   '244',  'LightGrey'],
-      \ 'light_grey': ['#497c6c',   '245',  'LightGrey'],
+      \ 'light_grey': ['#cccccc',   '244',  'LightGrey'],
+      \ 'grey':       ['#888888',   '244',  'Grey'],
       \ 'gold':       ['#D9C679',   '215',  'Yellow'],
       \ 'none':       ['NONE',      'NONE', 'NONE'],
       \ 'constant':       ['#6173d1',      '1', 'Constant'],
@@ -582,7 +582,7 @@ highlight! link jsSpreadExpression Purple
 highlight! link jsSpreadOperator Green
 highlight! link jsModuleKeyword Keywords
 highlight! link jsObjectValue Blue
-highlight! link jsTemplateExpression LightGray
+highlight! link jsTemplateExpression LightGrey
 highlight! link jsTemplateBraces Yellow
 highlight! link jsClassMethodType Orange
 " }}}
