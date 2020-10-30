@@ -128,6 +128,9 @@ alias pt='keyboard pt'
 alias us='keyboard us'
 alias mail='neomutt'
 
+alias mv='mv -iv'
+alias cp='cp -riv'
+alias mkdir='mkdir -vp'
 
 # User Configuration
 
