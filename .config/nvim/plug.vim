@@ -76,6 +76,7 @@ let g:rainbow_active = 1
 " Plug 'nvim-lua/diagnostic-nvim'
 " Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

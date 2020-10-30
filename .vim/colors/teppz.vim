@@ -48,7 +48,7 @@ let s:palette = {
       \ 'purple':     ['#d3a0bc',   '175',  'Magenta'],
       \ 'light_grey': ['#cccccc',   '244',  'LightGrey'],
       \ 'grey':       ['#888888',   '244',  'Grey'],
-      \ 'gold':       ['#D9C679',   '215',  'Yellow'],
+      \ 'gold':       ['#D9C679',   '215',  'Gold'],
       \ 'none':       ['NONE',      'NONE', 'NONE'],
       \ 'constant':       ['#6173d1',      '1', 'Constant'],
       \ 'null':       ['#58659a',      '2', 'Null'],
@@ -286,11 +286,11 @@ else
   call s:HL('String', s:palette.strings, s:palette.none)
 endif
 if s:configuration.disable_italic_comment
-  call s:HL('Comment', s:palette.light_grey, s:palette.none)
+  call s:HL('Comment', s:palette.s:palette.bg3, s:palette.none)
   call s:HL('SpecialComment', s:palette.light_grey, s:palette.none)
   call s:HL('Todo', s:palette.purple, s:palette.none)
 else
-  call s:HL('Comment', s:palette.light_grey, s:palette.none, 'italic')
+  call s:HL('Comment', s:palette.bg3, s:palette.none, 'italic')
   call s:HL('SpecialComment', s:palette.light_grey, s:palette.none, 'italic')
   call s:HL('Todo', s:palette.purple, s:palette.none, 'italic')
 endif
@@ -1788,6 +1788,70 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   endif
   " }}}
 endif
+" }}}
+" Treesitter: {{{
+" Misc
+highlight link TSError Red
+highlight link TSPunctDelimiter LightGray
+highlight link TSPunctBracket LightGray
+highlight link TSPunctSpecial LightGray
+
+" Constants
+highlight link TSConstant Constant
+highlight link TSConstBuiltin Null
+highlight link TSConstMacro Constant
+highlight link TSString Strings
+highlight link TSStringRegex Strings
+highlight link TSStringEscape Escape
+highlight link TSCharacter Chars
+highlight link TSNumber Numbers
+highlight link TSBoolean Null
+highlight link TSFloat Numbers
+highlight link TSAnnotation Null
+highlight link TSAttribute Null
+highlight link TSNamespace Types
+
+" Functions
+highlight link TSFuncBuiltin Functions
+highlight link TSFunction Functions
+highlight link TSFuncMacro Functions
+highlight link TSParameter Variables
+highlight link TSParameterReference Blue
+highlight link TSMethod Functions
+highlight link TSField Variables
+highlight link TSProperty Types
+highlight link TSConstructor Green
+
+" Keywords
+highlight link TSConditional Keywords
+highlight link TSRepeat Keywords
+highlight link TSLabel Constants
+highlight link TSKeyword Modifier
+highlight link TSKeywordFunction Functions
+highlight link TSKeywordOperator Keywords
+highlight link TSOperator Grey
+highlight link TSException Red
+highlight link TSType Types
+highlight link TSTypeBuiltin Built
+highlight link TSStructure Red
+highlight link TSInclude Modifier
+
+" Variable
+highlight link TSVariable Variables
+highlight link TSVariableBuiltin Local
+
+" Text
+highlight link TSText Strings
+highlight link TSStrong Grey
+highlight link TSEmphasis Green
+highlight link TSUnderline Red
+highlight link TSTitle Yellow
+highlight link TSLiteral Strings
+highlight link TSURI Strings
+
+" Tags
+highlight link TSTag Blue
+highlight link TSTagDelimiter Grey
 " }}}
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:
