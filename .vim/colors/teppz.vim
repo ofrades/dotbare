@@ -1792,9 +1792,9 @@ endif
 " Treesitter: {{{
 " Misc
 highlight link TSError Red
-highlight link TSPunctDelimiter LightGray
-highlight link TSPunctBracket LightGray
-highlight link TSPunctSpecial LightGray
+highlight link TSPunctDelimiter LightGrey
+highlight link TSPunctBracket LightGrey
+highlight link TSPunctSpecial LightGrey
 
 " Constants
 highlight link TSConstant Constant
@@ -1812,8 +1812,8 @@ highlight link TSAttribute Null
 highlight link TSNamespace Types
 
 " Functions
-highlight link TSFuncBuiltin Functions
 highlight link TSFunction Functions
+highlight link TSFuncBuiltin Functions
 highlight link TSFuncMacro Functions
 highlight link TSParameter Variables
 highlight link TSParameterReference Blue
@@ -1825,12 +1825,13 @@ highlight link TSConstructor Green
 " Keywords
 highlight link TSConditional Keywords
 highlight link TSRepeat Keywords
-highlight link TSLabel Constants
+highlight link TSLabel Constant
 highlight link TSKeyword Modifier
 highlight link TSKeywordFunction Functions
 highlight link TSKeywordOperator Keywords
 highlight link TSOperator Grey
 highlight link TSException Red
+
 highlight link TSType Types
 highlight link TSTypeBuiltin Built
 highlight link TSStructure Red
@@ -1852,6 +1853,8 @@ highlight link TSURI Strings
 " Tags
 highlight link TSTag Blue
 highlight link TSTagDelimiter Grey
+
+highlight link TSNone Purple
 " }}}
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:

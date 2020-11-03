@@ -24,6 +24,7 @@ Plug 'tpope/vim-commentary'                        " Comments - gc/gcc
 Plug 'tpope/vim-unimpaired'
 Plug 'brooth/far.vim'
 Plug 'preservim/nerdcommenter'
+" Plug 'romgrk/barbar.nvim'
 Plug 'justinmk/vim-sneak'                          " Jump to any location specified by two characters - s/S followed by 3 characters
   let g:sneak#label = 1
 Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
@@ -38,8 +39,6 @@ Plug 'terryma/vim-expand-region'                      " Expand selection - +/_
 Plug 'machakann/vim-highlightedyank'                  " highlight yanked text
 Plug 'voldikss/vim-floaterm'                          " popup terminal - F4
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}       " Ranger in vim supports C-T(open to tag) C-X(horizontal) /C-V(vertical) and q to close
-" Plug 'ervandew/supertab'
-" Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
