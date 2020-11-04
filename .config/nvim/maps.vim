@@ -5,6 +5,7 @@ nnoremap <SPACE> <Nop>
 " === FZF === "
  nnoremap <silent> <C-p> :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
+ nnoremap <silent> <C-t> :Lines<CR>
  nnoremap <silent> <A-b> :Buffers<CR>
  nnoremap <silent> <A-m> :Maps<CR>
  nnoremap <silent> <C-c> :Commands<CR>

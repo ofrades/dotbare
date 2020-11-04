@@ -28,12 +28,12 @@ set previewheight=5
 set cmdheight=2
 
 " === highlightedyank === "
-hi HighlightedyankRegion cterm=none guibg=#497c6c
+hi HighlightedyankRegion cterm=none guibg=#58659A guifg=#eeeeee
 hi Normal ctermbg=none guibg=none
 hi LineNr guibg=none ctermbg=none
 
 " center cursor middle of screen
-set scrolloff=15
+set scrolloff=10
 
 " This enables file type detection (like filetype on)
 filetype plugin indent on
@@ -41,8 +41,8 @@ filetype plugin indent on
 set autoindent   " Copy indent from current line when starting a new line
 set smartindent
 set clipboard=unnamedplus " use system clipboard
-set showcmd      " display incomplete commands
-set showmode     " display the mode you're in
+set noshowmode
+set noshowcmd      " display incomplete commands
 set backspace=indent,eol,start "intuitive backspacing"
 set wildmenu     " enhanced command line completion
 " set wildmode=list:longest,full"
@@ -67,7 +67,6 @@ set visualbell   " no beeping
 set smarttab     " use spaces instead of tabs
 set tabstop=2    " global tab width
 set shiftwidth=2
-set laststatus=2 " Always show a status line
 set expandtab
 set softtabstop=2
 

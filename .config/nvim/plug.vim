@@ -10,12 +10,12 @@ Plug 'mhinz/vim-startify'                             " nice start when vim is c
 Plug 'junegunn/goyo.vim'                              " distraction free writing in vim - Leader G or :Goyo
 Plug 'junegunn/limelight.vim'                         " focus where you are and darkens the rest - Leader L or :Limelight!!
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
-Plug 'franbach/miramare'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'flrnd/candid.vim'
-Plug 'vim-airline/vim-airline'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'franbach/miramare'
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'flrnd/candid.vim'
+" Plug 'vim-airline/vim-airline'
 
 " === Features === "
 Plug 'puremourning/vimspector'                          " Quoting parenthesing made simple - ysiw
@@ -76,6 +76,8 @@ let g:rainbow_active = 1
 " Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'tjdevries/express_line.nvim'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
