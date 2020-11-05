@@ -1,4 +1,10 @@
 {
+  "git.branchCharacter": "",
+  "git.addGBlameToBufferVar": true,
+  "git.stagedDecorator": " ",
+  "git.changedDecorator": " ",
+  "git.untrackedDecorator": " ",
+  "git.conflictedDecorator": " ",
   "suggest.removeDuplicateItems": true,
   "git.showCommitInFloating": true,
   "git.addGBlameToVirtualText": false,

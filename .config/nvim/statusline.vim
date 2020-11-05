@@ -51,7 +51,7 @@ endfunction
 set laststatus=2 " Always show a status line
 set statusline=
 set statusline+=%4*
-set statusline+=\ %n\ 
+set statusline+=[%n] 
 set statusline+=%1*
 set statusline+=%{ModeCurrent()}
 
@@ -83,7 +83,7 @@ set statusline+=%r
 
 set statusline+=%5*
 set statusline+=\ 
-set statusline+=
+set statusline+==
 set statusline+=\ 
 set statusline+=%l
 set statusline+=:
