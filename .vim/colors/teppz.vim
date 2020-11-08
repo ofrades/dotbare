@@ -1825,7 +1825,7 @@ highlight link TSConstructor Green
 " Keywords
 highlight link TSConditional Keywords
 highlight link TSRepeat Keywords
-highlight link TSLabel Constant
+highlight link TSLabel Preprocessor 
 highlight link TSKeyword Modifier
 highlight link TSKeywordFunction Functions
 highlight link TSKeywordOperator Keywords

@@ -1,7 +1,7 @@
 " === === MAPS === === "
-let mapleader = " "
-nnoremap <SPACE> <Nop>
-
+  let mapleader = " "
+  nnoremap <SPACE> <Nop>
+  nnoremap <silent> <space>r :so $MYVIMRC<CR>
 " === FZF === "
  nnoremap <silent> <C-p> :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
@@ -10,11 +10,28 @@ nnoremap <SPACE> <Nop>
  nnoremap <silent> <A-m> :Maps<CR>
  nnoremap <silent> <C-c> :Commands<CR>
 
+ nnoremap <silent> <space>bl :CocList bookmark<CR>
+ nnoremap <silent> <space>bt :CocCommand bookmark.toggle<CR>
+
+ " === Telescope === "
+ nnoremap <silent> <space>tf :Telescope current_buffer_fuzzy_find<CR>
+ nnoremap <silent> <space>tg :Telescope grep_string<CR>
+ nnoremap <silent> <space>tp :Telescope git_files<CR>
+ nnoremap <silent> <space>tt :Telescope treesitter<CR>
+ nnoremap <silent> <space>tc :Telescope commands<CR>
+ nnoremap <silent> <space>to :Telescope old_files<CR>
+ nnoremap <silent> <space>th :Telescope command_history<CR>
+ nnoremap <silent> <space>th :Telescope help_tags<CR>
+ nnoremap <silent> <space>tv :Telescope vim_options<CR>
+ nnoremap <silent> <space>tm :Telescope marks<CR>
+
 " === Terminal === "
-nnoremap   <silent>   <A-t>   :FloatermToggle<CR>
-tnoremap   <silent>   <A-t>   <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <A-t> :FloatermToggle<CR>
+tnoremap <silent> <A-t> <C-\><C-n>:FloatermToggle<CR>
+
 " === Lazygit === "
  nnoremap <silent> <C-g> :FloatermNew lazygit<CR>
+
 " === Ranger === "
  nnoremap <silent> <A-r> :FloatermNew ranger<CR>
 
