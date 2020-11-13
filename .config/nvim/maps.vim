@@ -13,6 +13,9 @@
  nnoremap <silent> <space>bl :CocList bookmark<CR>
  nnoremap <silent> <space>bt :CocCommand bookmark.toggle<CR>
 
+nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
+nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
+
  " === Telescope === "
  nnoremap <silent> <space>tf :Telescope current_buffer_fuzzy_find<CR>
  nnoremap <silent> <space>tg :Telescope grep_string<CR>
@@ -55,9 +58,23 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " === easymotion === "
-nmap s <Plug>(easymotion-s2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+ " Jump to anywhere you want with minimal keystrokes, with just one key
+ " binding.
+ " `s{char}{label}`
+ nmap s <Plug>(easymotion-overwin-f)
+ " or
+ " `s{char}{char}{label}`
+ " Need one more keystroke, but on average, it may be more comfortable.
+ nmap s <Plug>(easymotion-overwin-f2)
+
+ " Turn on case-insensitive feature
+ let g:EasyMotion_smartcase = 1
+
+ " JK motions: Line motions
+ map <Leader>j <Plug>(easymotion-j)
+ map <Leader>k <Plug>(easymotion-k)
 
 " === Telescope === "
 nnoremap <Leader>tb <cmd>lua require'telescope.builtin'.builtin{}<CR>

@@ -30,6 +30,7 @@ Plug 'justinmk/vim-sneak'                          " Jump to any location specif
 Plug 'christoomey/vim-tmux-navigator'                 " interaction with tmux - C-h/j/k/l
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy file search
 Plug 'junegunn/fzf.vim'                               " fuzzy file search - C-p
+Plug 'antoinemadec/coc-fzf'
 Plug 'junegunn/vim-peekaboo'                          " use  and @ in normal mode and C-t in insert mode to see registers
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
