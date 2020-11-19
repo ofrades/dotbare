@@ -9,6 +9,7 @@
   "git.showCommitInFloating": true,
   "git.addGBlameToVirtualText": false,
   "coc.preferences.hoverTarget": "float",
+  "diagnostic.enableSign": true,
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.useQuickfixForLocations": true,
@@ -52,7 +53,7 @@
     "value": "\uf89f",
     "variable": "\ue71b"
   },
-  "yank.enableCompletion": false,
+  "yank.enableCompletion": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "css",
@@ -64,20 +65,21 @@
     "typescript.tsx",
     "graphql"
   ],
-  "diagnostic.signOffset": 1,
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
-  "diagnostic.virtualText": false,
+  "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ❯ ",
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.virtualTextLineSeparator": " \\ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
   "list.indicator": ">",
+  "list.nextKeymap": "<C-j>",
+  "list.previousKeymap": "<C-k>",
   "list.selectedSignText": " ",
   "list.insertMappings": {
     "<C-x>": "action:split",
@@ -87,10 +89,6 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.icon.enableVimDevicons": false,
-  "explorer.keyMappings": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit"
-  },
   "javascript.referencesCodeLens.enable": true,
   "javascript.showUnused": true,
   "javascript.suggest.names": true,

@@ -18,8 +18,6 @@ highlight htmlArg cterm=italic gui=italic
 highlight Comment cterm=italic gui=italic
 highlight Type    cterm=italic gui=italic
 
-let g:echodoc#enable_at_startup = 1
-
 " === list === "
 set completeopt=preview,longest,menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'subtring', 'fuzzy']
@@ -29,8 +27,8 @@ set cmdheight=2
 
 " === highlightedyank === "
 hi HighlightedyankRegion cterm=none guibg=#58659A guifg=#eeeeee
-hi Normal ctermbg=none guibg=none
-hi LineNr guibg=none ctermbg=none
+" hi Normal ctermbg=none guibg=none
+" hi LineNr guibg=none ctermbg=none
 
 " center cursor middle of screen
 set scrolloff=10

@@ -181,13 +181,13 @@ elseif s:configuration.cursor ==# 'purple'
   call s:HL('Cursor', s:palette.bg0, s:palette.purple)
   call s:HL('lCursor', s:palette.bg0, s:palette.purple)
 endif
-call s:HL('CursorColumn', s:palette.none, s:palette.bg1)
-call s:HL('CursorLine', s:palette.none, s:palette.bg1)
-call s:HL('LineNr', s:palette.grey, s:palette.none)
+call s:HL('CursorColumn', s:palette.none, s:palette.none)
+call s:HL('CursorLine', s:palette.none, s:palette.none)
+call s:HL('LineNr', s:palette.bg3, s:palette.none)
 if &relativenumber == 1 && &cursorline == 0
-  call s:HL('CursorLineNr', s:palette.fg, s:palette.none)
+  call s:HL('CursorLineNr', s:palette.green, s:palette.none)
 else
-  call s:HL('CursorLineNr', s:palette.fg, s:palette.bg1)
+  call s:HL('CursorLineNr', s:palette.green, s:palette.none)
 endif
 call s:HL('DiffAdd', s:palette.none, s:palette.bg_green)
 call s:HL('DiffChange', s:palette.none, s:palette.bg_blue)

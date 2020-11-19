@@ -2,6 +2,7 @@
   let mapleader = " "
   nnoremap <SPACE> <Nop>
   nnoremap <silent> <space>r :so $MYVIMRC<CR>
+  nnoremap <silent> <space>, :e ~/.config/nvim/coc-settings.json<CR>
 " === FZF === "
  nnoremap <silent> <C-p> :Files<CR>
  nnoremap <silent> <C-f> :Rg<CR>
@@ -13,7 +14,7 @@
  nnoremap <silent> <space>bl :CocList bookmark<CR>
  nnoremap <silent> <space>bt :CocCommand bookmark.toggle<CR>
 
-nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
+" nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
 nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
 
  " === Telescope === "
@@ -33,10 +34,7 @@ nnoremap <silent> <A-t> :FloatermToggle<CR>
 tnoremap <silent> <A-t> <C-\><C-n>:FloatermToggle<CR>
 
 " === Lazygit === "
- nnoremap <silent> <C-g> :FloatermNew lazygit<CR>
-
-" === Ranger === "
- nnoremap <silent> <A-r> :FloatermNew ranger<CR>
+ nnoremap <silent> <C-g> :LazyGit<CR>
 
 " === Navigate list === " 
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
@@ -58,25 +56,16 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 " === easymotion === "
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
- " Jump to anywhere you want with minimal keystrokes, with just one key
- " binding.
- " `s{char}{label}`
- nmap s <Plug>(easymotion-overwin-f)
- " or
- " `s{char}{char}{label}`
- " Need one more keystroke, but on average, it may be more comfortable.
- nmap s <Plug>(easymotion-overwin-f2)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 
- " Turn on case-insensitive feature
- let g:EasyMotion_smartcase = 1
-
- " JK motions: Line motions
- map <Leader>j <Plug>(easymotion-j)
- map <Leader>k <Plug>(easymotion-k)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " === Telescope === "
+
 nnoremap <Leader>tb <cmd>lua require'telescope.builtin'.builtin{}<CR>
 nnoremap <Leader>p <cmd>lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.quickfix{}<CR>
@@ -101,7 +90,7 @@ nnoremap <silent> <A-k>   :<C-u>move-2<CR>==
 xnoremap <silent> <A-k>   :move-2<CR>gv=gv
 nnoremap <silent> <A-j> :<C-u>move+<CR>==
 xnoremap <silent> <A-j> :move'>+<CR>gv=gv
- 
+
 " === Resize Splits === "
 nnoremap <silent> <A-h> <C-W><
 nnoremap <silent> <A-l> <C-W>>
