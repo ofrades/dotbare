@@ -1,10 +1,5 @@
 {
-  "git.branchCharacter": "",
   "git.addGBlameToBufferVar": true,
-  "git.stagedDecorator": " ",
-  "git.changedDecorator": " ",
-  "git.untrackedDecorator": " ",
-  "git.conflictedDecorator": " ",
   "suggest.removeDuplicateItems": true,
   "git.showCommitInFloating": true,
   "git.addGBlameToVirtualText": false,
@@ -65,10 +60,6 @@
     "typescript.tsx",
     "graphql"
   ],
-  "diagnostic.errorSign": " ",
-  "diagnostic.warningSign": " ",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": " ",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ❯ ",
   "diagnostic.enableHighlightLineNumber": true,
@@ -80,7 +71,6 @@
   "list.indicator": ">",
   "list.nextKeymap": "<C-j>",
   "list.previousKeymap": "<C-k>",
-  "list.selectedSignText": " ",
   "list.insertMappings": {
     "<C-x>": "action:split",
     "<C-v>": "action:vsplit"
