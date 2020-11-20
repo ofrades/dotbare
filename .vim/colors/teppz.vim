@@ -6,6 +6,7 @@
 " License:      MIT
 " -----------------------------------------------------------------------------
 
+
 " Initialization: {{{
 highlight clear
 if exists('syntax_on')
@@ -37,6 +38,7 @@ let s:palette = {
       \ 'bg4':        ['#63676F',   '239',  'BG4'],
       \ 'bg_red':     ['#80342b',   '52',   'DarkRed'],
       \ 'bg_green':   ['#497C6C',   '22',   'DarkGreen'],
+      \ 'bg_dark':    ['#4111a1',   '52',   'DarkRed'],
       \ 'bg_blue':    ['#6173D1',   '23',   'DarkBlue'],
       \ 'fg':         ['#e6d6ac',   '223',  'White'],
       \ 'red':        ['#CF7357',   '167',  'Red'],
@@ -181,8 +183,8 @@ elseif s:configuration.cursor ==# 'purple'
   call s:HL('Cursor', s:palette.bg0, s:palette.purple)
   call s:HL('lCursor', s:palette.bg0, s:palette.purple)
 endif
-call s:HL('CursorColumn', s:palette.none, s:palette.none)
-call s:HL('CursorLine', s:palette.none, s:palette.none)
+call s:HL('CursorColumn', s:palette.none, s:palette.bg2)
+call s:HL('CursorLine', s:palette.none, s:palette.bg2)
 call s:HL('LineNr', s:palette.bg3, s:palette.none)
 if &relativenumber == 1 && &cursorline == 0
   call s:HL('CursorLineNr', s:palette.green, s:palette.none)
@@ -220,7 +222,7 @@ call s:HL('TabLine', s:palette.fg, s:palette.bg4)
 call s:HL('TabLineFill', s:palette.grey, s:palette.bg1)
 call s:HL('TabLineSel', s:palette.bg0, s:palette.green)
 call s:HL('VertSplit', s:palette.green, s:palette.none)
-call s:HL('Visual', s:palette.bg0, s:palette.gold)
+call s:HL('Visual', s:palette.none, s:palette.bg_dark)
 call s:HL('VisualNOS', s:palette.bg0, s:palette.gold, 'underline')
 call s:HL('CursorIM', s:palette.none, s:palette.fg)
 call s:HL('ToolbarLine', s:palette.none, s:palette.grey)
