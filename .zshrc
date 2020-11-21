@@ -97,16 +97,18 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconf="mate ~/.zshrc"
+alias zconf="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # omz
-alias zshconfig="nvim ~/.zshrc"
+alias zconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
-alias vsconf="nvim ~/.config/Code/User/settings.json"
 alias vconf="nvim ~/.vimrc"
 alias vplug="nvim ~/.config/nvim/plug.vim"
 alias vmaps="nvim ~/.config/nvim/maps.vim"
 alias vcoc="nvim ~/.config/nvim/coc-settings.json"
+
+# vscode
+alias cconf="nvim ~/.config/Code/User/settings.json"
 
 # ls
 alias l='ls -lh'
@@ -120,8 +122,8 @@ alias lg='ls -l --group-directories-first'
 alias gcl='git clone --depth 1'
 alias gi='git init'
 alias ga='git add'
-alias gc='git commit -m'
-alias gp='git push origin master'
+alias gc='git commit -am'
+alias gp='git push'
 
 alias e='nvim'
 alias pt='keyboard pt'
@@ -135,7 +137,7 @@ alias mkdir='mkdir -vp'
 # User Configuration
 
 # Find in files
-zfif(){
+fif(){
   rg="rg -i -l --hidden --no-ignore-vcs"
 
   selected=$(
@@ -155,7 +157,7 @@ zfif(){
 }
 
 # Find files
-zfind() {
+ff() {
   selected=$(
     rg --files-with-matches --no-messages " " | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
   )
@@ -164,7 +166,7 @@ zfind() {
 }
 
 # Navigate directories
-zcd() {
+d() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
         return
@@ -186,13 +188,13 @@ zcd() {
 }
   
 # Command history
-zhistory() {
+h() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
 # List Tmux Sessions
 # if args provided(e.g. ft my-session), attach to that session if exists, else will create session my-session
-ztmux() {
+t() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
@@ -201,7 +203,7 @@ ztmux() {
 }
 
 # Kill Tmux Session
-ztmuxkill () {
+tmuxkill () {
     local sessions
     sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
     local i
@@ -215,13 +217,12 @@ ztmuxkill () {
 }
 
 # GIT heart FZF
-
 is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
 # Git Status
-zstatus() {
+gs() {
   is_in_git_repo || return
   selected=$(
   git -c color.status=always status --short |
@@ -234,7 +235,7 @@ zstatus() {
 }
 
 # Git Branch
-zbranch() {
+branch() {
   selected=$(is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
   fzf --ansi --multi --tac --preview-window right:70% \
@@ -245,16 +246,9 @@ zbranch() {
   [[ -n $selected ]] && $EDITOR $selected # open multiple files in editor
 }
 
-# Git Tag
-ztag() {
-  is_in_git_repo || return
-  git tag --sort -version:refname |
-  fzf --multi --preview-window right:70% \
-    --preview 'git show --color=always {} | head -'$LINES
-}
 
 # Git Log
-zlog() {
+log() {
   is_in_git_repo || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
   fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
@@ -264,7 +258,7 @@ zlog() {
 }
 
 # Git Remote
-zremote() {
+gremote() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
   fzf --tac \
@@ -273,7 +267,7 @@ zremote() {
 }
 
 # Git Stash
-zstash() {
+gstash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
@@ -298,7 +292,7 @@ zstash() {
 }
 
 # Kill process
-zkill() {
+kill() {
   local pid
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
@@ -308,17 +302,18 @@ zkill() {
   fi
 }
 
-zranger () {
+ranger () {
     echo
     ranger --choosedir=$HOME/.rangerdir < $TTY
     LASTDIR=`cat $HOME/.rangerdir`
     cd "$LASTDIR"
     zle reset-prompt
 }
+
 zle -N run_ranger
 bindkey '^f' run_ranger
 
-zpac(){
+pac(){
   pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
 }
 
@@ -329,7 +324,7 @@ keyboard(){
 # FZF Defaults
 
 export FZF_DEFAULT_OPTS='
-    --height 50% --border
+    --border
     --multi
     --reverse
     --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
