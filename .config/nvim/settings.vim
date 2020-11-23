@@ -23,7 +23,7 @@ set completeopt=preview,longest,menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'subtring', 'fuzzy']
 set previewheight=5
 
-set cmdheight=2
+set cmdheight=1
 
 " === highlightedyank === "
 hi HighlightedyankRegion cterm=none guibg=#58659A guifg=#eeeeee

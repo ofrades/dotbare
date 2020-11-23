@@ -1,40 +1,51 @@
 " === === MAPS === === "
-  let mapleader = " "
-  nnoremap <SPACE> <Nop>
-  nnoremap <silent> <space>r :so $MYVIMRC<CR>
-  nnoremap <silent> <space>, :e ~/.config/nvim/coc-settings.json<CR>
+let mapleader = " "
+nnoremap <SPACE> <Nop>
+nnoremap <silent> <space>r :so $MYVIMRC<CR>
+nnoremap <silent> <space>, :e ~/.config/nvim/coc-settings.json<CR>
+nnoremap <silent> <space>r :so ~/.vimrc<CR>
+
 " === FZF === "
- nnoremap <silent> <C-p> :Files<CR>
- nnoremap <silent> <C-f> :Rg<CR>
- nnoremap <silent> <C-t> :Lines<CR>
- nnoremap <silent> <A-b> :Buffers<CR>
- nnoremap <silent> <A-m> :Maps<CR>
- nnoremap <silent> <C-c> :Commands<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Rg<CR>
+nnoremap <silent> <C-t> :Lines<CR>
+nnoremap <silent> <A-b> :Buffers<CR>
+nnoremap <silent> <A-m> :Maps<CR>
+nnoremap <silent> <C-c> :Commands<CR>
 
- nnoremap <silent> <space>bl :CocList bookmark<CR>
- nnoremap <silent> <space>bt :CocCommand bookmark.toggle<CR>
-
-" nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
+" === COC === "
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gR <Plug>(coc-rename)
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+nnoremap <silent> ge :CocCommand explorer<CR>
+nnoremap <silent> gl :CocList<CR>
+" nnoremap <silent> td :CocCommand todolist.create<CR>
+nnoremap <silent> ga :CocAction<CR>
+nnoremap <silent> gq :CocFix<CR>
+nnoremap <silent> gb :CocCommand bookmark.toggle<CR>
+xmap <leader>f  <Plug>(coc-format-selected)
 
  " === Telescope === "
- nnoremap <silent> <space>tf :Telescope current_buffer_fuzzy_find<CR>
- nnoremap <silent> <space>tg :Telescope grep_string<CR>
- nnoremap <silent> <space>tp :Telescope git_files<CR>
- nnoremap <silent> <space>tt :Telescope treesitter<CR>
- nnoremap <silent> <space>tc :Telescope commands<CR>
- nnoremap <silent> <space>to :Telescope old_files<CR>
- nnoremap <silent> <space>th :Telescope command_history<CR>
- nnoremap <silent> <space>th :Telescope help_tags<CR>
- nnoremap <silent> <space>tv :Telescope vim_options<CR>
- nnoremap <silent> <space>tm :Telescope marks<CR>
+nnoremap <silent> <space>tf :Telescope current_buffer_fuzzy_find<CR>
+nnoremap <silent> <space>tg :Telescope grep_string<CR>
+nnoremap <silent> <space>tp :Telescope git_files<CR>
+nnoremap <silent> <space>tt :Telescope treesitter<CR>
+nnoremap <silent> <space>tc :Telescope commands<CR>
+nnoremap <silent> <space>to :Telescope old_files<CR>
+nnoremap <silent> <space>th :Telescope command_history<CR>
+nnoremap <silent> <space>th :Telescope help_tags<CR>
+nnoremap <silent> <space>tv :Telescope vim_options<CR>
+nnoremap <silent> <space>tm :Telescope marks<CR>
 
 " === Terminal === "
 nnoremap <silent> <A-t> :FloatermToggle<CR>
 tnoremap <silent> <A-t> <C-\><C-n>:FloatermToggle<CR>
 
 " === Lazygit === "
- nnoremap <silent> <C-g> :LazyGit<CR>
+nnoremap <silent> <C-g> :LazyGit<CR>
 
 " === Navigate list === " 
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"

@@ -67,7 +67,7 @@ function! MyStatusLine()
 				\. "%5*%y%*"
 				\. "%2* %l:%L::%c %P %*"
 				\. "%4*%m%h%r%*"
-				\. "%3*%{get(b:, 'coc_git_blame', '')} %*"
+				" \. "%3*%{get(b:, 'coc_git_blame', '')} %*"
 	"%{&fenc}
 endfunction
 

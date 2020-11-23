@@ -352,4 +352,6 @@ compinit
 # Completion for kitty
 # kitty + complete setup zsh | source /dev/stdin
 
+
 export PATH=$HOME/.local/bin:$PATH
+export STARSHIP_CONFIG=~/.config/starship.toml
