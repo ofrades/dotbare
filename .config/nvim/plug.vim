@@ -95,6 +95,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'nickspoons/vim-cs'
 
 " === TypeScript === "
+" Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
+Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'

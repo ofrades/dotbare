@@ -1421,6 +1421,27 @@ highlight! link helpSectionDelim Grey
 " }}}
 " }}}
 " Plugins: {{{
+" telescope
+highlight link TelescopeSelection Green
+highlight link TelescopeSelectionCaret Green
+highlight link TelescopeMultiSelection Blue
+
+" "Normal" in the floating windows created by telescope.
+ highlight link TelescopeNormal Yellow
+
+ " Border highlight groups.
+ "   Use TelescopeBorder to override the default.
+ "   Otherwise set them specifically
+ highlight link TelescopeBorder Grey
+ highlight link TelescopePromptBorder Green
+ highlight link TelescopeResultsBorder Green
+ highlight link TelescopePreviewBorder Green
+
+ " Used for highlighting characters that you match.
+ highlight default link TelescopeMatching Red
+
+ " Used for the prompt prefix
+highlight default link TelescopePromptPrefix Blue
 " junegunn/limelight.vim{{{
 let g:limelight_conceal_guifg = s:palette.grey[0]
 let g:limelight_conceal_ctermfg = s:palette.bg4[1]

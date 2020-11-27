@@ -1,17 +1,16 @@
 " === === MAPS === === "
 let mapleader = " "
 nnoremap <SPACE> <Nop>
-nnoremap <silent> <space>r :so $MYVIMRC<CR>
 nnoremap <silent> <space>, :e ~/.config/nvim/coc-settings.json<CR>
 nnoremap <silent> <space>r :so ~/.vimrc<CR>
 
 " === FZF === "
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-f> :Rg<CR>
-nnoremap <silent> <C-t> :Lines<CR>
-nnoremap <silent> <A-b> :Buffers<CR>
-nnoremap <silent> <A-m> :Maps<CR>
-nnoremap <silent> <C-c> :Commands<CR>
+nnoremap <silent> <C-p> :Telescope fd<CR>
+nnoremap <silent> <C-f> :Telescope grep_string<CR>
+nnoremap <silent> <C-t> :Telescope current_buffer_fuzzy_find<CR>
+nnoremap <silent> <A-b> :Telescope buffers<CR>
+nnoremap <silent> <A-m> :Telescope keymaps<CR>
+nnoremap <silent> <C-c> :Telescope commands<CR>
 
 " === COC === "
 nmap <silent> gd <Plug>(coc-definition)
@@ -29,16 +28,14 @@ nnoremap <silent> gb :CocCommand bookmark.toggle<CR>
 xmap <leader>f  <Plug>(coc-format-selected)
 
  " === Telescope === "
-nnoremap <silent> <space>tf :Telescope current_buffer_fuzzy_find<CR>
-nnoremap <silent> <space>tg :Telescope grep_string<CR>
-nnoremap <silent> <space>tp :Telescope git_files<CR>
-nnoremap <silent> <space>tt :Telescope treesitter<CR>
-nnoremap <silent> <space>tc :Telescope commands<CR>
-nnoremap <silent> <space>to :Telescope old_files<CR>
-nnoremap <silent> <space>th :Telescope command_history<CR>
-nnoremap <silent> <space>th :Telescope help_tags<CR>
-nnoremap <silent> <space>tv :Telescope vim_options<CR>
-nnoremap <silent> <space>tm :Telescope marks<CR>
+nnoremap <silent> <space>gc :Telescope git_commits<CR>
+nnoremap <silent> <space>gb :Telescope git_bcommits<CR>
+" nnoremap <silent> <space>gb :Telescope git_branches<CR>
+nnoremap <silent> <space>gs :Telescope git_status<CR>
+nnoremap <silent> <space>h :Telescope command_history<CR>
+nnoremap <silent> <space>t :Telescope builtin<CR>
+" nnoremap <silent> <space>tt :Telescope treesitter<CR>
+" nnoremap <silent> <space>tm :Telescope marks<CR>
 
 " === Terminal === "
 nnoremap <silent> <A-t> :FloatermToggle<CR>
@@ -77,24 +74,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " === Telescope === "
 
-nnoremap <Leader>tb <cmd>lua require'telescope.builtin'.builtin{}<CR>
-nnoremap <Leader>p <cmd>lua require'telescope.builtin'.find_files{}<CR>
-nnoremap <Leader>f <cmd>lua require'telescope.builtin'.quickfix{}<CR>
-nnoremap <Leader>b <cmd>lua require'telescope.builtin'.buffers{}<CR>
 nnoremap <Leader>n <cmd>lua require'telescope.builtin'.find_files{ cwd = "~/.config/nvim/" }<CR>
-
-nnoremap <Leader>gf <cmd>lua require'telescope.builtin'.git_files{}<CR>
-nnoremap <Leader>tg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-nnoremap <Leader>tgs <cmd>lua require'telescope.builtin'.grep_string{}<CR>
-nnoremap <Leader>tll <cmd>lua require'telescope.builtin'.loclist{}<CR>
-nnoremap <Leader>tlr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
-nnoremap <Leader>ta <cmd>lua require'telescope.builtin'.lsp_code_actions{}<CR>
-nnoremap <Leader>tlds <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
-nnoremap <Leader>tch <cmd>lua require'telescope.builtin'.command_history{}<CR>
-nnoremap <Leader>tlws <cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>
-nnoremap <Leader>tt <cmd>lua require'telescope.builtin'.treesitter{}<CR>
-nnoremap <Leader>tp <cmd>lua require'telescope.builtin'.planets{}<CR>
-nnoremap <Leader>tcb <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 
 " === Move lines up and down === "
 nnoremap <silent> <A-k>   :<C-u>move-2<CR>==
