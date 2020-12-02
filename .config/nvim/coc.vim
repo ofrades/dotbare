@@ -6,6 +6,8 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+let g:UltiSnipsExpandTrigger = "<nop>"
+
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin

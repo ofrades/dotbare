@@ -74,7 +74,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'mlaursen/vim-react-snippets'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
 " Plug 'peitalin/vim-jsx-typescript'
 

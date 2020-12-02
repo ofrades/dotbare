@@ -21,9 +21,9 @@ highlight Type    cterm=italic gui=italic
 " === list === "
 set completeopt=preview,longest,menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'subtring', 'fuzzy']
-set previewheight=5
+set previewheight=12
 
-set cmdheight=1
+set cmdheight=2
 
 " === highlightedyank === "
 hi HighlightedyankRegion cterm=none guibg=#58659A guifg=#eeeeee
@@ -74,4 +74,4 @@ set autoread " Automatically re-read files changed outside of vim
 set encoding=utf-8
 
 " === enable mouse === "
-set mouse=a
+set mouse=n

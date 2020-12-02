@@ -1,4 +1,6 @@
 {
+  "snippets.ultisnips.enable": true,
+  "snippets.autoTrigger": true,
   "emmet.priority": 3,
   "snippets.priority": 90,
   "codeLens.enable": true,
