@@ -1,4 +1,7 @@
 {
+  "emmet.priority": 3,
+  "snippets.priority": 90,
+  "codeLens.enable": true,
   "git.addGBlameToBufferVar": true,
   "suggest.removeDuplicateItems": true,
   "git.showCommitInFloating": true,

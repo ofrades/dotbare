@@ -6,7 +6,8 @@ nnoremap <silent> <space>r :so ~/.vimrc<CR>
 
 " === FZF === "
 nnoremap <silent> <C-p> :Telescope fd<CR>
-nnoremap <silent> <C-f> :Telescope grep_string<CR>
+nnoremap <silent> <C-f> :Telescope live_grep<CR>
+nnoremap <silent> <space>f :Telescope grep_string<CR>
 nnoremap <silent> <C-t> :Telescope current_buffer_fuzzy_find<CR>
 nnoremap <silent> <A-b> :Telescope buffers<CR>
 nnoremap <silent> <A-m> :Telescope keymaps<CR>
@@ -18,7 +19,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gR <Plug>(coc-rename)
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
 nnoremap <silent> ge :CocCommand explorer<CR>
 nnoremap <silent> gl :CocList<CR>
 " nnoremap <silent> td :CocCommand todolist.create<CR>
