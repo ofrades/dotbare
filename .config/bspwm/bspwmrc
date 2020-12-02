@@ -25,7 +25,7 @@ getcolors () {
 }
 getcolors
 
-bspc monitor VGA1 -d  ﬏  龎
+bspc monitor VGA1 -d    龎
 bspc monitor HDMI-3 -d    
 
 # polybar main &
@@ -60,6 +60,8 @@ bspc rule -a firefox desktop='^5' follow=on focus=on
 bspc rule -a 'Firefox Developer Edition' desktop='^5' follow=on focus=on
 bspc rule -a 'Google Chrome' desktop='^5' follow=on focus=on
 bspc rule -a Slack desktop='^6' follow=on focus=on
+bspc rule -a Evolution desktop='^6' follow=on focus=on
+bspc rule -a Mattermost desktop='^6' follow=on focus=on
 bspc rule -a 'Microsoft Teams - Preview' desktop='^6' follow=on focus=on
 bspc rule -a WhatsApp desktop='^6' follow=on focus=on
 bspc rule -a whatsapp-nativefier desktop='^6' follow=on focus=on
