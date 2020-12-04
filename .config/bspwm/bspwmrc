@@ -57,7 +57,6 @@ bspc rule -a 'nnn' desktop='^3' follow=on focus=on
 bspc rule -a calibre desktop='^4' follow=on focus=on
 bspc rule -a 'calibre-ebook-viewer' desktop='^4' follow=on focus=on
 bspc rule -a firefox desktop='^5' follow=on focus=on
-bspc rule -a 'Firefox Developer Edition' desktop='^5' follow=on focus=on
 bspc rule -a 'Google Chrome' desktop='^5' follow=on focus=on
 bspc rule -a Slack desktop='^6' follow=on focus=on
 bspc rule -a Evolution desktop='^6' follow=on focus=on
@@ -65,7 +64,6 @@ bspc rule -a Mattermost desktop='^6' follow=on focus=on
 bspc rule -a 'Microsoft Teams - Preview' desktop='^6' follow=on focus=on
 bspc rule -a WhatsApp desktop='^6' follow=on focus=on
 bspc rule -a whatsapp-nativefier desktop='^6' follow=on focus=on
-bspc rule -a 'WhatsApp Dark' desktop='^6' follow=on focus=on
 bspc rule -a Skype desktop='^6' follow=on focus=on
 bspc rule -a 'Google Play Music Desktop Player' desktop='^7' follow=on focus=on
 bspc rule -a Vlc desktop='^8' follow=on focus=on

@@ -7,9 +7,8 @@ super + Return
 super + e
 	kitty -e nvim
 
-# Floating terminal
-
-##---------- Rofi Launcher & Menus ----------##
+super + t
+	sh ~/.config/bspwm/keyboard.sh
 
 # Rofi App Launcher
 super + d
@@ -21,7 +20,7 @@ super + x
 alt + {_,shift + }Tab
 	sh ~/.config/bspwm/rofi/bin/windows
 
-ctrl + alt + n
+super + n
 	sh ~/.config/bspwm/rofi/bin/network
 
 super + s
@@ -34,9 +33,6 @@ super + f
 
 super + b
 	firefox
-
-super + r
-    kitty -e ranger
 
 ##---------- System ----------##
 
@@ -85,6 +81,8 @@ super + {_,shift + }{h,j,k,l}
 super + {_,shift + }{1-8}
 	bspc {desktop -f,node -d} '^{1-8}'
 
+# Resize tiled windows
+# You can do: super + right mouse click + drag
 super + alt + {h,j,k,l}
 	sh ~/.config/bspwm/bspwm_resize.sh {west,south,north,east} 20
 
