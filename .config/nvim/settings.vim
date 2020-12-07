@@ -31,7 +31,7 @@ hi HighlightedyankRegion cterm=none guibg=#58659A guifg=#eeeeee
 " hi LineNr guibg=none ctermbg=none
 
 " center cursor middle of screen
-set scrolloff=10
+set scrolloff=3
 
 " This enables file type detection (like filetype on)
 filetype plugin indent on
@@ -74,4 +74,4 @@ set autoread " Automatically re-read files changed outside of vim
 set encoding=utf-8
 
 " === enable mouse === "
-set mouse=n
+set mouse=a

@@ -1,6 +1,7 @@
 source $HOME/.config/nvim/plug.vim
 source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/statusline.vim
+source $HOME/.config/nvim/z.vim
 " source $HOME/.config/nvim/statusline.lua
 source $HOME/.config/nvim/maps.vim
 source $HOME/.config/nvim/coc.vim

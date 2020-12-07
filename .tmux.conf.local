@@ -46,21 +46,21 @@ tmux_conf_new_session_prompt=false
 tmux_conf_24b_colour=false
 
 # default theme
-tmux_conf_theme_colour_1="#1d2a39"
+tmux_conf_theme_colour_1="#222D32"
 tmux_conf_theme_colour_2="#303030"
 tmux_conf_theme_colour_3="#d9bb80"
 tmux_conf_theme_colour_4="#497c6c"
 tmux_conf_theme_colour_5="#4CA585"
-tmux_conf_theme_colour_6="#1d2a39"
+tmux_conf_theme_colour_6="#222D32"
 tmux_conf_theme_colour_7="#d9bb80"
-tmux_conf_theme_colour_8="#1d2a39"
+tmux_conf_theme_colour_8="#222D32"
 tmux_conf_theme_colour_9="#4CA585"
 tmux_conf_theme_colour_10="#"
 tmux_conf_theme_colour_11="#4CA585"
 tmux_conf_theme_colour_12="#d9bb80"
 tmux_conf_theme_colour_13="#d9bb80"
-tmux_conf_theme_colour_14="#1d2a39"
-tmux_conf_theme_colour_15="#1d2a39"
+tmux_conf_theme_colour_14="#222D32"
+tmux_conf_theme_colour_15="#222D32"
 tmux_conf_theme_colour_16="#4CA585"
 tmux_conf_theme_colour_17="#d9bb80"
 
@@ -136,7 +136,7 @@ tmux_conf_theme_status_attr="none"
 #     - #{hostname_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
+tmux_conf_theme_terminal_title="#S -> #I #W"
 
 # window status style
 #   - built-in variables are:
@@ -161,11 +161,11 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{hostname_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
-tmux_conf_theme_window_status_current_attr="bold"
-tmux_conf_theme_window_status_current_format="#I #W"
-#tmux_conf_theme_window_status_current_format="#{circled_window_index} #W"
+#tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
+#tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
+#tmux_conf_theme_window_status_current_attr="bold"
+#tmux_conf_theme_window_status_current_format="#I #W"
+##tmux_conf_theme_window_status_current_format="#{circled_window_index} #W"
 #tmux_conf_theme_window_status_current_format="#I #W#{?window_zoomed_flag,🔍,}"
 
 # window activity status style
@@ -217,8 +217,8 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right="#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
+#tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
+#tmux_conf_theme_status_right="#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -331,6 +331,7 @@ bind C-a send-prefix
 
 # move status line to top
 #set -g status-position top
+set -g status off
 
 
 # -- custom variables ----------------------------------------------------------

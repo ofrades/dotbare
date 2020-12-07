@@ -5,7 +5,8 @@ nnoremap <silent> <space>, :e ~/.config/nvim/coc-settings.json<CR>
 nnoremap <silent> <space>r :so ~/.vimrc<CR>
 
 " === FZF === "
-nnoremap <silent> <C-p> :Telescope fd<CR>
+nnoremap <silent> <C-p> :Telescope find_files<CR>
+nnoremap <silent> <space>p :Telescope git_files<CR>
 nnoremap <silent> <C-f> :Telescope live_grep<CR>
 nnoremap <silent> <space>f :Telescope grep_string<CR>
 nnoremap <silent> <C-t> :Telescope current_buffer_fuzzy_find<CR>

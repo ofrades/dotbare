@@ -62,7 +62,7 @@ Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-lua/plenary.nvim'
-" coc
+" Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'liuchengxu/vista.vim'                        " list of symbols

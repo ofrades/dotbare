@@ -125,6 +125,7 @@ let g:coc_global_extensions = [
   \ 'coc-react-refactor',
   \ 'coc-angular',
   \ 'coc-omnisharp',
+  \ 'coc-phpls',
   \ 'coc-sql',
   \ 'coc-yaml',
   \ 'coc-python',

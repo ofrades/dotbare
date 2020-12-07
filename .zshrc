@@ -134,6 +134,14 @@ alias mv='mv -iv'
 alias cp='cp -riv'
 alias mkdir='mkdir -vp'
 
+# kitty
+alias diff="kitty +kitten diff"
+alias icat="kitty +kitten icat"
+
+renametab(){
+  kitty @set-tab-title $1
+}
+
 # User Configuration
 
 # Find in files
@@ -166,7 +174,7 @@ ff() {
 }
 
 # Navigate directories
-d() {
+dir() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
         return
@@ -188,7 +196,7 @@ d() {
 }
   
 # Command history
-h() {
+his() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
@@ -222,7 +230,7 @@ is_in_git_repo() {
 }
 
 # Git Status
-gs() {
+status() {
   is_in_git_repo || return
   selected=$(
   git -c color.status=always status --short |
@@ -258,7 +266,7 @@ log() {
 }
 
 # Git Remote
-gremote() {
+remote() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
   fzf --tac \
@@ -267,7 +275,7 @@ gremote() {
 }
 
 # Git Stash
-gstash() {
+stash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
@@ -346,11 +354,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NNN_FALLBACK_OPENER=nvim
 
+# Completion for kitty
 autoload -Uz compinit
 compinit
-
-# Completion for kitty
-# kitty + complete setup zsh | source /dev/stdin
+kitty + complete setup zsh | source /dev/stdin
 
 
 export PATH=$HOME/.local/bin:$PATH

@@ -55,8 +55,8 @@ font-0 = "CaskaydiaCove Nerd Font:size=11;3"
 font-1 = "CaskaydiaCove Nerd Font:size=11;3"
 
 modules-left = menu sep mod bspwm
-modules-center = spotify-prev spotify-play spotify-next spotify 
-modules-right = changekeyboard keyboard volume cpu memory date screenshot wifi sysmenu
+modules-center = spotify-prev spotify spotify-next spotify-play
+modules-right = keyboard volume cpu memory date screenshot wifi sysmenu
 
 separator =
 spacing = 0
