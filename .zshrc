@@ -135,8 +135,8 @@ alias cp='cp -riv'
 alias mkdir='mkdir -vp'
 
 # kitty
-alias diff="kitty +kitten diff"
-alias icat="kitty +kitten icat"
+alias kdiff="kitty +kitten diff"
+alias kicat="kitty +kitten icat"
 
 renametab(){
   kitty @set-tab-title $1
@@ -227,6 +227,11 @@ tmuxkill () {
 # GIT heart FZF
 is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
+}
+
+gdiff() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf --preview $preview
 }
 
 # Git Status
@@ -359,6 +364,6 @@ autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
 
-
 export PATH=$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship.toml
+export PATH=$(pwd)/git-fuzzy/bin:$PATH

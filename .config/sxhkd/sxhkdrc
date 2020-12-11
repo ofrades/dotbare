@@ -32,7 +32,7 @@ super + f
 	pcmanfm
 
 super + b
-	firefox
+	chromium
 
 ##---------- System ----------##
 
