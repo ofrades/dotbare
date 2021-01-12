@@ -1,4 +1,15 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "css",
+    "cs",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ],
   "coc.preferences.colorSupport": true,
   "list.maxPreviewHeight": 30,
   "suggest.triggerCompletionWait": 50,
