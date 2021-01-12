@@ -4,6 +4,9 @@ e#---------- Keybindings for bspwm ----------##
 super + Return
 	kitty
 
+super + {_,shift +}Return
+{kitty, bspc rule -a \* -o state=floating && kitty}
+
 super + e
 	kitty -e nvim
 

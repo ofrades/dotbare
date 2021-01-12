@@ -1,15 +1,15 @@
 configuration {
-    font:                           "Iosevka 10";
+    font:                           "OperatorMono 9";
     show-icons:                     true;
-	icon-theme: 					"Hybrid";
+    icon-theme: 					"Hybrid";
     display-drun: 					":";
     drun-display-format:            "{icon} {name}";
     threads:                        0;
     scroll-method:                  0;
     disable-history:                false;
     fullscreen:                     false;
-	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
+    hide-scrollbar: 				true;
+    sidebar-mode: 					false;
 }
 
 @import "colors.rasi"
@@ -18,7 +18,7 @@ window {
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-	border:							1px;
+	border:							2px;
     border-radius:                  0px;
     border-color:					@selected;
     width:                          25%;
@@ -49,7 +49,7 @@ inputbar {
     background-color:               @background;
     text-color:                     @foreground;
     expand:                         false;
-    border:                  		0px 0px 1px 0px;
+    border:                  		0px 0px 2px 0px;
     border-radius:                  0px;
     border-color:                  	@selected;
     margin:                         0px 0px 0px 0px;

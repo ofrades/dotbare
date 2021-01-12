@@ -6,7 +6,7 @@
 	signingkey = FC30C47517A36F25
 
 [commit]
-  template = ~/.commit.txt
+	template = /home/ofrades/.gitmessage
   
 	# https://help.github.com/articles/signing-commits-using-gpg/
 
@@ -178,6 +178,14 @@
 
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+	tool = vimdiff
+  conflictstyle = diff3
+
+[difftool]
+  prompt = true
+
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [http]
 	sslVerify = false

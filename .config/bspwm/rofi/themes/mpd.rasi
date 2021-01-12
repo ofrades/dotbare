@@ -1,5 +1,5 @@
 configuration {
-    font:                           "Iosevka 10";
+    font:                           "OperatorMono 9";
     show-icons:                     false;
 	icon-theme: 					"Papirus";
     display-drun: 					":";
@@ -18,7 +18,7 @@ window {
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-	border:							1px;
+	border:							2px;
     border-radius:                  0px;
     border-color:					@selected;
     width:                          336px;
@@ -49,7 +49,7 @@ inputbar {
     background-color:               @background;
     text-color:                     @foreground;
     expand:                         false;
-    border:                  		0px 0px 1px 0px;
+    border:                  		0px 0px 2px 0px;
     border-radius:                  0px;
     border-color:                  	@selected;
     margin:                         0px 0px 0px 0px;
@@ -114,7 +114,7 @@ element-text {
     expand:                         true;
     horizontal-align:               0;
     vertical-align:                 0;
-    margin:                         2px 0px 2px 2px;
+    margin:                         1px 0px 1px 1px;
 }
 
 element selected {

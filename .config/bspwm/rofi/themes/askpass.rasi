@@ -4,11 +4,11 @@
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-    font:            				"Iosevka 10";
+    font:            				"OperatorMono 9";
 }
 
 #window {
-	border:							1px;
+	border:							2px;
     border-radius:                  0px;
     border-color:					@selected;
     width:      					300px;

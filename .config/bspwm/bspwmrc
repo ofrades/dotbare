@@ -50,28 +50,28 @@ bspc config focus_follows_pointer true
 # remove all rules first
 bspc rule -r *:*
 
-bspc rule -a kitty desktop='^1' follow=on focus=on
-bspc rule -a Code desktop='^2' follow=on focus=on
-bspc rule -a Pcmanfm desktop='^3' follow=on focus=on
-bspc rule -a 'nnn' desktop='^3' follow=on focus=on
-bspc rule -a calibre desktop='^4' follow=on focus=on
-bspc rule -a 'calibre-ebook-viewer' desktop='^4' follow=on focus=on
-bspc rule -a firefox desktop='^5' follow=on focus=on
-bspc rule -a 'Google Chrome' desktop='^5' follow=on focus=on
-bspc rule -a Slack desktop='^6' follow=on focus=on
-bspc rule -a Evolution desktop='^6' follow=on focus=on
-bspc rule -a Mattermost desktop='^6' follow=on focus=on
-bspc rule -a 'Microsoft Teams - Preview' desktop='^6' follow=on focus=on
-bspc rule -a WhatsApp desktop='^6' follow=on focus=on
-bspc rule -a whatsapp-nativefier desktop='^6' follow=on focus=on
-bspc rule -a Skype desktop='^6' follow=on focus=on
-bspc rule -a 'Google Play Music Desktop Player' desktop='^7' follow=on focus=on
-bspc rule -a Vlc desktop='^8' follow=on focus=on
+# bspc rule -a kitty desktop='^1' follow=on focus=on
+# bspc rule -a Code desktop='^2' follow=on focus=on
+# bspc rule -a Pcmanfm desktop='^3' follow=on focus=on
+# bspc rule -a 'nnn' desktop='^3' follow=on focus=on
+# bspc rule -a calibre desktop='^4' follow=on focus=on
+# bspc rule -a 'calibre-ebook-viewer' desktop='^4' follow=on focus=on
+# bspc rule -a firefox desktop='^5' follow=on focus=on
+# bspc rule -a 'Google Chrome' desktop='^5' follow=on focus=on
+# bspc rule -a Slack desktop='^6' follow=on focus=on
+# bspc rule -a Evolution desktop='^6' follow=on focus=on
+# bspc rule -a Mattermost desktop='^6' follow=on focus=on
+# bspc rule -a 'Microsoft Teams - Preview' desktop='^6' follow=on focus=on
+# bspc rule -a WhatsApp desktop='^6' follow=on focus=on
+# bspc rule -a whatsapp-nativefier desktop='^6' follow=on focus=on
+# bspc rule -a Skype desktop='^6' follow=on focus=on
+# bspc rule -a 'Google Play Music Desktop Player' desktop='^7' follow=on focus=on
+# bspc rule -a Vlc desktop='^8' follow=on focus=on
 
-bspc rule -a Peek center=true state=floating focus=on follow=on rectangle=1920x1080+0+0
+# bspc rule -a Peek center=true state=floating focus=on follow=on rectangle=1920x1080+0+0
 
-# Special rules
-bspc rule -a kitty-float state=floating follow=on focus=on center=true rectangle=700x400+0+0
+# # Special rules
+# bspc rule -a kitty-float state=floating follow=on focus=on center=true rectangle=700x400+0+0
 
 ## Autostart -------------------------------#
 
