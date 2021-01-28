@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 	name = miguel/ofrades
 	email = mig.silva@gmail.com
-	signingkey = FC30C47517A36F25
+	; signingkey = FC30C47517A36F25
 
 [commit]
 	template = /home/ofrades/.gitmessage
@@ -189,3 +189,5 @@
 
 [http]
 	sslVerify = false
+[pull]
+	rebase = false

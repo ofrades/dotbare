@@ -48,7 +48,7 @@ apply_options(
     shortmess = "filnxtToOFIWc", -- disable some stuff on shortmess
     signcolumn = "yes", -- enable sign column all the time, 4 column
     clipboard = "unnamedplus", -- use system clipboard
-    shell = "fish", -- fish as shell
+    shell = "zsh", -- zsh as shell
     syntax = "on", -- syntax enable
     undodir = "/tmp/",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
@@ -70,6 +70,7 @@ apply_options(
     ttimeoutlen = 0,
     softtabstop = 2,
     textwidth = 140,
-    numberwidth = 1
+    numberwidth = 1,
+    tags = ".git/tags"
   }
 )

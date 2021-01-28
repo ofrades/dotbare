@@ -124,6 +124,7 @@ alias gi='git init'
 alias ga='git add'
 alias gc='git commit -am'
 alias gp='git push'
+alias ct='cat ~/.gitmessage'
 
 alias e='nvim'
 alias pt='keyboard pt'
@@ -435,3 +436,4 @@ kitty + complete setup zsh | source /dev/stdin
 export PATH=$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH=$(pwd)/git-fuzzy/bin:$PATH
+if [ -e /home/ofrades/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ofrades/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

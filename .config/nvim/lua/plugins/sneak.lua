@@ -8,7 +8,6 @@ g['sneak#streak'] = 1
 g['sneak#streak_esc'] = "<Esc>"
 g['sneak#prompt'] = '  '
 
-
 map('n', 's', '<Plug>Sneak_s', {noremap = false})
 map('n', 'S', '<Plug>Sneak_S', {noremap = false})
 map('x', 's', '<Plug>Sneak_s', {noremap = false})

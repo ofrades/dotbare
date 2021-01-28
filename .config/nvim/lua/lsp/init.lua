@@ -1,28 +1,83 @@
-local map = require"opts.utils".map
+vim.cmd [[packadd vim-vsnip]]
+vim.cmd [[packadd vim-vsnip-integ]]
+vim.cmd [[packadd nvim-lspconfig]]
 
-require "lsp.js"
-require "lsp.html"
-require "lsp.css"
-require "lsp.json"
-require "lsp.lua"
-require "lsp.elixir"
-require "lsp.bash"
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- LSP
-map('n', 'K',              '<cmd>lua require"opts.utils".show_doc()<CR>')
-map('n', '<leader>k',      '<cmd>lua require"opts.utils".hover()<CR>')
-map( "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
-map( "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-map( "n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
-map( "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
-map( "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
-map( "n", "gdt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {})
-map( "n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
-map( "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
-map( "n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {})
-map( "n", "<leader>bf", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
+local map = require "settings.utils".map
+local nvim_lsp = require('lspconfig')
 
-map('i', '<Tab>',   'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
-map('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
-map('i', '<CR>',    'pumvisible() ? complete_info()["selected"] != "-1" ? "<Plug>(completion_confirm_completion)" : "<C-e><CR>" : "<CR>"',{expr = true})
+local on_attach = function(client, bufnr)
+  print("LSP started...");
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd!
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+end
+
+-- errors, signs and stuff
+require "lsp.diagnostics"
+
+-- add servers
+local servers = { "tsserver", "html", "bashls", "cssls", "jsonls", "elixirls" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+end
+
+
+-- compe
+
+vim.g.diagnostic_enable_virtual_text = 1
+
+local function lsp_reload(buffer)
+    vim.lsp.stop_client(vim.lsp.get_active_clients(buffer))
+    vim.cmd("edit")
+end
+
+local function lsp_stop(buffer)
+    vim.lsp.diagnostic.clear(buffer)
+    vim.lsp.stop_client(vim.lsp.get_active_clients(buffer))
+end
+
+require'compe'.setup {
+  enabled = true,
+  debug = false,
+  min_length = 1,
+  preselect = 'always',
+
+  source = {
+      path = {
+        priority = 8,
+      },
+      buffer = {
+        priority = 9,
+      },
+      vsnip = {
+        priority = 9,
+      },
+      nvim_lsp = {
+        priority = 9,
+        sort = false
+      },
+    -- nvim_lua = { ... overwrite source configuration ... };
+  };
+}
+
+return{
+    lsp_reload = lsp_reload,
+    lsp_stop = lsp_stop
+}

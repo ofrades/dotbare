@@ -12,12 +12,15 @@ g.mapleader = " "
 map("n", "<leader>q",      ":q<CR>", {})
 map("n", "<leader>s",      ":w<CR>", {})
 
+-- Tab for autocompletion
+map("i", "<Tab>", "pumvisible() ? '<C-n>' : '<Tab>'", {expr = true})
+map("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", {expr = true})
+
 -- Better indenting
 map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
 map("n", ">", ">>", {})
 map("v", ">", ">gv", {})
-
 
 -- Move lines up and down
 map("n", "<A-k>",   ":<C-u>move-2<CR>==", {})
@@ -25,10 +28,11 @@ map("n", "<A-j>",   ":<C-u>move+<CR>==", {})
 map("v", "<A-k>",   ":move-2<CR>gv=gv", {})
 map("v", "<A-j>",   ":move'>+<CR>gv=gv", {})
 
+-- Explorer
+map("n", "<leader>e", ":NvimTreeToggle<CR>", {})
+
 -- clear all the highlighted text from the previous search
 map("n", "<Esc><Esc>", ":noh<CR>", {silent = true})
-
-map("n", "|", "<Plug>LineLetters", {silent = true, noremap = false})
 
 -- Easier Moving between splits
 map("n", "<C-J>", "<C-W><C-J>", {})
@@ -52,26 +56,28 @@ map("n", "<leader>x", ":luafile $MYVIMRC<CR>", {})
 -- Telescope
 -- map("n", "<C-p>", ":Telescope find_files<CR>")
 -- map("n", "<C-f>", ":Telescope live_grep<CR>")
--- map("n", "<A-c>", ":Telescope commands<CR>")
-map("n", "<leader>n", "<cmd>lua require'telescope.builtin'.find_files{ cwd = '~/.config/nvim/' }<CR>", {})
 
 -- Searches
 map("n", "<C-p>", ":Files<CR>", {})
-map("n", "<C-f>", ":Rg<CR>", {})
-map("n", "<leader>sb", ":BLines<CR>", {})
-map("n", "<leader>bs", ":BLines<CR>", {})
+map("n", "<C-f>", ":BLines<CR>", {})
+map("n", "<Leader>f", ":Rg<CR>", {})
+map("n", "<C-c>", ":Commands<CR>")
+map("n", "<leader>n", "<cmd>lua require'telescope.builtin'.find_files{ cwd = '~/.config/nvim/' }<CR>", {})
 
 -- Git
 map("n", "<C-g>", ":LazyGit<CR>")
 
 -- Terminal
-map("n", "<A-t>", "<cmd>FloatermToggle<CR>", {})
+map("n", "<F12>", "<cmd>FloatermToggle<CR>", {})
 
--- Togglers
-map("n", "<leader>tg", ":GitBlameToggle<CR>", {})
-map("n", "<leader>tc", ":HexokinaseToggle<CR>", {})
-map("n", "<leader>tu", ":UndotreeToggle<CR>", {})
-
--- Kitty
-map("n", "<leader>kv", ":silent !kitty @ launch --copy-env --cwd=current nvim %", {})
-
+-- LSP
+map("n", "gh", '<cmd>lua require"settings.utils".show_doc()<CR>', {noremap = true, silent = true})
+map("n", "<leader>h", '<cmd>lua require"settings.utils".hover()<CR>', {noremap = true, silent = true})
+map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
+map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true})
+map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true, silent = true})
+map("n", "gdt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {noremap = true, silent = true})
+map("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true, silent = true})
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {noremap = true, silent = true})
+map("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {noremap = true, silent = true})
