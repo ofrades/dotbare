@@ -1,6 +1,5 @@
 local g, cmd = vim.g, vim.cmd
 
-
 g.ascii = {
  ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
  '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
@@ -26,10 +25,7 @@ g.ascii = {
  '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
 }
 
-
 g.startify_custom_header = 'startify#center(g:ascii)'
--- g.startify_custom_header = 'startify#center(g:void)'
-
 
 g.startify_lists = {
    { type ='sessions',                    header = {'          Sessions' }           },
@@ -45,16 +41,15 @@ g.startify_commands = {
    { u = {'Update Plugin'          , ':PackerUpdate'   }},
    { c = {'Clean Plugin'           , ':PackerClean'    }},
    { s = {'Sync Plugin'            , ':PackerSync'     }},
-   -- { s = {'Start Time'             , ':StartupTime'     }},
-   -- { m = {'Coc marketplace'        , ':CocList marketplace'     }},
+   { p = {'Perf Start Time'        , ':StartupTime'     }},
    }
 
 g.startify_bookmarks = {
         {v = '~/.config/nvim/init.lua'},
         {g = '~/.gitconfig'},
         {r = '~/.vimrc'},
-        {t = '~/.tmux.conf'},
-        {d = '~/dotfiles' },
+        {t = '~/.config/kitty/kitty.conf' },
+        {b = '~/.config/bspwm/bspwmrc' },
         }
 
 g.startify_session_sort = 1

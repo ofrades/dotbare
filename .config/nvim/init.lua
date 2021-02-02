@@ -12,5 +12,4 @@ require "plugins"
 
 -- LSP
 require "lsp"
--- require "coc"
 

@@ -45,6 +45,8 @@ g.mapleader = " "
 
 map("n", "<Leader>q", ":q<CR>")
 map("n", "<Leader>w", ":w<CR>")
+-- Tree
+map("n", "<Leader>e", ":NvimTreeToggle<CR>")
 -- Better indenting
 map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
