@@ -46,5 +46,9 @@ require("formatter").setup(
   }
 )
 
--- vim.api.nvim_command('autocmd BufWrite * :Format')
-map("n", "<leader>cf", ":Format<CR>", {silent = true})
+vim.api.nvim_exec([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx FormatWrite
+augroup END
+]], true)

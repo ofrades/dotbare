@@ -2,37 +2,57 @@ local map = require "settings.utils".map
 local cmd = vim.cmd
 local g = vim.g
 local fn = vim.fn
+local opts = { noremap=true, silent=true }
 
--- Mapleader
+-- Lsp
+
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+map('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+-- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+-- map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+
+
+map("n", "gh", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", {})
+map("n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", {})
+map("n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", {})
+map("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", {})
+map("n", "<leader>r", "<cmd>lua require('lspsaga.rename').rename()<CR>", {})
+map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", {})
+-- map("n", "gi", ":LspSagaShowLineDiags<CR>",{})
+
+map("n", "<A-k>", ":<C-u>move-2<CR>==",{})
+map("v", "<A-k>", ":move-2<CR>gv=gv",{})
+map("n", "<A-j>", ":<C-u>move+<CR>==", {})
+map("v", "<A-j>", ":move'>+<CR>gv=gv", {})
+
 -- Map <leader> to space
 map("n", "<Space>", "<Nop>")
+
+-- Mapleader
 g.mapleader = " "
 
--- save and quit
-map("n", "<leader>q",      ":q<CR>", {})
-map("n", "<leader>s",      ":w<CR>", {})
-
--- Tab for autocompletion
-map("i", "<Tab>", "pumvisible() ? '<C-n>' : '<Tab>'", {expr = true})
-map("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", {expr = true})
-
+map("n", "<Leader>q", ":q<CR>")
+map("n", "<Leader>w", ":w<CR>")
 -- Better indenting
 map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
 map("n", ">", ">>", {})
 map("v", ">", ">gv", {})
 
--- Move lines up and down
-map("n", "<A-k>",   ":<C-u>move-2<CR>==", {})
-map("n", "<A-j>",   ":<C-u>move+<CR>==", {})
-map("v", "<A-k>",   ":move-2<CR>gv=gv", {})
-map("v", "<A-j>",   ":move'>+<CR>gv=gv", {})
-
--- Explorer
-map("n", "<leader>e", ":NvimTreeToggle<CR>", {})
-
--- clear all the highlighted text from the previous search
-map("n", "<Esc><Esc>", ":noh<CR>", {silent = true})
+map("n", "<leader><leader>", ":FloatermNew ranger<cr>", {})
+map("t", "<leader><leader>", [[<C-\><C-n>:FloatermKill]], {})
 
 -- Easier Moving between splits
 map("n", "<C-J>", "<C-W><C-J>", {})
@@ -40,44 +60,43 @@ map("n", "<C-K>", "<C-W><C-K>", {})
 map("n", "<C-L>", "<C-W><C-L>", {})
 map("n", "<C-H>", "<C-W><C-H>", {})
 
--- Sizing window
-map("n", "<A-Right>", "<C-W>5<", {})
-map("n", "<A-Left>", "<C-W>5>", {})
-map("n", "<A-Up>", "<C-W>+5", {})
-map("n", "<A-Down>", "<C-W>-5", {})
-
-map("n", "<leader>.",  ":e $MYVIMRC<CR>", {})
-map("n", "<leader>,",  ":Startify<CR>", {})
+map("n", "<leader>.", ":e $MYVIMRC<CR>", {})
+map("n", "<leader>,", ":Startify<CR>", {})
 
 map("n", "<leader>r", ":luafile %<CR>", {})
--- map("n", "<leader>x", ':lua require"plenary.eload".reload_module"init"<CR>', {})
-map("n", "<leader>x", ":luafile $MYVIMRC<CR>", {})
+map("n", "<leader>x", ":lua reload()<CR>", {})
 
--- Telescope
--- map("n", "<C-p>", ":Telescope find_files<CR>")
--- map("n", "<C-f>", ":Telescope live_grep<CR>")
-
--- Searches
-map("n", "<C-p>", ":Files<CR>", {})
-map("n", "<C-f>", ":BLines<CR>", {})
-map("n", "<Leader>f", ":Rg<CR>", {})
-map("n", "<C-c>", ":Commands<CR>")
-map("n", "<leader>n", "<cmd>lua require'telescope.builtin'.find_files{ cwd = '~/.config/nvim/' }<CR>", {})
+-- Move to the end of yanked text after yank and paste
+map("n", "p", "p`]")
+map("v", "y", "y`]")
+map("v", "p", "p`]")
 
 -- Git
-map("n", "<C-g>", ":LazyGit<CR>")
+map("n", "<Leader>gs", ":Gstatus<CR>", {})
+map("n", "<Leader>gb", ":GBranches<CR>", {})
+map("n", "<Leader>go", ":GBrowse<CR>", {})
+
+-- vim-import-js
+map("n", "<Leader>if", ":ImportJSFix<CR>", {})
+map("n", "<Leader>iw", ":ImportJSWord<CR>", {})
+map("n", "<Leader>ig", ":ImportJSGoto<CR>", {})
+
+map("n", "<leader>st", ":Rg!<CR>", {})
+map("n", "<leader>sw", ':Rg' .. fn.expand('<cword>'), {})
 
 -- Terminal
-map("n", "<F12>", "<cmd>FloatermToggle<CR>", {})
+map("n", "<leader>tt",      "<cmd>FloatermNew --height=0.3 --wintype=normal --position=bottom<CR>", {})
+map("n", "<leader>tv",      "<cmd>FloatermNew --width=0.4 --wintype=normal --position=right<CR>", {})
 
--- LSP
-map("n", "gh", '<cmd>lua require"settings.utils".show_doc()<CR>', {noremap = true, silent = true})
-map("n", "<leader>h", '<cmd>lua require"settings.utils".hover()<CR>', {noremap = true, silent = true})
-map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
-map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true})
-map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true, silent = true})
-map("n", "gdt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {noremap = true, silent = true})
-map("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true, silent = true})
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {noremap = true, silent = true})
-map("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", {noremap = true, silent = true})
+-- Togglers
+map("n", "<leader>tg", ":GitBlameToggle<CR>", {})
+map("n", "<leader>tc", ":HexokinaseToggle<CR>", {})
+map("n", "<leader>tu", ":UndotreeToggle<CR>", {})
+
+--open a new file in the same directory
+map("n", "<Leader>nf", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], {silent = false})
+map("n", "<Leader>of", ':lua open_file_or_create_new()', {silent = false})
+-- Kitty
+map("n", "<leader>kv", ":silent !kitty @ launch --copy-env --cwd=current nvim % <CR>", {})
+
+map("n", "<leader>cc", ":normal gcc<CR>", {})

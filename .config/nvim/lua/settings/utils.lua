@@ -1,11 +1,6 @@
-local g = vim.g
-local o = vim.o
-local bo = vim.bo
-local fn = vim.fn
+local g,o,bo = vim.g,vim.o,vim.bo
+local util,api,cmd,fn,lsp = vim.lsp.util,vim.api,vim.cmd,vim.fn,vim.lsp
 local fnamemodify = fn.fnamemodify
-local api = vim.api
-local cmd = vim.cmd
-local lsp = vim.lsp
 local U = {}
 
 local function join(...)
@@ -83,10 +78,12 @@ function U.esc(arg)
   return api.nvim_replace_termcodes(arg, true, false, true)
 end
 
+
 -- Usage:
 -- hi(Cursor, { fg = bg_dark, bg = yellow })
 function U.hi(group, styles)
-  local command = string.format("hi! %s", group)
+  -- local command = string.format("hi! %s", group)
+  local command = string.format("autocmd ColorScheme * hi %s", group)
   if styles.bg then
     command = string.format("%s guibg=%s", command, styles.bg)
   end
@@ -99,8 +96,8 @@ function U.hi(group, styles)
   if styles.cfg then
     command = string.format("%s ctermfg=%s", command, styles.cfg)
   end
-  if styles.g then
-    command = string.format("%s gui=%s", command, styles.g)
+  if styles.gui then
+    command = string.format("%s gui=%s", command, styles.gui)
   end
   cmd(command)
 end
@@ -139,41 +136,12 @@ function U.toggle_global_variables(global_variables)
   end
 end
 
-function U.get_toggleterm_name(_, bufnum)
-  local shell = fnamemodify(vim.env.SHELL, ":t")
-  local terminal_prefix = "Terminal(" .. shell .. ")["
-  return terminal_prefix .. fn.getbufvar(bufnum, "toggle_number") .. "]"
-end
-
-function U.console_log()
+function _G.console_log()
   local view = fn.winsaveview()
   local word = fn.expand("<cword>")
 
   cmd(string.format("keepjumps norm!oconsole.log('%s ->', %s); // eslint-disable-line no-console", word, word))
   fn.winrestview(view)
-end
-
-function U.rg_word()
-  local word = fn.expand("<cword>")
-  cmd(join("Rg! ", word))
-end
-
--- Creates an FZF executor for running FZF in lua
--- @param sink_fn Function to execute with selected line(s)
--- @param source to
-function U.run(opts)
-  fn['fzf#run'](fn['fzf#wrap'] {
-    source = opts.source;
-    sink = opts.sink_fn;
-    window = {width = 0.8; height = 0.7; border = true};
-    opts = opts.opts or os.getenv('FZF_DEFAULT_OPTS')
-  })
-end
--- killy buffah
-function U.kill_buffers() return U.run({sink_fn = 'bd'; source = 'ls'}) end
--- load sessions
-function U.load_sessions()
-  -- return U.run({sink_fn = 'source'; source = sessions.list()})
 end
 
 function _G.dump(...)
@@ -189,6 +157,53 @@ end
 function _G.open_lsp_log()
   local path = vim.lsp.get_log_path()
   cmd("edit " .. path)
+end
+
+local special_buffers = {
+  'git',
+  'undotree',
+  'help',
+  'startify',
+  'vim-plug',
+  'NvimTree',
+}
+
+function _G.is_special_buffer()
+  local buftype = api.nvim_buf_get_option(0, 'buftype')
+  if buftype == 'terminal' or buftype == 'quickfix' or buftype == 'help' then
+    return true
+  end
+  local filetype = api.nvim_buf_get_option(0, 'filetype')
+  for _, b in ipairs(special_buffers) do
+    if filetype == b then
+      return true
+    end
+  end
+  return false
+end
+
+_G.folds_render = require('settings.fold').render
+
+function _G.check_backspace()
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
+end
+
+function _G.reload()
+    local modules = {"lsp", "plugins", "settings"}
+    for _, moduleName in pairs(modules) do
+        for packageName, _ in pairs(package.loaded) do
+            if string.find(packageName, "^" .. moduleName) then
+                package.loaded[packageName] = nil
+            end
+        end
+        require(moduleName)
+    end
+    print("Reloaded!")
 end
 
 return U

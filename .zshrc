@@ -5,7 +5,6 @@ set -o vi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -436,4 +435,5 @@ kitty + complete setup zsh | source /dev/stdin
 export PATH=$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH=$(pwd)/git-fuzzy/bin:$PATH
+export PATH="$(yarn global bin):$PATH"
 if [ -e /home/ofrades/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ofrades/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

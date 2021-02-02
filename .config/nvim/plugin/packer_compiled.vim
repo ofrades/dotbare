@@ -20,17 +20,17 @@ lua << END
   end
 
 _G.packer_plugins = {
-  ["completion-tabnine"] = {
-    loaded = false,
-    only_sequence = false,
+  ["barbar.nvim"] = {
+    loaded = true,
+    only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/completion-tabnine"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/barbar.nvim"
   },
-  ["completion-treesitter"] = {
-    loaded = false,
-    only_sequence = false,
+  ["codi.vim"] = {
+    loaded = true,
+    only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/completion-treesitter"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/codi.vim"
   },
   ["conflict-marker.vim"] = {
     loaded = true,
@@ -44,6 +44,12 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/formatter.nvim"
+  },
   fzf = {
     loaded = true,
     only_sequence = true,
@@ -55,12 +61,6 @@ _G.packer_plugins = {
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf-checkout.vim"
-  },
-  ["fzf-lsp.nvim"] = {
-    loaded = true,
-    only_sequence = true,
-    only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf-lsp.nvim"
   },
   ["fzf.vim"] = {
     loaded = true,
@@ -74,23 +74,29 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
+  ["git-blame.nvim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
+  },
+  ["github-light.vim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/github-light.vim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
-  ["lazygit.nvim"] = {
+  kommentary = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
-  },
-  ["lexima.vim"] = {
-    loaded = true,
-    only_sequence = true,
-    only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lexima.vim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
@@ -98,17 +104,41 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
+  ["nord-vim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nord-vim"
+  },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
   ["nvim-compe"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -117,7 +147,6 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "require('plugins.tsitter')" },
     loaded = true,
     only_sequence = true,
     only_setup = false,
@@ -135,6 +164,12 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  ["paper.vim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/paper.vim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     only_sequence = true,
@@ -146,6 +181,18 @@ _G.packer_plugins = {
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["rooter.nvim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/rooter.nvim"
+  },
+  ["splitjoin.vim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/splitjoin.vim"
   },
   ["startuptime.vim"] = {
     loaded = true,
@@ -159,29 +206,29 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/tagalong.vim"
   },
+  ["telescope-fzy-native.nvim"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  ["typescript-vim"] = {
+  undotree = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/typescript-vim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/undotree"
   },
   ["vim-closetag"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-closetag"
-  },
-  ["vim-commentary"] = {
-    loaded = true,
-    only_sequence = true,
-    only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-floaterm"] = {
     loaded = true,
@@ -195,6 +242,18 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
+  ["vim-hexokinase"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-hexokinase"
+  },
+  ["vim-highlightedyank"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-highlightedyank"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     only_sequence = true,
@@ -207,23 +266,17 @@ _G.packer_plugins = {
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-import-js"
   },
-  ["vim-jsx-typescript"] = {
+  ["vim-lengthmatters"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-jsx-typescript"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-lengthmatters"
   },
   ["vim-matchup"] = {
     loaded = true,
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
-  },
-  ["vim-peekaboo"] = {
-    loaded = true,
-    only_sequence = true,
-    only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-peekaboo"
   },
   ["vim-polyglot"] = {
     loaded = true,
@@ -236,6 +289,12 @@ _G.packer_plugins = {
     only_sequence = true,
     only_setup = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
+  },
+  ["vim-sandwich"] = {
+    loaded = true,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-sandwich"
   },
   ["vim-smoothie"] = {
     loaded = true,
@@ -268,16 +327,16 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-visual-multi"
   },
   ["vim-vsnip"] = {
-    loaded = false,
-    only_sequence = false,
+    loaded = true,
+    only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
   ["vim-vsnip-integ"] = {
-    loaded = false,
-    only_sequence = false,
+    loaded = true,
+    only_sequence = true,
     only_setup = false,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-vsnip-integ"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
   },
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,
@@ -416,8 +475,6 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: nvim-treesitter
-require('plugins.tsitter')
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END
@@ -435,7 +492,6 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   " Event lazy-loads
-  au InsertEnter * ++once call s:load(['vim-vsnip', 'vim-vsnip-integ'], { "event": "InsertEnter *" })
   " Function lazy-loads
 augroup END
 

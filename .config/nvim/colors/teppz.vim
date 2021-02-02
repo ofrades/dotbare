@@ -33,7 +33,7 @@ let s:configuration.current_word = get(g:, 'teppz_current_word', get(g:, 'teppz_
 let s:palette = {
       \ 'bg0':        ['#1d2a39',   '235',  'Black'],
       \ 'bg1':        ['#2B2D35',   '236',  'BG1'],
-      \ 'bg2':        ['#333333',   '237',  'BG2'],
+      \ 'bg2':        ['#242021',   '237',  'BG2'],
       \ 'bg3':        ['#575B65',   '238',  'BG3'],
       \ 'bg4':        ['#63676F',   '239',  'BG4'],
       \ 'bg_red':     ['#80342b',   '52',   'DarkRed'],
@@ -214,13 +214,13 @@ call s:HL('SpellBad', s:palette.red, s:palette.none, 'undercurl', s:palette.red)
 call s:HL('SpellCap', s:palette.yellow, s:palette.none, 'undercurl', s:palette.yellow)
 call s:HL('SpellLocal', s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
 call s:HL('SpellRare', s:palette.purple, s:palette.none, 'undercurl', s:palette.purple)
-call s:HL('StatusLine', s:palette.fg, s:palette.bg3)
-call s:HL('StatusLineTerm', s:palette.fg, s:palette.bg3)
+call s:HL('StatusLine', s:palette.fg, s:palette.none)
+call s:HL('StatusLineTerm', s:palette.fg, s:palette.none)
+call s:HL('StatusLineNC', s:palette.grey, s:palette.none)
+call s:HL('StatusLineTermNC', s:palette.grey, s:palette.none)
 call s:HL('TabLine', s:palette.fg, s:palette.bg4)
-call s:HL('StatusLineTermNC', s:palette.grey, s:palette.bg1)
 call s:HL('TabLineFill', s:palette.grey, s:palette.bg1)
 call s:HL('TabLineSel', s:palette.bg0, s:palette.green)
-call s:HL('StatusLineNC', s:palette.bg2, s:palette.bg2)
 call s:HL('VertSplit', s:palette.green, s:palette.none)
 call s:HL('Visual', s:palette.none, s:palette.bg_dark)
 call s:HL('VisualNOS', s:palette.bg0, s:palette.gold, 'underline')
@@ -1716,13 +1716,6 @@ endif
 
 let g:niji_dark_colours = g:rbpt_colorpairs
 let g:niji_light_colours = g:rbpt_colorpairs
-highlight! rainbowcol1 guifg=#4CA585
-highlight! rainbowcol2 guifg=#6173D1
-highlight! rainbowcol3 guifg=#cf7357
-highlight! rainbowcol4 guifg=#497c6c
-highlight! rainbowcol5 guifg=#58659a
-highlight! rainbowcol6 guifg=#cea37f
-highlight! rainbowcol7 guifg=#5f5151
 " }}}
 " kshenoy/vim-signature {{{
 highlight! link SignatureMarkText BlueSign
@@ -1885,16 +1878,23 @@ highlight link TSTag Blue
 highlight link TSTagDelimiter Grey
 
 highlight link TSNone LightGrey
+hi link illuminatedWord Red
 " }}}
 
-highlight Sneak guifg=White guibg=Grey
-highlight SneakScope guifg=White guibg=Grey
-highlight SneakLabel guifg=White guibg=Grey
+highlight Sneak guibg=teal guifg=white
+highlight SneakScope guibg=teal guifg=white
+highlight SneakLabel guibg=teal guifg=white
 
+" Nvim LSP
+" > neovim/nvim-lsp
+call s:HL("LSPDiagnosticsWarning", s:palette.yellow, s:palette.none)
+call s:HL("LSPDiagnosticsError" , s:palette.red, s:palette.none)
+call s:HL("LSPDiagnosticsInformation" , s:palette.blue, s:palette.none)
+call s:HL("LSPDiagnosticsHint" , s:palette.green, s:palette.none)
 
-highlight link LspDiagnosticsError Red
-highlight link LspDiagnosticsWarning Yellow
-highlight link LspDiagnosticsInformation Green
-highlight link LspDiagnosticsHint Blue
+call s:HL("LspDiagnosticsUnderlineError" , s:palette.red, s:palette.none, 'undercurl', s:palette.red)
+call s:HL("LspDiagnosticsUnderlineWarning" , s:palette.yellow, s:palette.none, 'undercurl', s:palette.yellow)
+call s:HL("LspDiagnosticsUnderlineInformation" , s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
+call s:HL("LspDiagnosticsUnderlineHint" , s:palette.green, s:palette.none, 'undercurl', s:palette.green)
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:

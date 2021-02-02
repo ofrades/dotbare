@@ -4,10 +4,45 @@ local gl = require("galaxyline")
 local section = gl.section
 gl.short_line_list = {"LuaTree", "packager", "Floaterm", "coc-eplorer"}
 
-local colors = {
-  bg = "#444444",
+local teppz = {
+  bg = "#1d2a39",
   fg = "#81a1c1",
-  line_bg = "#444444",
+  line_bg = "#2B2D35",
+  fg_green = "#497C6C",
+  yellow = "#d9bb80",
+  cyan = "#60C1D2",
+  darkblue = "#6173D1",
+  green = "#4CA585",
+  orange = "#D88E78",
+  purple = "##d3a0bc",
+  magenta = "#d16d9e",
+  gray = "#c0c0c0",
+  blue = "#609AD2",
+  red = "#CF7357"
+}
+
+local nord = {
+  bg = "#2E3440",
+  fg = "#81A1C1",
+  line_bg = "#2E3440",
+  fg_green = "#8FBCBB",
+  yellow = "#EBCB8B",
+  cyan = "#A3BE8C",
+  darkblue = "#81A1C1",
+  green = "#8FBCBB",
+  orange = "#D08770",
+  purple = "#B48EAD",
+  magenta = "#BF616A",
+  gray = "#616E88",
+  blue = "#5E81AC",
+  red = "#BF616A"
+}
+
+local palette = {
+  bg = "#1d2a39",
+  fg = "#81a1c1",
+  line_bg = "#2B2D35",
+  fg_green = "#497C6C",
   yellow = "#d9bb80",
   cyan = "#60C1D2",
   darkblue = "#6173D1",
@@ -33,7 +68,7 @@ section.left[1] = {
     provider = function()
       return "  "
     end,
-    highlight = {colors.blue, colors.line_bg}
+    highlight = {palette.blue, palette.line_bg}
   }
 }
 section.left[2] = {
@@ -41,68 +76,69 @@ section.left[2] = {
     provider = function()
       -- auto change color according the vim mode
       local mode_color = {
-        n = colors.green,
-        i = colors.blue,
-        v = colors.yellow,
-        [""] = colors.yellow,
-        V = colors.yellow,
-        c = colors.red,
-        no = colors.magenta,
-        s = colors.orange,
-        S = colors.orange,
-        [""] = colors.orange,
-        ic = colors.yellow,
-        R = colors.purple,
-        Rv = colors.purple,
-        cv = colors.red,
-        ce = colors.red,
-        r = colors.cyan,
-        rm = colors.cyan,
-        ["r?"] = colors.cyan,
-        ["!"] = colors.red,
-        t = colors.red
+        n = palette.blue,
+        i = palette.green,
+        v = palette.yellow,
+        [""] = palette.yellow,
+        V = palette.yellow,
+        c = palette.red,
+        no = palette.blue,
+        s = palette.orange,
+        S = palette.orange,
+        [""] = palette.orange,
+        ic = palette.yellow,
+        R = palette.purple,
+        Rv = palette.purple,
+        cv = palette.red,
+        ce = palette.red,
+        r = palette.cyan,
+        rm = palette.cyan,
+        ["r?"] = palette.cyan,
+        ["!"] = palette.red,
+        t = palette.red
       }
       cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
-      return "  ofrades "
+      return "  ofrades  "
     end,
-    highlight = {colors.red, colors.line_bg, "bold"}
+    highlight = {palette.red, palette.line_bg, "bold"}
   }
 }
 section.left[3] = {
   FileIcon = {
     provider = "FileIcon",
     condition = buffer_not_empty,
-    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, palette.line_bg}
   }
 }
 section.left[4] = {
   FileName = {
     -- provider = "FileName",
     provider = function()
-      return fn.expand("%:f")
+      return fn.expand("%:F")
     end,
     condition = buffer_not_empty,
     separator = " ",
-    separator_highlight = {colors.purple, colors.bg},
-    highlight = {colors.purple, colors.line_bg, "bold"}
+    separator_highlight = {palette.purple, palette.bg},
+    highlight = {palette.purple, palette.line_bg, "bold"}
   }
 }
 
 section.right[1] = {
   GitIcon = {
     provider = function()
-      return " "
+      return " "
     end,
     condition = require("galaxyline.provider_vcs").check_git_workspace,
-    highlight = {colors.orange, colors.line_bg}
+    highlight = {palette.orange, palette.line_bg}
   }
 }
 section.right[2] = {
   GitBranch = {
     provider = "GitBranch",
     condition = require("galaxyline.provider_vcs").check_git_workspace,
-    separator_highlight = {colors.purple, colors.bg},
-    highlight = {colors.orange, colors.line_bg, "bold"}
+    separator = "",
+    separator_highlight = {palette.purple, palette.bg},
+    highlight = {palette.orange, palette.line_bg, "bold"}
   }
 }
 
@@ -119,7 +155,7 @@ section.right[3] = {
     provider = "DiffAdd",
     condition = checkwidth,
     icon = " ",
-    highlight = {colors.green, colors.line_bg}
+    highlight = {palette.green, palette.line_bg}
   }
 }
 section.right[4] = {
@@ -127,7 +163,7 @@ section.right[4] = {
     provider = "DiffModified",
     condition = checkwidth,
     icon = "柳",
-    highlight = {colors.yellow, colors.line_bg}
+    highlight = {palette.yellow, palette.line_bg}
   }
 }
 section.right[5] = {
@@ -135,7 +171,7 @@ section.right[5] = {
     provider = "DiffRemove",
     condition = checkwidth,
     icon = " ",
-    highlight = {colors.red, colors.line_bg}
+    highlight = {palette.red, palette.line_bg}
   }
 }
 
@@ -143,8 +179,8 @@ section.right[6] = {
   LineInfo = {
     provider = "LineColumn",
     separator = "",
-    separator_highlight = {colors.blue, colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
+    separator_highlight = {palette.blue, palette.line_bg},
+    highlight = {palette.gray, palette.line_bg}
   }
 }
 -- section.right[7] = {
@@ -152,27 +188,27 @@ section.right[6] = {
 --     provider = "FileSize",
 --     separator = " ",
 --     condition = buffer_not_empty,
---     separator_highlight = {colors.blue, colors.line_bg},
---     highlight = {colors.fg, colors.line_bg}
+--     separator_highlight = {palette.blue, palette.line_bg},
+--     highlight = {palette.fg, palette.line_bg}
 --   }
 -- }
 
 section.right[8] = {
   DiagnosticError = {
     provider = "DiagnosticError",
-    -- separator = " ",
-    icon = "   ",
-    highlight = {colors.red, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
+    separator = " ",
+    icon = " ",
+    highlight = {palette.red, palette.line_bg},
+    separator_highlight = {palette.bg, palette.bg}
   }
 }
 section.right[9] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     -- separator = " ",
-    icon = "   ",
-    highlight = {colors.yellow, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
+    icon = " ",
+    highlight = {palette.yellow, palette.line_bg},
+    separator_highlight = {palette.bg, palette.bg}
   }
 }
 
@@ -180,9 +216,9 @@ section.right[10] = {
   DiagnosticInfo = {
     -- separator = " ",
     provider = "DiagnosticInfo",
-    icon = "   ",
-    highlight = {colors.green, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
+    icon = " ",
+    highlight = {palette.green, palette.line_bg},
+    separator_highlight = {palette.bg, palette.bg}
   }
 }
 
@@ -190,9 +226,42 @@ section.right[11] = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     -- separator = " ",
-    icon = "   ",
-    highlight = {colors.blue, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
+    icon = " ",
+    highlight = {palette.blue, palette.line_bg},
+    separator_highlight = {palette.bg, palette.bg}
+  }
+}
+
+section.short_line_left[1] = {
+  BufferType = {
+    provider = 'FileTypeName',
+    separator = ' ',
+    separator_highlight = {'NONE',palette.bg},
+    highlight = {palette.blue,palette.bg,'bold'}
+  }
+}
+
+section.short_line_left[2] = {
+  SFileName = {
+    provider = function ()
+      local fileinfo = require('galaxyline.provider_fileinfo')
+      local fname = fileinfo.get_current_file_name()
+      for _,v in ipairs(gl.short_line_list) do
+        if v == vim.bo.filetype then
+          return ''
+        end
+      end
+      return fname
+    end,
+    condition = buffer_not_empty,
+    highlight = {palette.white,palette.bg,'bold'}
+  }
+}
+
+section.short_line_right[1] = {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    highlight = {palette.fg,palette.bg}
   }
 }
 
