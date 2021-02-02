@@ -4,8 +4,13 @@ local g = vim.g
 local fn = vim.fn
 local opts = { noremap=true, silent=true }
 
--- Lsp
+-- Map <leader> to space
+map("n", "<Space>", "<Nop>")
 
+-- Mapleader
+g.mapleader = " "
+
+-- Lsp
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -22,8 +27,7 @@ map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-
-
+-- Saga
 map("n", "gh", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", {})
 map("n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", {})
 map("n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", {})
@@ -32,27 +36,26 @@ map("n", "<leader>r", "<cmd>lua require('lspsaga.rename').rename()<CR>", {})
 map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", {})
 -- map("n", "gi", ":LspSagaShowLineDiags<CR>",{})
 
+-- Move lines
 map("n", "<A-k>", ":<C-u>move-2<CR>==",{})
 map("v", "<A-k>", ":move-2<CR>gv=gv",{})
 map("n", "<A-j>", ":<C-u>move+<CR>==", {})
 map("v", "<A-j>", ":move'>+<CR>gv=gv", {})
 
--- Map <leader> to space
-map("n", "<Space>", "<Nop>")
-
--- Mapleader
-g.mapleader = " "
-
+-- Save and exit
 map("n", "<Leader>q", ":q<CR>")
 map("n", "<Leader>w", ":w<CR>")
+
 -- Tree
 map("n", "<Leader>e", ":NvimTreeToggle<CR>")
+
 -- Better indenting
 map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
 map("n", ">", ">>", {})
 map("v", ">", ">gv", {})
 
+-- Terminal
 map("n", "<leader><leader>", ":FloatermNew ranger<cr>", {})
 map("t", "<leader><leader>", [[<C-\><C-n>:FloatermKill]], {})
 
@@ -62,10 +65,7 @@ map("n", "<C-K>", "<C-W><C-K>", {})
 map("n", "<C-L>", "<C-W><C-L>", {})
 map("n", "<C-H>", "<C-W><C-H>", {})
 
-map("n", "<leader>.", ":e $MYVIMRC<CR>", {})
-map("n", "<leader>,", ":Startify<CR>", {})
-
-map("n", "<leader>r", ":luafile %<CR>", {})
+-- Reload Config
 map("n", "<leader>x", ":lua reload()<CR>", {})
 
 -- Move to the end of yanked text after yank and paste
@@ -83,21 +83,10 @@ map("n", "<Leader>if", ":ImportJSFix<CR>", {})
 map("n", "<Leader>iw", ":ImportJSWord<CR>", {})
 map("n", "<Leader>ig", ":ImportJSGoto<CR>", {})
 
-map("n", "<leader>st", ":Rg!<CR>", {})
-map("n", "<leader>sw", ':Rg' .. fn.expand('<cword>'), {})
-
 -- Terminal
 map("n", "<leader>tt",      "<cmd>FloatermNew --height=0.3 --wintype=normal --position=bottom<CR>", {})
 map("n", "<leader>tv",      "<cmd>FloatermNew --width=0.4 --wintype=normal --position=right<CR>", {})
 
--- Togglers
-map("n", "<leader>tg", ":GitBlameToggle<CR>", {})
-map("n", "<leader>tc", ":HexokinaseToggle<CR>", {})
-map("n", "<leader>tu", ":UndotreeToggle<CR>", {})
-
---open a new file in the same directory
-map("n", "<Leader>nf", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], {silent = false})
-map("n", "<Leader>of", ':lua open_file_or_create_new()', {silent = false})
 -- Kitty
 map("n", "<leader>kv", ":silent !kitty @ launch --copy-env --cwd=current nvim % <CR>", {})
 
