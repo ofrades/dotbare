@@ -5,7 +5,7 @@ local section = gl.section
 gl.short_line_list = {"LuaTree", "packager", "Floaterm", "coc-eplorer"}
 
 local teppz = {
-  bg = "#1d2a39",
+  bg = "#5f5151",
   fg = "#81a1c1",
   line_bg = "#2B2D35",
   fg_green = "#497C6C",
@@ -39,9 +39,9 @@ local nord = {
 }
 
 local palette = {
-  bg = "#1d2a39",
+  bg = "#114141",
   fg = "#81a1c1",
-  line_bg = "#2B2D35",
+  line_bg = "#114141",
   fg_green = "#497C6C",
   yellow = "#d9bb80",
   cyan = "#60C1D2",

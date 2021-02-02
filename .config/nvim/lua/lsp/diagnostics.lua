@@ -153,7 +153,7 @@ require'lspconfig'.diagnosticls.setup{
       },
       prettier = {
         command = "./node_modules/.bin/prettier",
-        args = {"--stdin-filepath", "%filepath", "--single-quote", "--print-width 120"},
+        args = {"--stdin-filepath", "%filepath"},
         rootPatterns = {".eslintrc.js", ".git", "package.json"},
       },
     },

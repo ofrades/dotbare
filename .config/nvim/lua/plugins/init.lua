@@ -1,4 +1,4 @@
-require "plugins.nord"
+require "plugins.teppz"
 require "plugins.devicons"
 require "plugins.floaterm"
 require "plugins.sign"
