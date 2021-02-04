@@ -140,29 +140,29 @@ require'lspconfig'.diagnosticls.setup{
     typescript = "eslint",
     typescriptreact = "eslint"
   },
-  formatters = {
-      eslint = {
-        command = "./node_modules/.bin/eslint",
-        args = {"--fix-to-stduot", "--stdin", "%filepath"},
-        rootPatterns = {".eslintrc.js", ".git", "package.json"},
-        debounce = 100,
-      },
-      luafmt = {
-        command = "npx luafmt",
-        args = {"--indent-count", 2, "--stdin"}
-      },
-      prettier = {
-        command = "./node_modules/.bin/prettier",
-        args = {"--stdin-filepath", "%filepath"},
-        rootPatterns = {".eslintrc.js", ".git", "package.json"},
-      },
-    },
-    formatFiletypes = {
-      lua = "luafmt",
-      javascript = "prettier",
-      javascriptreact = "prettier",
-      typescript = "prettier",
-      typescriptreact = "prettier"
-    },
+  -- formatters = {
+      -- eslint = {
+        -- command = "./node_modules/.bin/eslint",
+        -- args = {"--fix-to-stduot", "--stdin", "%filepath"},
+        -- rootPatterns = {".eslintrc.js", ".git", "package.json"},
+        -- debounce = 100,
+      -- },
+      -- luafmt = {
+        -- command = "npx luafmt",
+        -- args = {"--indent-count", 2, "--stdin"}
+      -- },
+      -- prettier = {
+        -- command = "./node_modules/.bin/prettier",
+        -- args = {"--stdin"},
+        -- rootPatterns = {".prettierrc", ".git", "package.json"},
+      -- },
+    -- },
+    -- formatFiletypes = {
+      -- lua = "luafmt",
+      -- javascript = "prettier",
+      -- javascriptreact = "prettier",
+      -- typescript = "prettier",
+      -- typescriptreact = "prettier"
+    -- },
   }
 }

@@ -2,7 +2,8 @@ local fn = vim.fn
 local cmd = vim.cmd
 local exec = vim.api.nvim_exec
 
--- Auto save files when focus is lost
+
+cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 500})"
 cmd "au TermOpen * setlocal signcolumn=no nonumber norelativenumber"
 
@@ -58,3 +59,4 @@ exec([[
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
   augroup END
 ]],"")
+

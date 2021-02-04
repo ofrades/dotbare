@@ -9,9 +9,6 @@ local prettier = {
       args = {
         "--stdin-filepath",
         api.nvim_buf_get_name(0),
-        "--single-quote",
-        "--arrow-parens 'avoid'",
-        "--trailing-comma all"
       },
       stdin = true
     }

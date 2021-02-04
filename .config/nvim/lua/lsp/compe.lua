@@ -5,24 +5,44 @@ local map = require "settings.utils".map
 
 -- vim.cmd "au BufEnter *.jsx set filetype=javascript"
 
-require "compe".setup {
-  enabled = true,
-  debug = false,
-  min_length = 2,
-  preselect = "always",
-  source_timeout = 200,
-  -- incomplete_delay = 400,
-  allow_prefix_unmatch = false,
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  allow_prefix_unmatch = false;
+
   source = {
-    path = true,
-    buffer = true,
-    vsnip = true,
-    nvim_lsp = true,
-    nvim_lua = true,
-  }
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+  };
 }
 
 map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
+
+local filetypes = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'lua', 'go', 'vim', 'php', 'python'}
+
+vim.cmd [[augroup vimrc_lsp]]
+  vim.cmd [[autocmd!]]
+  vim.cmd(string.format('autocmd FileType %s call v:lua.hover()', table.concat(filetypes, ',')))
+vim.cmd [[augroup END]]
+
+function _G.hover()
+  -- vim.cmd[[autocmd CursorHold <buffer> silent! lua require"lspsaga.diagnostic".show_line_diagnostics()]]
+  -- vim.cmd[[autocmd CursorHold <buffer> silent! lua require('lspsaga.hover').render_hover_doc()]]
+  vim.cmd[[autocmd CursorHoldI <buffer> silent! lua require"lspsaga.signaturehelp".signature_help()]]
+end
 
 --
 local rt = function(codes)

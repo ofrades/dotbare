@@ -30,11 +30,6 @@ return require("packer").startup(
       use "glepnir/lspsaga.nvim"
       use "anott03/nvim-lspinstall"
 
-      -- Diagnostics
-      -- use {"iamcco/diagnostic-languageserver", run = "yarn install & yarn build"}
-      -- use "tsuyoshicho/vim-efm-langserver-settings" -- auto config efm lsp
-      -- use "dense-analysis/ale"
-
       -- Git
       use "tpope/vim-fugitive"
       use "stsewd/fzf-checkout.vim"
@@ -44,7 +39,6 @@ return require("packer").startup(
       use "f-person/git-blame.nvim"
 
       -- Misk
-      -- use "windwp/nvim-autopairs"
       use "kosayoda/nvim-lightbulb"
       use "b3nj5m1n/kommentary" -- comments like gcc
       use "tweekmonster/startuptime.vim" -- benchmark startup
@@ -53,7 +47,6 @@ return require("packer").startup(
       use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
       use "mhinz/vim-startify" -- start screen
       use "mbbill/undotree" -- undo tree
-      use "justinmk/vim-sneak"
       use "machakann/vim-sandwich" -- Change surrounding arks
       use "alvan/vim-closetag"
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
@@ -66,6 +59,7 @@ return require("packer").startup(
       use "machakann/vim-highlightedyank"
       use "psliwka/vim-smoothie"
       use "andymass/vim-matchup"
+      use "chaoren/vim-wordmotion"
 
       -- Fzf
       use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
@@ -82,11 +76,7 @@ return require("packer").startup(
 
       -- Themes
       use "sheerun/vim-polyglot"
-      use "arcticicestudio/nord-vim"
-      use "equt/paper.vim"
-      use "romgrk/github-light.vim"
       use {'rrethy/vim-hexokinase', run = 'make hexokinase' }
-      use "chaoren/vim-wordmotion"
 
       -- UI
       use "kyazdani42/nvim-web-devicons"
@@ -96,10 +86,6 @@ return require("packer").startup(
       -- Tree-sitter
       use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
       use 'christianchiarulli/nvcode-color-schemes.vim'
-
-      --Coc
-      -- use {"neoclide/coc.nvim", branch = "release"}
-      -- use "antoinemadec/coc-fzf" -- coc and fzf together
 
       -- Debugging
       -- use {
