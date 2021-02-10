@@ -1,6 +1,6 @@
 require "settings.packages"
 require "settings.options"
 require "settings.autocmds"
-require "settings.keybinds"
+require "settings.mappings"
 require "settings.globals"
 require "settings.abbrs"

@@ -1,7 +1,6 @@
 local lspconfig = require "lspconfig"
 
 local on_attach = function(client)
-  -- require "completion".on_attach(client)
   print("'" .. client.name .. "' server attached")
 end
 

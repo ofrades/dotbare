@@ -1,82 +1,7 @@
-local sign_define = vim.fn.sign_define
-local lsp = vim.lsp
-local util = require('lspconfig/util')
+local util = require "lspconfig/util"
+local lspconfig = require"lspconfig"
 
--- map("n", "'d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", {})
--- map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
--- map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
-
-lsp.handlers["textDocument/publishDiagnostics"] =
-  lsp.with(
-  lsp.diagnostic.on_publish_diagnostics,
-  {
-    underline = true,
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false
-  }
-)
-
-sign_define(
-  "LspDiagnosticsSignError",
-  {
-    text = " ",
-    texthl = "LspDiagnosticsError"
-  }
-)
-
-sign_define(
-  "LspDiagnosticsSignWarning",
-  {
-    text = " ",
-    texthl = "LspDiagnosticsWarning"
-  }
-)
-
-sign_define(
-  "LspDiagnosticsSignInformation",
-  {
-    text = " ",
-    texthl = "LspDiagnosticsInformation"
-  }
-)
-
-sign_define(
-  "LspDiagnosticsSignHint",
-  {
-    text = " ",
-    texthl = "LspDiagnosticsHint"
-  }
-)
-
-
- ---- NOTE: an efm config file prevents arror in log, only needs first line of: version:2
-  --local eslint = {
-  --  lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
-  --  lintIgnoreExitCode = true,
-  --  lintStdin = true
-  --}
-  --
-  --require "lspconfig".efm.setup {
-  --  --cmd = {"efm-langserver", "-q"}, -- the `-q` prevents the  readng std in, printing stdout message
-  --  init_options = {documentFormatting = true},
-  --  filetypes = {"javascript", "typescript"},
-  --  root_dir = function(fname)
-  --    return util.root_pattern("tsconfig.json")(fname) or
-  --    util.root_pattern(".eslintrc.js", ".git")(fname);
-  --  end,
-  --  init_options = {documentFormatting = true},
-  --  settings = {
-  --    rootMarkers = {".eslintrc.js", ".git/"},
-  --    --logFile = "/home/alextylor/efm.log",
-  --    --logLevel =  1,
-  --    languages = {
-  --      typescript = {eslint}
-  --    }
-  --  }
-  --}
-
-require'lspconfig'.diagnosticls.setup{
+lspconfig.diagnosticls.setup{
   filetypes = {"javascript", "typescript", "javascriptreact", "typescriptreact"},
   root_dir = function(fname)
     return util.root_pattern("tsconfig.json")(fname) or
@@ -139,7 +64,8 @@ require'lspconfig'.diagnosticls.setup{
     javascriptreact = "eslint",
     typescript = "eslint",
     typescriptreact = "eslint"
-  },
+  }, ]]
+
   -- formatters = {
       -- eslint = {
         -- command = "./node_modules/.bin/eslint",

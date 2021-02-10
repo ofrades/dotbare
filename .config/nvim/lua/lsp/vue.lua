@@ -8,7 +8,7 @@ local on_attach = function(client)
     print("'" .. client.name .. "' server attached")
 end
 
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+lspconfig.vuels.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
 }

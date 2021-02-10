@@ -8,6 +8,6 @@ require "plugins.rooter"
 require "plugins.formatter"
 require "plugins.tree"
 require "plugins.tsitter"
-require"nvim-web-devicons".setup()
+require "nvim-web-devicons".setup()
 require "plugins.fzf"
 require "plugins.telescope"

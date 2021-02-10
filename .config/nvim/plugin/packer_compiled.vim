@@ -67,13 +67,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
   },
-  ["github-light.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/github-light.vim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["hop.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/hop.nvim"
+  },
+  ["indent-guides.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/indent-guides.nvim"
   },
   kommentary = {
     loaded = true,
@@ -82,10 +86,6 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
-  },
-  ["nord-vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
   ["nvcode-color-schemes.vim"] = {
     loaded = true,
@@ -122,10 +122,6 @@ _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/packer.nvim"
-  },
-  ["paper.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/paper.vim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -215,10 +211,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-smoothie"
   },
-  ["vim-sneak"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-sneak"
-  },
   ["vim-startify"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-startify"
@@ -242,6 +234,10 @@ _G.packer_plugins = {
   ["vim-wordmotion"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
+  },
+  ["vista.vim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vista.vim"
   },
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,

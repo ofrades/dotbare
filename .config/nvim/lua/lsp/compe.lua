@@ -14,18 +14,20 @@ require'compe'.setup {
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
-  allow_prefix_unmatch = false;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
 
   source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
+    path = {menu = " PATH"};
+    buffer = {menu = " BUFFER"};
+    calc = {menu = " CALC"};
+    vsnip = {menu = "陼 SNIP"};
+    nvim_lsp = {menu = "滑 LSP"};
+    nvim_lua = {menu = " LUA"};
+    spell = {menu = "韛 SPELL"};
+    treesitter = {menu = "侮 TREESITTER"};
     tags = true;
-    snippets_nvim = true;
   };
 }
 
@@ -45,35 +47,45 @@ function _G.hover()
 end
 
 --
-local rt = function(codes)
-  return vim.api.nvim_replace_termcodes(codes, true, true, true)
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local call = vim.api.nvim_call_function
-
-function _G.tab_complete()
-  if vim.fn.pumvisible() == 1 then
-    return rt("<C-N>")
-  elseif call("vsnip#available", {1}) == 1 then
-    return rt("<Plug>(vsnip-expand-or-jump)")
-  else
-    return rt("<Tab>")
-  end
-end
-
-function _G.s_tab_complete()
-    if vim.fn.pumvisible() == 1 then
-        return rt('<C-P>')
-    elseif call('vsnip#jumpable', {-1}) == 1 then
-        return rt('<Plug>(vsnip-jump-prev)')
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
     else
-        return rt('<S-Tab>')
+        return false
     end
 end
 
-map("i", "<Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
-map("s", "<Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  --[[ elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)" ]]
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  --[[ elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)" ]]
+  else
+    return t "<S-Tab>"
+  end
+end
 
-map("i", "<S-Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
-map("s", "<S-Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 

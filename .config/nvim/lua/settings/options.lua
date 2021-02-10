@@ -63,7 +63,7 @@ apply_options(
     laststatus = 2, -- always enable statusline
     pumheight = 20, -- limit completion items
     re = 1, -- set regexp engine to auto
-    scrolloff = 8, -- make scrolling better
+    scrolloff = 2, -- make scrolling better
     sidescroll = 2, -- make scrolling better
     sidescrolloff = 15, -- make scrolling better
     synmaxcol = 500, -- set limit for syntax highlighting in a single line

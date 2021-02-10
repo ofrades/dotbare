@@ -21,15 +21,24 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
 
       -- LSP
-      use "nvim-telescope/telescope.nvim"
-      use "nvim-telescope/telescope-fzy-native.nvim"
-      use "nvim-lua/popup.nvim"
-      use "nvim-lua/plenary.nvim"
       use "neovim/nvim-lspconfig"
       use "hrsh7th/nvim-compe"
+      -- use {"tzachar/compe-tabnine", run = "./install.sh"}
       use "glepnir/lspsaga.nvim"
+      use "glepnir/indent-guides.nvim"
       use "anott03/nvim-lspinstall"
+      use "liuchengxu/vista.vim"
 
+      -- Telescope
+      use {
+          'nvim-telescope/telescope.nvim',
+          requires = {
+              {'nvim-lua/popup.nvim'},
+              {'nvim-lua/plenary.nvim'},
+              {'nvim-telescope/telescope-symbols.nvim'},
+              {'nvim-telescope/telescope-fzy-native.nvim'}
+          }
+      }
       -- Git
       use "tpope/vim-fugitive"
       use "stsewd/fzf-checkout.vim"
@@ -39,6 +48,7 @@ return require("packer").startup(
       use "f-person/git-blame.nvim"
 
       -- Misk
+      use "phaazon/hop.nvim"
       use "kosayoda/nvim-lightbulb"
       use "b3nj5m1n/kommentary" -- comments like gcc
       use "tweekmonster/startuptime.vim" -- benchmark startup
@@ -73,6 +83,9 @@ return require("packer").startup(
       use "hrsh7th/vim-vsnip"
       use "hrsh7th/vim-vsnip-integ"
       use "dsznajder/vscode-es7-javascript-react-snippets"
+      --[[ use "xabikos/vscode-javascript"
+      use "burkeholland/simple-react-snippets"
+      use "mlaursen/vim-react-snippets" ]]
 
       -- Themes
       use "sheerun/vim-polyglot"

@@ -1885,6 +1885,10 @@ highlight Sneak guibg=teal guifg=white
 highlight SneakScope guibg=teal guifg=white
 highlight SneakLabel guibg=teal guifg=white
 
+highlight default HopNextKey guifg=#4CA585 gui=bold blend=0
+highlight default HopNextKey1 guifg=#60C1D2 gui=bold blend=0
+highlight default HopNextKey2 guifg=#888888 blend=0
+
 " Nvim LSP
 " > neovim/nvim-lsp
 call s:HL("LSPDiagnosticsWarning", s:palette.yellow, s:palette.none)

@@ -1,7 +1,10 @@
 local map = require "settings.utils".map
+local sign_define = vim.fn.sign_define
+local lsp = vim.lsp
 
+-- Completion
 require "lsp.compe"
--- require "lsp.js"
+
 require "lsp.ts"
 require "lsp.html"
 require "lsp.css"
@@ -9,10 +12,11 @@ require "lsp.json"
 require "lsp.lua"
 require "lsp.elixir"
 require "lsp.bash"
--- require "lsp.efm"
+require "lsp.efm"
+require "lsp.vue"
 -- require "lsp.dap"
+-- require "lsp.diagnosticsls"
 require "lsp.saga"
-require "lsp.diagnostics"
 
 FormatRange = function()
   local start_pos = vim.api.nvim_buf_get_mark(0, "<")
@@ -20,7 +24,7 @@ FormatRange = function()
   vim.lsp.buf.range_formatting({}, start_pos, end_pos)
 end
 
-vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
   if err ~= nil or result == nil then
     return
   end
@@ -42,5 +46,48 @@ vim.cmd([[
   command! LSPFormat  execute 'lua vim.lsp.buf.formatting()'
 ]])
 
+lsp.handlers["textDocument/publishDiagnostics"] =
+  lsp.with(
+  lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    virtual_text = {
+      space = 4,
+      prefix = " "
+    },
+    signs = true,
+    update_in_insert = false
+  }
+)
 
+sign_define(
+  "LspDiagnosticsSignError",
+  {
+    text = " ",
+    texthl = "LspDiagnosticsError"
+  }
+)
 
+sign_define(
+  "LspDiagnosticsSignWarning",
+  {
+    text = " ",
+    texthl = "LspDiagnosticsWarning"
+  }
+)
+
+sign_define(
+  "LspDiagnosticsSignInformation",
+  {
+    text = " ",
+    texthl = "LspDiagnosticsInformation"
+  }
+)
+
+sign_define(
+  "LspDiagnosticsSignHint",
+  {
+    text = " ",
+    texthl = "LspDiagnosticsHint"
+  }
+)

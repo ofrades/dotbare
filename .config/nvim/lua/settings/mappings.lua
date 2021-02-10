@@ -13,34 +13,50 @@ g.mapleader = " "
 -- Lsp
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-map('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
--- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
--- map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
--- Sandwich
--- map('n', '<leader>sa', '<Plug>(operator-sandwich-add)<CR>', {})
--- map('n', '<leader>sd', '<Plug>(operator-sandwich-delete)<CR>', {})
--- map('n', '<leader>sr', '<Plug>(operator-sandwich-replace)<CR>', {})
 
 -- Saga
 map("n", "gh", ":Lspsaga hover_doc<CR>", {})
 map("n", "gr", ":Lspsaga lsp_finder<CR>", {})
 map("n", "ga", ":Lspsaga code_action<CR>", {})
 map("n", "gs", ":Lspsaga signature_help<CR>", {})
-map("n", "gR", ":Lspsaga rename<CR>", {})
+map("n", "<leader>r", ":Lspsaga rename<CR>", {})
 map("n", "gp", ":Lspsaga preview_definition<CR>", {})
-map("n", "gi", ":Lspsaga show_line_diagnostics<CR>",{})
-map("n", "[", ":Lspsaga lsp_jump_diagnostic_next<CR>",{})
-map("n", "]", ":Lspsaga lsp_jump_diagnostic_prev<CR>",{})
+map("n", "<leader>d", ":Lspsaga show_line_diagnostics<CR>",{})
+map("n", "[", ":Lspsaga diagnostic_jump_prev<CR>",{})
+map("n", "]", ":Lspsaga diagnostic_jump_next<CR>",{})
+
+-- Hop
+map("n", "f", ":HopWord<CR>", {})
+
+-- Vista
+map("n", "<leader>v", ":Vista<CR>", {})
+
+-- Telescope
+map("n", "<leader>cd", "<cmd>lua show_diagnostic()<CR>", {})
+map("n", "<C-p>", "<CMD>lua TelescopeOpenPrewiev('oldfiles')<CR>")
+map("n", "<leader>p", "<CMD>lua TelescopeOpenPrewiev('find_files')<CR>")
+map("n", "<C-f>", "<CMD>lua TelescopeOpenPrewiev('live_grep')<CR>")
+map("n", "<leader>bb", "<CMD>lua TelescopeOpen('buffers')<CR>")
+map("n", "<leader>bt", "<CMD>lua TelescopeOpenPrewiev('current_buffer_tags')<CR>")
+map("n", "<C-c>", "<CMD>lua TelescopeOpen('commands')<CR>")
+map("n", "<leader>ll", "<CMD>lua TelescopeOpen('builtin')<CR>")
+map("n", "<leader>lr", "<CMD>lua TelescopeOpenPrewiev('lsp_references')<CR>")
+map("n", "<leader>ls", "<CMD>lua TelescopeOpenPrewiev('symbols')<CR>")
+map("n", "<leader>gf", "<CMD>lua TelescopeOpenPrewiev('git_files')<CR>")
+map("n", "<leader>gcc", "<CMD>lua TelescopeOpenPrewiev('git_commits')<CR>")
+map("n", "<leader>gcb", "<CMD>lua TelescopeOpenPrewiev('git_bcommits')<CR>")
+map("n", "<leader>gs", "<CMD>lua TelescopeOpenPrewiev('git_status')<CR>")
+map("n", "<leader>gb", "<CMD>lua TelescopeOpenPrewiev('git_branches')<CR>")
+map("n", "<leader>lsd", "<CMD>lua TelescopeOpenPrewiev('lsp_document_symbols')<CR>")
+map("n", "<leader>lsw", "<CMD>lua TelescopeOpenPrewiev('lsp_workspace_symbols')<CR>")
+map("n", "<leader>lca", "<CMD>lua TelescopeOpenPrewiev('lsp_code_actions')<CR>")
+map("n", "<leader>cw", "<CMD>lua TelescopeOpenPrewiev('spell_suggest')<CR>")
+map("n", "<leader>cm", "<CMD>lua TelescopeOpenPrewiev('keymaps')<CR>")
+map("n", "<leader>cr", "<CMD>lua TelescopeOpenPrewiev('reloader')<CR>")
+map("n", "<leader>cv", "<CMD>lua TelescopeOpenPrewiev('vim_options')<CR>")
+
+-- Registers
+map("n", "\"", "<CMD>lua TelescopeOpenPrewiev('registers')<CR>")
 
 -- Move lines
 map("n", "<A-k>", ":<C-u>move-2<CR>==",{})
@@ -60,6 +76,9 @@ map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
 map("n", ">", ">>", {})
 map("v", ">", ">gv", {})
+
+-- Yank till the end of line
+map("n", "Y", "y$")
 
 -- Terminal
 map("n", "<leader><leader>", ":FloatermNew ranger<cr>", {})

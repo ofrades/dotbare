@@ -7,9 +7,10 @@ cmd "filetype plugin indent on"
 -- cmd('')
 -- cmd('let g:vsnip_filetypes = {}')
 -- cmd('let g:vsnip_filetypes.javascriptreact = ["javascript"]')
-
+vim.cmd('set completeopt=menu,menuone,noselect')
 apply_globals(
   {
+    qs_highlight_on_keys = {"f", "F"},
     python_host_prog = "/usr/bin/python",
     python3_host_prog = "/usr/bin/python3",
     gitblame_enabled = 0,

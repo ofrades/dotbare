@@ -2,41 +2,7 @@ local cmd = vim.cmd
 local fn = vim.fn
 local gl = require("galaxyline")
 local section = gl.section
-gl.short_line_list = {"LuaTree", "packager", "Floaterm", "coc-eplorer"}
-
-local teppz = {
-  bg = "#5f5151",
-  fg = "#81a1c1",
-  line_bg = "#2B2D35",
-  fg_green = "#497C6C",
-  yellow = "#d9bb80",
-  cyan = "#60C1D2",
-  darkblue = "#6173D1",
-  green = "#4CA585",
-  orange = "#D88E78",
-  purple = "##d3a0bc",
-  magenta = "#d16d9e",
-  gray = "#c0c0c0",
-  blue = "#609AD2",
-  red = "#CF7357"
-}
-
-local nord = {
-  bg = "#2E3440",
-  fg = "#81A1C1",
-  line_bg = "#2E3440",
-  fg_green = "#8FBCBB",
-  yellow = "#EBCB8B",
-  cyan = "#A3BE8C",
-  darkblue = "#81A1C1",
-  green = "#8FBCBB",
-  orange = "#D08770",
-  purple = "#B48EAD",
-  magenta = "#BF616A",
-  gray = "#616E88",
-  blue = "#5E81AC",
-  red = "#BF616A"
-}
+gl.short_line_list = {"NvimTree", "packager", "vista", "Floaterm", "startify"}
 
 local palette = {
   bg = "#114141",
@@ -126,7 +92,7 @@ section.left[4] = {
 section.right[1] = {
   GitIcon = {
     provider = function()
-      return " "
+      return " "
     end,
     condition = require("galaxyline.provider_vcs").check_git_workspace,
     highlight = {palette.orange, palette.line_bg}
@@ -154,7 +120,7 @@ section.right[3] = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = checkwidth,
-    icon = " ",
+    icon = " ",
     highlight = {palette.green, palette.line_bg}
   }
 }
@@ -162,7 +128,7 @@ section.right[4] = {
   DiffModified = {
     provider = "DiffModified",
     condition = checkwidth,
-    icon = "柳",
+    icon = " ",
     highlight = {palette.yellow, palette.line_bg}
   }
 }
@@ -170,7 +136,7 @@ section.right[5] = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = checkwidth,
-    icon = " ",
+    icon = " ",
     highlight = {palette.red, palette.line_bg}
   }
 }
@@ -265,6 +231,13 @@ section.short_line_right[1] = {
   }
 }
 
+section.short_line_right[2] = {
+  VistaPlugin = {
+    provider = 'VistaPlugin',
+    separator = ' = ',
+    highlight = {palette.fg,palette.bg}
+  }
+}
 
 
 

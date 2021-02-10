@@ -5,7 +5,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
---     require'completion'.on_attach(client)
     print("'" .. client.name .. "' server attached")
 end
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
