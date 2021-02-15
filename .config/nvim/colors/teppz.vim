@@ -1901,4 +1901,12 @@ call s:HL("LspDiagnosticsUnderlineWarning" , s:palette.yellow, s:palette.none, '
 call s:HL("LspDiagnosticsUnderlineInformation" , s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
 call s:HL("LspDiagnosticsUnderlineHint" , s:palette.green, s:palette.none, 'undercurl', s:palette.green)
 
+"" no spell marks
+" highlight clear SpellBad
+highlight SpellBad NONE
+highlight SpellCap NONE
+highlight SpellRare NONE
+highlight SpellLocal NONE
+
+
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:

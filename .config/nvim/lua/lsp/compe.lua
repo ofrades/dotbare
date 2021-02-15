@@ -2,6 +2,9 @@ vim.cmd [[packadd nvim-compe]]
 vim.cmd [[packadd vim-vsnip]]
 vim.cmd [[packadd vim-vsnip-integ]]
 local map = require "settings.utils".map
+local protocol = require "vim.lsp.protocol"
+-- vim.cmd "au BufEnter *.jsx set filetype=javascript"
+vim.o.completeopt = "menuone,noselect"
 
 -- vim.cmd "au BufEnter *.jsx set filetype=javascript"
 
@@ -19,15 +22,50 @@ require'compe'.setup {
   max_menu_width = 100;
 
   source = {
-    path = {menu = " PATH"};
-    buffer = {menu = " BUFFER"};
-    calc = {menu = " CALC"};
-    vsnip = {menu = "陼 SNIP"};
-    nvim_lsp = {menu = "滑 LSP"};
-    nvim_lua = {menu = " LUA"};
-    spell = {menu = "韛 SPELL"};
-    treesitter = {menu = "侮 TREESITTER"};
-    tags = true;
+    path = {
+      menu = " PATH",
+      priority = 9;
+    };
+    buffer = {
+      menu = " BUFFER",
+      priority = 8
+    };
+    calc = {
+      menu = " CALC",
+      priority = 4
+    };
+    vsnip = {
+      menu = "陼 SNIP",
+      priority = 7
+    };
+    nvim_lsp = {
+      menu = "滑 LSP",
+      priority = 9
+    };
+    nvim_lua = {
+      menu = " LUA",
+      priority = 9
+    };
+    tabnine = {
+      menu = " TABNINE",
+      priority = 1
+    };
+    spell = {
+      menu = "韛 SPELL",
+      priority = 0
+    };
+    treesitter = {
+      menu = "侮 TREESITTER",
+      priority = 2
+    };
+    tags = {
+      menu = " TAGS",
+      priority = 3
+    };
+    omni = {
+      menu = " OMNI",
+      priority = 3
+    };
   };
 }
 
@@ -66,26 +104,59 @@ end
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
-  --[[ elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)" ]]
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
   elseif check_back_space() then
     return t "<Tab>"
   else
-    return vim.fn['compe#complete']()
+    return vim.fn["compe#complete"]()
   end
 end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
-  --[[ elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)" ]]
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
   else
     return t "<S-Tab>"
   end
 end
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 
+map("i", "<Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+map("s", "<Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+
+map("i", "<S-Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+map("s", "<S-Tab>", "v:lua.tab_complete()", {noremap = false, expr = true})
+
+map("i", "C-u", "compe#scroll({ 'delta': +4 })", {noremap = false, expr = true})
+map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = false, expr = true})
+
+protocol.CompletionItemKind = {
+  "ﮜ [text]",
+  " [method]",
+  " [function]",
+  " [constructor]",
+  "ﰠ [field]",
+  " [variable]",
+  " [class]",
+  " [interface]",
+  " [module]",
+  " [property]",
+  " [unit]",
+  " [value]",
+  " [enum]",
+  " [key]",
+  " [snippet]",
+  " [color]",
+  " [file]",
+  " [reference]",
+  " [folder]",
+  " [enum member]",
+  " [constant]",
+  " [struct]",
+  "⌘ [event]",
+  " [operator]",
+  "⌂ [type]"
+}

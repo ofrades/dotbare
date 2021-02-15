@@ -9,15 +9,21 @@ local eslint_d = {
 }
 
 lspconfig.efm.setup {
-  root_dir = function(fname)
-    return util.root_pattern("tsconfig.json")(fname) or
-    util.root_pattern(".eslintrc","package.json", ".git")(fname);
-  end,
+  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+  init_options = {
+    documentFormatting = true,
+    codeAction = true
+  },
   filetypes = {
-      "javascript",
-      "typescript",
-      "typescriptreact",
-      "javascriptreact",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "vue",
+    "lua",
+    "elixir",
+    "css",
+    "html"
     },
   init_options = {
     documentFormatting = true,

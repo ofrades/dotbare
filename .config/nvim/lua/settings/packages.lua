@@ -23,11 +23,12 @@ return require("packer").startup(
       -- LSP
       use "neovim/nvim-lspconfig"
       use "hrsh7th/nvim-compe"
-      -- use {"tzachar/compe-tabnine", run = "./install.sh"}
+      use {"tzachar/compe-tabnine", run = "./install.sh"}
       use "glepnir/lspsaga.nvim"
       use "glepnir/indent-guides.nvim"
       use "anott03/nvim-lspinstall"
       use "liuchengxu/vista.vim"
+      use "tsuyoshicho/vim-efm-langserver-settings" -- auto config efm lsp
 
       -- Telescope
       use {
@@ -83,6 +84,7 @@ return require("packer").startup(
       use "hrsh7th/vim-vsnip"
       use "hrsh7th/vim-vsnip-integ"
       use "dsznajder/vscode-es7-javascript-react-snippets"
+      use "sdras/vue-vscode-snippets"
       --[[ use "xabikos/vscode-javascript"
       use "burkeholland/simple-react-snippets"
       use "mlaursen/vim-react-snippets" ]]

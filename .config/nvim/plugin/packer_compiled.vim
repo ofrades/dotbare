@@ -23,17 +23,22 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
 end
 
 local function try_loadstring(s, component, name)
-  local success, err = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s))
   if not success then
     print('Error running ' .. component .. ' for ' .. name)
-    error(err)
+    error(result)
   end
+  return result
 end
 
 _G.packer_plugins = {
   ["codi.vim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/codi.vim"
+  },
+  ["compe-tabnine"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/compe-tabnine"
   },
   ["conflict-marker.vim"] = {
     loaded = true,
@@ -121,6 +126,7 @@ _G.packer_plugins = {
   },
   ["packer.nvim"] = {
     loaded = false,
+    needs_bufread = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
@@ -151,6 +157,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
   },
+  ["telescope-symbols.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-symbols.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope.nvim"
@@ -162,6 +172,10 @@ _G.packer_plugins = {
   ["vim-closetag"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-closetag"
+  },
+  ["vim-efm-langserver-settings"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-efm-langserver-settings"
   },
   ["vim-floaterm"] = {
     loaded = true,
@@ -242,6 +256,10 @@ _G.packer_plugins = {
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vscode-es7-javascript-react-snippets"
+  },
+  ["vue-vscode-snippets"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vue-vscode-snippets"
   }
 }
 

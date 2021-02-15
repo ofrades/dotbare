@@ -36,10 +36,10 @@ apply_options(
     ttyfast = true,
     timeout = true,
     ttimeout = true,
+    spell = true,
     -- String value
     matchpairs = "(:),{:},[:],<:>", -- highlight match pairs
-    completeopt = "menuone,noinsert,noselect,longest", -- better completion
-    complete = vim.o.complete..",k/Users/void/.config/word10k.txt",
+    omnifunc = "v:lua.vim.lsp.omnifunc",
     formatoptions = "1jcroql", -- improve editor formatting
     encoding = "UTF-8", -- set encoding
     fillchars = "vert:│,fold:·,diff:,msgsep:‾,eob:\\ ,foldopen:▾,foldsep:│,foldclose:▸", -- make vertical split sign better
