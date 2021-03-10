@@ -40,6 +40,9 @@ super + t
 super + b
 	chromium
 
+alt + {_,shift + }Tab
+	sh ~/.config/rofi/window_switcher.sh
+
 ##---------- Bspwm ----------##
 
 # Close App

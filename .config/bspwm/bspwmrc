@@ -32,7 +32,7 @@ bspc monitor HDMI-3 -d 3 4
 # polybar main &
 
 bspc config border_width 3
-bspc config window_gap 8
+bspc config window_gap 13
 bspc config split_ratio 0.50
 
 bspc config focused_border_color "$GREEN" 
@@ -69,7 +69,7 @@ bspc rule -a 'nnn' state=floating center=true follow=on focus=on
 # bspc rule -a 'Google Play Music Desktop Player' desktop='^7' follow=on focus=on
 # bspc rule -a Vlc desktop='^8' follow=on focus=on
 
-# bspc rule -a Peek center=true state=floating focus=on follow=on rectangle=1920x1080+0+0
+bspc rule -a Peek center=true state=floating focus=on follow=on rectangle=1920x1080+0+0
 
 # # Special rules
 # bspc rule -a kitty-float state=floating follow=on focus=on center=true rectangle=700x400+0+0
@@ -80,11 +80,13 @@ bspc rule -a 'nnn' state=floating center=true follow=on focus=on
 killall -9 sxhkd dunst
 
 # Lauch notification daemon
-dunst \
--geom "280x50-10+40" -frame_width "1" \
--lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
--nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
--cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &
+# dunst \
+# -geom "280x50-10+40" -frame_width "1" \
+# -lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
+# -nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
+# -cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &
+
+dunst &
 
 # Lauch keybindings daemon
 sxhkd &

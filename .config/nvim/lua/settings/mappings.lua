@@ -115,11 +115,6 @@ map("v", "p", "p`]")
 -- map("n", "<Leader>gb", ":GBranches<CR>", {})
 -- map("n", "<Leader>go", ":GBrowse<CR>", {})
 
--- vim-import-js
-map("n", "<Leader>if", ":ImportJSFix<CR>", {})
-map("n", "<Leader>iw", ":ImportJSWord<CR>", {})
-map("n", "<Leader>ig", ":ImportJSGoto<CR>", {})
-
 -- Terminal
 map("n", "<leader>tt",      "<cmd>FloatermNew --height=0.3 --wintype=normal --position=bottom<CR>", {})
 map("n", "<leader>tv",      "<cmd>FloatermNew --width=0.4 --wintype=normal --position=right<CR>", {})
