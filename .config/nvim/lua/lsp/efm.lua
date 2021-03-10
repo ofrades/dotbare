@@ -19,7 +19,7 @@ lspconfig.efm.setup {
     "typescript",
     "typescriptreact",
     "javascriptreact",
-    "vue",
+    -- "vue",
     "lua",
     "elixir",
     "css",

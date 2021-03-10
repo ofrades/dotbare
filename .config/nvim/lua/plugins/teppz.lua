@@ -9,7 +9,7 @@ local highlights = require "settings.utils".highlights
 cmd "colorscheme teppz"
 cmd "set termguicolors"
 g.teppz_uniform_status_lines = 0
--- g.teppz_uniform_diff_background = 1
+g.teppz_uniform_diff_background = 1
 g.teppz_bold = 1
 g.teppz_italic = 1
 g.teppz_italic_comments = 1

@@ -4,10 +4,6 @@ local apply_globals = require "settings.utils".apply_globals
 
 cmd "filetype plugin indent on"
 
--- cmd('')
--- cmd('let g:vsnip_filetypes = {}')
--- cmd('let g:vsnip_filetypes.javascriptreact = ["javascript"]')
-vim.cmd('set completeopt=menu,menuone,noselect')
 apply_globals(
   {
     qs_highlight_on_keys = {"f", "F"},
@@ -15,42 +11,19 @@ apply_globals(
     python3_host_prog = "/usr/bin/python3",
     gitblame_enabled = 0,
     gitblame_message_template = "     <author> • <summary> • <date>",
-    lengthmatters_highlight_one_column = 1,
-    jsx_ext_required = 1,
-    javascript_plugin_flow = 1,
-    javascript_plugin_jsdoc = 1,
-    tagalong_additional_filetypes = {"javascript"},
-    closetag_filetypes = "html,xhtml,phtml,html.handlebars,javascriptreact,typescriptreact",
+    -- tagalong_additional_filetypes = {"javascript"},
+    --[[ closetag_filetypes = "html,xhtml,phtml,html.handlebars,javascriptreact,typescriptreact",
     closetag_regions = {
       ["typescript.tsx"] = "jsxRegion,tsxRegion",
       ["javascript.jsx"] = "jsxRegion"
-    },
-    -- emmet
-    user_emmet_mode = 'i',
-    user_emmet_leader_key = '<C-a>',
-    user_emmet_expandabbr_key = '<C-a><C-a>',
-    user_emmet_install_global = 0,
-    user_emmet_install_command = 0,
-    bufferline = {
-      animation = false,
-      maximum_padding = 0,
-      icon_separator_active = "",
-      icon_separator_inactive = ""
-    },
+    }, ]]
     Hexokinase_highlighters = {"virtual"},
-    lineletters_settings = {
-      prefix_chars = {"t", "n"}
-    },
-    user_emmet_settings = {
-      javascript = {
-        extends = "jsx"
-      }
-    },
     -- snippets
-    vsnip_filetypes = {},
-    ["vsnip_filetypes.javascriptreact"] = {"javascript"},
-    ["vsnip_filetypes.vue"] = {"vue", "javascript", "typescript"},
-    ["vsnip_filetypes.typescriptreact"] = {"typescript"},
+    --[[ vsnip_filetypes = {},
+    ["vsnip_filetypes.javascriptreact"] = {"javascript","typescript", "html", "css"},
+    ["vsnip_filetypes.javascript"] = {"javascript", "typescript", "html", "css"},
+    ["vsnip_filetypes.vue"] = {"vue", "javascript", "typescript", "css"},
+    ["vsnip_filetypes.typescriptreact"] = {"javascript","typescript", "html", "css"}, ]]
     -- Improve startup
     loaded_gzip              = 1,
     loaded_tar               = 1,

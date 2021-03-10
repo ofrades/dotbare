@@ -17,7 +17,7 @@ vim.g.nvim_tree_tab_open = 0
 vim.g.nvim_tree_show_icons = {git = 0, folders = 1, files = 1}
 
 -- Mappings for nvimtree
-vim.g.nvim_tree_bindings = {
+--[[ vim.g.nvim_tree_bindings = {
   edit = {'<CR>', 'o'},
   edit_vsplit = '<C-v>',
   edit_split = '<C-x>',
@@ -35,13 +35,13 @@ vim.g.nvim_tree_bindings = {
   paste = 'p',
   prev_git_item = '[c',
   next_git_item = ']c'
-}
+} ]]
 
 -- default will show icon by default if no icon is provided
 -- default shows no icon by default
 vim.g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
+  default = "",
+  symlink = "",
 
   git = {
     unstaged = "✗",

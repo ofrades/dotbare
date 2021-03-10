@@ -182,8 +182,6 @@ function _G.is_special_buffer()
   return false
 end
 
-_G.folds_render = require('settings.fold').render
-
 function _G.check_backspace()
   local col = vim.fn.col('.') - 1
   if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then

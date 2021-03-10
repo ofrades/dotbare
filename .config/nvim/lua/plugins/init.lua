@@ -1,3 +1,4 @@
+-- require "plugins.theme"
 require "plugins.teppz"
 require "plugins.devicons"
 require "plugins.floaterm"
@@ -10,3 +11,5 @@ require "plugins.tree"
 require "plugins.tsitter"
 require "nvim-web-devicons".setup()
 require "plugins.telescope"
+-- require "plugins.neuron"
+require "plugins.kommentary"

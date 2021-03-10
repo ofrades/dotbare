@@ -10,21 +10,21 @@ super + {_,shift +}Return
 super + e
 	kitty -e nvim
 
-super + t
+super + r
+	kitty -e ranger
+
+super + p
 	sh ~/.config/bspwm/keyboard.sh
 
 # Rofi App Launcher
 super + d
-	sh ~/.config/bspwm/rofi/bin/launcher
-
-super + x
-	sh ~/.config/bspwm/rofi/bin/powermenu
-
-alt + {_,shift + }Tab
-	sh ~/.config/bspwm/rofi/bin/windows
+	sh ~/.config/rofi/bin/launcher_text
 
 super + n
-	sh ~/.config/bspwm/rofi/bin/network
+	networkmanager_dmenu
+
+super + x
+	sh ~/.config/rofi/bin/powermenu
 
 super + s
 	exec flameshot gui
@@ -32,35 +32,13 @@ super + s
 ##---------- Applications ----------##
 
 super + f
-	pcmanfm
+	nautilus
+
+super + t
+	sh ~/.config/rofi/tmux_session.sh
 
 super + b
 	chromium
-
-##---------- System ----------##
-
-# Take a screenshot
-Print
-	scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
-	
-# Take a screenshot in 5 second
-alt + Print	
-	scrot -d 5 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
-
-# Brighness control
-XF86MonBrightness{Up,Down}
-	backlight{-up,-down}
-	
-# Volume control
-XF86Audio{RaiseVolume,LowerVolume}
-	volume{-up,-down}
-
-XF86AudioMute
-	amixer set Master toggle
-	
-# Music control
-XF86Audio{Next,Prev,Play,Stop}
-	mpc {next,prev,toggle,stop}
 
 ##---------- Bspwm ----------##
 
@@ -101,4 +79,3 @@ super + Escape
 ctrl + alt + {q,r}
 	bspc {quit,wm -r}
 
-##---------- EOF ----------##

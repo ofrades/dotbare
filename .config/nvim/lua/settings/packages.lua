@@ -25,8 +25,7 @@ return require("packer").startup(
       use "hrsh7th/nvim-compe"
       use {"tzachar/compe-tabnine", run = "./install.sh"}
       use "glepnir/lspsaga.nvim"
-      use "glepnir/indent-guides.nvim"
-      use "anott03/nvim-lspinstall"
+      use "alexaandru/nvim-lspupdate"
       use "liuchengxu/vista.vim"
       use "tsuyoshicho/vim-efm-langserver-settings" -- auto config efm lsp
 
@@ -50,31 +49,29 @@ return require("packer").startup(
 
       -- Misk
       use "phaazon/hop.nvim"
-      use "kosayoda/nvim-lightbulb"
       use "b3nj5m1n/kommentary" -- comments like gcc
-      use "tweekmonster/startuptime.vim" -- benchmark startup
       use "oberblastmeister/rooter.nvim" -- root dir switcher
+      use "alvan/vim-closetag"
       use "AndrewRadev/tagalong.vim" -- Auto change html tags
-      use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
+      -- use "windwp/nvim-ts-autotag" -- Auto close xml tags
+      use "kevinhwang91/nvim-bqf" -- better quickfix
       use "mhinz/vim-startify" -- start screen
       use "mbbill/undotree" -- undo tree
       use "machakann/vim-sandwich" -- Change surrounding arks
-      use "alvan/vim-closetag"
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "mhartington/formatter.nvim"
-      use "metakirby5/codi.vim" --Repl
       use "voldikss/vim-floaterm"
-      use "whatyouhide/vim-lengthmatters"
-      use "mattn/emmet-vim"
+      -- use {"mattn/emmet-vim", ft = {'javascriptreact', 'typescriptreact', 'javascript', 'html', 'css', 'jsx', 'tsx', 'vue'} }
       use "mg979/vim-visual-multi"
       use "machakann/vim-highlightedyank"
       use "psliwka/vim-smoothie"
       use "andymass/vim-matchup"
-      use "chaoren/vim-wordmotion"
+      use "chaoren/vim-wordmotion" -- Camel case navigation
+      -- use "oberblastmeister/neuron.nvim"
 
       -- Fzf
-      use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
-      use "junegunn/fzf.vim"
+      -- use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
+      -- use "junegunn/fzf.vim"
 
       -- JavaScript
       use "Galooshi/vim-import-js"
@@ -85,22 +82,29 @@ return require("packer").startup(
       use "hrsh7th/vim-vsnip-integ"
       use "dsznajder/vscode-es7-javascript-react-snippets"
       use "sdras/vue-vscode-snippets"
-      --[[ use "xabikos/vscode-javascript"
+      use "xabikos/vscode-javascript"
       use "burkeholland/simple-react-snippets"
-      use "mlaursen/vim-react-snippets" ]]
+      use "mlaursen/vim-react-snippets"
+      use "abusaidm/html-snippets"
+      use "1tontech/bootstrap4-snippets"
 
       -- Themes
       use "sheerun/vim-polyglot"
       use {'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
       -- UI
+      use 'kyazdani42/nvim-tree.lua'
       use "kyazdani42/nvim-web-devicons"
       use "glepnir/galaxyline.nvim"
-      use 'kyazdani42/nvim-tree.lua'
+      use "kevinhwang91/nvim-hlslens"
+
+      -- Styles
+      -- use "npxbr/gruvbox.nvim"
+      -- use "rktjmp/lush.nvim"
 
       -- Tree-sitter
       use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
-      use 'christianchiarulli/nvcode-color-schemes.vim'
+      -- use 'christianchiarulli/nvcode-color-schemes.vim'
 
       -- Debugging
       -- use {

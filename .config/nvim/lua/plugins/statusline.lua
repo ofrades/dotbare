@@ -5,9 +5,8 @@ local section = gl.section
 gl.short_line_list = {"NvimTree", "packager", "vista", "Floaterm", "startify"}
 
 local palette = {
-  bg = "#114141",
+  bg = "#876660",
   fg = "#81a1c1",
-  line_bg = "#114141",
   fg_green = "#497C6C",
   yellow = "#d9bb80",
   cyan = "#60C1D2",
@@ -34,7 +33,7 @@ section.left[1] = {
     provider = function()
       return "  "
     end,
-    highlight = {palette.blue, palette.line_bg}
+    highlight = {palette.blue, palette.bg}
   }
 }
 section.left[2] = {
@@ -66,26 +65,25 @@ section.left[2] = {
       cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
       return "  ofrades  "
     end,
-    highlight = {palette.red, palette.line_bg, "bold"}
+    highlight = {palette.red, palette.bg, "bold"}
   }
 }
 section.left[3] = {
   FileIcon = {
     provider = "FileIcon",
     condition = buffer_not_empty,
-    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, palette.line_bg}
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, palette.bg}
   }
 }
 section.left[4] = {
   FileName = {
-    -- provider = "FileName",
     provider = function()
       return fn.expand("%:F")
     end,
     condition = buffer_not_empty,
     separator = " ",
     separator_highlight = {palette.purple, palette.bg},
-    highlight = {palette.purple, palette.line_bg, "bold"}
+    highlight = {palette.purple, palette.bg, "bold"}
   }
 }
 
@@ -95,7 +93,7 @@ section.right[1] = {
       return " "
     end,
     condition = require("galaxyline.provider_vcs").check_git_workspace,
-    highlight = {palette.orange, palette.line_bg}
+    highlight = {palette.orange, palette.bg}
   }
 }
 section.right[2] = {
@@ -104,7 +102,7 @@ section.right[2] = {
     condition = require("galaxyline.provider_vcs").check_git_workspace,
     separator = "",
     separator_highlight = {palette.purple, palette.bg},
-    highlight = {palette.orange, palette.line_bg, "bold"}
+    highlight = {palette.orange, palette.bg, "bold"}
   }
 }
 
@@ -121,7 +119,7 @@ section.right[3] = {
     provider = "DiffAdd",
     condition = checkwidth,
     icon = " ",
-    highlight = {palette.green, palette.line_bg}
+    highlight = {palette.green, palette.bg}
   }
 }
 section.right[4] = {
@@ -129,7 +127,7 @@ section.right[4] = {
     provider = "DiffModified",
     condition = checkwidth,
     icon = " ",
-    highlight = {palette.yellow, palette.line_bg}
+    highlight = {palette.yellow, palette.bg}
   }
 }
 section.right[5] = {
@@ -137,63 +135,74 @@ section.right[5] = {
     provider = "DiffRemove",
     condition = checkwidth,
     icon = " ",
-    highlight = {palette.red, palette.line_bg}
+    highlight = {palette.red, palette.bg}
   }
 }
 
 section.right[6] = {
+  GetLspClient = {
+    provider = "GetLspClient",
+    separator = " ",
+    icon = " ",
+    separator_highlight = {palette.blue, palette.bg},
+    highlight = {palette.gray, palette.bg}
+  }
+}
+section.right[8] = {
   LineInfo = {
     provider = "LineColumn",
-    separator = "",
-    separator_highlight = {palette.blue, palette.line_bg},
-    highlight = {palette.gray, palette.line_bg}
-  }
-}
--- section.right[7] = {
---   FileSize = {
---     provider = "FileSize",
---     separator = " ",
---     condition = buffer_not_empty,
---     separator_highlight = {palette.blue, palette.line_bg},
---     highlight = {palette.fg, palette.line_bg}
---   }
--- }
-
-section.right[8] = {
-  DiagnosticError = {
-    provider = "DiagnosticError",
+    icon = " ",
     separator = " ",
-    icon = " ",
-    highlight = {palette.red, palette.line_bg},
-    separator_highlight = {palette.bg, palette.bg}
+    separator_highlight = {palette.blue, palette.bg},
+    highlight = {palette.gray, palette.bg}
   }
 }
+
 section.right[9] = {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    -- separator = " ",
-    icon = " ",
-    highlight = {palette.yellow, palette.line_bg},
-    separator_highlight = {palette.bg, palette.bg}
+  FileSize = {
+    provider = "FileSize",
+    separator = " ",
+    condition = buffer_not_empty,
+    separator_highlight = {palette.blue, palette.bg},
+    highlight = {palette.fg, palette.bg}
   }
 }
 
 section.right[10] = {
-  DiagnosticInfo = {
+  DiagnosticError = {
+    provider = "DiagnosticError",
+    separator = " ",
+    icon = " ",
+    highlight = {palette.red, palette.bg},
+    separator_highlight = {palette.bg, palette.bg}
+  }
+}
+section.right[11] = {
+  DiagnosticWarn = {
+    provider = "DiagnosticWarn",
     -- separator = " ",
-    provider = "DiagnosticInfo",
-    icon = " ",
-    highlight = {palette.green, palette.line_bg},
+    icon = " ",
+    highlight = {palette.yellow, palette.bg},
     separator_highlight = {palette.bg, palette.bg}
   }
 }
 
-section.right[11] = {
+section.right[12] = {
+  DiagnosticInfo = {
+    -- separator = " ",
+    provider = "DiagnosticInfo",
+    icon = " ",
+    highlight = {palette.green, palette.bg},
+    separator_highlight = {palette.bg, palette.bg}
+  }
+}
+
+section.right[13] = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     -- separator = " ",
     icon = " ",
-    highlight = {palette.blue, palette.line_bg},
+    highlight = {palette.blue, palette.bg},
     separator_highlight = {palette.bg, palette.bg}
   }
 }

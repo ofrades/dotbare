@@ -32,9 +32,9 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
-  ["codi.vim"] = {
+  ["bootstrap4-snippets"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/codi.vim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/bootstrap4-snippets"
   },
   ["compe-tabnine"] = {
     loaded = true,
@@ -44,25 +44,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/conflict-marker.vim"
   },
-  ["emmet-vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/emmet-vim"
-  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/formatter.nvim"
   },
-  fzf = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf"
-  },
   ["fzf-checkout.vim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf-checkout.vim"
-  },
-  ["fzf.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
@@ -80,9 +68,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/hop.nvim"
   },
-  ["indent-guides.nvim"] = {
+  ["html-snippets"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/indent-guides.nvim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"
   },
   kommentary = {
     loaded = true,
@@ -92,25 +80,25 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
-  ["nvcode-color-schemes.vim"] = {
+  ["nvim-bqf"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-bqf"
   },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
-  ["nvim-lightbulb"] = {
+  ["nvim-hlslens"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-hlslens"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
-  ["nvim-lspinstall"] = {
+  ["nvim-lspupdate"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspupdate"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -119,6 +107,10 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -141,13 +133,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/rooter.nvim"
   },
-  ["splitjoin.vim"] = {
+  ["simple-react-snippets"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/splitjoin.vim"
-  },
-  ["startuptime.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/simple-react-snippets"
   },
   ["tagalong.vim"] = {
     loaded = true,
@@ -201,10 +189,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-import-js"
   },
-  ["vim-lengthmatters"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-lengthmatters"
-  },
   ["vim-matchup"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
@@ -212,6 +196,10 @@ _G.packer_plugins = {
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+  },
+  ["vim-react-snippets"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-react-snippets"
   },
   ["vim-rhubarb"] = {
     loaded = true,
@@ -256,6 +244,10 @@ _G.packer_plugins = {
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vscode-es7-javascript-react-snippets"
+  },
+  ["vscode-javascript"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vscode-javascript"
   },
   ["vue-vscode-snippets"] = {
     loaded = true,

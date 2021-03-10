@@ -1,84 +1,37 @@
 # vi-mode
 set -o vi
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME="archcraft"
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode archlinux fzf git gitignore node npm zsh-syntax-highlighting zsh-autosuggestions dotbare zsh-z z)
+plugins=(
+  vi-mode
+  archlinux
+  fzf
+  git
+  gitignore
+  node
+  npm
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  dotbare
+  zsh-z
+  z
+)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -96,15 +49,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zconf="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# omz
 alias zconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
-alias vconf="nvim ~/.vimrc"
-alias vplug="nvim ~/.config/nvim/plug.vim"
-alias vmaps="nvim ~/.config/nvim/maps.vim"
-alias vcoc="nvim ~/.config/nvim/coc-settings.json"
 
 # vscode
 alias cconf="nvim ~/.config/Code/User/settings.json"
@@ -194,45 +140,15 @@ dir() {
         builtin cd "$dir" &> /dev/null
     done
 }
-  
-# Command history
-his() {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
 
-# c - browse chrome history
-c() {
-  local cols sep google_history open
-  cols=$(( COLUMNS / 3 ))
-  sep='{::}'
-
-  if [ "$(uname)" = "Darwin" ]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-    open=open
-  else
-    google_history="$HOME/.config/google-chrome/Default/History"
-    open=xdg-open
-  fi
-  cp -f "$google_history" /tmp/h
-  sqlite3 -separator $sep /tmp/h \
-    "select substr(title, 1, $cols), url
-     from urls order by last_visit_time desc" |
-  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
-}
-
-unalias z
-z() {
+# Last z directories
+zz() {
   if [[ -z "$*" ]]; then
-    cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
+    cd "$(_z -l 2>&1 | fzf --ansi --multi +s --tac | sed 's/^[0-9,.]* *//')"
   else
     _last_z_args="$@"
     _z "$@"
   fi
-}
-
-zz() {
-  cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q "$_last_z_args")"
 }
 
 # Docker
@@ -300,7 +216,7 @@ gdiff() {
 }
 
 # Git Status
-status() {
+gstatus() {
   is_in_git_repo || return
   selected=$(
   git -c color.status=always status --short |
@@ -313,7 +229,7 @@ status() {
 }
 
 # Git Branch
-branch() {
+gbranch() {
   selected=$(is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
   fzf --ansi --multi --tac --preview-window right:70% \
@@ -336,7 +252,7 @@ log() {
 }
 
 # Git Remote
-remote() {
+gremote() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
   fzf --tac \
@@ -345,7 +261,7 @@ remote() {
 }
 
 # Git Stash
-stash() {
+gstash() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
@@ -391,9 +307,6 @@ ranger () {
     zle reset-prompt
 }
 
-zle -N run_ranger
-bindkey '^f' run_ranger
-
 pac(){
   pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
 }
@@ -403,7 +316,6 @@ keyboard(){
 }
 
 # FZF Defaults
-
 export FZF_DEFAULT_OPTS='
     --border
     --multi
@@ -436,4 +348,4 @@ export PATH=$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH=$(pwd)/git-fuzzy/bin:$PATH
 export PATH="$(yarn global bin):$PATH"
-if [ -e /home/ofrades/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ofrades/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

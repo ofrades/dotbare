@@ -36,9 +36,10 @@ let s:palette = {
       \ 'bg2':        ['#242021',   '237',  'BG2'],
       \ 'bg3':        ['#575B65',   '238',  'BG3'],
       \ 'bg4':        ['#63676F',   '239',  'BG4'],
+      \ 'bg5':        ['#444444',   '240',  'BG5'],
+      \ 'bg_dark':    ['#555555',   '51',   'Dark'],
       \ 'bg_red':     ['#80342b',   '52',   'DarkRed'],
       \ 'bg_green':   ['#497C6C',   '22',   'DarkGreen'],
-      \ 'bg_dark':    ['#4111a1',   '52',   'DarkRed'],
       \ 'bg_blue':    ['#6173D1',   '23',   'DarkBlue'],
       \ 'fg':         ['#e6d6ac',   '223',  'White'],
       \ 'red':        ['#CF7357',   '167',  'Red'],
@@ -72,8 +73,9 @@ let s:palette = {
       \ 'inherited':       ['#cf7357',      '18', 'Inherited'],
       \ 'types':       ['#b6776b',      '19', 'Types'],
       \ 'built':       ['#876660',      '20', 'Built'],
-      \ 'modifier':       ['#5f5151',      '21', 'Modifier'],
+      \ 'modifier':       ['#976660',      '21', 'Modifier'],
       \ }
+"" TODO = not sure about this modifier
 
 call extend(s:palette, s:configuration.palette)
 
@@ -184,7 +186,8 @@ elseif s:configuration.cursor ==# 'purple'
   call s:HL('lCursor', s:palette.bg0, s:palette.purple)
 endif
 call s:HL('CursorColumn', s:palette.none, s:palette.bg2)
-call s:HL('CursorLine', s:palette.none, s:palette.bg2)
+"" override all foreground text when cursor is in the line? = palette.fg
+call s:HL('CursorLine', s:palette.none, s:palette.bg5)
 call s:HL('LineNr', s:palette.bg3, s:palette.none)
 if &relativenumber == 1 && &cursorline == 0
   call s:HL('CursorLineNr', s:palette.green, s:palette.none)
@@ -204,11 +207,11 @@ call s:HL('IncSearch', s:palette.none, s:palette.none, 'reverse')
 call s:HL('Search', s:palette.bg0, s:palette.red)
 call s:HL('MatchParen', s:palette.none, s:palette.none, 'reverse')
 call s:HL('NonText', s:palette.grey, s:palette.none)
-call s:HL('Pmenu', s:palette.fg, s:palette.bg2)
-call s:HL('PmenuSbar', s:palette.none, s:palette.bg2)
-call s:HL('PmenuThumb', s:palette.none, s:palette.grey)
-call s:HL('PmenuSel', s:palette.bg0, s:palette.fg)
-call s:HL('WildMenu', s:palette.bg0, s:palette.fg)
+call s:HL('Pmenu', s:palette.fg, s:palette.bg_dark)
+call s:HL('PmenuSbar', s:palette.none, s:palette.bg_dark)
+call s:HL('PmenuThumb', s:palette.none, s:palette.green)
+call s:HL('PmenuSel', s:palette.bg0, s:palette.green)
+call s:HL('WildMenu', s:palette.bg0, s:palette.green)
 call s:HL('Question', s:palette.yellow, s:palette.none)
 call s:HL('SpellBad', s:palette.red, s:palette.none, 'undercurl', s:palette.red)
 call s:HL('SpellCap', s:palette.yellow, s:palette.none, 'undercurl', s:palette.yellow)
@@ -222,7 +225,7 @@ call s:HL('TabLine', s:palette.fg, s:palette.bg4)
 call s:HL('TabLineFill', s:palette.grey, s:palette.bg1)
 call s:HL('TabLineSel', s:palette.bg0, s:palette.green)
 call s:HL('VertSplit', s:palette.green, s:palette.none)
-call s:HL('Visual', s:palette.none, s:palette.bg_dark)
+call s:HL('Visual', s:palette.fg, s:palette.bg_dark)
 call s:HL('VisualNOS', s:palette.bg0, s:palette.gold, 'underline')
 call s:HL('CursorIM', s:palette.none, s:palette.fg)
 call s:HL('ToolbarLine', s:palette.none, s:palette.grey)
@@ -292,7 +295,7 @@ if s:configuration.disable_italic_comment
   call s:HL('SpecialComment', s:palette.light_grey, s:palette.none)
   call s:HL('Todo', s:palette.purple, s:palette.none)
 else
-  call s:HL('Comment', s:palette.bg3, s:palette.none, 'italic')
+  call s:HL('Comment', s:palette.grey, s:palette.none, 'italic')
   call s:HL('SpecialComment', s:palette.light_grey, s:palette.none, 'italic')
   call s:HL('Todo', s:palette.purple, s:palette.none, 'italic')
 endif
@@ -1907,6 +1910,7 @@ highlight SpellBad NONE
 highlight SpellCap NONE
 highlight SpellRare NONE
 highlight SpellLocal NONE
+highlight LightBulbFloatWin guifg=Yellow guibg=NONE
 
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:

@@ -16,7 +16,7 @@ end
 
 lspconfig.html.setup {
   cmd = {"html-languageserver", "--stdio"},
-  filetypes = {"html", "tsx", "jsx", "javascriptreact", "vue", "hbs", "handlebars", "html.handlebars"},
+  filetypes = {"html", "tsx", "jsx", "javascriptreact", "hbs", "handlebars", "html.handlebars"},
   init_options = {
     configurationSection = {"html", "css", "javascript"},
     embeddedLanguages = {

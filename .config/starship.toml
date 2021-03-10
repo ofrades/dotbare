@@ -2,7 +2,7 @@
 add_newline = true
 
 [character]
-symbol = "✝️ ~>"
+symbol = "+ ~>"
 error_symbol = "🞬 ~"
 vicmd_symbol = "[NORMAL]"
 use_symbol_for_status = true
