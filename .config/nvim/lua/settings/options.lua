@@ -21,7 +21,7 @@ apply_options(
     hlsearch = true, -- highlight matching search
     ignorecase = true, -- case insensitive on search
     lazyredraw = true, -- lazyredraw to make macro faster
-    listchars = true,
+    -- listchars = true,
     list = true, -- display listchars
     number = true, -- enable number
     relativenumber = true, -- enable relativenumber

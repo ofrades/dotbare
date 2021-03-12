@@ -4,6 +4,9 @@ local g = vim.g
 local fn = vim.fn
 local opts = { noremap=true, silent=true }
 
+-- Search nvim config
+map("n", "s.", ":lua TelescopeDotfiles()<CR>")
+
 -- Map <leader> to space
 map("n", "<Space>", "<Nop>")
 map("n", "s", "<Nop>")
@@ -34,23 +37,24 @@ map("n", "f", ":HopWord<CR>", {})
 -- map("n", "<leader>v", ":Vista<CR>", {})
 
 -- Telescope
-map("n", "<leader>t", ":Telescope<CR>")
+map("n", "st", ":Telescope<CR>")
+map("n", "sp", ":Telescope find_files<CR>")
+map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list
+map("n", "so", ":Telescope oldfiles<CR>")
+map("n", "sr", ":Telescope lsp_references<CR>")
+map("n", "sd", ":Telescope lsp_document_diagnostic()<CR>", {})
+map("n", "sp", ":Telescope git_files<CR>")
+map("n", "sl", ":Telescope git_commits<CR>")
+map("n", "sc", ":Telescop git_bcommits<CR>")
+map("n", "ss", ":Telescop git_status<CR>")
+map("n", "sb", ":Telescope git_branches<CR>")
+map("n", "sx", ":Telescop lsp_document_symbols<CR>")
+
 map("n", "<C-p>", "<CMD>lua TelescopeOpenPrewiev('find_files')<CR>")
 map("n", "<C-f>", "<CMD>lua TelescopeOpenPrewiev('live_grep')<CR>")
-map("n", "<leader>p", "<CMD>lua TelescopeOpenPrewiev('oldfiles')<CR>")
-map("n", "<leader>cd", "<cmd>lua show_diagnostic()<CR>", {})
-map("n", "<leader>bb", "<CMD>lua TelescopeOpen('buffers')<CR>")
-map("n", "<leader>bt", "<CMD>lua TelescopeOpenPrewiev('current_buffer_tags')<CR>")
+map("n", "<leader>b", "<CMD>lua TelescopeOpen('buffers')<CR>")
 map("n", "<C-c>", "<CMD>lua TelescopeOpen('commands')<CR>")
-map("n", "<leader>ll", "<CMD>lua TelescopeOpen('builtin')<CR>")
-map("n", "<leader>lr", "<CMD>lua TelescopeOpenPrewiev('lsp_references')<CR>")
 -- map("n", "gs", "<CMD>lua TelescopeOpenPrewiev('symbols')<CR>")
-map("n", "sf", "<CMD>lua TelescopeOpenPrewiev('git_files')<CR>")
-map("n", "sl", "<CMD>lua TelescopeOpenPrewiev('git_commits')<CR>")
-map("n", "sc", "<CMD>lua TelescopeOpenPrewiev('git_bcommits')<CR>")
-map("n", "ss", "<CMD>lua TelescopeOpenPrewiev('git_status')<CR>")
-map("n", "sb", "<CMD>lua TelescopeOpenPrewiev('git_branches')<CR>")
-map("n", "gs", "<CMD>lua TelescopeOpenPrewiev('lsp_document_symbols')<CR>")
 map("n", "<leader>lws", "<CMD>lua TelescopeOpenPrewiev('lsp_workspace_symbols')<CR>")
 map("n", "<leader>c", "<CMD>lua TelescopeOpenPrewiev('keymaps')<CR>")
 map("n", "<leader>v", "<CMD>lua TelescopeOpenPrewiev('vim_options')<CR>")

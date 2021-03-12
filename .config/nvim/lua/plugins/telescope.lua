@@ -94,8 +94,6 @@ function TelescopeDotfiles()
   })
 end
 
-map("n", "<leader>.", ":lua TelescopeDotfiles()<CR>")
-
 function _G.show_diagnostic(opts)
   opts = opts or {}
   vim.lsp.diagnostic.set_loclist({open_loclist = false})

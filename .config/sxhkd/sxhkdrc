@@ -1,61 +1,73 @@
-e#---------- Keybindings for bspwm ----------##
+#---------- Keybindings for bspwm ----------#
 
-# Terminal (termite)
-super + Return
-	kitty
+super + shift + s
+	sh ~/.config/rofi/bin/sxhkd
 
-super + {_,shift +}Return
-{kitty, bspc rule -a \* -o state=floating && kitty}
-
-super + e
-	kitty -e nvim
-
-super + r
-	kitty -e ranger
-
-super + p
-	sh ~/.config/bspwm/keyboard.sh
-
-# Rofi App Launcher
+# App Launcher
 super + d
 	sh ~/.config/rofi/bin/launcher_text
 
-super + n
-	networkmanager_dmenu
-
-super + x
-	sh ~/.config/rofi/bin/powermenu
-
-super + s
-	exec flameshot gui
-
-##---------- Applications ----------##
-
+# Explorer
 super + f
 	nautilus
 
-super + t
-	sh ~/.config/rofi/tmux_session.sh
-
+# Browser
 super + b
 	chromium
 
+# Terminal kitty
+super + Return
+	kitty
+
+# Powermenu
+super + x
+	sh ~/.config/rofi/bin/powermenu
+
+# Network manager
+super + n
+	networkmanager_dmenu
+
+# Neovim
+super + e
+	kitty -e nvim
+
+# Ranger
+super + r
+	kitty -e ranger
+
+# Toggle keyboard language
+super + p
+	sh ~/.config/bspwm/keyboard.sh
+
+# Take screenshot
+super + s
+	exec flameshot gui
+
+# Tmux sessions
+super + t
+	sh ~/.config/rofi/tmux_session.sh
+
+# Switch windows
 alt + {_,shift + }Tab
 	sh ~/.config/rofi/window_switcher.sh
-
-##---------- Bspwm ----------##
 
 # Close App
 super + q
 	bspc node -c
 
-# Fullscreen or Monocle
+# Clipmenu
+alt + v
+    CM_LAUNCHER=rofi clipmenu \
+        -location 1 \
+        -m -3 \
+        -no-show-icons \
+        -theme-str '* \{ font: 10px; \}' \
+        -theme-str 'listview \{ spacing: 0; \}' \
+        -theme-str 'window \{ width: 20em; \}'
+
+# Toggle fullscreen or monocle
 super + m
 	bspc desktop -l next
-	
-# Toggle beetwen floating & tiled
-super + space
-    bspc node -t "~"{floating,tiled}
 
 # Send the window to another edge of the screen
 super + {_,shift + }{h,j,k,l}
@@ -66,11 +78,10 @@ super + {_,shift + }{1-8}
 	bspc {desktop -f,node -d} '^{1-8}'
 
 # Resize tiled windows
-# You can do: super + right mouse click + drag
 super + alt + {h,j,k,l}
 	sh ~/.config/bspwm/bspwm_resize.sh {west,south,north,east} 20
 
-## Move floating windows
+# Move floating windows
 alt + shift + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
@@ -81,4 +92,8 @@ super + Escape
 # Quit/Restart bspwm
 ctrl + alt + {q,r}
 	bspc {quit,wm -r}
+
+# Toggle beetwen floating & tiled
+super + space
+	bspc node -t "~"{floating,tiled}
 
