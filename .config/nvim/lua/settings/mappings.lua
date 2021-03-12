@@ -43,7 +43,7 @@ map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list
 map("n", "so", ":Telescope oldfiles<CR>")
 map("n", "sr", ":Telescope lsp_references<CR>")
 map("n", "sd", ":Telescope lsp_document_diagnostic()<CR>", {})
-map("n", "sp", ":Telescope git_files<CR>")
+map("n", "sP", ":Telescope git_files<CR>")
 map("n", "sl", ":Telescope git_commits<CR>")
 map("n", "sc", ":Telescop git_bcommits<CR>")
 map("n", "ss", ":Telescop git_status<CR>")
@@ -68,8 +68,8 @@ map("n", "\"", "<CMD>lua TelescopeOpenPrewiev('registers')<CR>")
 
 -- Neuron
 map("n", "<C-z>", "<Nop>")
-map("n", "<C-z>n", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>")
-map("n", "<C-z>f", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
+map("n", "zn", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>")
+map("n", "sz", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
 
 -- Move lines
 map("n", "<A-k>", ":<C-u>move-2<CR>==",{})

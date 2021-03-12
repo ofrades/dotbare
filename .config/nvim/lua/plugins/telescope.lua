@@ -3,7 +3,6 @@ vim.cmd [[packadd telescope-fzy-native.nvim]]
 local finders = require "telescope.builtin"
 local actions = require 'telescope.actions'
 local telescope = require "telescope"
-local transform_mod = require("telescope.actions.mt").transform_mod
 
 require("telescope").load_extension("fzy_native")
 
@@ -29,7 +28,7 @@ telescope.setup {
     layout_strategy = "horizontal",
     layout_defaults = {
       horizontal = {
-        mirror = false,
+        mirror = true,
         scroll_speed = 1,
       },
       vertical = {

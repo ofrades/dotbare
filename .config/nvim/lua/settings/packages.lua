@@ -47,6 +47,9 @@ return require("packer").startup(
       use "lewis6991/gitsigns.nvim"
       use "f-person/git-blame.nvim"
 
+      -- Diagnostics
+      -- use "dense-analysis/ale"
+
       -- Misk
       use "phaazon/hop.nvim"
       use "b3nj5m1n/kommentary" -- comments like gcc
@@ -67,7 +70,7 @@ return require("packer").startup(
       use "psliwka/vim-smoothie"
       use "andymass/vim-matchup"
       use "chaoren/vim-wordmotion" -- Camel case navigation
-      -- use "oberblastmeister/neuron.nvim"
+      use "oberblastmeister/neuron.nvim"
 
       -- Fzf
       -- use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher

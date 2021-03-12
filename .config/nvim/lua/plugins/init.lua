@@ -11,5 +11,5 @@ require "plugins.tree"
 require "plugins.tsitter"
 require "nvim-web-devicons".setup()
 require "plugins.telescope"
--- require "plugins.neuron"
+require "plugins.neuron"
 require "plugins.kommentary"
