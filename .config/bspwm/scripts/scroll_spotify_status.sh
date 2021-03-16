@@ -6,5 +6,5 @@ zscroll -l 30 \
         --match-command "playerctl --player=playerctld status" \
         --match-text "Playing" "--scroll 0" \
         --match-text "Paused" "--scroll 0" \
-        --update-check true '/home/ofrades/.config/bspwm/scripts/get_spotify_status.sh' &
+        --update-check true ~/.config/bspwm/scripts/get_spotify_status.sh &
 wait
