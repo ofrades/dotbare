@@ -1,11 +1,11 @@
 #---------- Keybindings for bspwm ----------#
 
 super + shift + s
-	sh ~/.config/rofi/bin/sxhkd
+	sh ~/.config/sxhkd
 
 # App Launcher
 super + d
-	sh ~/.config/polybar/scripts/launcher.sh
+	sh ~/.config/bspwm/scripts/launcher.sh
 # Explorer
 super + f
 	nautilus
@@ -20,11 +20,11 @@ super + Return
 
 # Powermenu
 super + x
-	sh ~/.config/polybar/scripts/powermenu.sh
+	sh ~/.config/bspwm/scripts/powermenu.sh
 
 # Network manager
 super + n
-	sh ~/.config/polybar/scripts/networkmenu.sh
+	sh ~/.config/bspwm/scripts/networkmenu.sh
 
 # Neovim
 super + e
@@ -36,7 +36,7 @@ super + r
 
 # Toggle keyboard language
 super + p
-	sh ~/.config/bspwm/keyboard.sh
+	sh ~/.config/bspwm/keyboard_language_switcher.sh
 
 # Take screenshot
 super + s
@@ -44,11 +44,11 @@ super + s
 
 # Tmux sessions
 super + t
-	sh ~/.config/polybar/scripts/tmux.sh
+	sh ~/.config/bspwm/scripts/tmux.sh
 
 # Switch windows
 alt + {_,shift + }Tab
-	sh ~/.config/polybar/scripts/window_switcher.sh
+	sh ~/.config/bspwm/scripts/window_switcher.sh
 
 # Close App
 super + q
@@ -60,7 +60,7 @@ alt + v
         -location 1 \
         -m -3 \
         -no-show-icons \
-				-theme ~/.config/polybar/scripts/rofi/powermenu.rasi
+				-theme ~/.config/bspwm/scripts/rofi/powermenu.rasi
 
 # Toggle fullscreen or monocle
 super + m
