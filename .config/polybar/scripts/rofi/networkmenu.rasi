@@ -1,14 +1,5 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
-	font:							"Fantasque Sans Mono 10";
+	font:							"OperatorMono 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     drun-display-format:            "{name}";
@@ -22,11 +13,11 @@ configuration {
 
 window {
     transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
+    background-color:               @background;
+    text-color:                     @foreground;
 	border:							0px;
 	border-color:					@ac;
-    border-radius:                  0px;
+    border-radius:                  10px;
 	width:							400px;
     location:                       center;
     x-offset:                       0;
@@ -73,7 +64,7 @@ inputbar {
 }
 
 listview {
-    background-color:               @al;
+    background-color:               @background;
     padding:                        0px;
     columns:                        1;
     lines:                          8;
@@ -84,7 +75,7 @@ listview {
 }
 
 mainbox {
-    background-color:               @al;
+    background-color:               @background;
 	border:							0px;
     border-radius:                  0px;
 	border-color:					@ac;
@@ -94,8 +85,8 @@ mainbox {
 }
 
 element {
-    background-color:               @al;
-    text-color:                     @fg;
+    background-color:               @background;
+    text-color:                     @foreground;
     orientation:                    horizontal;
     border-radius:                  0px;
     padding:                        15px;
@@ -114,9 +105,9 @@ element-text {
 }
 
 element selected {
-    background-color:               @bga;
-    text-color:                     @fg;
+    background-color:               @background-alt;
+    text-color:                     @foreground;
 	border:							0px;
     border-radius:                  0px;
-    border-color:                  	@bg;
+    border-color:                  	@background;
 }

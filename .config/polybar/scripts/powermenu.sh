@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 
-## Author  : Aditya Shakya
-## Mail    : adi1090x@gmail.com
-## Github  : @adi1090x
-## Twitter : @adi1090x
-
-dir="~/.config/polybar/scripts/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/powermenu.rasi"
+rofi_command="rofi -theme ~/.config/polybar/scripts/rofi/powermenu.rasi"
 
 # Options
 shutdown=" Shutdown"
@@ -23,12 +17,12 @@ confirm_exit() {
 		-i\
 		-no-fixed-num-lines\
 		-p "Are You Sure? : "\
-		-theme $dir/confirm.rasi
+		-theme ~/.config/polybar/scripts/rofi/confirm.rasi
 }
 
 # Message
 msg() {
-	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
+	rofi -theme "~/.config/polybar/scripts/rofi/message.rasi" -e "Available Options  -  yes / y / no / n"
 }
 
 # Variable passed to rofi

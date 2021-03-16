@@ -36,6 +36,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/bootstrap4-snippets"
   },
+  ["committia.vim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/committia.vim"
+  },
   ["compe-tabnine"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/compe-tabnine"
@@ -47,10 +51,6 @@ _G.packer_plugins = {
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/formatter.nvim"
-  },
-  ["fzf-checkout.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/fzf-checkout.vim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
@@ -75,6 +75,10 @@ _G.packer_plugins = {
   kommentary = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
@@ -200,10 +204,6 @@ _G.packer_plugins = {
   ["vim-react-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-react-snippets"
-  },
-  ["vim-rhubarb"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
   },
   ["vim-sandwich"] = {
     loaded = true,

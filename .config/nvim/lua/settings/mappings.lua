@@ -22,13 +22,13 @@ map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 map("n", "gh", ":Lspsaga hover_doc<CR>", {})
 map("n", "gr", ":Lspsaga lsp_finder<CR>", {})
 -- map("n", "ga", ":Lspsaga code_action<CR>", {})
-map("n", "ga", "<CMD>lua TelescopeOpenPrewiev('lsp_code_actions')<CR>")
+map("n", "ga", ":Telescope lsp_code_actions<CR>")
 -- map("n", "gs", ":Lspsaga signature_help<CR>", {})
 map("n", "<leader>r", ":Lspsaga rename<CR>", {})
 map("n", "gp", ":Lspsaga preview_definition<CR>", {})
-map("n", "<leader>d", ":Lspsaga show_line_diagnostics<CR>",{})
-map("n", "[", ":Lspsaga diagnostic_jump_prev<CR>",{})
-map("n", "]", ":Lspsaga diagnostic_jump_next<CR>",{})
+map("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",{})
+map("n", "[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",{})
+map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",{})
 
 -- Hop
 map("n", "f", ":HopWord<CR>", {})
@@ -45,26 +45,26 @@ map("n", "sr", ":Telescope lsp_references<CR>")
 map("n", "sd", ":Telescope lsp_document_diagnostic()<CR>", {})
 map("n", "sP", ":Telescope git_files<CR>")
 map("n", "sl", ":Telescope git_commits<CR>")
-map("n", "sc", ":Telescop git_bcommits<CR>")
-map("n", "ss", ":Telescop git_status<CR>")
+map("n", "sc", ":Telescope git_bcommits<CR>")
+map("n", "ss", ":Telescope git_status<CR>")
 map("n", "sb", ":Telescope git_branches<CR>")
-map("n", "sx", ":Telescop lsp_document_symbols<CR>")
+map("n", "sx", ":Telescope lsp_document_symbols<CR>")
 
-map("n", "<C-p>", "<CMD>lua TelescopeOpenPrewiev('find_files')<CR>")
-map("n", "<C-f>", "<CMD>lua TelescopeOpenPrewiev('live_grep')<CR>")
-map("n", "<leader>b", "<CMD>lua TelescopeOpen('buffers')<CR>")
-map("n", "<C-c>", "<CMD>lua TelescopeOpen('commands')<CR>")
+map("n", "<C-p>", ":Telescope find_files<CR>")
+map("n", "<C-f>", ":Telescope live_grep<CR>")
+map("n", "<leader>b", ":Telescope buffers<CR>")
+map("n", "<C-c>", ":Telescope commands<CR>")
 -- map("n", "gs", "<CMD>lua TelescopeOpenPrewiev('symbols')<CR>")
-map("n", "<leader>lws", "<CMD>lua TelescopeOpenPrewiev('lsp_workspace_symbols')<CR>")
-map("n", "<leader>c", "<CMD>lua TelescopeOpenPrewiev('keymaps')<CR>")
-map("n", "<leader>v", "<CMD>lua TelescopeOpenPrewiev('vim_options')<CR>")
+map("n", "<leader>lws", ":Telescope lsp_workspace_symbols<CR>")
+map("n", "<leader>c", ":Telescope keymaps<CR>")
+map("n", "<leader>v", ":Telescope vim_options<CR>")
 
 -- Quick fix list
 map("n", "<leader>n", ":cnext<CR>")
 map("n", "<leader>N", ":cprev<CR>")
 
 -- Registers
-map("n", "\"", "<CMD>lua TelescopeOpenPrewiev('registers')<CR>")
+map("n", "\"", ":Telescope registers<CR>")
 
 -- Neuron
 map("n", "<C-z>", "<Nop>")
@@ -79,7 +79,7 @@ map("v", "<A-j>", ":move'>+<CR>gv=gv", {})
 
 -- Save and exit
 map("n", "<Leader>q", ":q<CR>")
-map("n", "<Leader>s", ":w<CR>")
+map("n", "<Leader>s", ":w!<CR>")
 
 -- Tree
 map("n", "<Leader>e", ":NvimTreeToggle<CR>")

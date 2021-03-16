@@ -1,10 +1,13 @@
 /* colors */
 
+
 * {
-  al:   #00000000;
-  bg:   #1F1F1FFF;
-  bga:  #4CA58533;
-  bar:  #FFFFFFFF;
-  fg:   #FFFFFFFF;
-  ac:   #4CA585FF;
+    background:                     #2B2D35;
+    background-alt:                 #413E4Aff;
+    foreground:                     #F7C7B2ff;
+    border:               			#B38184ff;
+    border-alt:               		#F3B69Eff;
+    selected:               		#B381841a;
+    urgent:                         #DA4453FF;
+ac:   #4CA585FF;
 }

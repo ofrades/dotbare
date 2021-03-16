@@ -5,8 +5,7 @@ super + shift + s
 
 # App Launcher
 super + d
-	sh ~/.config/rofi/bin/launcher_text
-
+	sh ~/.config/polybar/scripts/launcher.sh
 # Explorer
 super + f
 	nautilus
@@ -21,11 +20,11 @@ super + Return
 
 # Powermenu
 super + x
-	sh ~/.config/rofi/bin/powermenu
+	sh ~/.config/polybar/scripts/powermenu.sh
 
 # Network manager
 super + n
-	networkmanager_dmenu
+	sh ~/.config/polybar/scripts/networkmenu.sh
 
 # Neovim
 super + e
@@ -45,11 +44,11 @@ super + s
 
 # Tmux sessions
 super + t
-	sh ~/.config/rofi/tmux_session.sh
+	sh ~/.config/polybar/scripts/tmux.sh
 
 # Switch windows
 alt + {_,shift + }Tab
-	sh ~/.config/rofi/window_switcher.sh
+	sh ~/.config/polybar/scripts/window_switcher.sh
 
 # Close App
 super + q
@@ -61,9 +60,7 @@ alt + v
         -location 1 \
         -m -3 \
         -no-show-icons \
-        -theme-str '* \{ font: 10px; \}' \
-        -theme-str 'listview \{ spacing: 0; \}' \
-        -theme-str 'window \{ width: 20em; \}'
+				-theme ~/.config/polybar/scripts/rofi/powermenu.rasi
 
 # Toggle fullscreen or monocle
 super + m

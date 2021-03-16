@@ -3,9 +3,6 @@ local util,api,cmd,fn,lsp = vim.lsp.util,vim.api,vim.cmd,vim.fn,vim.lsp
 local fnamemodify = fn.fnamemodify
 local U = {}
 
-local function join(...)
-  return table.concat({...}, " ")
-end
 
 -- Key mapping
 function U.map(mode, key, result, opts)
@@ -21,7 +18,6 @@ function U.map(mode, key, result, opts)
   )
   api.nvim_set_keymap(mode, key, result, opts)
 end
-
 
 function U.apply_options(opts)
   for k, v in pairs(opts) do

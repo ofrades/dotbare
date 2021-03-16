@@ -5,6 +5,8 @@ local actions = require 'telescope.actions'
 local telescope = require "telescope"
 
 require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("z")
+require("telescope").load_extension("media_files")
 
 telescope.setup {
   defaults = {
@@ -64,19 +66,16 @@ telescope.setup {
     fzy_native = {
       override_generic_sorter = false,
       override_file_sorter = true
+    },
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = {"png", "webp", "jpg", "jpeg"},
+      find_cmd = "rg" -- find command (defaults to `fd`)
     }
   }
 }
 
-function TelescopeOpen(fn)
-  require "settings.utils".move_cursor_from_tree()
-  finders[fn](require("telescope.themes").get_dropdown({previewer = false}))
-end
-
-function TelescopeOpenPrewiev(fn)
-  require "settings.utils".move_cursor_from_tree()
-  finders[fn](require("telescope.themes").get_dropdown({}))
-end
 
 function _G.fzf_omni()
   if vim.fn.isdirectory(".git") == 1 then
@@ -91,13 +90,5 @@ function TelescopeDotfiles()
     prompt_title = "Dotfiles",
     cwd = "~/.config/nvim/lua/",
   })
-end
-
-function _G.show_diagnostic(opts)
-  opts = opts or {}
-  vim.lsp.diagnostic.set_loclist({open_loclist = false})
-
-  require "settings.utils".move_cursor_from_tree()
-  finders.loclist(require("telescope.themes").get_dropdown({}))
 end
 

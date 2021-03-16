@@ -3,54 +3,26 @@ local g, cmd = vim.g, vim.cmd
 g.ascii = {
  ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
  '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
- '     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     ',
- '      |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |      ',
- ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
- '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
- '     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     ',
- '      |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |      ',
- ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
- '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
- '     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     ',
- '      |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |      ',
- ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
- '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
- '     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     ',
- '      |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |      ',
- ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
- '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
- '     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     ',
- '      |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |      ',
- ' _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ',
- '  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ',
 }
 
 g.startify_custom_header = 'startify#center(g:ascii)'
 
 g.startify_lists = {
    { type ='sessions',                    header = {'          Sessions' }           },
+   { type ='commands',                    header = {'        גּ  Commands' }           },
    { type ='files',                       header = {'          Files'    }           },
    { type ='bookmarks',                   header = {'          Bookmarks'}           },
-   { type ='commands',                    header = {'        גּ  Commands' }           },
  }
 
-   -- { type ='dir',                         header = {'       MRU in '. getcwd() }  },
 g.startify_commands = {
+   { p = {'Telescope Find Files'   , ':Telescope find_files' }},
+   { z = {'Telescope z'            , ':Telescope z list'    }},
+   { t = {'Telescope builtin'      , ':Telescope'      }},
    { h = {'Check Vim health'       , ':checkhealth'    }},
-   { i = {'Install PLugins'        , ':PackerInstall'  }},
+   { i = {'Install Plugins'        , ':PackerInstall'  }},
    { u = {'Update Plugin'          , ':PackerUpdate'   }},
    { c = {'Clean Plugin'           , ':PackerClean'    }},
-   { s = {'Sync Plugin'            , ':PackerSync'     }},
-   { p = {'Perf Start Time'        , ':StartupTime'     }},
    }
-
-g.startify_bookmarks = {
-        {v = '~/.config/nvim/init.lua'},
-        {g = '~/.gitconfig'},
-        {r = '~/.vimrc'},
-        {t = '~/.config/kitty/kitty.conf' },
-        {b = '~/.config/bspwm/bspwmrc' },
-        }
 
 g.startify_session_sort = 1
 g.startify_change_to_dir = 1
@@ -65,12 +37,3 @@ g.startify_files_number = 10
 g.startify_update_oldfiles = 1
 g.startify_change_to_dir = 1
 
-
--- local total_plugins = 0
--- if vim.fn.exists('*dein#get') then
---   local plugins = vim.fn['dein#get']()
---   for _, _ in pairs(plugins) do
---     total_plugins = total_plugins + 1
---   end
--- end
--- g.startify_custom_footer = {'', '    neovim loaded ' .. total_plugins .. ' plugins.', ''}

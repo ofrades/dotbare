@@ -36,16 +36,20 @@ return require("packer").startup(
               {'nvim-lua/popup.nvim'},
               {'nvim-lua/plenary.nvim'},
               {'nvim-telescope/telescope-symbols.nvim'},
-              {'nvim-telescope/telescope-fzy-native.nvim'}
+              {'nvim-telescope/telescope-fzy-native.nvim'},
+              {'nvim-telescope/telescope-z.nvim'},
+              {'nvim-telescope/telescope-media-files.nvim'}
           }
       }
       -- Git
       use "tpope/vim-fugitive"
-      use "stsewd/fzf-checkout.vim"
-      use "tpope/vim-rhubarb"
-      use "rhysd/conflict-marker.vim" -- Highlight conflict markers.[x and ]x, ct for themselves, co for ourselves, cn for none and cb
+      use 'TimUntersberger/neogit'
+      use "rhysd/conflict-marker.vim"
+      use "rhysd/committia.vim"
       use "lewis6991/gitsigns.nvim"
       use "f-person/git-blame.nvim"
+-- -- TODO
+      -- use "kdheepak/lazygit.vim"
 
       -- Diagnostics
       -- use "dense-analysis/ale"

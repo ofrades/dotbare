@@ -3,9 +3,9 @@
 @import "colors.rasi"
 
 * {
-    background-color:       @bg;
-    text-color:             @fg;
-	font:				 	"Fantasque Sans Mono 10";
+    background-color:       @background;
+    text-color:             @foreground;
+	font:				 	"OperatorMono 10";
 }
 
 window {
