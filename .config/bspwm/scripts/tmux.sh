@@ -13,7 +13,7 @@ function tmux_sessions()
     tmux list-session -F '#S'
 }
 
-TMUX_SESSION=$( (echo new; tmux_sessions) | rofi -dmenu -theme ~/.config/bspwm/scripts/rofi/powermenu.rasi -p "Select tmux session")
+TMUX_SESSION=$( (echo new; tmux_sessions) | rofi -dmenu -theme ~/.config/bspwm/scripts/rofi/styles.rasi -p "Select tmux session")
 
 if [[ x"new" = x"${TMUX_SESSION}" ]]; then
     kitty -e tmux new-session &

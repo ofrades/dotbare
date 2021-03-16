@@ -13,5 +13,5 @@ sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 # -modi run,drun,window \
 # -theme $dir/"$theme"
 
-rofi -show window -theme ~/.config/bspwm/scripts/rofi/powermenu.rasi
+rofi -show window -theme ~/.config/bspwm/scripts/rofi/styles.rasi
 

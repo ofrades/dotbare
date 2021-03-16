@@ -2,7 +2,7 @@
 
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme ~/.config/bspwm/scripts/rofi/powermenu.rasi"
+rofi_command="rofi -theme ~/.config/bspwm/scripts/rofi/styles.rasi"
 
 # Options
 shutdown=" Shutdown"
