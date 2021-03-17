@@ -19,7 +19,7 @@ super + Return
 	kitty
 
 # Powermenu
-super + x
+super + p
 	sh ~/.config/bspwm/scripts/powermenu.sh
 
 # Network manager
@@ -35,8 +35,12 @@ super + r
 	kitty -e ranger
 
 # Toggle keyboard language
-super + p
+super + c
 	sh ~/.config/bspwm/scripts/keyboard_language_switcher.sh
+
+# Color Switch
+super + x
+	sh ~/.config/bspwm/scripts/color-switch.sh
 
 # Take screenshot
 super + s
