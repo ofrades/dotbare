@@ -46,7 +46,8 @@ return require("packer").startup(
       use 'TimUntersberger/neogit'
       use "rhysd/conflict-marker.vim"
       use "rhysd/committia.vim"
-      use "lewis6991/gitsigns.nvim"
+      -- use "lewis6991/gitsigns.nvim"
+      use "mhinz/vim-signify"
       use "f-person/git-blame.nvim"
 -- -- TODO
       -- use "kdheepak/lazygit.vim"

@@ -24,7 +24,7 @@ super + x
 
 # Network manager
 super + n
-	sh ~/.config/bspwm/scripts/networkmenu.sh
+	sh ~/.config/bspwm/scripts/network.sh
 
 # Neovim
 super + e

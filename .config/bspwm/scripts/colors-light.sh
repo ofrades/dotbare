@@ -7,7 +7,7 @@ RFILE="$HOME/.config/bspwm/scripts/rofi/colors.rasi"
 # Change colors
 change_color() {
 	# polybar
-	sed -i -e 's/background = #.*/background = #d9bb80/g' $PFILE
+	sed -i -e 's/background = #.*/background = #cccccc/g' $PFILE
 	sed -i -e 's/foreground = #.*/foreground = #2B2D35/g' $PFILE
 	sed -i -e 's/foreground-alt = #.*/foreground-alt = #656565/g' $PFILE
 	sed -i -e "s/module-fg = #.*/module-fg = $MF/g" $PFILE
@@ -21,10 +21,10 @@ change_color() {
 
 	* {
 	  al:   #00000000;
-	  bg:   #FFFFFFFF;
+	  bg:   #cccccc;
 	  bga:  ${AC}33;
 	  bar:  ${MF}FF;
-	  fg:   #2E2E2EFF;
+	  fg:   #2B2D35;
 	  ac:   ${AC}FF;
 	}
 	EOF

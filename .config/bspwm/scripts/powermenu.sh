@@ -22,7 +22,7 @@ confirm_exit() {
 
 # Message
 msg() {
-	rofi -theme "~/.config/bpswm/scripts/rofi/message.rasi" -e "Available Options  -  yes / y / no / n"
+	rofi -theme "~/.config/bspwm/scripts/rofi/message.rasi" -e "Available Options  -  yes / y / no / n"
 }
 
 # Variable passed to rofi

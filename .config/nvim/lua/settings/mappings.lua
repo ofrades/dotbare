@@ -115,8 +115,8 @@ map("v", "y", "y`]")
 map("v", "p", "p`]")
 
 -- Git
--- map("n", "<Leader>gs", ":Gstatus<CR>", {})
--- map("n", "<Leader>gb", ":GBranches<CR>", {})
+map("n", "sd", ":SignifyHunkDiff<CR>", {})
+map("n", "sm", ":Neogit<CR>", {})
 -- map("n", "<Leader>go", ":GBrowse<CR>", {})
 
 -- Terminal

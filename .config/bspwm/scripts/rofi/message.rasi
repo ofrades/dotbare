@@ -3,16 +3,16 @@
 @import "colors.rasi"
 
 * {
-    background-color:       @background;
-    text-color:             @foreground;
+    background-color:       @bg;
+    text-color:             @fg;
 	font:				 	"OperatorMono 10";
 }
 
 window {
     width:      			320px;
     padding:    			25px;
-    border:					1px;
-    border-radius:          0px;
+    border:					0;
+    border-radius:          10px;
     border-color:           @ac;
     location:               center;
     y-offset:               -2em;

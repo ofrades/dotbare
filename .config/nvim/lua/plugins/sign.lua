@@ -1,4 +1,4 @@
-require("gitsigns").setup {
+--[[ require("gitsigns").setup {
   signs = {
     add = {hl = "GitGutterAdd", text = "│",numhl = "GitGutterAdd"},
     change = {hl = "GitGutterChange", text = "│",numhl = "GitGutterChange"},
@@ -31,4 +31,4 @@ require("gitsigns").setup {
       -- local removed = status.removed > 0 and "  " .. status.removed or ""
       -- return status.head .. added .. changed .. removed .. " "
     -- end
-}
+} ]]

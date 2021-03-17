@@ -3,7 +3,7 @@
 
 DIR="$HOME/.config/bspwm/scripts/rofi"
 
-rofi_command="rofi -theme $DIR/launcher.rasi"
+rofi_command="rofi -theme $DIR/styles.rasi"
 
 ## Get info
 IFACE="$(nmcli | grep -i interface | awk '/interface/ {print $2}')"

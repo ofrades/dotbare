@@ -4,7 +4,7 @@ SDIR="$HOME/.config/bspwm/scripts"
 
 # Launch Rofi
 MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
--theme $SDIR/rofi/launcher.rasi \
+-theme $SDIR/rofi/styles.rasi \
 <<< "♥ amber|♥ blue|♥ blue-gray|♥ brown|♥ cyan|♥ deep-orange|\
 ♥ deep-purple|♥ green|♥ gray|♥ indigo|♥ blue-light|♥ green-light|\
 ♥ lime|♥ orange|♥ pink|♥ purple|♥ red|♥ teal|♥ yellow|♥ amber-dark|\
