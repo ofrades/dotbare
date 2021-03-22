@@ -2,7 +2,6 @@
 
 -- Set some variables
 vim.g.nvim_tree_side = 'left'
-vim.g.nvim_tree_width = 30
 vim.g.nvim_tree_ignore = {
   '.git', 'node_modules', 'dist', '.cache'
 }

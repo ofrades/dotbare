@@ -21,10 +21,10 @@ change_color() {
 
 	* {
 	  al:   #00000000;
-	  bg:   #2B2D35;
-	  bga:  ${AC}33;
+		bga:   ${AC};
+	  bg:  #2B2D35;
 	  bar:  ${MF}FF;
-	  fg:   #eeeeee;
+	  fg:   #cccccc;
 	  ac:   ${AC}FF;
 	}
 	EOF

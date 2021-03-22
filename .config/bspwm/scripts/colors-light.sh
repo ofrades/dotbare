@@ -21,8 +21,8 @@ change_color() {
 
 	* {
 	  al:   #00000000;
+		bga:  ${AC};
 	  bg:   #cccccc;
-	  bga:  ${AC}33;
 	  bar:  ${MF}FF;
 	  fg:   #2B2D35;
 	  ac:   ${AC}FF;

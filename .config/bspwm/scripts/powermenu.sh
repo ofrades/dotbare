@@ -17,7 +17,7 @@ confirm_exit() {
 		-i\
 		-no-fixed-num-lines\
 		-p "Are You Sure? : "\
-		-theme ~/.config/bspwm/scripts/rofi/confirm.rasi
+		-theme ~/.config/bspwm/scripts/rofi/message.rasi
 }
 
 # Message

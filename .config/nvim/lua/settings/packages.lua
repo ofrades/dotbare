@@ -26,7 +26,6 @@ return require("packer").startup(
       use {"tzachar/compe-tabnine", run = "./install.sh"}
       use "glepnir/lspsaga.nvim"
       use "alexaandru/nvim-lspupdate"
-      use "liuchengxu/vista.vim"
       use "tsuyoshicho/vim-efm-langserver-settings" -- auto config efm lsp
 
       -- Telescope
@@ -69,7 +68,7 @@ return require("packer").startup(
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "mhartington/formatter.nvim"
       use "voldikss/vim-floaterm"
-      -- use {"mattn/emmet-vim", ft = {'javascriptreact', 'typescriptreact', 'javascript', 'html', 'css', 'jsx', 'tsx', 'vue'} }
+      use "mattn/emmet-vim"
       use "mg979/vim-visual-multi"
       use "machakann/vim-highlightedyank"
       use "psliwka/vim-smoothie"

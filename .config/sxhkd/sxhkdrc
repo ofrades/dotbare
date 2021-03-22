@@ -46,6 +46,9 @@ super + x
 super + s
 	exec flameshot gui
 
+super + shift + s
+	gnome-screenshot
+
 # Tmux sessions
 super + t
 	sh ~/.config/bspwm/scripts/tmux.sh

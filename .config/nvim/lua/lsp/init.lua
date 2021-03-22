@@ -17,6 +17,7 @@ require "lsp.vue"
 -- require "lsp.dap"
 -- require "lsp.diagnosticsls"
 require "lsp.saga"
+require "lsp.emmet"
 
 FormatRange = function()
   local start_pos = vim.api.nvim_buf_get_mark(0, "<")

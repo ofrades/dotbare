@@ -348,4 +348,3 @@ export PATH=$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH=$(pwd)/git-fuzzy/bin:$PATH
 export PATH="$(yarn global bin):$PATH"
-
