@@ -1,12 +1,13 @@
-# Don't print a new line at the start of the prompt
-add_newline = true
+# format = """
+# [┌────── + + +](bold green)
+# [│](bold green) $directory$rust$package
+# [└─ ~>](bold green) """
+
+add_newline = false
 
 [character]
-symbol = "+ ~>"
-error_symbol = "🞬 ~"
-vicmd_symbol = "[NORMAL]"
+success_symbol = "+ ~> (bolds green)"
+error_symbol = "🞬 ~>"
+vicmd_symbol = "[NORMAL](bold green)"
 use_symbol_for_status = true
-
-[package]
-disabled = true
 

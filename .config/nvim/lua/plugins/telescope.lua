@@ -76,7 +76,6 @@ telescope.setup {
   }
 }
 
-
 function _G.fzf_omni()
   if vim.fn.isdirectory(".git") == 1 then
     return "git_files"
@@ -87,8 +86,8 @@ end
 
 function TelescopeDotfiles()
   require("telescope.builtin").find_files({
-    prompt_title = "Dotfiles",
-    cwd = "~/.config/nvim/lua/",
+    prompt_title = "Neovim files",
+    cwd = "~/.config/nvim/",
   })
 end
 

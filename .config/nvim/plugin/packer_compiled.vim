@@ -48,6 +48,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/conflict-marker.vim"
   },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/formatter.nvim"
@@ -60,10 +64,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
   },
-  ["gitsigns.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
-  },
   ["hop.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/hop.nvim"
@@ -72,17 +72,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"
   },
-  kommentary = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
-  },
-  ["lazygit.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
-  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lush.nvim"
+  },
+  neogit = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["neuron.nvim"] = {
     loaded = true,
@@ -104,6 +104,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
   ["nvim-lspupdate"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspupdate"
@@ -116,6 +120,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
@@ -124,6 +136,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -141,17 +157,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/simple-react-snippets"
   },
-  ["tagalong.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/tagalong.vim"
-  },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
   },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+  },
   ["telescope-symbols.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-symbols.nvim"
+  },
+  ["telescope-z.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope-z.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -197,6 +217,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
   },
+  ["vim-moonfly-colors"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors"
+  },
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-polyglot"
@@ -208,6 +232,10 @@ _G.packer_plugins = {
   ["vim-sandwich"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-sandwich"
+  },
+  ["vim-signify"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-signify"
   },
   ["vim-smoothie"] = {
     loaded = true,
@@ -236,10 +264,6 @@ _G.packer_plugins = {
   ["vim-wordmotion"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
-  },
-  ["vista.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vista.vim"
   },
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,

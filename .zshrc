@@ -53,7 +53,7 @@ alias zconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
 
 # vscode
-alias cconf="nvim ~/.config/Code/User/settings.json"
+alias bat='batcat'
 
 # ls
 alias l='ls -lh'
@@ -69,7 +69,7 @@ alias gi='git init'
 alias ga='git add'
 alias gc='git commit -am'
 alias gp='git push'
-alias ct='cat ~/.gitmessage'
+alias ct='bat ~/.gitmessage'
 
 alias e='nvim'
 alias pt='keyboard pt'
@@ -221,7 +221,7 @@ gstatus() {
   selected=$(
   git -c color.status=always status --short |
   fzf -m --ansi --nth 2..,.. \
-    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; bat {-1}) | head -500' |
   cut -c4- | sed 's/.* -> //'
   )
 
@@ -302,13 +302,13 @@ fkill() {
 ranger () {
     echo
     ranger --choosedir=$HOME/.rangerdir < $TTY
-    LASTDIR=`cat $HOME/.rangerdir`
+    LASTDIR=`bat $HOME/.rangerdir`
     cd "$LASTDIR"
     zle reset-prompt
 }
 
 pac(){
-  pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
+  pacman -Slq | fzf --multi --preview 'bat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
 }
 
 keyboard(){
@@ -320,7 +320,7 @@ export FZF_DEFAULT_OPTS='
     --border
     --multi
     --reverse
-    --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
+    --preview "([[ -f {} ]] && (bat --style=numbers --color=always {} || bat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200" 
     --color="hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008"
     --bind "?:toggle-preview"
     --bind "alt-j:preview-down,alt-k:preview-up"
@@ -328,7 +328,6 @@ export FZF_DEFAULT_OPTS='
 
 export FZF_DEFAULT_COMMAND='rg --files'
 
-eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -345,6 +344,10 @@ compinit
 kitty + complete setup zsh | source /dev/stdin
 
 export PATH=$HOME/.local/bin:$PATH
-export STARSHIP_CONFIG=~/.config/starship.toml
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$(pwd)/git-fuzzy/bin:$PATH
 export PATH="$(yarn global bin):$PATH"
+if [ -e /home/ofrades/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ofrades/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+eval "$(starship init zsh)"
+alias config='/usr/bin/git --git-dir=/home/ofrades/.cfg/ --work-tree=/home/ofrades'

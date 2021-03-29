@@ -3,7 +3,6 @@ local util,api,cmd,fn,lsp = vim.lsp.util,vim.api,vim.cmd,vim.fn,vim.lsp
 local fnamemodify = fn.fnamemodify
 local U = {}
 
-
 -- Key mapping
 function U.map(mode, key, result, opts)
   opts =

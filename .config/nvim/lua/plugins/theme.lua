@@ -1,44 +1,39 @@
-
 local lush = require("lush")
 local hsl = lush.hsl
 
--- gruvbox palette
+-- palette
 local colors = {
-  dark0_hard = "#5d2021",
   dark0 = "#282828",
-  dark0_soft = "#32302f",
   dark1 = "#3c3836",
   dark2 = "#504945",
   dark3 = "#665c54",
   dark4 = "#7c6f64",
-  light0_hard = "#f9f5d7",
   light0 = "#fbf1c7",
-  light0_soft = "#f2e5bc",
   light1 = "#ebdbb2",
   light2 = "#d5c4a1",
   light3 = "#bdae93",
   light4 = "#a89984",
-  bright_red = "#fb4934",
-  bright_green = "#b8bb26",
-  bright_yellow = "#fabd2f",
-  bright_blue = "#83a598",
+  bright_red = "#d88e78",
+  bright_green = "#4CA585",
+  bright_yellow = "#d9bb80",
+  bright_blue = "#609AD2",
   bright_purple = "#d3869b",
-  bright_aqua = "#8ec07c",
-  bright_orange = "#fe8019",
-  neutral_red = "#cc241d",
-  neutral_green = "#98971a",
-  neutral_yellow = "#d79921",
-  neutral_blue = "#458588",
+  bright_aqua = "#60C1D2",
+  bright_orange = "#D88E78",
+  neutral_red = "#CF7357",
+  neutral_green = "#4CA585",
+  neutral_yellow = "#d9bb80",
+  neutral_blue = "#609AD2",
   neutral_purple = "#b16286",
-  neutral_aqua = "#689d6a",
-  neutral_orange = "#d65d0e",
-  faded_red = "#9d0006",
-  faded_green = "#79740e",
+  neutral_aqua = "#60C1D2",
+  neutral_orange = "#D88E78",
+  faded_red = "#d88e78",
+  faded_green = "#497C6C",
   faded_yellow = "#b57614",
-  faded_blue = "#076678",
+  faded_blue = "#6173D1",
   faded_purple = "#8f3f71",
   faded_aqua = "#427b58",
-  faded_orange = "#af3a03",
+  faded_orange = "#b6776b",
   gray = "#928374",
 }
 -- options (dark mode by default)
@@ -78,7 +73,7 @@ local settings = {
   invert_selection = true,
   invert_tabline = false,
   italicize_comments = true,
-  italicize_strings = false,
+  italicize_strings = true,
 }
 
 local styles = {
@@ -99,7 +94,7 @@ for k, val in pairs(settings) do
 end
 
 -- set colors_name var
-vim.g.colors_name = "gruvbox"
+vim.g.colors_name = "teppz"
 
 -- handle light/dark contrast settings
 local bg = vim.o.background
@@ -272,9 +267,9 @@ local theme = lush(function()
     VisualNOS {bg = hsl(bg3), gui = invert_selection},
     WarningMsg {fg = hsl(red), gui = styles.bold},
     WildMenu {fg = hsl(blue), bg = hsl(bg2), gui = styles.bold},
-    Constant {fg = hsl(purple)},
+    Constant {fg = hsl(blue)},
     String {unpack(special_string)},
-    Character {fg = hsl(purple)},
+    Character {fg = hsl(blue)},
     Number {Character},
     Boolean {Character},
     Float {Character},
@@ -383,6 +378,8 @@ local theme = lush(function()
     TSURI {Underlined},
     TSVariable {Special},
     TSVariableBuiltin {Special},
+    TSTag {Tag},
+    TSTagDelimiter {Delimiter},
 
     -- netrw
     netrwDir {fg = hsl(aqua)},

@@ -18,6 +18,7 @@ g.startify_commands = {
    { p = {'Telescope Find Files'   , ':Telescope find_files' }},
    { z = {'Telescope z'            , ':Telescope z list'    }},
    { t = {'Telescope builtin'      , ':Telescope'      }},
+   { n = {'Nvim config'            , ':lua TelescopeDotfiles()'      }},
    { h = {'Check Vim health'       , ':checkhealth'    }},
    { i = {'Install Plugins'        , ':PackerInstall'  }},
    { u = {'Update Plugin'          , ':PackerUpdate'   }},

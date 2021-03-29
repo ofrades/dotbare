@@ -6,17 +6,18 @@ local highlights = require "settings.utils".highlights
 -- vim.cmd("colorscheme github-light")
 -- vim.cmd("set background=light")
 
-cmd "colorscheme teppz"
-cmd "set termguicolors"
-g.teppz_uniform_status_lines = 0
-g.teppz_uniform_diff_background = 1
-g.teppz_bold = 1
-g.teppz_italic = 1
-g.teppz_italic_comments = 1
-g.teppz_underline = 1
+--[[ cmd "colorscheme teppz"
+cmd "set termguicolors" ]]
+
+-- g.teppz_uniform_status_lines = 0
+-- g.teppz_uniform_diff_background = 1
+-- g.teppz_bold = 1
+-- g.teppz_italic = 1
+-- g.teppz_italic_comments = 0
+-- g.teppz_underline = 1
 
 
-local teppz = {
+--[[ local teppz = {
   bg = "#1d2a39",
   fg = "#81a1c1",
   line_bg = "#2B2D35",
@@ -104,7 +105,7 @@ highlights(
     LspDiagnosticsUnderlineInformation = { gui='underline' },
     LspDiagnosticsUnderlineHint = { gui='underline' },
   }
-)
+) ]]
 
 -- cmd 'autocmd ColorScheme * hi jsGlobalObjects guifg=#eda48d'
 

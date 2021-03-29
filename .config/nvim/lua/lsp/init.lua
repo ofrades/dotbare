@@ -5,47 +5,57 @@ local lsp = vim.lsp
 -- Completion
 require "lsp.compe"
 
-require "lsp.ts"
-require "lsp.html"
-require "lsp.css"
-require "lsp.json"
-require "lsp.lua"
-require "lsp.elixir"
-require "lsp.bash"
-require "lsp.efm"
-require "lsp.vue"
--- require "lsp.dap"
--- require "lsp.diagnosticsls"
-require "lsp.saga"
-require "lsp.emmet"
+local on_attach = function(client, bufnr)
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-FormatRange = function()
-  local start_pos = vim.api.nvim_buf_get_mark(0, "<")
-  local end_pos = vim.api.nvim_buf_get_mark(0, ">")
-  vim.lsp.buf.range_formatting({}, start_pos, end_pos)
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]], false)
+  end
 end
 
-lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-  if err ~= nil or result == nil then
-    return
-  end
-  if not vim.bo[bufnr].modified then
-    local view = vim.fn.winsaveview()
-    vim.lsp.util.apply_text_edits(result, bufnr)
-    vim.fn.winrestview(view)
-    if bufnr == vim.api.nvim_get_current_buf() then
-      vim.cmd("noautocmd :update")
+-- config that activates keymaps and enables snippet support
+local function make_config()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return {
+    -- enable snippet support
+    capabilities = capabilities,
+    -- map buffer local keybindings when the language server attaches
+    on_attach = on_attach,
+  }
+end
+
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    local config = make_config()
+    if server == "efm" then
+      config = vim.tbl_extend("force", config, require'lsp.efm')
     end
+    require'lspconfig'[server].setup{config}
   end
 end
 
-vim.cmd([[
-  command! -range FormatRange  execute 'lua FormatRange()'
-]])
+setup_servers()
 
-vim.cmd([[
-  command! LSPFormat  execute 'lua vim.lsp.buf.formatting()'
-]])
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
+-- Nice UI
+require "lsp.saga"
 
 lsp.handlers["textDocument/publishDiagnostics"] =
   lsp.with(
@@ -65,7 +75,8 @@ sign_define(
   "LspDiagnosticsSignError",
   {
     text = " ",
-    texthl = "LspDiagnosticsError"
+    texthl = "LspDiagnosticsError",
+    numhl = "LspDiagnosticsError"
   }
 )
 
@@ -73,7 +84,8 @@ sign_define(
   "LspDiagnosticsSignWarning",
   {
     text = " ",
-    texthl = "LspDiagnosticsWarning"
+    texthl = "LspDiagnosticsWarning",
+    numhl = "LspDiagnosticsWarning"
   }
 )
 
@@ -81,7 +93,8 @@ sign_define(
   "LspDiagnosticsSignInformation",
   {
     text = " ",
-    texthl = "LspDiagnosticsInformation"
+    texthl = "LspDiagnosticsInformation",
+    numhl = "LspDiagnosticsInformation"
   }
 )
 
@@ -89,7 +102,8 @@ sign_define(
   "LspDiagnosticsSignHint",
   {
     text = " ",
-    texthl = "LspDiagnosticsHint"
+    texthl = "LspDiagnosticsHint",
+    numhl = "LspDiagnosticsHint"
   }
 )
 
