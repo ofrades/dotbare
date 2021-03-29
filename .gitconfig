@@ -1,0 +1,16 @@
+[pull]
+	rebase = false
+[diff]
+    tool = vimdiff
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[mergetool "vimdiff"]
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool]
+    path = nvim
+[user]
+	name = ofrades
+	email = miguel@ofrades.com
+[credential]
+	helper = store

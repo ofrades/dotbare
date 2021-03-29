@@ -39,9 +39,10 @@ local function setup_servers()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
     local config = make_config()
-    if server == "efm" then
+    --[[ if server == "efm" then
       config = vim.tbl_extend("force", config, require'lsp.efm')
-    end
+      print('Starting efm server...')
+    end ]]
     require'lspconfig'[server].setup{config}
   end
 end
@@ -53,6 +54,8 @@ require'lspinstall'.post_install_hook = function ()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
+-- efm
+require "lsp.efm"
 
 -- Nice UI
 require "lsp.saga"
@@ -76,7 +79,6 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsError",
-    numhl = "LspDiagnosticsError"
   }
 )
 
@@ -85,7 +87,6 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsWarning",
-    numhl = "LspDiagnosticsWarning"
   }
 )
 
@@ -94,7 +95,6 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsInformation",
-    numhl = "LspDiagnosticsInformation"
   }
 )
 
@@ -103,7 +103,6 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsHint",
-    numhl = "LspDiagnosticsHint"
   }
 )
 

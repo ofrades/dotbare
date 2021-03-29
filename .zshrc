@@ -17,7 +17,6 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  vi-mode
   archlinux
   fzf
   git
@@ -27,6 +26,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   dotbare
+  zsh-vi-mode
   zsh-z
   z
 )
