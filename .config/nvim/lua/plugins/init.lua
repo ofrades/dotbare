@@ -8,7 +8,6 @@ require "plugins.tree"
 require "plugins.tsitter"
 require "plugins.telescope"
 require "plugins.neuron"
--- require "plugins.kommentary"
 
 require "nvim-web-devicons".setup()
 

@@ -54,7 +54,7 @@ require'lspinstall'.post_install_hook = function ()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
--- efm
+-- TODO require efm until fix lspinstall efm
 require "lsp.efm"
 
 -- Nice UI
@@ -65,12 +65,9 @@ lsp.handlers["textDocument/publishDiagnostics"] =
   lsp.diagnostic.on_publish_diagnostics,
   {
     underline = true,
-    virtual_text = {
-      space = 4,
-      prefix = " "
-    },
+    virtual_text = true,
     signs = true,
-    update_in_insert = false
+    update_in_insert = true
   }
 )
 
@@ -79,6 +76,8 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsError",
+    numhl = "LspDiagnosticsError",
+    linehl = "LspDiagnosticsError",
   }
 )
 
@@ -87,6 +86,8 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsWarning",
+    numhl = "LspDiagnosticsWarning",
+    linehl = "LspDiagnosticsWarning",
   }
 )
 
@@ -95,6 +96,8 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsInformation",
+    numhl = "LspDiagnosticsInformation",
+    linehl = "LspDiagnosticsInformation",
   }
 )
 
@@ -103,6 +106,8 @@ sign_define(
   {
     text = " ",
     texthl = "LspDiagnosticsHint",
+    numhl = "LspDiagnosticsHint",
+    linehl = "LspDiagnosticsHint",
   }
 )
 

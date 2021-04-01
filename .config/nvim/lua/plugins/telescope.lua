@@ -72,17 +72,11 @@ telescope.setup {
       -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
       filetypes = {"png", "webp", "jpg", "jpeg"},
       find_cmd = "rg" -- find command (defaults to `fd`)
-    }
+    },
+    z = {
+    },
   }
 }
-
-function _G.fzf_omni()
-  if vim.fn.isdirectory(".git") == 1 then
-    return "git_files"
-  else
-    return "find_files"
-  end
-end
 
 function TelescopeDotfiles()
   require("telescope.builtin").find_files({

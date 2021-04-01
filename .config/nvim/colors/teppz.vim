@@ -1895,8 +1895,14 @@ highlight default HopNextKey2 guifg=#888888 blend=0
 " > neovim/nvim-lsp
 call s:HL("LSPDiagnosticsWarning", s:palette.yellow, s:palette.none)
 call s:HL("LSPDiagnosticsError" , s:palette.red, s:palette.none)
+call s:HL("LSPDiagnosticsErrorSign" , s:palette.red, s:palette.none)
+call s:HL("LSPDiagnosticsErrorFloating" , s:palette.red, s:palette.none)
 call s:HL("LSPDiagnosticsInformation" , s:palette.blue, s:palette.none)
+call s:HL("LSPDiagnosticsInformationSign" , s:palette.blue, s:palette.none)
+call s:HL("LSPDiagnosticsInformationFloating" , s:palette.blue, s:palette.none)
 call s:HL("LSPDiagnosticsHint" , s:palette.green, s:palette.none)
+call s:HL("LSPDiagnosticsHintSign" , s:palette.green, s:palette.none)
+call s:HL("LSPDiagnosticsHintFloating" , s:palette.green, s:palette.none)
 
 call s:HL("LspDiagnosticsUnderlineError" , s:palette.red, s:palette.none, 'undercurl', s:palette.red)
 call s:HL("LspDiagnosticsUnderlineWarning" , s:palette.yellow, s:palette.none, 'undercurl', s:palette.yellow)

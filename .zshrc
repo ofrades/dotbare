@@ -50,6 +50,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zconfig="nvim ~/.zshrc"
+alias dots="dotbare fedit"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
 
 # vscode
@@ -183,7 +184,7 @@ function drmi() {
 
 # List Tmux Sessions
 # if args provided(e.g. ft my-session), attach to that session if exists, else will create session my-session
-t() {
+tmuxs() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
