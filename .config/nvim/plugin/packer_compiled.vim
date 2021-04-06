@@ -36,13 +36,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/bootstrap4-snippets"
   },
+  ["colorbuddy.vim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/colorbuddy.vim"
+  },
   ["committia.vim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/committia.vim"
-  },
-  ["compe-tabnine"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/compe-tabnine"
   },
   ["conflict-marker.vim"] = {
     loaded = true,
@@ -72,13 +72,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"
   },
+  kommentary = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
   neogit = {
     loaded = true,
@@ -108,9 +108,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
-  ["nvim-lspupdate"] = {
+  ["nvim-spectre"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspupdate"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-spectre"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -185,10 +185,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-closetag"
   },
-  ["vim-efm-langserver-settings"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-efm-langserver-settings"
-  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-floaterm"
@@ -216,10 +212,6 @@ _G.packer_plugins = {
   ["vim-matchup"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
-  },
-  ["vim-moonfly-colors"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors"
   },
   ["vim-polyglot"] = {
     loaded = true,

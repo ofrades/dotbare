@@ -15,12 +15,12 @@ g.startify_lists = {
  }
 
 g.startify_commands = {
-   { o = {'Telescope Old Files'    , ':Telescope oldfiles'          }},
-   { p = {'Telescope Find Files'   , ':Telescope find_files'         }},
+   { o = {'Recent Files'    , ':Telescope oldfiles'          }},
+   { p = {'Find Files'   , ':Telescope find_files'         }},
    { z = {'Telescope z'            , ':Telescope z list'             }},
    { t = {'Telescope builtin'      , ':Telescope'                    }},
    { g = {'Git'      , ':Neogit'                    }},
-   { n = {'Nvim config'            , ':lua TelescopeDotfiles()'      }},
+   { n = {'Nvim Files'             , ':lua TelescopeDotfiles()'      }},
    { z = {'Notes'                  , ':lua require"neuron/telescope".find_zettels()'      }},
    { Z = {'New Note'               , ':lua require"neuron/cmd".new_edit(require"neuron".config.neuron_dir)'      }},
    { h = {'Check Vim health'       , ':checkhealth'    }},

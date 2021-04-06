@@ -93,7 +93,7 @@ function U.hiLinks(hi_table)
 end
 
 function _G.reload()
-    local modules = {"lsp", "plugins", "settings"}
+    local modules = {"lsp", "ofrades", "settings"}
     for _, moduleName in pairs(modules) do
         for packageName, _ in pairs(package.loaded) do
             if string.find(packageName, "^" .. moduleName) then

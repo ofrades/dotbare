@@ -8,7 +8,7 @@ local prettier = {
       exe = "prettier",
       args = {
         "--stdin-filepath",
-        api.nvim_buf_get_name(0),
+        api.nvim_buf_get_name(0)
       },
       stdin = true
     }
@@ -18,8 +18,11 @@ local prettier = {
 local luafmt = {
   function()
     return {
-      exe = "npx luafmt",
-      args = {"--indent-count", 2, "--stdin"},
+      exe = "luafmt",
+      args = {
+        "--indent-count=2",
+        "--stdin"
+      },
       stdin = true
     }
   end
@@ -43,9 +46,12 @@ require("formatter").setup(
   }
 )
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+  [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.vue FormatWrite
+  autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.vue,*.lua FormatWrite
 augroup END
-]], true)
+]],
+  true
+)

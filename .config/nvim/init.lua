@@ -1,9 +1,5 @@
--- Vanilla Config
+-- ofrades settings
 require "settings"
-
--- Plugins Config
-require "packages"
-require "plugins"
-
--- LSP
+require "ofrades"
 require "lsp"
+require("colorbuddy").colorscheme("ofrades")
