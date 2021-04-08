@@ -12,11 +12,11 @@ global.colors_name = "ofrades"
 ---------------------
 -- TERMINAL COLORS --
 ---------------------
-global.terminal_color_0 = "#555555"
-global.terminal_color_1 = "#cf7357"
-global.terminal_color_2 = "#4CA585"
-global.terminal_color_3 = "#FFCC00"
-global.terminal_color_4 = "#609AD2"
+global.terminal_color_0 = "#2b2d35"
+global.terminal_color_1 = "#d38676"
+global.terminal_color_2 = "#53bd97"
+global.terminal_color_3 = "#fee787"
+global.terminal_color_4 = "#629ed9"
 global.terminal_color_5 = "#B954B8"
 global.terminal_color_6 = "#00D5A7"
 global.terminal_color_7 = "#CED5E5"
@@ -119,7 +119,7 @@ Group.new("DiffChange", c.none, c.blue500)
 Group.new("DiffDelete", c.none, c.red500)
 Group.new("DiffText", c.none, c.dark, r)
 Group.new("StatusLine", c.grey100, c.grey500, no)
-Group.new("StatusLineNC", c.grey100, c.none, no)
+Group.new("StatusLineNC", c.none, c.grey700, no)
 Group.new("WarningMsg", c.red500, c.none, no)
 Group.new("Warnings", c.red300, c.none, r)
 Group.new("WildMenu", c.green400, c.dark, b)
@@ -127,18 +127,18 @@ Group.new("EndOfBuffer", c.none, c.none, no)
 Group.new("ErrorMsg", c.red500, c.none, no)
 Group.new("VertSplit", c.green700, c.none, no)
 Group.new("FoldColumn", c.none, c.none, no)
-Group.new("LineNr", c.grey700, c.none, no)
+Group.new("LineNr", c.grey500, c.none, no)
 Group.new("MatchParen", c.blue200, c.none, b)
 Group.new("ModeMsg", c.blue600, c.none, no)
 Group.new("NonText", c.grey500, c.none, no)
 Group.new("Normal", c.grey100, c.dark, no)
-Group.new("NormalFloat", c.grey100, c.grey400, no)
+Group.new("NormalFloat", c.grey100, c.none, no)
 Group.new("Question", c.blue700, c.none, b)
 Group.new("qfLineNr", g.Type, g.Type, g.Type)
-Group.new("Search", c.dark, c.red300, no)
+Group.new("Search", c.dark, c.red500, no)
 Group.new("SpecialKey", c.red400, c.none, no)
 Group.new("Title", c.grey100, c.none, b)
-Group.new("Visual", c.grey100, c.grey600, no)
+Group.new("Visual", c.none, c.grey700, b)
 Group.new("VisualNOS", c.dark, c.yellow400, g.Visual)
 Group.new("StatusLineTerm", c.dark, c.green500, g.StatusLine)
 Group.new("StatusLineTermNC", g.StatusLineNC, g.StatusLineNC, g.StatusLineNC)
@@ -207,14 +207,14 @@ Group.new("TSField", c.yellow600, c.none, no)
 Group.new("TSParameter", c.red500, c.none, no)
 Group.new("TSVariable", c.yellow500, c.none, no)
 Group.new("TSVariableBuiltin", c.yellow400, c.none, no)
-Group.new("TSPunctDelimiter", c.grey100, c.none, no)
-Group.new("TSPunctBracket", c.grey100, c.none, no)
-Group.new("TSPunctSpecial", c.grey100, c.none, no)
+Group.new("TSPunctDelimiter", c.grey300, c.none, no)
+Group.new("TSPunctBracket", c.grey300, c.none, no)
+Group.new("TSPunctSpecial", c.grey300, c.none, no)
 Group.new("TSOperator", c.grey100, c.none, no)
 Group.new("TSProperty", c.red300, c.none, no)
 
 --------------------------------------------------------------------------
---                        COLOR LANGUAGE SETTINGS                       --
+--                        COLOR SETTINGS                       --
 --------------------------------------------------------------------------
 
 ---------
@@ -255,299 +255,6 @@ Group.new("diffChanged", c.blue500, c.none, no)
 Group.new("diffRemoved", c.red500, c.none, no)
 Group.new("diffLine", c.blue500, c.none, no)
 
---------------
--- MARKDOWN --
---------------
-Group.new("markdownUrl", c.red400, c.none, no)
-Group.new("markdownH1", c.red500, c.none, no)
-Group.new("markdownH2", c.red500, c.none, no)
-Group.new("markdownH3", c.red500, c.none, no)
-Group.new("markdownH3", c.red500, c.none, no)
-Group.new("markdownH4", c.red500, c.none, no)
-Group.new("markdownH5", c.red500, c.none, no)
-Group.new("markdownH6", c.red500, c.none, no)
-Group.new("markdownItalic", c.red300, c.none, b)
-Group.new("markdownBold", c.red300, c.none, b)
-Group.new("markdownListMarker", c.yellow500, c.none, no)
-Group.new("markdownCode", c.green500, c.none, no)
-Group.new("markdownCodeBlock", c.yellow500, c.none, no)
-Group.new("markdownCodeDelimiter", c.green500, c.none, no)
-Group.new("markdownRule", c.grey500, c.none, no)
-Group.new("markdownHeadingRule", c.grey500, c.none, no)
-Group.new("markdownUrlDelimiter", c.grey600, c.none, no)
-Group.new("markdownLinkDelimiter", c.grey600, c.none, no)
-Group.new("markdownLinkTextDelimiter", c.grey600, c.none, no)
-Group.new("markdownHeadingDelimiter", c.red300, c.none, no)
-Group.new("markdownUrlTitleDelimiter", c.green500, c.none, no)
-Group.new("markdownHeadingDelimiter", c.red300, c.none, no)
-Group.new("markdownOrderedListMarker", c.grey500, c.none, no)
-
-----------
--- HTML --
-----------
-Group.new("htmlSpecialTagName", c.red500, c.none, no)
-Group.new("htmlArg", c.red300, c.none, no)
-Group.new("htmlTagName", c.red500, c.none, no)
-Group.new("htmlTagN", c.red500, c.none, no)
-Group.new("htmlEndTag", c.grey600, c.none, no)
-Group.new("htmlTag", c.grey600, c.none, no)
-Group.new("MatchTag", c.red500, c.grey600, ul + b)
-
------------
---  XML  --
------------
-Group.new("xmlTag", c.red500, c.none, no)
-Group.new("xmlEndTag", c.red500, c.none, no)
-Group.new("xmlTagName", c.red500, c.none, no)
-Group.new("xmlAttrib", c.yellow500, c.none, no)
-Group.new("xmlEqual", c.red500, c.none, no)
-Group.new("docbkKeyword", c.blue200, c.none, b)
-Group.new("xmlDocTypeDecl", c.grey500, c.none, no)
-Group.new("xmlDocTypeKeyword", c.red400, c.none, no)
-Group.new("xmlCdataStart", c.grey500, c.none, no)
-Group.new("xmlCdataCdata", c.red400, c.none, no)
-Group.new("xmlProcessingDelim", c.grey500, c.none, no)
-Group.new("xmlAttribPunct", c.grey500, c.none, no)
-Group.new("xmlEntity", c.red300, c.none, no)
-Group.new("xmlEntityPunct", c.red300, c.none, no)
-
----------
--- PUG --
----------
-Group.new("pugDocType", c.grey500, c.none, i)
-Group.new("pugClass", c.red300, c.none, no)
-Group.new("pugTag", c.red500, c.none, no)
-Group.new("pugAttributesDelimiter", c.red300, c.none, no)
-
----------
--- CSS --
----------
-Group.new("cssFontAttr", c.red300, c.none, no)
-Group.new("cssAttrComma", c.red400, c.none, no)
-Group.new("cssIdentifier", c.blue700, c.none, no)
-Group.new("cssImportant", c.red400, c.none, no)
-Group.new("cssInclude", c.grey100, c.none, no)
-Group.new("cssIncludeKeyword", c.red400, c.none, no)
-Group.new("cssMediaType", c.red300, c.none, no)
-Group.new("cssProp", c.blue200, c.none, no)
-Group.new("cssAttributeSelector", c.green500, c.none, no)
-Group.new("cssBraces", c.grey600, c.none, no)
-Group.new("cssClassName", c.red300, c.none, no)
-Group.new("cssClassNameDot", c.red300, c.none, no)
-Group.new("cssDefinition", c.red400, c.none, no)
-Group.new("cssFontDescriptor", c.red400, c.none, no)
-Group.new("cssFunctionName", c.blue700, c.none, no)
-Group.new("cssPseudoClassId", c.red300, c.none, no)
-Group.new("cssSelectorOp", c.red400, c.none, no)
-Group.new("cssSelectorOp2", c.red400, c.none, no)
-Group.new("cssStringQ", c.green500, c.none, no)
-Group.new("cssStringQQ", c.green500, c.none, no)
-Group.new("cssTagName", c.red500, c.none, no)
-Group.new("cssAttr", c.red300, c.none, no)
-
-----------
--- SASS --
-----------
-Group.new("sassId", c.blue700, c.none, no)
-Group.new("sassInclude", c.red400, c.none, no)
-Group.new("sassMedia", c.red400, c.none, no)
-Group.new("sassMediaOperators", c.grey100, c.none, no)
-Group.new("sassMixin", c.red400, c.none, no)
-Group.new("sassMixinName", c.blue700, c.none, no)
-Group.new("sassMixing", c.red400, c.none, no)
-Group.new("sassAmpersand", c.red500, c.none, no)
-Group.new("sassClass", c.yellow500, c.none, no)
-Group.new("sassControl", c.red400, c.none, no)
-Group.new("sassExtend", c.red400, c.none, no)
-Group.new("sassFor", c.grey100, c.none, no)
-Group.new("sassProperty", c.blue200, c.none, no)
-Group.new("sassFunction", c.blue200, c.none, no)
-Group.new("scssSelectorName", c.yellow500, c.none, no)
-
-----------------
--- JAVASCRIPT --
-----------------
-Group.new("jsClassKeyword", g.Keyword, g.Keyword, g.Keyword)
-Group.new("jsExtendsKeyword", g.Keyword, g.Keyword, g.Keyword)
-Group.new("jsGlobalNodeObjects", g.Keyword, g.Keyword, g.Keyword)
-Group.new("jsGlobalObjects", g.Keyword, g.Keyword, g.Keyword)
-Group.new("jsFunction", g.Function, g.Function, g.Function)
-Group.new("jsObjectProp", g.Identifier, g.Identifier, g.Identifier)
-Group.new("jsUndefined", g.ErrorMsg, g.ErrorMsg, g.ErrorMsg)
-Group.new("jsObjectBraces", g.Special, g.Special, g.Special)
-Group.new("javascriptDocTags", c.grey600, c.none, no)
-Group.new("javascriptDocNotation", c.grey600, c.none, no)
-Group.new("javascriptDocParamType", c.grey600, c.none, no)
-Group.new("javascriptDocNamedParamType", c.grey600, c.none, no)
-Group.new("javascriptDocParamName", c.grey600, c.none, no)
-Group.new("javaScriptParens", c.grey300, c.none, no)
-Group.new("jsClassDefinition", c.yellow500, c.none, no)
-Group.new("javascriptArrowFunc", c.yellow500, c.none, no)
-Group.new("javascriptClassName", c.yellow500, c.none, no)
-Group.new("javascriptClassSuperName", c.yellow500, c.none, no)
-Group.new("javascriptGlobal", c.yellow500, c.none, no)
-Group.new("jsFuncArgs", c.blue600, c.none, no)
-Group.new("jsExportDefault", c.blue600, c.none, b)
-Group.new("jsObjectKey", c.blue600, c.none, no)
-Group.new("jsFunctionKey", c.blue600, c.none, no)
-Group.new("javascriptCacheMethod", c.grey100, c.none, no)
-Group.new("javascriptDateMethod", c.grey100, c.none, no)
-Group.new("javascriptMathStaticMethod", c.grey100, c.none, no)
-Group.new("javascriptURLUtilsProp", c.grey100, c.none, no)
-Group.new("jsFuncBraces", c.blue600, c.none, no)
-Group.new("jsClassBlock", c.blue600, c.none, no)
-Group.new("jsFuncArgs", c.blue600, c.none, no)
-Group.new("jsStorageClass", c.blue600, c.none, no)
-Group.new("jsxRegion", c.blue600, c.none, no)
-Group.new("javaScriptMember", c.blue600, c.none, no)
-Group.new("jsObjectValue", c.green500, c.none, no)
-Group.new("javaScriptIdentifier", c.red500, c.none, no)
-Group.new("jsParens", c.red500, c.none, no)
-Group.new("javascriptAsyncFuncKeyword", c.red500, c.none, b)
-Group.new("jsBracket", c.red500, c.none, no)
-Group.new("jsObjectColon", c.red500, c.none, no)
-Group.new("javascriptAwaitFuncKeyword", c.red500, c.none, b)
-Group.new("javascriptOperator", c.red500, c.none, no)
-Group.new("javascriptForOperator", c.red500, c.none, no)
-Group.new("javascriptYield", c.red500, c.none, no)
-Group.new("javascriptExceptions", c.red500, c.none, no)
-Group.new("javascriptMessage", c.red500, c.none, no)
-Group.new("jsFutureKeys", c.red300, c.none, b)
-Group.new("jsFuncParens", c.red300, c.none, no)
-Group.new("javascriptVariable", c.red300, c.none, no)
-Group.new("javascriptHeadersMethod", c.grey100, c.none, no)
-Group.new("javascriptObjectLabel", c.grey100, c.none, no)
-Group.new("javascriptPropertyName", c.grey100, c.none, no)
-Group.new("javascriptLogicSymbols", c.grey100, c.none, no)
-Group.new("jsVariableDef", c.grey100, c.none, no)
-Group.new("javascriptGlobalMethod", c.grey100, c.none, no)
-Group.new("javaScriptBraces", c.grey100, c.none, no)
-Group.new("javascriptNodeGlobal", c.grey100, c.none, no)
-Group.new("javascriptBOMWindowProp", c.grey100, c.none, no)
-Group.new("javascriptArrayMethod", c.grey100, c.none, no)
-Group.new("javascriptArrayStaticMethod", c.grey100, c.none, no)
-Group.new("javascriptIdentifier", c.red300, c.none, no)
-Group.new("javascriptClassSuper", c.red300, c.none, no)
-Group.new("javascriptClassStatic", c.red300, c.none, no)
-Group.new("javaScriptNumber", c.red400, c.none, no)
-Group.new("javaScriptNull", c.red400, c.none, no)
-Group.new("jsNull", c.red400, c.none, no)
-Group.new("javascriptImport", c.blue200, c.none, no)
-Group.new("javascriptTemplateSB", c.blue200, c.none, no)
-Group.new("jsTemplateBraces", c.blue200, c.none, no)
-Group.new("javascriptFuncKeyword", c.blue200, c.none, no)
-Group.new("javascriptEndColons", c.grey100, c.none, no)
-Group.new("javascriptFuncArg", c.grey100, c.none, no)
-Group.new("javascriptLabel", c.grey100, c.none, no)
-Group.new("javascriptBrackets", c.grey100, c.none, no)
-Group.new("javascriptTemplateSubstitution", c.grey100, c.none, no)
-Group.new("javascriptStringMethod", c.grey100, c.none, no)
-Group.new("javascriptBOMWindowMethod", c.grey100, c.none, no)
-Group.new("javascriptAsyncFunc", c.blue200, c.none, no)
-Group.new("javascriptClassKeyword", c.blue200, c.none, no)
-Group.new("javascriptClassExtends", c.blue200, c.none, no)
-Group.new("javascriptDefault", c.blue200, c.none, no)
-Group.new("javaScriptFunction", c.blue200, c.none, no)
-Group.new("javascriptExport", c.blue200, c.none, no)
-Group.new("javascriptDOMElemAttrs", c.grey100, c.none, no)
-Group.new("javascriptDOMEventMethod", c.grey100, c.none, no)
-Group.new("javascriptDOMNodeMethod", c.grey100, c.none, no)
-Group.new("javascriptDOMStorageMethod", c.grey100, c.none, no)
-Group.new("javascriptBOMNavigatorProp", c.grey100, c.none, no)
-Group.new("javascriptDOMDocMethod", c.grey100, c.none, no)
-Group.new("javascriptDOMDocProp", c.grey100, c.none, no)
-Group.new("javascriptBOMLocationMethod", c.grey100, c.none, no)
-
-----------------
--- TYPESCRIPT --
-----------------
-Group.new("typeScriptDocParam", g.Comment, g.Comment, g.Comment)
-Group.new("typeScriptDocTags", g.vimCommentTitle, g.vimCommentTitle, g.vimCommentTitle)
-Group.new("typeScriptGlobalObjects", g.Keyword, g.Keyword, g.Keyword)
-Group.new("typeScriptFuncKeyword", g.Function, g.Function, g.Function)
-Group.new("typeScriptIdentifier", g.Identifier, g.Identifier, g.Identifier)
-Group.new("typeScriptBraces", c.red500, c.none, no)
-Group.new("typeScriptEndColons", c.grey100, c.none, no)
-Group.new("typeScriptDOMObjects", c.grey100, c.none, no)
-Group.new("typeScriptParens", c.blue600, c.none, no)
-Group.new("typeScriptOpSymbols", g.Operator, g.Operator, g.Operator)
-Group.new("typeScriptHtmlElemProperties", g.Special, g.Special, g.Special)
-Group.new("typeScriptNull", c.red400, c.none, b)
-Group.new("typeScriptInterpolationDelimiter", c.blue200, c.none, no)
-Group.new("typeScriptReserved", c.blue200, c.none, no)
-Group.new("typeScriptLabel", g.Label, g.Label, g.Label)
-Group.new("typeScriptAjaxMethods", g.Function, g.Function, g.Function)
-Group.new("typeScriptLogicSymbols", c.grey100, c.none, no)
-Group.new("typeScriptDocSeeTag", g.Comment, g.Comment, g.Comment)
-
-----------
--- JSON --
-----------
-Group.new("jsonKeyword", c.red500, c.none, no)
-Group.new("jsonNumber", c.red300, c.none, no)
-Group.new("jsonStringSQError", c.red500, c.none, r)
-Group.new("jsonNumError", c.red500, c.none, r)
-Group.new("jsonQuote", c.grey600, c.none, no)
-Group.new("jsonTrailingCommaError", c.red500, c.none, r)
-Group.new("jsonMissingCommaError", c.red500, c.none, r)
-Group.new("jsonNoQuotesError", c.red500, c.none, r)
-Group.new("jsonString", c.green500, c.none, no)
-Group.new("jsonBoolean", c.red400, c.none, no)
-Group.new("jsonCommentError", c.grey100, c.none, no)
-Group.new("jsonSemicolonError", c.red500, c.none, r)
-
----------
--- PHP --
----------
-Group.new("phpClass", c.yellow500, c.none, no)
-Group.new("phpFunction", c.blue700, c.none, no)
-Group.new("phpFunctions", c.blue700, c.none, no)
-Group.new("phpInclude", c.red400, c.none, no)
-Group.new("phpKeyword", c.red400, c.none, no)
-Group.new("phpParent", c.grey100, c.none, no)
-Group.new("phpType", c.red400, c.none, no)
-Group.new("phpSuperGlobals", c.red500, c.none, no)
-
-----------
--- RUST --
-----------
-Group.new("rustCommentLineDocError", c.grey500, c.none, no)
-Group.new("rustCommentBlock", c.grey500, c.none, no)
-Group.new("rustDeriveTrait", c.green500, c.none, no)
-Group.new("SpecialComment", c.grey500, c.none, no)
-Group.new("rustCommentLine", c.grey500, c.none, no)
-Group.new("rustCommentBlockDoc", c.grey500, c.none, no)
-Group.new("rustExternCrate", c.red500, c.none, b)
-Group.new("rustIdentifier", c.blue700, c.none, no)
-Group.new("rustCommentLineDoc", c.grey500, c.none, no)
-Group.new("rustCommentBlockDocError", c.grey500, c.none, no)
-
------------
--- C/C++ --
------------
-Group.new("cType", c.blue700, c.none, no)
-Group.new("cStorageClass", c.red400, c.none, no)
-Group.new("cStructure", c.blue200, c.none, no)
-Group.new("cInclude", c.red400, c.none, no)
-Group.new("cppStructure", c.red400, c.none, no)
-Group.new("cppModifier", c.red400, c.none, no)
-Group.new("cppOperator", c.red400, c.none, no)
-Group.new("cppAccess", c.red400, c.none, no)
-Group.new("cppStatement", c.red400, c.none, no)
-Group.new("cppConstant", c.red500, c.none, no)
-Group.new("cTODO", c.red400, c.none, no)
-Group.new("cConstant", c.red300, c.none, no)
-Group.new("cSpecial", c.blue200, c.none, no)
-Group.new("cSpecialCharacter", c.blue200, c.none, no)
-Group.new("cString", c.green500, c.none, no)
-Group.new("cppType", c.red400, c.none, no)
-Group.new("cppStorageClass", c.red400, c.none, no)
-Group.new("cPreCondit", c.red400, c.none, no)
-Group.new("cPreConditMatch", c.red400, c.none, no)
-Group.new("cOperator", c.red400, c.none, no)
-Group.new("cStatement", c.red400, c.none, no)
-Group.new("cCppString", c.green500, c.none, no)
-
 -----------
 -- SPELL --
 -----------
@@ -555,70 +262,6 @@ Group.new("SpellBad", c.red500, c.none)
 Group.new("SpellCap", c.yellow500, c.none)
 Group.new("SpellLocal", c.blue500, c.none)
 Group.new("SpellRare", c.green500, c.none)
-
-------------
--- ELIXIR --
-------------
-Group.new("elixirModuleDeclaration", c.red300, c.none, no)
-Group.new("elixirOperator", c.red300, c.none, no)
-Group.new("elixirModuleDefine", c.red600, c.none, no)
-Group.new("elixirDocString", c.green700, c.none, no)
-Group.new("elixirInclude", c.red500, c.none, no)
-Group.new("elixirAlias", c.yellow500, c.none, no)
-Group.new("elixirAtom", c.blue200, c.none, no)
-Group.new("elixirBlockDefinition", c.red400, c.none, no)
-
----------
--- VIM --
----------
-Group.new("vimSep", c.grey600, c.none, no)
-Group.new("vimCommand", c.red400, c.none, no)
-Group.new("vimCommentTitle", c.grey500, c.none, b)
-Group.new("vimLineComment", c.grey500, c.none, i)
-Group.new("vimParenSep", c.grey600, c.none, no)
-Group.new("vimFunction", c.blue200, c.none, no)
-Group.new("vimFuncName", c.red400, c.none, no)
-Group.new("vimHighlight", c.blue700, c.none, no)
-Group.new("vimUserFunc", c.blue200, c.none, no)
-Group.new("vimVar", c.red500, c.none, no)
-Group.new("vimLet", c.blue600, c.none, no)
-Group.new("vimNorm", c.blue600, c.none, no)
-Group.new("vimBracket", c.grey100, c.none, no)
-Group.new("vimMapModKey", c.red300, c.none, no)
-Group.new("vimNotation", c.red300, c.none, no)
-Group.new("vimGroup", c.blue600, c.none, no)
-Group.new("vimSep", c.grey600, c.none, no)
-Group.new("vimContinue", c.yellow500, c.none, no)
-Group.new("vimSetSep", c.grey600, c.none, no)
-Group.new("vimHiGroup", g.Type, g.Type, g.Type)
-Group.new("vimFunction", g.Function, g.Function, g.Function)
-Group.new("vimFuncSID", g.Function, g.Function, g.Function)
-Group.new("vimCommentTitle", c.blue600, c.none, b)
-Group.new("vimCommand", c.blue200, c.none, b)
-
----------
--- ZSH --
----------
-Group.new("zshSubst", c.red500, c.none, no)
-Group.new("zshCommands", c.grey100, c.none, no)
-Group.new("zshKeyword", c.red400, c.none, no)
-Group.new("zshTypes", c.red400, c.none, no)
-Group.new("zshDeref", c.red500, c.none, no)
-Group.new("zshShortDeref", c.red500, c.none, no)
-Group.new("zshVariableDef", c.red300, c.none, no)
-Group.new("zshSubstDelim", c.grey500, c.none, no)
-Group.new("zshFunction", c.blue200, c.none, no)
-
----------
--- LUA --
----------
-Group.new("luaFunction", c.blue200, c.none, no)
-Group.new("luaTable", c.red300, c.none, no)
-Group.new("luaIn", c.red500, c.none, no)
-
---------------------------------------------------------------------------
---                           PLUGINS SETTINGS                            -
---------------------------------------------------------------------------
 
 ---------------
 -- TELESCOPE --
@@ -656,3 +299,53 @@ Group.new("StartifySection", c.blue500, c.none, no)
 Group.new("startifyheader", c.red600, c.none, no)
 Group.new("StartifySpecial", c.grey300, c.none, no)
 Group.new("StartifyFooter", c.green400, c.none, no)
+
+-- HTML (keep consistent with Markdown, below)
+Group.new("htmlTag", c.blue500, c.none, no)
+Group.new("htmlEndTag", c.blue500, c.none, no)
+Group.new("htmlTagName", c.red500, c.none, no)
+Group.new("htmlArg", c.blue300, c.none, no)
+Group.new("htmlScriptTag", c.red300, c.none, no)
+Group.new("htmlTagN", c.yellow500, c.none, no)
+Group.new("htmlSpecialTagName", c.blue300, c.none, b)
+Group.new("htmlLink", c.blue500, c.none, ul)
+Group.new("htmlSpecialChar", c.red500, c.none, no)
+Group.new("htmlBold", c.yellow600, c.none, b)
+Group.new("htmlBoldUnderline", c.yellow400, c.none, b, ul)
+Group.new("htmlBoldItalic", c.yellow700, c.none, b + i)
+Group.new("htmlBoldUnderlineItalic", c.yellow400, c.none, b + i + ul)
+Group.new("htmlUnderline", c.yellow400, c.none, ul)
+Group.new("htmlUnderlineItalic", c.yellow500, c.none, i + ul)
+Group.new("htmlItalic", c.blue500, c.none, i)
+Group.new("htmlH1", c.blue700, c.none, b)
+Group.new("htmlH2", c.blue600, c.none, b)
+Group.new("htmlH3", c.blue500, c.none, b)
+Group.new("htmlH4", c.blue400, c.none, b)
+Group.new("htmlH5", c.blue300, c.none, no)
+Group.new("htmlH6", c.blue200, c.none, no)
+
+Group.new("markdownItalic", c.green400, c.none, i)
+Group.new("markdownH1", c.blue200, c.none, i)
+Group.new("markdownH2", c.blue300, c.none, no)
+Group.new("markdownH3", c.blue400, c.none, no)
+Group.new("markdownH4", c.blue500, c.none, no)
+Group.new("markdownH5", c.blue600, c.none, no)
+Group.new("markdownH6", c.blue700, c.none, no)
+Group.new("markdownCode", c.green500, c.none, no)
+Group.new("mkdCode", c.grey500, c.none, no)
+Group.new("markdownCodeBlock", c.grey400, c.none, no)
+Group.new("markdownCodeDelimiter", c.red500, c.none, no)
+Group.new("mkdCodeDelimiter", c.grey200, c.grey200, no)
+Group.new("markdownBlockquote", c.grey300, c.none, no)
+Group.new("markdownListMarker", c.grey600, c.none, no)
+Group.new("markdownOrderedListMarker", c.grey400, c.none, no)
+Group.new("markdownRule", c.grey400, c.none, no)
+Group.new("markdownHeadingRule", c.grey600, c.none, no)
+Group.new("markdownUrlDelimiter", c.yellow400, c.none, no)
+Group.new("markdownLinkDelimiter", c.yellow400, c.none, no)
+Group.new("markdownLinkTextDelimiter", c.yellow600, c.none, no)
+Group.new("markdownHeadingDelimiter", c.red600, c.none, no)
+Group.new("markdownUrl", c.yellow400, c.none, no)
+Group.new("markdownUrlTitleDelimiter", c.green400, c.none, no)
+Group.new("markdownLinkText", c.red600, c.none, i)
+Group.new("markdownIdDeclaration", c.red300, c.none, no)

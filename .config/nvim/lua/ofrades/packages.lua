@@ -23,10 +23,9 @@ return require("packer").startup(
       -- LSP
       use "neovim/nvim-lspconfig"
       use "hrsh7th/nvim-compe"
-      -- use {"tzachar/compe-tabnine", run = "./install.sh"}
-      use "glepnir/lspsaga.nvim"
-      -- use "tsuyoshicho/vim-efm-langserver-settings" -- auto config efm lsp
+      use {"tzachar/compe-tabnine", run = "./install.sh"}
       use "kabouzeid/nvim-lspinstall"
+      use "glepnir/lspsaga.nvim"
 
       -- Telescope
       use {
@@ -45,7 +44,6 @@ return require("packer").startup(
       use "TimUntersberger/neogit"
       use "rhysd/conflict-marker.vim"
       use "rhysd/committia.vim"
-      -- use "lewis6991/gitsigns.nvim"
       use "mhinz/vim-signify"
       use "f-person/git-blame.nvim"
 
@@ -63,16 +61,18 @@ return require("packer").startup(
       use "kevinhwang91/nvim-bqf" -- better quickfix
       use "mhinz/vim-startify" -- start screen
       use "mbbill/undotree" -- undo tree
-      use "machakann/vim-sandwich" -- Change surrounding arks
+      use "p00f/nvim-ts-rainbow"
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
+      -- use "yamatsum/nvim-cursorline"
       use "mhartington/formatter.nvim"
+      use "andymass/vim-matchup"
       use "voldikss/vim-floaterm"
       use "mattn/emmet-vim"
       use "mg979/vim-visual-multi"
       use "machakann/vim-highlightedyank"
       use "psliwka/vim-smoothie"
-      use "andymass/vim-matchup"
-      use "chaoren/vim-wordmotion" -- Camel case navigation
+      -- use "andymass/vim-matchup"
+      -- use "chaoren/vim-wordmotion" -- Camel case navigation
       use {"oberblastmeister/neuron.nvim", branch = "unstable"}
       use "windwp/nvim-spectre"
 
@@ -111,19 +111,6 @@ return require("packer").startup(
       -- Tree-sitter
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       use "nvim-treesitter/playground"
-      -- use 'christianchiarulli/nvcode-color-schemes.vim'
-
-      -- Debugging
-      -- use {
-      --   "mfussenegger/nvim-dap",
-      --   requires = {
-      --     {"theHamsta/nvim-dap-virtual-text"},
-      --     {"nvim-telescope/telescope-dap.nvim"}
-      --   },
-      -- config = function()
-      --   require("lsp.dap")
-      -- end
-      -- }
     end,
     config = {
       display = {

@@ -1,4 +1,3 @@
-local map = require "settings.utils".map
 vim.cmd [[packadd telescope-fzy-native.nvim]]
 local finders = require "telescope.builtin"
 local actions = require 'telescope.actions'

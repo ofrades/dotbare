@@ -44,6 +44,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/committia.vim"
   },
+  ["compe-tabnine"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/compe-tabnine"
+  },
   ["conflict-marker.vim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/conflict-marker.vim"
@@ -76,10 +80,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
   },
-  ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
-  },
   neogit = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/neogit"
@@ -95,6 +95,10 @@ _G.packer_plugins = {
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
+  ["nvim-cursorline"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
   },
   ["nvim-hlslens"] = {
     loaded = true,
@@ -220,10 +224,6 @@ _G.packer_plugins = {
   ["vim-react-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-react-snippets"
-  },
-  ["vim-sandwich"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-sandwich"
   },
   ["vim-signify"] = {
     loaded = true,

@@ -1,4 +1,3 @@
-local map = require("settings.utils").map
 local api = vim.api
 local fn = vim.fn
 
