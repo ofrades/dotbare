@@ -108,7 +108,6 @@ local function map(mode, lhs, rhs, opts)
   api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-
 function Reload()
   local modules = {"lsp", "ofrades"}
   for _, moduleName in pairs(modules) do
@@ -148,6 +147,7 @@ map("n", "[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
 map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
 
 -- Telescope
+map("n", "se", ":Telescope file_browser<CR>")
 map("n", "st", ":Telescope<CR>")
 map("n", "sp", ":Telescope find_files<CR>")
 map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list

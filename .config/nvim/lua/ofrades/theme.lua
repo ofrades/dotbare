@@ -10,26 +10,6 @@ local global = vim.g
 global.colors_name = "ofrades"
 
 ---------------------
--- TERMINAL COLORS --
----------------------
-global.terminal_color_0 = "#2b2d35"
-global.terminal_color_1 = "#d38676"
-global.terminal_color_2 = "#53bd97"
-global.terminal_color_3 = "#fee787"
-global.terminal_color_4 = "#629ed9"
-global.terminal_color_5 = "#B954B8"
-global.terminal_color_6 = "#00D5A7"
-global.terminal_color_7 = "#CED5E5"
-global.terminal_color_8 = "#555555"
-global.terminal_color_9 = "#cf7357"
-global.terminal_color_10 = "#B8EE92"
-global.terminal_color_11 = "#FFCC00"
-global.terminal_color_12 = "#609AD2"
-global.terminal_color_13 = "#B954B8"
-global.terminal_color_14 = "#00D5A7"
-global.terminal_color_15 = "#CED5E5"
-
----------------------
 --  COLOR PALETTE  --
 ---------------------
 Color.new("red500", "#d38676") -- adjective
@@ -45,6 +25,8 @@ Color.new("grey400", "#858789") -- parenthesis
 Color.new("grey500", "#73767c") -- square bracket
 Color.new("grey600", "#63676f") -- curly brace
 Color.new("grey700", "#575b65") -- comment
+Color.new("grey800", "#414450") --background
+Color.new("grey900", "#3e3f43") --background
 
 Color.new("blue200", "#5fd1be") -- chars
 Color.new("blue300", "#5fc0d2") -- strings / escape
@@ -105,11 +87,11 @@ Group.new("Cursor", c.none, c.red300, no)
 Group.new("CursorIM", c.none, c.none, no)
 Group.new("CursorColumn", c.none, c.none, no)
 Group.new("CursorLineNr", c.green600, c.none, no)
-Group.new("CursorLine", c.none, c.grey700, no)
+Group.new("CursorLine", c.none, c.grey800, no)
 Group.new("Folded", c.none, c.none, no)
 Group.new("SignColumn", c.none, c.none, no)
 Group.new("IncSearch", c.none, c.none, r)
-Group.new("PMenu", c.none, c.grey700, no)
+Group.new("PMenu", c.none, c.grey800, no)
 Group.new("PMenuSel", c.dark, c.green500, no)
 Group.new("PMenuSbar", c.none, c.green600, no)
 Group.new("PMenuThumb", c.none, c.grey600, no)
@@ -118,8 +100,8 @@ Group.new("DiffAdd", c.none, c.green500)
 Group.new("DiffChange", c.none, c.blue500)
 Group.new("DiffDelete", c.none, c.red500)
 Group.new("DiffText", c.none, c.dark, r)
-Group.new("StatusLine", c.grey100, c.grey500, no)
-Group.new("StatusLineNC", c.none, c.grey700, no)
+Group.new("StatusLine", c.none, c.grey800, no)
+Group.new("StatusLineNC", c.dark, c.grey800, no)
 Group.new("WarningMsg", c.red500, c.none, no)
 Group.new("Warnings", c.red300, c.none, r)
 Group.new("WildMenu", c.green400, c.dark, b)
@@ -138,10 +120,10 @@ Group.new("qfLineNr", g.Type, g.Type, g.Type)
 Group.new("Search", c.dark, c.red500, no)
 Group.new("SpecialKey", c.red400, c.none, no)
 Group.new("Title", c.grey100, c.none, b)
-Group.new("Visual", c.none, c.grey700, b)
+Group.new("Visual", c.grey100, c.red600, b)
 Group.new("VisualNOS", c.dark, c.yellow400, g.Visual)
-Group.new("StatusLineTerm", c.dark, c.green500, g.StatusLine)
-Group.new("StatusLineTermNC", g.StatusLineNC, g.StatusLineNC, g.StatusLineNC)
+Group.new("StatusLineTerm", c.dark, c.green500, no)
+Group.new("StatusLineTermNC", c.dark, c.grey800, no)
 Group.new("Conditional", g.Conditional, c.none, no)
 Group.new("QuickFixLine", g.Search, g.Search, g.Search)
 Group.new("TabLine", g.TabLineFill, g.TabLineFill, g.TabLineFill)
@@ -267,16 +249,16 @@ Group.new("SpellRare", c.green500, c.none)
 -- TELESCOPE --
 ---------------
 Group.new("TelescopeNormal", c.grey100, c.none, no)
-Group.new("TelescopeSelection", c.grey100, c.green700, b)
-Group.new("TelescopeSelectionCaret", c.red500, c.none, no)
-Group.new("TelescopeMultiSelection ", c.green700, c.none, no)
-Group.new("TelescopeBorder", c.green700, c.none, no)
-Group.new("TelescopePromptBorder", c.green700, c.none, no)
-Group.new("TelescopeResultsBorder", c.green700, c.none, no)
-Group.new("TelescopePreviewBorder", c.green700, c.none, no)
+Group.new("TelescopeSelection", c.grey100, c.grey800, b)
+Group.new("TelescopeSelectionCaret", c.grey500, c.none, no)
+Group.new("TelescopeMultiSelection ", c.green500, c.none, no)
+Group.new("TelescopeBorder", c.grey800, c.none, no)
+Group.new("TelescopePromptBorder", c.grey500, c.none, no)
+Group.new("TelescopeResultsBorder", c.grey600, c.none, no)
+Group.new("TelescopePreviewBorder", c.grey700, c.none, no)
 Group.new("TelescopeMatching ", c.blue500, c.none, no)
-Group.new("TelescopePromptPrefix", c.green700, c.none, no)
-Group.new("TelescopePrompt", c.green700, c.none, no)
+Group.new("TelescopePromptPrefix", c.grey500, c.none, no)
+Group.new("TelescopePrompt", c.grey800, c.none, no)
 
 ---------------
 -- NVIM TREE --
@@ -349,3 +331,40 @@ Group.new("markdownUrl", c.yellow400, c.none, no)
 Group.new("markdownUrlTitleDelimiter", c.green400, c.none, no)
 Group.new("markdownLinkText", c.red600, c.none, i)
 Group.new("markdownIdDeclaration", c.red300, c.none, no)
+
+---------------------
+-- TERMINAL COLORS --
+---------------------
+global.terminal_color_0 = c.dark:to_rgb()
+global.terminal_color_1 = c.red400:to_rgb()
+global.terminal_color_2 = c.green500:to_rgb()
+global.terminal_color_3 = c.yellow400:to_rgb()
+global.terminal_color_4 = c.blue400:to_rgb()
+global.terminal_color_5 = c.red300:to_rgb()
+global.terminal_color_6 = c.green600:to_rgb()
+global.terminal_color_7 = c.grey400:to_rgb()
+global.terminal_color_8 = c.grey500:to_rgb()
+global.terminal_color_9 = c.red500:to_rgb()
+global.terminal_color_10 = c.green700:to_rgb()
+global.terminal_color_11 = c.yellow500:to_rgb()
+global.terminal_color_12 = c.blue500:to_rgb()
+global.terminal_color_13 = c.red400:to_rgb()
+global.terminal_color_14 = c.blue700:to_rgb()
+global.terminal_color_15 = c.grey800:to_rgb()
+
+--[[ '#000000'
+'#F07178'
+'#C3E88D'
+'#FFCB6B'
+'#82AAFF'
+'#C792EA'
+'#89DDFF'
+'#EEFFFF'
+'#000000'
+'#F07178'
+ '#C3E88D'
+ '#FFCB6B'
+ '#82AAFF'
+ '#C792EA'
+ '#89DDFF'
+ '#EEFFFF' ]]

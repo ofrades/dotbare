@@ -9,7 +9,8 @@ gl.short_line_list = {"NvimTree", "packager", "vista", "Floaterm", "startify"}
 local theme = require("colorbuddy").colors
 
 local c = {
-  bg = theme.grey700:to_rgb(),
+  fg = theme.grey600:to_rgb(),
+  bg = theme.grey800:to_rgb(),
   dark = theme.dark:to_rgb(),
   yellow = theme.yellow500:to_rgb(),
   green = theme.green500:to_rgb(),
@@ -32,7 +33,7 @@ section.left[1] = {
       return alias[fn.mode()]
     end,
     separator = " ",
-    highlight = {c.blue, c.dark, "bold"}
+    highlight = {c.green, c.dark, "bold"}
   }
 }
 
@@ -85,7 +86,7 @@ section.right[1] = {
     condition = condition.check_git_workspace,
     separator_highlight = {c.bg, c.dark},
     icon = "  ",
-    highlight = {c.blue, c.dark, "bold"}
+    highlight = {c.fg, c.dark, "bold"}
   }
 }
 
@@ -121,7 +122,8 @@ section.right[5] = {
   GetLspClient = {
     provider = "GetLspClient",
     separator = " LSP -> ",
-    highlight = {c.green, c.dark}
+    separator_highlight = {c.fg, c.dark},
+    highlight = {c.fg, c.dark}
   }
 }
 
@@ -162,22 +164,22 @@ section.right[10] = {
   LineInfo = {
     separator = " ",
     provider = "LineColumn",
-    highlight = {c.yellow, c.dark}
+    highlight = {c.fg, c.dark}
   }
 }
 
---[[ section.right[11] = {
+section.right[11] = {
   PerCent = {
     provider = "LinePercent",
     separator = " ",
-    highlight = {c.blue, c.dark}
+    highlight = {c.fg, c.dark}
   }
-} ]]
+}
 section.right[12] = {
   ScrollBar = {
     provider = "ScrollBar",
     separator = " ",
     separator_highlight = {c.blue, c.dark},
-    highlight = {c.bg, c.dark}
+    highlight = {c.fg, c.dark}
   }
 }
