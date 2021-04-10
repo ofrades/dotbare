@@ -51,19 +51,13 @@ return require("packer").startup(
       -- use "dense-analysis/ale"
 
       -- Misk
-      use "phaazon/hop.nvim"
       use "b3nj5m1n/kommentary"
       use "JoosepAlviste/nvim-ts-context-commentstring" -- comment with context
       use "oberblastmeister/rooter.nvim" -- root dir switcher
-      use "alvan/vim-closetag"
       -- use "AndrewRadev/tagalong.vim" -- Auto change html tags
-      use "windwp/nvim-ts-autotag" -- Auto close xml tags
       use "kevinhwang91/nvim-bqf" -- better quickfix
       use "mhinz/vim-startify" -- start screen
-      use "mbbill/undotree" -- undo tree
-      use "p00f/nvim-ts-rainbow"
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
-      -- use "yamatsum/nvim-cursorline"
       use "mhartington/formatter.nvim"
       use "andymass/vim-matchup"
       use "voldikss/vim-floaterm"
@@ -71,8 +65,6 @@ return require("packer").startup(
       use "mg979/vim-visual-multi"
       use "machakann/vim-highlightedyank"
       use "psliwka/vim-smoothie"
-      -- use "andymass/vim-matchup"
-      -- use "chaoren/vim-wordmotion" -- Camel case navigation
       use {"oberblastmeister/neuron.nvim", branch = "unstable"}
       use "windwp/nvim-spectre"
 
@@ -96,14 +88,15 @@ return require("packer").startup(
       use "1tontech/bootstrap4-snippets"
 
       -- Themes
-      use "sheerun/vim-polyglot"
+      -- use "sheerun/vim-polyglot"
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
 
       -- UI
       use "kyazdani42/nvim-tree.lua"
       use "kyazdani42/nvim-web-devicons"
+      -- use "akinsho/nvim-bufferline.lua"
       use "glepnir/galaxyline.nvim"
-      use "kevinhwang91/nvim-hlslens"
+      -- use "kevinhwang91/nvim-hlslens"
 
       -- Styles
       use "tjdevries/colorbuddy.vim"

@@ -8,7 +8,7 @@ gl.short_line_list = {"NvimTree", "packager", "vista", "Floaterm", "startify"}
 
 local theme = require("colorbuddy").colors
 
-local c = {
+local colors = {
   fg = theme.grey600:to_rgb(),
   bg = theme.grey800:to_rgb(),
   dark = theme.dark:to_rgb(),
@@ -17,6 +17,20 @@ local c = {
   blue = theme.blue500:to_rgb(),
   red = theme.red500:to_rgb()
 }
+
+local mode_color = function()
+  local mode_colors = {
+    n = colors.bg,
+    i = colors.green,
+    c = colors.red,
+    V = colors.yellow,
+    [""] = colors.yellow,
+    v = colors.yellow,
+    R = colors.blue
+  }
+
+  return mode_colors[vim.fn.mode()]
+end
 
 section.left[1] = {
   ViMode = {
@@ -30,18 +44,22 @@ section.left[1] = {
         v = "[V]",
         R = "[R]"
       }
-      return alias[fn.mode()]
+      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color() .. " gui=bold")
+      return "  " .. alias[vim.fn.mode()]
     end,
-    separator = " ",
-    highlight = {c.green, c.dark, "bold"}
+    highlight = {colors.dark, colors.dark},
+    separator = " "
   }
 }
+
+print(vim.fn.getbufvar(0, "ts"))
+vim.fn.getbufvar(0, "ts")
 
 section.left[2] = {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
-    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, c.dark}
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.dark}
   }
 }
 
@@ -66,7 +84,7 @@ section.left[3] = {
     provider = FilePath,
     separator = "  ",
     condition = condition.buffer_not_empty,
-    highlight = {c.green, c.dark, "bold"}
+    highlight = {colors.green, colors.dark, "bold"}
   }
 }
 section.left[4] = {
@@ -75,8 +93,8 @@ section.left[4] = {
       return " "
     end,
     separator = " ",
-    separator_highlight = {c.bg, c.bg},
-    highlight = {c.dark, c.bg}
+    separator_highlight = {colors.bg, colors.bg},
+    highlight = {colors.dark, colors.bg}
   }
 }
 section.right[1] = {
@@ -84,9 +102,9 @@ section.right[1] = {
     provider = "GitBranch",
     separator = " ",
     condition = condition.check_git_workspace,
-    separator_highlight = {c.bg, c.dark},
+    separator_highlight = {colors.bg, colors.dark},
     icon = "  ",
-    highlight = {c.fg, c.dark, "bold"}
+    highlight = {colors.fg, colors.dark, "bold"}
   }
 }
 
@@ -96,7 +114,7 @@ section.right[2] = {
     condition = checkwidth,
     separator = " ",
     icon = " ",
-    highlight = {c.green, c.dark}
+    highlight = {colors.green, colors.dark}
   }
 }
 
@@ -105,7 +123,7 @@ section.right[3] = {
     provider = "DiffModified",
     condition = checkwidth,
     icon = " ",
-    highlight = {c.yellow, c.dark}
+    highlight = {colors.yellow, colors.dark}
   }
 }
 
@@ -114,7 +132,7 @@ section.right[4] = {
     provider = "DiffRemove",
     condition = checkwidth,
     icon = " ",
-    highlight = {c.red, c.dark}
+    highlight = {colors.red, colors.dark}
   }
 }
 
@@ -122,8 +140,8 @@ section.right[5] = {
   GetLspClient = {
     provider = "GetLspClient",
     separator = " LSP -> ",
-    separator_highlight = {c.fg, c.dark},
-    highlight = {c.fg, c.dark}
+    separator_highlight = {colors.fg, colors.dark},
+    highlight = {colors.fg, colors.dark}
   }
 }
 
@@ -132,7 +150,7 @@ section.right[6] = {
     separator = " ",
     provider = "DiagnosticError",
     icon = "  ",
-    highlight = {c.red, c.dark}
+    highlight = {colors.red, colors.dark}
   }
 }
 
@@ -140,7 +158,7 @@ section.right[7] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
-    highlight = {c.yellow, c.dark}
+    highlight = {colors.yellow, colors.dark}
   }
 }
 
@@ -148,7 +166,7 @@ section.right[8] = {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
-    highlight = {c.green, c.dark}
+    highlight = {colors.green, colors.dark}
   }
 }
 
@@ -156,7 +174,7 @@ section.right[9] = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
-    highlight = {c.blue, c.dark}
+    highlight = {colors.blue, colors.dark}
   }
 }
 
@@ -164,7 +182,7 @@ section.right[10] = {
   LineInfo = {
     separator = " ",
     provider = "LineColumn",
-    highlight = {c.fg, c.dark}
+    highlight = {colors.fg, colors.dark}
   }
 }
 
@@ -172,14 +190,40 @@ section.right[11] = {
   PerCent = {
     provider = "LinePercent",
     separator = " ",
-    highlight = {c.fg, c.dark}
+    highlight = {colors.fg, colors.dark}
   }
 }
 section.right[12] = {
   ScrollBar = {
     provider = "ScrollBar",
     separator = " ",
-    separator_highlight = {c.blue, c.dark},
-    highlight = {c.fg, c.dark}
+    separator_highlight = {colors.blue, colors.dark},
+    highlight = {colors.fg, colors.dark}
+  }
+}
+-- -------------------------Short status line---------------------------------------
+section.short_line_left[1] = {
+  SFileIcon = {
+    provider = "FileIcon",
+    highlight = {colors.fg, colors.dark}
+  }
+}
+
+section.short_line_left[2] = {
+  SFileName = {
+    provider = "FileName",
+    highlight = {colors.fg, colors.dark},
+    separator = " "
+  }
+}
+
+section.short_line_left[3] = {
+  LeftEnd = {
+    provider = function()
+      return " "
+    end,
+    separator = " ",
+    separator_highlight = {colors.bg, colors.bg},
+    highlight = {colors.dark, colors.bg}
   }
 }

@@ -14,3 +14,5 @@
 ; 	email = miguel@ofrades.com
 [credential]
 	helper = store
+[user]
+	email = mig.silva@gmail.com

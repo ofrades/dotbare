@@ -35,7 +35,7 @@ tmux_conf_new_session_prompt=true
 tmux_conf_24b_colour=false
 
 # default theme
-tmux_conf_theme_colour_1="#222D32"
+tmux_conf_theme_colour_1="#2b2d35"
 tmux_conf_theme_colour_2="#303030"
 tmux_conf_theme_colour_3="#d9bb80"
 tmux_conf_theme_colour_4="#497c6c"

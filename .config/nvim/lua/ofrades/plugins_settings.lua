@@ -48,6 +48,7 @@ globals(
     startify_commands = {
       {o = {"Recent Files", ":Telescope oldfiles"}},
       {p = {"Find Files", ":Telescope find_files"}},
+      {b = {"File Browser", ":Telescope file_browser"}},
       {z = {"Telescope z", ":Telescope z list"}},
       {t = {"Telescope builtin", ":Telescope"}},
       {g = {"Git", ":Neogit"}},

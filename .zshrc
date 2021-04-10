@@ -73,6 +73,8 @@ alias gp='git push'
 alias ct='bat ~/.gitmessage'
 
 alias e='nvim'
+alias v='nvim'
+alias vim='nvim'
 alias pt='keyboard pt'
 alias us='keyboard us'
 alias mail='neomutt'

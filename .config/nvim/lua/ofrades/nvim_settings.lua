@@ -23,6 +23,7 @@ end
 options(
   {
     -- Boolean value
+    incsearch = true,
     compatible = false,
     wildmenu = true,
     autoindent = true,
@@ -41,7 +42,7 @@ options(
     hlsearch = true, -- highlight matching search
     ignorecase = true, -- case insensitive on search
     lazyredraw = true, -- lazyredraw to make macro faster
-    -- listchars = true
+    listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     list = true, -- display listchars
     number = true, -- enable number
     relativenumber = true, -- enable relativenumber
@@ -50,13 +51,10 @@ options(
     startofline = false, -- don't go to the start of the line when moving to another file
     swapfile = false, -- disable swapfile
     termguicolors = true, -- truecolours for better experience
-    wrap = false, -- dont wrap lines
-    wildignorecase = true,
-    ttyfast = true,
-    timeout = true,
-    ttimeout = true,
+    wrap = true,
     spell = true,
     -- String value
+
     encoding = "UTF-8", -- set encoding
     mouse = "a", -- enable mouse support
     signcolumn = "yes", -- enable sign column all the time, 4 column
@@ -65,12 +63,14 @@ options(
     syntax = "on", -- syntax enable
     undodir = "/tmp/",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
+    fillchars = "eob:~",
     -- Number value
+    cmdheight = 1,
     colorcolumn = 80, -- 120 chars color column
     laststatus = 2, -- always enable statusline
     pumheight = 20, -- limit completion items
     re = 1, -- set regexp engine to auto
-    scrolloff = 2, -- make scrolling better
+    scrolloff = 5, -- make scrolling better
     sidescroll = 2, -- make scrolling better
     sidescrolloff = 15, -- make scrolling better
     synmaxcol = 500, -- set limit for syntax highlighting in a single line
