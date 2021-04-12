@@ -42,7 +42,6 @@ options(
     hlsearch = true, -- highlight matching search
     ignorecase = true, -- case insensitive on search
     lazyredraw = true, -- lazyredraw to make macro faster
-    listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     list = true, -- display listchars
     number = true, -- enable number
     relativenumber = true, -- enable relativenumber
@@ -62,8 +61,11 @@ options(
     shell = "zsh", -- zsh as shell
     syntax = "on", -- syntax enable
     undodir = "/tmp/",
+    foldmethod = "expr",
+    foldexpr = "nvim_treesitter#foldexpr()",
+    fillchars = "eob:·,vert:·",
+    listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
-    fillchars = "eob:~",
     -- Number value
     cmdheight = 1,
     colorcolumn = 80, -- 120 chars color column

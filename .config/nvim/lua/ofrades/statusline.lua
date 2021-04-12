@@ -139,7 +139,7 @@ section.right[4] = {
 section.right[5] = {
   GetLspClient = {
     provider = "GetLspClient",
-    separator = " LSP -> ",
+    separator = " ",
     separator_highlight = {colors.fg, colors.dark},
     highlight = {colors.fg, colors.dark}
   }
