@@ -81,3 +81,12 @@ else
   echo "7 - Go already installed"
 fi
 
+# install pop shell
+if ! [ -d $HOME/build/shell ]; then
+    echo "8 - Pop shell installing"
+    git clone https://github.com/pop-os/shell ~/build/shell
+    cd ~/build/shell/
+    make local-install
+else
+	echo "8 - Pop shell already installed"
+fi

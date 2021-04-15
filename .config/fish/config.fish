@@ -1,3 +1,6 @@
+# disable greeting
+set fish_greeting
+# vim
 fish_vi_key_bindings
 # Example aliases
 alias zconfig="nvim ~/.zshrc"

@@ -68,10 +68,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
   },
-  ["hop.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/hop.nvim"
-  },
   ["html-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"
@@ -79,6 +75,10 @@ _G.packer_plugins = {
   kommentary = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   neogit = {
     loaded = true,
@@ -95,14 +95,6 @@ _G.packer_plugins = {
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-compe"
-  },
-  ["nvim-cursorline"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
-  },
-  ["nvim-hlslens"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-hlslens"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -123,10 +115,6 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
-  },
-  ["nvim-ts-autotag"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
   },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
@@ -181,14 +169,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  undotree = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/undotree"
-  },
-  ["vim-closetag"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-closetag"
-  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-floaterm"
@@ -216,10 +196,6 @@ _G.packer_plugins = {
   ["vim-matchup"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
-  },
-  ["vim-polyglot"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
   ["vim-react-snippets"] = {
     loaded = true,
@@ -252,10 +228,6 @@ _G.packer_plugins = {
   ["vim-vsnip-integ"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
-  },
-  ["vim-wordmotion"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
   },
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,

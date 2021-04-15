@@ -14,9 +14,7 @@ cmd [[packadd packer.nvim]]
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
 cmd [[ autocmd BufWritePost ofrades.lua PackerCompile ]]
 
-return require("packer").startup(
-  {
-    function(use)
+return require('packer').startup(function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
 
@@ -104,11 +102,4 @@ return require("packer").startup(
       -- Tree-sitter
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       use "nvim-treesitter/playground"
-    end,
-    config = {
-      display = {
-        open_fn = require "packer.util".float
-      }
-    }
-  }
-)
+end)

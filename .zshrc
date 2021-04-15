@@ -2,7 +2,6 @@
 set -o vi
 
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
 
 plugins=(
   archlinux
