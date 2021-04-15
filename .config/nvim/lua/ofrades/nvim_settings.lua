@@ -58,7 +58,7 @@ options(
     mouse = "a", -- enable mouse support
     signcolumn = "yes", -- enable sign column all the time, 4 column
     clipboard = "unnamedplus", -- use system clipboard
-    shell = "zsh", -- zsh as shell
+    shell = "fish", -- fish as shell
     syntax = "on", -- syntax enable
     undodir = "/tmp/",
     foldmethod = "expr",
