@@ -14,7 +14,7 @@ sudo apt-get install -y \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-extra latexmk \
-    libltdl7-dev flex bison fontforge python-pygments
+    libltdl-dev flex bison fontforge python3-pygments
 
 
 echo "1 - Essential linux packages installed"
