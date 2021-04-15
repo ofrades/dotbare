@@ -80,16 +80,7 @@ lsp.handlers["textDocument/hover"] =
   lsp.handlers.hover,
   {
     -- Use a sharp border with `FloatBorder` highlights
-    border = {
-      {"╭", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╮", "FloatBorder"},
-      {"│", "FloatBorder"},
-      {"╯", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╰", "FloatBorder"},
-      {"│", "FloatBorder"}
-    }
+    border = "single"
   }
 )
 

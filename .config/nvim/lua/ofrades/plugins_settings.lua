@@ -10,6 +10,7 @@ globals(
   {
     mapleader = " ",
     -- theme
+    ofrades_italic = true,
     ofrades_italic_comments = 1,
     ofrades_italic_keywords = 1,
     ofrades_italic_functions = 1,

@@ -67,6 +67,7 @@ options(
     listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
     -- Number value
+    foldlevel = 99,
     cmdheight = 1,
     colorcolumn = 80, -- 120 chars color column
     laststatus = 2, -- always enable statusline
@@ -129,6 +130,9 @@ map("n", "<space>S", ":lua require('spectre').open()<CR>")
 map("n", "<space>sw", "viw:lua require('spectre').open_visual()<CR>")
 map("n", "<space>s", ":lua require('spectre').open_visual()<CR>")
 map("n", "<space>sp", ":lua require('spectre').open_file_search()<CR>")
+
+map("i", "kj", "<esc>")
+map("i", "jk", "<esc>")
 
 -- <leader> to space
 map("n", "<Space>", "<Nop>")
