@@ -31,6 +31,7 @@ alias vim='nvim'
 alias mv='mv -iv'
 alias cp='cp -riv'
 alias mkdir='mkdir -vp'
+alias z='j'
 
 
 alias dotbare="~/git/dotbare/dotbare"
@@ -40,3 +41,6 @@ set -ga fish_user_paths ~/.yarn/bin
 set -gx EDITOR nvim
 
 starship init fish | source
+
+# autojump
+status --is-interactive; and source (jump shell fish | psub)

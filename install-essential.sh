@@ -62,7 +62,8 @@ if ! [ -d $HOME/git/dotfiles ]; then
     echo "5 - Downloading dotfiles"
     git clone https://github.com/ofrades/dotfiles ~/git/dotfiles
     echo "5 - Moving dotfiles"
-    cp -RF $HOME/git/dotfiles/ $HOME/
+    cp -RT $HOME/git/dotfiles/ $HOME/
+    sudo rm -r ~/.git/
 else
 	echo "5 - Dotfiles already present"
 fi
@@ -87,4 +88,13 @@ if ! [ -d $HOME/build/shell ]; then
     make local-install
 else
 	echo "8 - Pop shell already installed"
+fi
+
+# install autojump
+if ! [ -x "$(command -v jump)" ]; then
+    echo "9 - Autojump installing"
+    wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_0.40.0_amd64.deb
+    sudo dpkg -i jump_0.40.0_amd64.deb
+else
+	echo "9 - Autojump already installed"
 fi
