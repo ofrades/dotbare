@@ -33,8 +33,8 @@ alias cp='cp -riv'
 alias mkdir='mkdir -vp'
 alias z='j'
 
+alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
-alias dotbare="~/git/dotbare/dotbare"
 set -ga fish_user_paths /usr/local/go/bin
 set -ga fish_user_paths ~/.local/bin
 set -ga fish_user_paths ~/.yarn/bin

@@ -2,7 +2,6 @@
 
 # install linux essential stuff to work
 mkdir -p ~/build
-mkdir -p ~/git
 
 sudo apt update
 
@@ -49,21 +48,12 @@ else
 	echo "3 - Neovim already installed"
 fi
 
-# get dotbare
-if ! [ -d $HOME/git/dotbare ]; then
-    echo "4 - Dotbare downloading"
-    git clone https://github.com/kazhala/dotbare.git ~/git/dotbare
-else
-	echo "4 - Dotbare exists"
-fi
-
 # get dotfiles
-if ! [ -d $HOME/git/dotfiles ]; then
+if ! [ -d $HOME/.cfg ]; then
     echo "5 - Downloading dotfiles"
-    git clone https://github.com/ofrades/dotfiles ~/git/dotfiles
+    git clone --bare https://github.com/ofrades/dotfiles ~/.cfg
     echo "5 - Moving dotfiles"
-    cp -RT $HOME/git/dotfiles/ $HOME/
-    sudo rm -r ~/.git/
+    config checkout
 else
 	echo "5 - Dotfiles already present"
 fi
