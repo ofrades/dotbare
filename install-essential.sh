@@ -47,11 +47,11 @@ fi
 # get dotfiles
 if ! [ -d $HOME/.cfg ]; then
     echo "5 - Downloading dotfiles"
-    git clone --bare https://github.com/ofrades/dotfiles ~/.cfg
+    git clone --bare https://github.com/ofrades/configs ~/.cfg
     echo "5 - Moving dotfiles"
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
     echo "5 - Remove dotfiles"
-    sudo rm -r $HOME/dotfiles
+    sudo rm -r $HOME/configs
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
 else
     echo "5 - Dotfiles already present"
