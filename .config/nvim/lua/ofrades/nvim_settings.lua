@@ -155,7 +155,7 @@ map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
 -- Telescope
 map("n", "se", ":Telescope file_browser<CR>")
 map("n", "st", ":Telescope<CR>")
-map("n", "sp", ":Telescope find_files<CR>")
+map("n", "sp", ":Telescope find_files hidden=true<CR>")
 map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list
 map("n", "so", ":Telescope oldfiles<CR>")
 map("n", "sr", ":Telescope lsp_references<CR>")
@@ -167,7 +167,7 @@ map("n", "ss", ":Telescope git_status<CR>")
 map("n", "sb", ":Telescope git_branches<CR>")
 map("n", "sx", ":Telescope lsp_document_symbols<CR>")
 
-map("n", "<C-p>", ":Telescope find_files<CR>")
+map("n", "<C-p>", ":Telescope find_files hidden=true<CR>")
 map("n", "<C-f>", ":Telescope live_grep<CR>")
 map("n", "<leader>b", ":Telescope buffers<CR>")
 map("n", "<C-c>", ":Telescope commands<CR>")

@@ -1,3 +1,4 @@
+fish_vi_key_bindings
 # Example aliases
 alias zconfig="nvim ~/.zshrc"
 alias fconfig="nvim ~/.config/fish/config.fish"
@@ -30,5 +31,8 @@ alias mkdir='mkdir -vp'
 
 
 alias dotbare="~/git/dotbare/dotbare"
+set -ga fish_user_paths /usr/local/go/bin
+set -ga fish_user_paths ~/.local/bin
+set -ga fish_user_paths ~/.yarn/bin
 
 starship init fish | source
