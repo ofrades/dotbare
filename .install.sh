@@ -7,11 +7,14 @@ mkdir -p ~/git
 sudo apt update
 
 sudo apt-get install -y \
-    fish make cmake git nodejs npm \
+    kitty fish tmux bat ripgrep fd-find silversearcher-ag  \
+    make cmake \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev ripgrep tmux kitty
+    xz-utils tk-dev libffi-dev liblzma-dev \
+    git nodejs npm python3-pip python3-neovim \
+    texlive-luatex texlive-fonts-extra latexmk
 
 
 echo "1 - Essential linux packages installed"
@@ -23,6 +26,14 @@ if ! [ -x "$(command -v yarn)" ]; then
   sudo npm install --global yarn
 else
 	echo "2 - Yarn already installed"
+
+  if ! [ -x "$(command -v prettier)" ]; then
+    echo "2 - Yarn apps installing"
+    yarn global add prettier eslint eslint_d typescript
+  else
+    echo "2 - Prettier already installed"
+  fi
+
 fi
 
 
@@ -53,3 +64,20 @@ if ! [ -d $HOME/.config/nvim ]; then
 else
 	echo "5 - Dotfiles already present"
 fi
+
+# fish as default shell
+if [ -d /usr/bin/fish ]; then
+    echo "6 - Setting fish as default shell"
+    chsh -s /usr/bin/fish
+fi
+
+# install go
+if ! [ -x "$(command -v go)" ]; then
+  echo "7 - Go installing"
+  wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+  echo "7 - EFM server installing"
+  go get github.com/mattn/efm-langserver@HEAD
+else
+  echo "7 - Go already installed"
+fi
+
