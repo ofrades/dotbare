@@ -13,7 +13,7 @@ sudo apt-get install -y \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev \
-    git nodejs npm python3-pip python3-neovim \
+    git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-extra latexmk
 
 
@@ -58,9 +58,11 @@ else
 fi
 
 # get dotfiles
-if ! [ -d $HOME/.config/nvim ]; then
+if ! [ -d $HOME/git/dotfiles ]; then
     echo "5 - Downloading dotfiles"
-    git clone https://github.com/ofrades/dotbare $HOME
+    git clone https://github.com/ofrades/dotfiles ~/git/dotfiles
+    echo "5 - Moving dotfiles"
+    cp -RF $HOME/git/dotfiles/ $HOME/
 else
 	echo "5 - Dotfiles already present"
 fi
@@ -71,14 +73,10 @@ if [ -d /usr/bin/fish ]; then
     chsh -s /usr/bin/fish
 fi
 
-# install go
-if ! [ -x "$(command -v go)" ]; then
-  echo "7 - Go installing"
-  wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
-  echo "7 - EFM server installing"
-  go get github.com/mattn/efm-langserver@HEAD
-else
-  echo "7 - Go already installed"
+# install starship
+if ! [ -x "$(command -v starship)" ]; then
+    echo "7 - Installing starship"
+    curl -fsSL https://starship.rs/install.sh | bash
 fi
 
 # install pop shell
