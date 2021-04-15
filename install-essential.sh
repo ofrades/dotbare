@@ -6,7 +6,7 @@ mkdir -p ~/build
 sudo apt update
 
 sudo apt-get install -y \
-    kitty fish tmux bat ripgrep fd-find silversearcher-ag  \
+    kitty fish tmux fzf bat ripgrep fd-find silversearcher-ag  \
     make cmake \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -53,13 +53,13 @@ if ! [ -d $HOME/.cfg ]; then
     echo "5 - Downloading dotfiles"
     git clone --bare https://github.com/ofrades/dotfiles ~/.cfg
     echo "5 - Moving dotfiles"
-    config checkout
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
 else
 	echo "5 - Dotfiles already present"
 fi
 
 # fish as default shell
-if [ -d /usr/bin/fish ]; then
+if ! [ -x "$(command -v fish)" ]; then
     echo "6 - Setting fish as default shell"
     chsh -s /usr/bin/fish
 fi
@@ -87,4 +87,15 @@ if ! [ -x "$(command -v jump)" ]; then
     sudo dpkg -i jump_0.40.0_amd64.deb
 else
 	echo "9 - Autojump already installed"
+fi
+
+# install gregorio
+if ! [ -d $HOME/build/gregorio ]; then
+    echo "10 - Gregorio installing"
+    git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
+    cd ~/build/gregorio
+    ./build.sh
+    sudo ./install.sh
+else
+	echo "10 - Gregorio already installed"
 fi
