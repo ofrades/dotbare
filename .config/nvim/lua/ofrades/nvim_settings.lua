@@ -140,6 +140,7 @@ map("n", "s", "<Nop>")
 
 -- Search settings
 map("n", "s.", ":lua TelescopeDotfiles()<CR>")
+map("n", "sz", ":lua TelescopeNotes()<CR>")
 map("n", "sk", ":Telescope keymaps<CR>")
 
 -- Lsp
@@ -181,12 +182,7 @@ map("n", "<leader>N", ":cprev<CR>")
 -- Registers
 map("n", '"', ":Telescope registers<CR>")
 
--- Neuron
-map("n", "<C-z>", "<Nop>")
-map("n", "zn", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>")
-map("n", "sz", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
-
--- Move lines
+-- -- Move lines
 map("n", "<A-k>", ":<C-u>move-2<CR>==", {})
 map("v", "<A-k>", ":move-2<CR>gv=gv", {})
 map("n", "<A-j>", ":<C-u>move+<CR>==", {})

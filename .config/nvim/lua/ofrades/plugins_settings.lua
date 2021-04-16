@@ -52,6 +52,7 @@ globals(
       {t = {"Telescope builtin", ":Telescope"}},
       {g = {"Git", ":Neogit"}},
       {n = {"Nvim Files", ":lua TelescopeDotfiles()"}},
+      {z = {"Notes", ":lua TelescopeNotes()"}},
       {h = {"Check Vim health", ":checkhealth"}},
       {i = {"Install Plugins", ":PackerInstall"}},
       {u = {"Update Plugin", ":PackerUpdate"}},

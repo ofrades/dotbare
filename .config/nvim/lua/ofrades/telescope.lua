@@ -83,3 +83,12 @@ function TelescopeDotfiles()
     }
   )
 end
+
+function TelescopeNotes()
+  require("telescope.builtin").file_browser(
+    {
+      prompt_title = "Notes",
+      cwd = "~/notes"
+    }
+  )
+end
