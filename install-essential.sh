@@ -46,72 +46,63 @@ else
     echo "3 - Neovim already installed"
 fi
 
-# tmux config
-if ! [ -d $HOME/.tmux ] ; then
-    echo "4 - Tmux configuring"
-    git clone https://github.com/gpakosz/.tmux.git
-    ln -s -f .tmux/.tmux.conf
-    cp .tmux/.tmux.conf.local .
-else
-    echo "4 - Tmux already configured"
-fi
 
 # fish as default shell
 if ! [ -x "$(command -v fish)" ]; then
-    echo "5 - Setting fish as default shell"
+    echo "4 - Setting fish as default shell"
     sudo apt install fish
     sudo chsh -s `which fish`
 else
-    echo "5 - Fish already installed"
+    echo "4 - Fish already installed"
 fi
 
 # install starship
 if ! [ -x "$(command -v starship)" ]; then
-    echo "6 - Installing starship"
+    echo "5 - Installing starship"
     curl -fsSL https://starship.rs/install.sh | bash
 else
-    echo "6 - Startship already installed"
+    echo "5 - Startship already installed"
 fi
 
 # install pop shell
 if ! [ -d $HOME/build/shell ]; then
-    echo "7 - Pop shell installing"
+    echo "6 - Pop shell installing"
     git clone https://github.com/pop-os/shell ~/build/shell
     cd ~/build/shell/
     make local-install
 else
-    echo "7 - Pop shell already installed"
+    echo "6 - Pop shell already installed"
 fi
 
 # install autojump
 if ! [ -x "$(command -v jump)" ]; then
-    echo "8 - Autojump installing"
+    echo "7 - Autojump installing"
     wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_0.40.0_amd64.deb
     sudo dpkg -i jump_0.40.0_amd64.deb
 else
-    echo "8 - Autojump already installed"
+    echo "7 - Autojump already installed"
 fi
 
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "9 - Gregorio installing"
+    echo "8 - Gregorio installing"
     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
 else
-    echo "9 - Gregorio already installed"
+    echo "8 - Gregorio already installed"
 fi
 
 # get dotfiles
 if ! [ -d $HOME/.cfg ]; then
-    echo "10 - Downloading dotfiles"
+    echo "9 - Downloading dotfiles"
     git clone --bare https://github.com/ofrades/configs ~/.cfg
-    echo "10 - Moving dotfiles"
+    echo "9 - Moving dotfiles"
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
-    echo "10 - Remove dotfiles"
+    echo "9 - Remove dotfiles"
     sudo rm -r $HOME/configs
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
 else
-    echo "10 - Dotfiles already present"
+    echo "9 - Dotfiles already present"
 fi
