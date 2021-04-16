@@ -42,6 +42,7 @@ if ! [ -d $HOME/build/neovim ]; then
     make
     sudo make install
     sudo npm install --global neovim
+    cd ~/
 else
     echo "3 - Neovim already installed"
 fi
@@ -70,6 +71,7 @@ if ! [ -d $HOME/build/shell ]; then
     git clone https://github.com/pop-os/shell ~/build/shell
     cd ~/build/shell/
     make local-install
+    cd ~/
 else
     echo "6 - Pop shell already installed"
 fi
@@ -90,6 +92,7 @@ if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
+    cd ~/
 else
     echo "8 - Gregorio already installed"
 fi
