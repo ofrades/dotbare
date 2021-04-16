@@ -1,18 +1,37 @@
 [pull]
-	rebase = false
+    rebase = false
+
 [diff]
     tool = vimdiff
+
 [merge]
     tool = vimdiff
     conflictstyle = diff3
+
 [mergetool "vimdiff"]
     cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [mergetool]
     path = nvim
-; [user]
-; 	name = ofrades
-; 	email = miguel@ofrades.com
+    prompt = false
+    keepBackup = false
+    trustexitcode = true
+
 [credential]
-	helper = store
+    helper = store
+
 [user]
-	email = mig.silva@gmail.com
+    email = mig.silva@gmail.com
+
+[alias]
+    ci = commit
+    co = checkout
+    br = branch
+    cl = clone
+    cp = cherry-pick
+    st = status -sb
+    ds = difftool --staged
+    last = log -1 --stat
+    unstage = reset HEAD --
+    clear = checkout .
+    lg = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset\" --abbrev-commit --date=relative
