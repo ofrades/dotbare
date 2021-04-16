@@ -29,10 +29,9 @@ globals(
     floaterm_height = 0.65,
     floaterm_winblend = 0.7,
     floaterm_autoinsert = 1,
-    floaterm_keymap_kill = "<F10>",
+    floaterm_keymap_kill = "<Esc><Esc>",
     floaterm_keymap_toggle = "<F12>",
     floaterm_title = "[$1/$2]",
-    floaterm_borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     floaterm_rootmarkers = {".git", ".gitignore", "package.json"},
     -- startify
     ascii = {
@@ -50,7 +49,6 @@ globals(
       {o = {"Recent Files", ":Telescope oldfiles"}},
       {p = {"Find Files", ":Telescope find_files"}},
       {b = {"File Browser", ":Telescope file_browser"}},
-      {z = {"Telescope z", ":Telescope z list"}},
       {t = {"Telescope builtin", ":Telescope"}},
       {g = {"Git", ":Neogit"}},
       {n = {"Nvim Files", ":lua TelescopeDotfiles()"}},

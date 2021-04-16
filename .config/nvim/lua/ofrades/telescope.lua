@@ -4,8 +4,6 @@ local actions = require "telescope.actions"
 local telescope = require "telescope"
 
 require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("z")
-require("telescope").load_extension("media_files")
 
 telescope.setup {
   defaults = {

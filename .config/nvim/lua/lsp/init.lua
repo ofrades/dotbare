@@ -83,7 +83,7 @@ lsp.handlers["textDocument/hover"] =
   }
 )
 
-sign_define(
+--[[ sign_define(
   "LspDiagnosticsSignError",
   {
     text = " "
@@ -109,4 +109,4 @@ sign_define(
   {
     text = " "
   }
-)
+) ]]

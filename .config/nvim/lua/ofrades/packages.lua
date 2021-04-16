@@ -32,10 +32,7 @@ return require("packer").startup(
       requires = {
         {"nvim-lua/popup.nvim"},
         {"nvim-lua/plenary.nvim"},
-        {"nvim-telescope/telescope-symbols.nvim"},
-        {"nvim-telescope/telescope-fzy-native.nvim"},
-        {"nvim-telescope/telescope-z.nvim"},
-        {"nvim-telescope/telescope-media-files.nvim"}
+        {"nvim-telescope/telescope-fzy-native.nvim"}
       }
     }
     -- Git
@@ -52,23 +49,19 @@ return require("packer").startup(
     -- Misk
     use "b3nj5m1n/kommentary"
     -- use "JoosepAlviste/nvim-ts-context-commentstring" -- comment with context
-    use "oberblastmeister/rooter.nvim" -- root dir switcher
-    -- use "AndrewRadev/tagalong.vim" -- Auto change html tags
     use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- start screen
     use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
-    use "mhartington/formatter.nvim"
     use "andymass/vim-matchup"
     use "voldikss/vim-floaterm"
     use "mattn/emmet-vim"
     use "mg979/vim-visual-multi"
-    use "machakann/vim-highlightedyank"
     use "psliwka/vim-smoothie"
     use "windwp/nvim-spectre"
 
-    -- Fzf
-    -- use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
-    -- use "junegunn/fzf.vim"
+    -- Project
+    use "mhartington/formatter.nvim"
+    use "oberblastmeister/rooter.nvim" -- root dir switcher
 
     -- JavaScript
     use "Galooshi/vim-import-js"
@@ -90,9 +83,9 @@ return require("packer").startup(
     use {"rrethy/vim-hexokinase", run = "make hexokinase"}
 
     -- UI
-    use "kyazdani42/nvim-tree.lua"
+    -- use "kyazdani42/nvim-tree.lua"
+    use "tamago324/lir.nvim"
     use "kyazdani42/nvim-web-devicons"
-    -- use "akinsho/nvim-bufferline.lua"
     use "glepnir/galaxyline.nvim"
     -- use "kevinhwang91/nvim-hlslens"
 

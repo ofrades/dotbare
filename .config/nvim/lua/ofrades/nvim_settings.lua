@@ -181,9 +181,6 @@ map("n", "<leader>N", ":cprev<CR>")
 -- Registers
 map("n", '"', ":Telescope registers<CR>")
 
--- Hop
-map("n", "f", ":HopWord<CR>", {})
-
 -- Neuron
 map("n", "<C-z>", "<Nop>")
 map("n", "zn", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>")
@@ -205,7 +202,8 @@ map("n", "sg", ":Neogit<CR>", {})
 map("n", "tb", ":GitBlameToggle<CR>", {})
 
 -- Tree
-map("n", "<Leader>e", ":NvimTreeToggle<CR>")
+map("n", "<space>e", ":lua require'lir.float'.toggle()<CR>")
+map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
 
 -- Better indenting
 map("v", "<", "<gv", {})
@@ -215,10 +213,8 @@ map("v", ">", ">gv", {})
 
 -- Yank till the end of line
 map("n", "Y", "y$")
-
--- Terminal
-map("n", "<leader><leader>", ":FloatermNew ranger<cr>", {})
-map("t", "<leader><leader>", [[<C-\><C-n>:FloatermKill]], {})
+map("n", "D", "d$")
+map("n", "C", "c$")
 
 -- Easier Moving between splits
 map("n", "<C-J>", "<C-W><C-J>", {})
@@ -234,16 +230,7 @@ map("n", "p", "p`]")
 map("v", "y", "y`]")
 map("v", "p", "p`]")
 
--- Terminal
-map("n", "<leader>tt", "<cmd>FloatermNew --height=0.3 --wintype=normal --position=bottom<CR>", {})
-map("n", "<leader>tv", "<cmd>FloatermNew --width=0.4 --wintype=normal --position=right<CR>", {})
-
--- React jsx comment
-map("n", "<leader>cc", ":normal gcc<CR>", {})
-
--- map("n", "<F12>", ":FloatermToggle<CR>")
-map("t", "<Esc><Esc>", "<C-\\><C-n>:FloatermToggle<CR>")
-
+-- Compe
 map("i", "<C-Space>", "compe#complete()", {expr = true})
 map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 map("i", "<C-e>", "compe#close('<C-e>')", {expr = true})

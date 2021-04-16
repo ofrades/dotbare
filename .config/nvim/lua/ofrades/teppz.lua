@@ -142,10 +142,10 @@ Group.new("LspDiagnosticsFloatingError", c.red500, c.none, s.NONE)
 Group.new("LspDiagnosticsFloatingHint", c.green500, c.none, s.NONE)
 Group.new("LspDiagnosticsFloatingInformation", c.blue500, c.none, s.NONE)
 
-Group.new("LspDiagnosticsUnderlineWarning", c.yellow500, c.none, s.underline)
-Group.new("LspDiagnosticsUnderlineError", c.red500, c.none, s.underline)
-Group.new("LspDiagnosticsUnderlineHint", c.green500, c.none, s.underline)
-Group.new("LspDiagnosticsUnderlineInformation", c.blue500, c.none, s.underline)
+Group.new("LspDiagnosticsUnderlineWarning", c.yellow500, c.none, s.underline, c.yellow500)
+Group.new("LspDiagnosticsUnderlineError", c.red500, c.none, s.underline, c.red500)
+Group.new("LspDiagnosticsUnderlineHint", c.green500, c.none, s.underline, c.green500)
+Group.new("LspDiagnosticsUnderlineInformation", c.blue500, c.none, s.underline, c.blue500)
 
 -----------------------
 -- TREESITTER COLORS --
@@ -328,6 +328,9 @@ Group.new("markdownUrl", c.yellow400, c.none, s.NONE)
 Group.new("markdownUrlTitleDelimiter", c.green400, c.none, s.NONE)
 Group.new("markdownLinkText", c.red600, c.none, s.italic)
 Group.new("markdownIdDeclaration", c.red300, c.none, s.NONE)
+
+Group.new("LirFloatNormal", c.none, c.none, s.NONE)
+Group.new("LirFloatBorder", c.grey800, c.none, s.NONE)
 
 ---------------------
 -- TERMINAL COLORS --
