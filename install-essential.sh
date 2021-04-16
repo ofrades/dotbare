@@ -8,7 +8,7 @@ mkdir -p ~/build
 sudo apt update
 
 sudo apt-get install -y \
-    kitty fish tmux fzf bat ripgrep fd-find silversearcher-ag  \
+    kitty tmux fzf bat ripgrep fd-find silversearcher-ag  \
     make cmake \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -16,7 +16,7 @@ sudo apt-get install -y \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments pygmentize
+    libltdl-dev flex bison fontforge python3-pygments
 
 
 echo "1 - Essential linux packages installed"
@@ -48,65 +48,70 @@ fi
 
 # get dotfiles
 if ! [ -d $HOME/.cfg ]; then
-    echo "5 - Downloading dotfiles"
+    echo "4 - Downloading dotfiles"
     git clone --bare https://github.com/ofrades/configs ~/.cfg
-    echo "5 - Moving dotfiles"
+    echo "4 - Moving dotfiles"
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
-    echo "5 - Remove dotfiles"
+    echo "4 - Remove dotfiles"
     sudo rm -r $HOME/configs
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
 else
-    echo "5 - Dotfiles already present"
+    echo "4 - Dotfiles already present"
 fi
 
 # fish as default shell
-if [ -x "$(command -v fish)" ] && ! []; then
-    echo "6 - Setting fish as default shell"
+if ! [ -x "$(command -v fish)" ]; then
+    echo "5 - Setting fish as default shell"
+    sudo apt get install fish
     sudo chsh -s `which fish`
+else
+    echo "5 - Fish already installed"
 fi
 
 # install starship
 if ! [ -x "$(command -v starship)" ]; then
-    echo "7 - Installing starship"
+    echo "6 - Installing starship"
     curl -fsSL https://starship.rs/install.sh | bash
+else
+    echo "6 - Startship already installed"
 fi
 
 # install pop shell
-if ! [ -d $HOME/build/shell ] ; then
-    echo "8 - Pop shell installing"
+if ! [ -d $HOME/build/shell ]; then
+    echo "7 - Pop shell installing"
     git clone https://github.com/pop-os/shell ~/build/shell
     cd ~/build/shell/
     make local-install
 else
-    echo "8 - Pop shell already installed"
+    echo "7 - Pop shell already installed"
 fi
 
 # install autojump
 if ! [ -x "$(command -v jump)" ]; then
-    echo "9 - Autojump installing"
+    echo "8 - Autojump installing"
     wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_0.40.0_amd64.deb
     sudo dpkg -i jump_0.40.0_amd64.deb
 else
-    echo "9 - Autojump already installed"
+    echo "8 - Autojump already installed"
 fi
 
 # tmux config
-if ! [ -d $HOME/build/tmux ] ; then
-    echo "10 - Tmux configuring"
-    git clone https://github.com/gpakosz/.tmux.git $HOME/build/tmux
-    ln -s -f $HOME/build/tmux/.tmux.conf ~/.tmux.conf
-    cp $HOMEM/build/tmux/.tmux.conf.local ~/.tmux.conf.local
+if ! [ -d $HOME/.tmux ] ; then
+    echo "9 - Tmux configuring"
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
 else
-    echo "10 - Tmux already configured"
+    echo "9 - Tmux already configured"
 fi
 
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "11 - Gregorio installing"
+    echo "10 - Gregorio installing"
     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
 else
-    echo "11 - Gregorio already installed"
+    echo "10 - Gregorio already installed"
 fi
