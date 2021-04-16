@@ -7,7 +7,7 @@ local r = s.reverse
 local no = s.NONE
 local global = vim.g
 
-global.colors_name = "ofrades"
+global.colors_name = "teppz"
 
 ---------------------
 --  COLOR PALETTE  --

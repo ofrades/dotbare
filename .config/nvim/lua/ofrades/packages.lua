@@ -98,6 +98,7 @@ return require("packer").startup(
 
     -- Styles
     use "tjdevries/colorbuddy.vim"
+    use "tjdevries/gruvbuddy.nvim"
 
     -- Tree-sitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}

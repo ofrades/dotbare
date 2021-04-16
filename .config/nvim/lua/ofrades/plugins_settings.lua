@@ -10,10 +10,10 @@ globals(
   {
     mapleader = " ",
     -- theme
-    ofrades_italic = true,
-    ofrades_italic_comments = 1,
-    ofrades_italic_keywords = 1,
-    ofrades_italic_functions = 1,
+    teppz_italic = true,
+    teppz_italic_comments = 1,
+    teppz_italic_keywords = 1,
+    teppz_italic_functions = 1,
     qs_highlight_on_keys = {"f", "F"},
     -- setup
     python_host_prog = "/usr/bin/python",

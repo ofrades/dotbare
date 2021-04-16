@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # install linux essential stuff to work
+# with pop-os
+
 mkdir -p ~/build
 
 sudo apt update
@@ -13,8 +15,8 @@ sudo apt-get install -y \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
-    texlive-luatex texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments
+    texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
+    libltdl-dev flex bison fontforge python3-pygments pygmentize
 
 
 echo "1 - Essential linux packages installed"
@@ -88,13 +90,23 @@ else
     echo "9 - Autojump already installed"
 fi
 
+# tmux config
+if ! [ -d $HOME/build/tmux ] ; then
+    echo "10 - Tmux configuring"
+    git clone https://github.com/gpakosz/.tmux.git $HOME/build/tmux
+    ln -s -f $HOME/build/tmux/.tmux.conf ~/.tmux.conf
+    cp $HOMEM/build/tmux/.tmux.conf.local ~/.tmux.conf.local
+else
+    echo "10 - Tmux already configured"
+fi
+
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "10 - Gregorio installing"
+    echo "11 - Gregorio installing"
     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
 else
-    echo "10 - Gregorio already installed"
+    echo "11 - Gregorio already installed"
 fi
