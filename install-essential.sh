@@ -51,7 +51,7 @@ fi
 if ! [ -x "$(command -v fish)" ]; then
     echo "4 - Setting fish as default shell"
     sudo apt install fish
-    sudo chsh -s `which fish`
+    chsh -s `which fish`
 else
     echo "4 - Fish already installed"
 fi
