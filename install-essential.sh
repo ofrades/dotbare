@@ -46,23 +46,20 @@ else
     echo "3 - Neovim already installed"
 fi
 
-# get dotfiles
-if ! [ -d $HOME/.cfg ]; then
-    echo "4 - Downloading dotfiles"
-    git clone --bare https://github.com/ofrades/configs ~/.cfg
-    echo "4 - Moving dotfiles"
-    git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
-    echo "4 - Remove dotfiles"
-    sudo rm -r $HOME/configs
-    git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
+# tmux config
+if ! [ -d $HOME/.tmux ] ; then
+    echo "4 - Tmux configuring"
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
 else
-    echo "4 - Dotfiles already present"
+    echo "4 - Tmux already configured"
 fi
 
 # fish as default shell
 if ! [ -x "$(command -v fish)" ]; then
     echo "5 - Setting fish as default shell"
-    sudo apt get install fish
+    sudo apt install fish
     sudo chsh -s `which fish`
 else
     echo "5 - Fish already installed"
@@ -95,23 +92,26 @@ else
     echo "8 - Autojump already installed"
 fi
 
-# tmux config
-if ! [ -d $HOME/.tmux ] ; then
-    echo "9 - Tmux configuring"
-    git clone https://github.com/gpakosz/.tmux.git
-    ln -s -f .tmux/.tmux.conf
-    cp .tmux/.tmux.conf.local .
-else
-    echo "9 - Tmux already configured"
-fi
-
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "10 - Gregorio installing"
+    echo "9 - Gregorio installing"
     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
 else
-    echo "10 - Gregorio already installed"
+    echo "9 - Gregorio already installed"
+fi
+
+# get dotfiles
+if ! [ -d $HOME/.cfg ]; then
+    echo "10 - Downloading dotfiles"
+    git clone --bare https://github.com/ofrades/configs ~/.cfg
+    echo "10 - Moving dotfiles"
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
+    echo "10 - Remove dotfiles"
+    sudo rm -r $HOME/configs
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
+else
+    echo "10 - Dotfiles already present"
 fi
