@@ -79,7 +79,6 @@ lsp.handlers["textDocument/hover"] =
   lsp.with(
   lsp.handlers.hover,
   {
-    -- Use a sharp border with `FloatBorder` highlights
     border = "single"
   }
 )
@@ -87,35 +86,27 @@ lsp.handlers["textDocument/hover"] =
 sign_define(
   "LspDiagnosticsSignError",
   {
-    text = " ",
-    texthl = "LspDiagnosticsError",
-    linehl = "LspDiagnosticsError"
+    text = " "
   }
 )
 
 sign_define(
   "LspDiagnosticsSignWarning",
   {
-    text = " ",
-    texthl = "LspDiagnosticsWarning",
-    linehl = "LspDiagnosticsWarning"
+    text = " "
   }
 )
 
 sign_define(
   "LspDiagnosticsSignInformation",
   {
-    text = " ",
-    texthl = "LspDiagnosticsInformation",
-    linehl = "LspDiagnosticsInformation"
+    text = " "
   }
 )
 
 sign_define(
   "LspDiagnosticsSignHint",
   {
-    text = " ",
-    texthl = "LspDiagnosticsHint",
-    linehl = "LspDiagnosticsHint"
+    text = " "
   }
 )

@@ -51,7 +51,7 @@ return require("packer").startup(
 
     -- Misk
     use "b3nj5m1n/kommentary"
-    use "JoosepAlviste/nvim-ts-context-commentstring" -- comment with context
+    -- use "JoosepAlviste/nvim-ts-context-commentstring" -- comment with context
     use "oberblastmeister/rooter.nvim" -- root dir switcher
     -- use "AndrewRadev/tagalong.vim" -- Auto change html tags
     use "kevinhwang91/nvim-bqf" -- better quickfix

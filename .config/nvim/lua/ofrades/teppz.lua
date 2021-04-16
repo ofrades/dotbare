@@ -133,21 +133,24 @@ Group.new("TabLineSel", c.dark, c.blue700, no)
 ----------------
 -- LSP COLORS --
 ----------------
-Group.new("LspDiagnosticsWarning", c.yellow500, c.none, no)
+Group.new("LspDiagnosticsVirtualTextWarning", c.yellow500, c.none, no)
+Group.new("LspDiagnosticsVirtualTextError", c.red500, c.none, no)
+Group.new("LspDiagnosticsVirtualTextHint", c.green500, c.none, no)
+Group.new("LspDiagnosticsVirtualTextInformation", c.blue500, c.none, no)
 
-Group.new("LspDiagnosticsError", c.red500, c.none, no)
-Group.new("LspDiagnosticsErrorSign", c.red500, c.none, no)
-Group.new("LspDiagnosticsErrorFloating", c.red500, c.none, no)
-Group.new("LspDiagnosticsUnderlineError", c.red500, c.none, ul)
+Group.new("LspDiagnosticsSignWarning", c.yellow500, c.none, no)
+Group.new("LspDiagnosticsSignError", c.red500, c.none, no)
+Group.new("LspDiagnosticsSignHint", c.green500, c.none, no)
+Group.new("LspDiagnosticsSignInformation", c.blue500, c.none, no)
 
-Group.new("LspDiagnosticsHint", c.green500, c.none, no)
-Group.new("LspDiagnosticsHintSign", c.green500, c.none, no)
+Group.new("LspDiagnosticsFloatingWarning", c.yellow500, c.none, no)
+Group.new("LspDiagnosticsFloatingError", c.red500, c.none, no)
 Group.new("LspDiagnosticsFloatingHint", c.green500, c.none, no)
-Group.new("LspDiagnosticsUnderlineHint", c.green500, c.none, ul)
+Group.new("LspDiagnosticsFloatingInformation", c.blue500, c.none, no)
 
-Group.new("LspDiagnosticsInformation", c.blue500, c.none, no)
-Group.new("LspDiagnosticsInformationSign", c.blue500, c.none, no)
-Group.new("LspDiagnosticsInformationFloating", c.blue500, c.none, no)
+Group.new("LspDiagnosticsUnderlineWarning", c.yellow500, c.none, ul)
+Group.new("LspDiagnosticsUnderlineError", c.red500, c.none, ul)
+Group.new("LspDiagnosticsUnderlineHint", c.green500, c.none, ul)
 Group.new("LspDiagnosticsUnderlineInformation", c.blue500, c.none, ul)
 
 -----------------------
