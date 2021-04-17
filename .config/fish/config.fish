@@ -35,9 +35,15 @@ alias z='j'
 
 alias configs="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
+
+# Environment Variables
 set -ga fish_user_paths /usr/local/go/bin
 set -ga fish_user_paths ~/.local/bin
 set -ga fish_user_paths ~/.yarn/bin
+set -x DENO_INSTALL /Users/YOUR_USER/.deno
+set -x PATH $DENO_INSTALL/bin:$PATH
+set -ga fish_user_paths ~/.cargo/bin
+
 set -gx EDITOR nvim
 
 starship init fish | source
