@@ -1,9 +1,8 @@
-vim.cmd [[packadd telescope-fzy-native.nvim]]
 local finders = require "telescope.builtin"
 local actions = require "telescope.actions"
 local telescope = require "telescope"
 
-require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("fzf")
 
 telescope.setup {
   defaults = {
@@ -54,24 +53,19 @@ telescope.setup {
     color_devicons = true,
     use_less = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-    file_sorter = require "telescope.sorters".get_fzy_sorter,
+    file_sorter = require "telescope.sorters".get_fuzzy_file,
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     file_previewer = require "telescope.previewers".vim_buffer_cat.new,
     grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
     qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new
   },
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true
-    },
-    media_files = {
-      -- filetypes whitelist
-      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      filetypes = {"png", "webp", "jpg", "jpeg"},
-      find_cmd = "rg" -- find command (defaults to `fd`)
-    },
-    z = {}
+    fzf = {
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
+    }
   }
 }
 

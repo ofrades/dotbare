@@ -67,7 +67,7 @@ options(
     listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
     -- Number value
-    foldlevel = 99,
+    foldlevel = 10,
     cmdheight = 1,
     colorcolumn = 80, -- 120 chars color column
     laststatus = 2, -- always enable statusline

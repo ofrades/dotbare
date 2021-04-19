@@ -23,16 +23,6 @@ globals(
     gitblame_message_template = "     <author> • <summary> • <date>",
     -- colors
     Hexokinase_highlighters = {"virtual"},
-    -- floaterm
-    floaterm_autoclose = 0,
-    floaterm_width = 0.85,
-    floaterm_height = 0.65,
-    floaterm_winblend = 0.7,
-    floaterm_autoinsert = 1,
-    floaterm_keymap_kill = "<Esc><Esc>",
-    floaterm_keymap_toggle = "<F12>",
-    floaterm_title = "[$1/$2]",
-    floaterm_rootmarkers = {".git", ".gitignore", "package.json"},
     -- startify
     ascii = {
       " _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ",
@@ -46,8 +36,8 @@ globals(
       {type = "bookmarks", header = {"          Bookmarks"}}
     },
     startify_commands = {
-      {o = {"Recent Files", ":Telescope oldfiles"}},
-      {p = {"Find Files", ":Telescope find_files"}},
+      {o = {"Recent Files", ":Telescope oldfiles hidden=true"}},
+      {p = {"Find Files", ":Telescope find_files hidden=true"}},
       {b = {"File Browser", ":Telescope file_browser"}},
       {t = {"Telescope builtin", ":Telescope"}},
       {g = {"Git", ":Neogit"}},
@@ -102,7 +92,7 @@ globals(
 )
 
 -- rooter
-require "rooter".setup {
+--[[ require "rooter".setup {
   echo = false,
   patterns = {
     -- the patterns to find
@@ -113,11 +103,19 @@ require "rooter".setup {
     ".env"
   },
   non_project_files = "current"
-}
-
+} ]]
 -- icons
 require "nvim-web-devicons".setup()
 
 -- git
 local neogit = require("neogit")
 neogit.setup {}
+
+require "toggleterm".setup {
+  size = 10,
+  open_mapping = [[<c-\>]],
+  shade_filetypes = {},
+  start_in_insert = false,
+  persist_size = true,
+  direction = "horizontal"
+}

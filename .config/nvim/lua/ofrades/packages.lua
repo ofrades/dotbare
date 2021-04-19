@@ -32,7 +32,7 @@ return require("packer").startup(
       requires = {
         {"nvim-lua/popup.nvim"},
         {"nvim-lua/plenary.nvim"},
-        {"nvim-telescope/telescope-fzy-native.nvim"}
+        {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
       }
     }
     -- Git
@@ -53,7 +53,8 @@ return require("packer").startup(
     use "mhinz/vim-startify" -- start screen
     use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
     use "andymass/vim-matchup"
-    use "voldikss/vim-floaterm"
+    -- use "voldikss/vim-floaterm"
+    use "akinsho/nvim-toggleterm.lua"
     use "mattn/emmet-vim"
     use "mg979/vim-visual-multi"
     use "psliwka/vim-smoothie"
@@ -61,7 +62,7 @@ return require("packer").startup(
 
     -- Project
     use "mhartington/formatter.nvim"
-    use "oberblastmeister/rooter.nvim" -- root dir switcher
+    -- use "oberblastmeister/rooter.nvim" -- root dir switcher
 
     -- JavaScript
     use "Galooshi/vim-import-js"

@@ -3,6 +3,9 @@
 # install linux essential stuff to work
 # with pop-os
 
+echo "-> Tools installation just started"
+
+
 mkdir -p ~/build
 
 sudo apt update
@@ -19,24 +22,24 @@ sudo apt-get install -y \
     libltdl-dev flex bison fontforge python3-pygments
 
 
-echo "1 - Essential linux packages installed"
+echo "-> Essential linux packages installed"
 
 # install yarn
 
 if ! [ -x "$(command -v yarn)" ]; then
-	echo "2 - Yarn is installing"
+	echo "-> Yarn is installing"
   sudo npm install --global yarn
   elif ! [ -x "$(command -v prettier)" ]; then
-    echo "2 - Yarn apps installing"
+    echo "-> Yarn apps installing"
     yarn global add prettier eslint eslint_d typescript
   else
-    echo "2 - Yarn already installed"
+    echo "-> Yarn already installed"
 fi
 
 
 # install neovim
 if ! [ -d $HOME/build/neovim ]; then
-    echo "3 - Neovim installing"
+    echo "-> Neovim installing"
     git clone https://github.com/neovim/neovim ~/build/neovim
     cd ~/build/neovim/
     make
@@ -44,68 +47,81 @@ if ! [ -d $HOME/build/neovim ]; then
     sudo npm install --global neovim
     cd ~/
 else
-    echo "3 - Neovim already installed"
+    echo "-> Neovim already installed"
 fi
 
 
 # fish as default shell
 if ! [ -x "$(command -v fish)" ]; then
-    echo "4 - Setting fish as default shell"
+    echo "-> Setting fish as default shell"
     sudo apt install fish
     chsh -s `which fish`
 else
-    echo "4 - Fish already installed"
+    echo "-> Fish already installed"
 fi
 
 # install starship
 if ! [ -x "$(command -v starship)" ]; then
-    echo "5 - Installing starship"
+    echo "-> Installing starship"
     curl -fsSL https://starship.rs/install.sh | bash
 else
-    echo "5 - Startship already installed"
+    echo "-> Startship already installed"
 fi
 
 # install pop shell
 if ! [ -d $HOME/build/shell ]; then
-    echo "6 - Pop shell installing"
+    echo "-> Pop shell installing"
     git clone https://github.com/pop-os/shell ~/build/shell
     cd ~/build/shell/
     make local-install
     cd ~/
 else
-    echo "6 - Pop shell already installed"
+    echo "-> Pop shell already installed"
 fi
 
 # install autojump
 if ! [ -x "$(command -v jump)" ]; then
-    echo "7 - Autojump installing"
+    echo "-> Autojump installing"
     wget https://github.com/gsamokovarov/jump/releases/download/v0.40.0/jump_0.40.0_amd64.deb
     sudo dpkg -i jump_0.40.0_amd64.deb
 else
-    echo "7 - Autojump already installed"
+    echo "-> Autojump already installed"
 fi
 
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "8 - Gregorio installing"
+    echo "-> Gregorio installing"
     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
     cd ~/build/gregorio
     ./build.sh
     sudo ./install.sh
     cd ~/
 else
-    echo "8 - Gregorio already installed"
+    echo "-> Gregorio already installed"
 fi
 
 # get dotfiles
 if ! [ -d $HOME/.cfg ]; then
-    echo "9 - Downloading dotfiles"
+    echo "-> Downloading dotfiles"
     git clone --bare https://github.com/ofrades/configs ~/.cfg
-    echo "9 - Moving dotfiles"
+    echo "-> Moving dotfiles"
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout -f
-    echo "9 - Remove dotfiles"
+    echo "-> Remove dotfiles"
     sudo rm -r $HOME/configs
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
 else
-    echo "9 - Dotfiles already present"
+    echo "-> Dotfiles already present"
 fi
+
+# rust
+if ! [ -x "$(command -v cargo)" ]; then
+
+    echo "-> Installing rust"
+    curl https://sh.rustup.rs -sSf | sh
+    # rust webassembly
+    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+    cargo install cargo-generate
+else
+    echo "-> Rust already installed"
+fi
+end

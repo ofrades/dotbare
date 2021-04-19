@@ -26,7 +26,12 @@ local mode_color = function()
     V = colors.yellow,
     [""] = colors.yellow,
     v = colors.yellow,
-    R = colors.blue
+    R = colors.blue,
+    r = colors.blue,
+    rm = colors.blue,
+    ["r?"] = colors.blue,
+    ["!"] = colors.red,
+    t = colors.bg
   }
 
   return mode_colors[vim.fn.mode()]
@@ -42,7 +47,12 @@ section.left[1] = {
         V = "[V]",
         [""] = "[V]",
         v = "[V]",
-        R = "[R]"
+        R = "[R]",
+        r = "[r]",
+        rm = "[rm]",
+        ["r?"] = "[r?]",
+        ["!"] = "[!]",
+        t = "[t]"
       }
       vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color() .. " gui=bold")
       return "  " .. alias[vim.fn.mode()]
