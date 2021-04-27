@@ -162,10 +162,10 @@ map("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
 map("n", "[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
 map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
 
--- Telescope explorer
+-- File explorer
 map("n", "se", ":Telescope file_browser<CR>")
--- map("n", "<leader><leader>", ":Telescope file_browser<CR>")
-map("n", "<leader><leader>", ":Explore<CR>")
+map("n", "-", ":lua require'lir.float'.toggle()<CR>")
+map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
 
 map("n", "st", ":Telescope ")
 map("n", "sp", ":Telescope find_files hidden=true<CR>")
@@ -213,10 +213,6 @@ map("n", "<Leader>w", ":w!<CR>")
 -- Git
 map("n", "sg", ":Neogit<CR>", {})
 
--- Tree
--- map("n", "<space>e", ":lua require'lir.float'.toggle()<CR>")
--- map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
-
 -- Better indenting
 map("v", "<", "<gv", {})
 map("n", "<", "<<", {})
@@ -248,49 +244,3 @@ map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 map("i", "<C-e>", "compe#close('<C-e>')", {expr = true})
 map("i", "C-u", "compe#scroll({ 'delta': +4 })", {noremap = false, expr = true})
 map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = false, expr = true})
-
--- Nerdtree like sidepanel
--- absolute width of netrw window
-vim.g.netrw_winsize = -28
-
--- do not display info on the top of window
-vim.g.netrw_banner = 0
-
--- sort is affecting only: directories on the top, files below
--- vim.g.netrw_sort_sequence = '[\/]$,*'
-
--- variable for use by ToggleNetrw function
-vim.g.NetrwIsOpen = 0
-
--- Lexplore toggle function
-ToggleNetrw = function()
-  if vim.g.NetrwIsOpen == 1 then
-    local i = vim.api.nvim_get_current_buf()
-    while i >= 1 do
-      if vim.bo.filetype == "netrw" then
-        vim.cmd([[ silent exe "bwipeout " . ]] .. i)
-      end
-      i = i - 1
-    end
-    vim.g.NetrwIsOpen = 0
-    vim.g.netrw_liststyle = 0
-    vim.g.netrw_chgwin = -1
-  else
-    vim.g.NetrwIsOpen = 1
-    vim.g.netrw_liststyle = 3
-    vim.cmd([[silent Lexplore]])
-  end
-end
-
-vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua ToggleNetrw()<cr><paste>", {noremap = true, silent = true})
-
--- Function to open preview of file under netrw
-vim.api.nvim_exec(
-  [[
-  augroup Netrw
-    autocmd!
-    autocmd filetype netrw nmap <leader>; <cr>:wincmd W<cr>
-  augroup end
-]],
-  false
-)

@@ -52,7 +52,7 @@ return require("packer").startup(
 
     -- Misk
     use "b3nj5m1n/kommentary" -- comments
-    -- use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
+    use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
     use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- startup screen
     use "andymass/vim-matchup" -- navigate and highlight matching words
@@ -62,7 +62,7 @@ return require("packer").startup(
     use "psliwka/vim-smoothie" -- smooth scrool
 
     -- Format
-    use "mhartington/formatter.nvim"
+    use "mhartington/formatter.nvim" -- only using this because vue lsp
 
     -- search and replace
     use "windwp/nvim-spectre" -- search and replace
@@ -81,7 +81,6 @@ return require("packer").startup(
 
     -- UI
     use {"rrethy/vim-hexokinase", run = "make hexokinase"} -- show colors
-    use "tamago324/lir.nvim" -- tree project view
     use "kyazdani42/nvim-web-devicons"
     use "glepnir/galaxyline.nvim" -- status line
     -- Theme
@@ -91,5 +90,8 @@ return require("packer").startup(
     -- Tree-sitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- tresitter highlights for better syntax highlights
     use "nvim-treesitter/playground" -- to check syntax under cursor
+
+    -- File explorer
+    use "tamago324/lir.nvim" -- tree project view
   end
 )
