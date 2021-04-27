@@ -17,18 +17,27 @@ cmd [[ autocmd BufWritePost ofrades.lua PackerCompile ]]
 return require("packer").startup(
   function()
     -- Packer can manage itself as an optional plugin
-    use {"wbthomason/packer.nvim", opt = true}
+    use {"wbthomason/packer.nvim", opt = true} -- package manager
 
     -- LSP
-    use "neovim/nvim-lspconfig"
-    use "hrsh7th/nvim-compe"
+    use "neovim/nvim-lspconfig" -- lsp configuration
+    use "hrsh7th/nvim-compe" -- lsp completion
     use {"tzachar/compe-tabnine", run = "./install.sh"}
-    use "kabouzeid/nvim-lspinstall"
-    use "glepnir/lspsaga.nvim"
+    use "kabouzeid/nvim-lspinstall" -- easy lsp installs
+    use "glepnir/lspsaga.nvim" -- lsp with highly a performant UI
+    use {
+      "folke/lsp-trouble.nvim",
+      config = function()
+        require("trouble").setup {}
+      end
+    }
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use "folke/lsp-colors.nvim"
+    use "airblade/vim-rooter"
 
     -- Telescope
     use {
-      "nvim-telescope/telescope.nvim",
+      "nvim-telescope/telescope.nvim", -- navigate the galaxy
       requires = {
         {"nvim-lua/popup.nvim"},
         {"nvim-lua/plenary.nvim"},
@@ -36,66 +45,51 @@ return require("packer").startup(
       }
     }
     -- Git
-    use "tpope/vim-fugitive"
-    use "TimUntersberger/neogit"
-    use "rhysd/conflict-marker.vim"
-    use "rhysd/committia.vim"
-    use "mhinz/vim-signify"
-    use "f-person/git-blame.nvim"
-
-    -- Diagnostics
-    -- use "dense-analysis/ale"
+    use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
+    use "TimUntersberger/neogit" -- Magit clone for Neovim
+    use "rhysd/committia.vim" -- More Pleasant Editing on Commit Message
+    use "lewis6991/gitsigns.nvim"
 
     -- Misk
-    use "b3nj5m1n/kommentary"
-    -- use "JoosepAlviste/nvim-ts-context-commentstring" -- comment with context
+    use "b3nj5m1n/kommentary" -- comments
+    -- use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
     use "kevinhwang91/nvim-bqf" -- better quickfix
-    use "mhinz/vim-startify" -- start screen
-    use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
-    use "andymass/vim-matchup"
-    -- use "voldikss/vim-floaterm"
-    use "akinsho/nvim-toggleterm.lua"
-    use "mattn/emmet-vim"
-    use "mg979/vim-visual-multi"
-    use "psliwka/vim-smoothie"
-    use "windwp/nvim-spectre"
+    use "mhinz/vim-startify" -- startup screen
+    use "andymass/vim-matchup" -- navigate and highlight matching words
+    use "akinsho/nvim-toggleterm.lua" -- terminal
+    -- use "mattn/emmet-vim"
+    use "mg979/vim-visual-multi" -- select multiple words under cursor
+    use "psliwka/vim-smoothie" -- smooth scrool
 
-    -- Project
+    -- Format
     use "mhartington/formatter.nvim"
-    -- use "oberblastmeister/rooter.nvim" -- root dir switcher
 
-    -- JavaScript
-    use "Galooshi/vim-import-js"
-    use "styled-components/vim-styled-components"
+    -- search and replace
+    use "windwp/nvim-spectre" -- search and replace
 
     -- Snippets
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
+
+    -- Import Snippets
     use "dsznajder/vscode-es7-javascript-react-snippets"
     use "sdras/vue-vscode-snippets"
     use "xabikos/vscode-javascript"
     use "burkeholland/simple-react-snippets"
     use "mlaursen/vim-react-snippets"
     use "abusaidm/html-snippets"
-    use "1tontech/bootstrap4-snippets"
-
-    -- Themes
-    -- use "sheerun/vim-polyglot"
-    use {"rrethy/vim-hexokinase", run = "make hexokinase"}
 
     -- UI
-    -- use "kyazdani42/nvim-tree.lua"
-    use "tamago324/lir.nvim"
+    use {"rrethy/vim-hexokinase", run = "make hexokinase"} -- show colors
+    use "tamago324/lir.nvim" -- tree project view
     use "kyazdani42/nvim-web-devicons"
-    use "glepnir/galaxyline.nvim"
-    -- use "kevinhwang91/nvim-hlslens"
-
-    -- Styles
-    use "tjdevries/colorbuddy.vim"
-    use "tjdevries/gruvbuddy.nvim"
+    use "glepnir/galaxyline.nvim" -- status line
+    -- Theme
+    use "tjdevries/colorbuddy.vim" -- used to create my own theme
+    use "folke/tokyonight.nvim"
 
     -- Tree-sitter
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "nvim-treesitter/playground"
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- tresitter highlights for better syntax highlights
+    use "nvim-treesitter/playground" -- to check syntax under cursor
   end
 )

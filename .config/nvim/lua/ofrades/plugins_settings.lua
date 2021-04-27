@@ -8,9 +8,11 @@ end
 
 globals(
   {
+    ale_fixers = {"prettier", "eslint"},
     mapleader = " ",
     -- theme
     teppz_italic = true,
+    rooter_targets = ".git package.json .eslintrc",
     teppz_italic_comments = 1,
     teppz_italic_keywords = 1,
     teppz_italic_functions = 1,
@@ -18,9 +20,6 @@ globals(
     -- setup
     python_host_prog = "/usr/bin/python",
     python3_host_prog = "/usr/bin/python3",
-    -- git
-    gitblame_enabled = 0,
-    gitblame_message_template = "     <author> • <summary> • <date>",
     -- colors
     Hexokinase_highlighters = {"virtual"},
     -- startify
@@ -30,9 +29,9 @@ globals(
     },
     startify_custom_header = "startify#center(g:ascii)",
     startify_lists = {
-      {type = "sessions", header = {"          Sessions"}},
-      {type = "commands", header = {"        גּ  Commands"}},
       {type = "files", header = {"          Files"}},
+      {type = "commands", header = {"        גּ  Commands"}},
+      {type = "sessions", header = {"          Sessions"}},
       {type = "bookmarks", header = {"          Bookmarks"}}
     },
     startify_commands = {
@@ -53,6 +52,7 @@ globals(
     startify_session_autoload = 1,
     startify_session_delete_buffers = 0,
     startify_session_persistence = 1,
+    startify_session_dir = "~/.config/nvim/sessions/",
     startify_change_to_vcs_root = 1,
     startify_padding_left = 6,
     webdevicons_enable_startify = 1,
@@ -112,10 +112,67 @@ local neogit = require("neogit")
 neogit.setup {}
 
 require "toggleterm".setup {
-  size = 10,
-  open_mapping = [[<c-\>]],
-  shade_filetypes = {},
-  start_in_insert = false,
-  persist_size = true,
-  direction = "horizontal"
+  -- size = 10,
+  open_mapping = [[<c-\>]]
+  -- shade_filetypes = {},
+  -- start_in_insert = false,
+  -- persist_size = true,
+  -- direction = "horizontal"
 }
+
+local api = vim.api
+local fn = vim.fn
+
+local prettier = {
+  function()
+    return {
+      exe = "node_modules/.bin/prettier",
+      args = {
+        "--stdin-filepath",
+        api.nvim_buf_get_name(0)
+      },
+      stdin = true
+    }
+  end
+}
+
+local luafmt = {
+  function()
+    return {
+      exe = "luafmt",
+      args = {
+        "--indent-count=2",
+        "--stdin"
+      },
+      stdin = true
+    }
+  end
+}
+
+require("formatter").setup(
+  {
+    logging = false,
+    filetype = {
+      javascript = prettier,
+      javascriptreact = prettier,
+      typescript = prettier,
+      typescriptreact = prettier,
+      json = prettier,
+      css = prettier,
+      html = prettier,
+      svelte = prettier,
+      vue = prettier,
+      lua = luafmt
+    }
+  }
+)
+
+vim.api.nvim_exec(
+  [[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.vue,*.lua FormatWrite
+augroup END
+]],
+  true
+)

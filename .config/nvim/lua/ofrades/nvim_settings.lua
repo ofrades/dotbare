@@ -125,14 +125,23 @@ function Reload()
 end
 
 map("n", "<leader>x", ":lua Reload()<CR>", {})
+
 -- Try search and replace
 map("n", "<space>S", ":lua require('spectre').open()<CR>")
-map("n", "<space>sw", "viw:lua require('spectre').open_visual()<CR>")
-map("n", "<space>s", ":lua require('spectre').open_visual()<CR>")
-map("n", "<space>sp", ":lua require('spectre').open_file_search()<CR>")
+-- map("n", "<space>sw", "viw:lua require('spectre').open_visual()<CR>")
+-- map("n", "<space>s", ":lua require('spectre').open_visual()<CR>")
+-- map("n", "<space>sp", ":lua require('spectre').open_file_search()<CR>")
 
 map("i", "kj", "<esc>")
 map("i", "jk", "<esc>")
+
+map("n", "<Up>", "<C-y>")
+map("n", "<Down>", "<C-e>")
+
+map("n", "<A-right>", "<C-w><")
+map("n", "<A-left>", "<C-w>>")
+map("n", "<A-up>", "<C-w>+")
+map("n", "<A-down>", "<C-w>-")
 
 -- <leader> to space
 map("n", "<Space>", "<Nop>")
@@ -153,31 +162,40 @@ map("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
 map("n", "[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
 map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
 
--- Telescope
+-- Telescope explorer
 map("n", "se", ":Telescope file_browser<CR>")
-map("n", "st", ":Telescope<CR>")
+-- map("n", "<leader><leader>", ":Telescope file_browser<CR>")
+map("n", "<leader><leader>", ":Explore<CR>")
+
+map("n", "st", ":Telescope ")
 map("n", "sp", ":Telescope find_files hidden=true<CR>")
+map("n", "<C-p>", ":Telescope find_files hidden=true<CR>")
 map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list
+map("n", "<C-f>", ":Telescope live_grep<CR>")
 map("n", "so", ":Telescope oldfiles<CR>")
-map("n", "sr", ":Telescope lsp_references<CR>")
-map("n", "sd", ":Telescope lsp_document_diagnostic()<CR>", {})
+
+-- Telescope Git
 map("n", "sP", ":Telescope git_files<CR>")
 map("n", "sl", ":Telescope git_commits<CR>")
 map("n", "sc", ":Telescope git_bcommits<CR>")
 map("n", "ss", ":Telescope git_status<CR>")
 map("n", "sb", ":Telescope git_branches<CR>")
-map("n", "sx", ":Telescope lsp_document_symbols<CR>")
 
-map("n", "<C-p>", ":Telescope find_files hidden=true<CR>")
-map("n", "<C-f>", ":Telescope live_grep<CR>")
-map("n", "<leader>b", ":Telescope buffers<CR>")
-map("n", "<C-c>", ":Telescope commands<CR>")
-map("n", "<leader>lws", ":Telescope lsp_workspace_symbols<CR>")
-map("n", "<leader>v", ":Telescope vim_options<CR>")
+map("n", "sx", ":Telescope lsp_document_symbols<CR>")
+map("n", "sB", ":Telescope buffers<CR>")
+map("n", "sC", ":Telescope commands<CR>")
+-- Telescope LSP
+map("n", "sr", ":Telescope lsp_references<CR>")
+map("n", "sa", ":Telescope lsp_code_actions<CR>")
+map("n", "sd", ":Telescope lsp_document_diagnostics<CR>", {})
+map("n", "sw", ":Telescope lsp_workspace_symbols<CR>")
 
 -- Quick fix list
 map("n", "<leader>n", ":cnext<CR>")
 map("n", "<leader>N", ":cprev<CR>")
+
+-- Diagnostics
+-- map("n", "sd", ":LspTroubleToggle<CR>")
 
 -- Registers
 map("n", '"', ":Telescope registers<CR>")
@@ -193,13 +211,11 @@ map("n", "<Leader>q", ":q<CR>")
 map("n", "<Leader>w", ":w!<CR>")
 
 -- Git
-map("n", "sd", ":SignifyHunkDiff<CR>", {})
 map("n", "sg", ":Neogit<CR>", {})
-map("n", "tb", ":GitBlameToggle<CR>", {})
 
 -- Tree
-map("n", "<space>e", ":lua require'lir.float'.toggle()<CR>")
-map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
+-- map("n", "<space>e", ":lua require'lir.float'.toggle()<CR>")
+-- map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
 
 -- Better indenting
 map("v", "<", "<gv", {})
@@ -232,3 +248,49 @@ map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 map("i", "<C-e>", "compe#close('<C-e>')", {expr = true})
 map("i", "C-u", "compe#scroll({ 'delta': +4 })", {noremap = false, expr = true})
 map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = false, expr = true})
+
+-- Nerdtree like sidepanel
+-- absolute width of netrw window
+vim.g.netrw_winsize = -28
+
+-- do not display info on the top of window
+vim.g.netrw_banner = 0
+
+-- sort is affecting only: directories on the top, files below
+-- vim.g.netrw_sort_sequence = '[\/]$,*'
+
+-- variable for use by ToggleNetrw function
+vim.g.NetrwIsOpen = 0
+
+-- Lexplore toggle function
+ToggleNetrw = function()
+  if vim.g.NetrwIsOpen == 1 then
+    local i = vim.api.nvim_get_current_buf()
+    while i >= 1 do
+      if vim.bo.filetype == "netrw" then
+        vim.cmd([[ silent exe "bwipeout " . ]] .. i)
+      end
+      i = i - 1
+    end
+    vim.g.NetrwIsOpen = 0
+    vim.g.netrw_liststyle = 0
+    vim.g.netrw_chgwin = -1
+  else
+    vim.g.NetrwIsOpen = 1
+    vim.g.netrw_liststyle = 3
+    vim.cmd([[silent Lexplore]])
+  end
+end
+
+vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua ToggleNetrw()<cr><paste>", {noremap = true, silent = true})
+
+-- Function to open preview of file under netrw
+vim.api.nvim_exec(
+  [[
+  augroup Netrw
+    autocmd!
+    autocmd filetype netrw nmap <leader>; <cr>:wincmd W<cr>
+  augroup end
+]],
+  false
+)
