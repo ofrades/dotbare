@@ -1,6 +1,7 @@
 local finders = require "telescope.builtin"
 local actions = require "telescope.actions"
 local telescope = require "telescope"
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").load_extension("fzf")
 
@@ -15,44 +16,27 @@ telescope.setup {
       "--column",
       "--smart-case"
     },
-    prompt_position = "bottom",
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    scroll_strategy = "cycle",
     layout_strategy = "flex",
     layout_defaults = {
       horizontal = {
-        mirror = true,
+        -- mirror = true,
         scroll_speed = 1
       },
       vertical = {
-        mirror = false,
+        -- mirror = false,
         scroll_speed = 1
       }
     },
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist
-      }
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<c-t>"] = trouble.open_with_trouble
+      },
+      n = {["<c-t>"] = trouble.open_with_trouble}
     },
     file_ignore_patterns = {".git/*", "node-modules"},
-    shorten_path = true,
-    winblend = 0,
-    width = 0.9,
-    height = 1,
-    results_height = 1,
-    preview_cutoff = 120,
-    results_width = 0.8,
-    border = {},
-    borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
     color_devicons = true,
-    use_less = true,
-    set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     file_sorter = require "telescope.sorters".get_fuzzy_file,
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     file_previewer = require "telescope.previewers".vim_buffer_cat.new,

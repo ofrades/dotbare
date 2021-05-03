@@ -1,21 +1,11 @@
-local o = vim.o
-local bo = vim.bo
-local wo = vim.wo
-local util = vim.lsp.util
-local api = vim.api
-local cmd = vim.cmd
-local fn = vim.fn
-local lsp = vim.lsp
-local tbl_extend = vim.tbl_extend
-
 local function options(opts)
   for k, v in pairs(opts) do
     if v == true then
-      cmd("set " .. k)
+      vim.cmd("set " .. k)
     elseif v == false then
-      cmd(string.format("set no%s", k))
+      vim.cmd(string.format("set no%s", k))
     else
-      cmd(string.format("set %s=%s", k, v))
+      vim.cmd(string.format("set %s=%s", k, v))
     end
   end
 end
@@ -92,155 +82,11 @@ options(
 
 -- autocmds
 
-cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 500})"
+vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 500})"
 
 --[[ cmd "au BufNewFile,BufRead .eslintignore,.prettierignore,.aliases setf conf"
 cmd "au BufNewFile,BufRead .eslintrc,.prettierrc,tsconfig.json setf json" ]]
 -- Return to last edited line
-cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &filetype != 'gitcommit' | exe "normal! g'\"" | endif]]
+vim.cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &filetype != 'gitcommit' | exe "normal! g'\"" | endif]]
 
-cmd "filetype plugin indent on"
-
--- keymaps
-
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then
-    options = tbl_extend("force", options, opts)
-  end
-  api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-function Reload()
-  local modules = {"lsp", "ofrades"}
-  for _, moduleName in pairs(modules) do
-    for packageName, _ in pairs(package.loaded) do
-      if string.find(packageName, "^" .. moduleName) then
-        package.loaded[packageName] = nil
-      end
-    end
-    require(moduleName)
-  end
-  print("Editor configs reloaded")
-end
-
-map("n", "<leader>x", ":lua Reload()<CR>", {})
-
--- Try search and replace
-map("n", "<space>S", ":lua require('spectre').open()<CR>")
--- map("n", "<space>sw", "viw:lua require('spectre').open_visual()<CR>")
--- map("n", "<space>s", ":lua require('spectre').open_visual()<CR>")
--- map("n", "<space>sp", ":lua require('spectre').open_file_search()<CR>")
-
-map("i", "kj", "<esc>")
-map("i", "jk", "<esc>")
-
-map("n", "<Up>", "<C-y>")
-map("n", "<Down>", "<C-e>")
-
-map("n", "<A-right>", "<C-w><")
-map("n", "<A-left>", "<C-w>>")
-map("n", "<A-up>", "<C-w>+")
-map("n", "<A-down>", "<C-w>-")
-
--- <leader> to space
-map("n", "<Space>", "<Nop>")
-map("n", "s", "<Nop>")
-
--- Search settings
-map("n", "s.", ":lua TelescopeDotfiles()<CR>")
-map("n", "sz", ":lua TelescopeNotes()<CR>")
-map("n", "sk", ":Telescope keymaps<CR>")
-
--- Lsp
-map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
-map("n", "ga", ":Telescope lsp_code_actions<CR>")
-map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
-map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-map("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", {})
-map("n", "[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
-map("n", "]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
-
--- File explorer
-map("n", "se", ":Telescope file_browser<CR>")
-map("n", "-", ":lua require'lir.float'.toggle()<CR>")
-map("n", "<space><space>", ":lua require'lir.float'.toggle()<CR>")
-
-map("n", "st", ":Telescope ")
-map("n", "sp", ":Telescope find_files hidden=true<CR>")
-map("n", "<C-p>", ":Telescope find_files hidden=true<CR>")
-map("n", "sf", ":Telescope live_grep<CR>") -- <C-q> to send search to list
-map("n", "<C-f>", ":Telescope live_grep<CR>")
-map("n", "so", ":Telescope oldfiles<CR>")
-
--- Telescope Git
-map("n", "sP", ":Telescope git_files<CR>")
-map("n", "sl", ":Telescope git_commits<CR>")
-map("n", "sc", ":Telescope git_bcommits<CR>")
-map("n", "ss", ":Telescope git_status<CR>")
-map("n", "sb", ":Telescope git_branches<CR>")
-
-map("n", "sx", ":Telescope lsp_document_symbols<CR>")
-map("n", "sB", ":Telescope buffers<CR>")
-map("n", "sC", ":Telescope commands<CR>")
--- Telescope LSP
-map("n", "sr", ":Telescope lsp_references<CR>")
-map("n", "sa", ":Telescope lsp_code_actions<CR>")
-map("n", "sd", ":Telescope lsp_document_diagnostics<CR>", {})
-map("n", "sw", ":Telescope lsp_workspace_symbols<CR>")
-
--- Quick fix list
-map("n", "<leader>n", ":cnext<CR>")
-map("n", "<leader>N", ":cprev<CR>")
-
--- Diagnostics
--- map("n", "sd", ":LspTroubleToggle<CR>")
-
--- Registers
-map("n", '"', ":Telescope registers<CR>")
-
--- -- Move lines
-map("n", "<A-k>", ":<C-u>move-2<CR>==", {})
-map("v", "<A-k>", ":move-2<CR>gv=gv", {})
-map("n", "<A-j>", ":<C-u>move+<CR>==", {})
-map("v", "<A-j>", ":move'>+<CR>gv=gv", {})
-
--- Save and exit
-map("n", "<Leader>q", ":q<CR>")
-map("n", "<Leader>w", ":w!<CR>")
-
--- Git
-map("n", "sg", ":Neogit<CR>", {})
-
--- Better indenting
-map("v", "<", "<gv", {})
-map("n", "<", "<<", {})
-map("n", ">", ">>", {})
-map("v", ">", ">gv", {})
-
--- Yank till the end of line
-map("n", "Y", "y$")
-map("n", "D", "d$")
-map("n", "C", "c$")
-
--- Easier Moving between splits
-map("n", "<C-J>", "<C-W><C-J>", {})
-map("n", "<C-K>", "<C-W><C-K>", {})
-map("n", "<C-L>", "<C-W><C-L>", {})
-map("n", "<C-H>", "<C-W><C-H>", {})
-
--- Startify
-map("n", "<leader>,", ":Startify<CR>", {})
-
--- Move to the end of yanked text after yank and paste
-map("n", "p", "p`]")
-map("v", "y", "y`]")
-map("v", "p", "p`]")
-
--- Compe
-map("i", "<C-Space>", "compe#complete()", {expr = true})
-map("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
-map("i", "<C-e>", "compe#close('<C-e>')", {expr = true})
-map("i", "C-u", "compe#scroll({ 'delta': +4 })", {noremap = false, expr = true})
-map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = false, expr = true})
+vim.cmd "filetype plugin indent on"

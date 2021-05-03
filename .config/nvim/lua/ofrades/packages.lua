@@ -24,7 +24,6 @@ return require("packer").startup(
     use "hrsh7th/nvim-compe" -- lsp completion
     use {"tzachar/compe-tabnine", run = "./install.sh"}
     use "kabouzeid/nvim-lspinstall" -- easy lsp installs
-    use "glepnir/lspsaga.nvim" -- lsp with highly a performant UI
     use {
       "folke/lsp-trouble.nvim",
       config = function()
@@ -32,8 +31,6 @@ return require("packer").startup(
       end
     }
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
-    use "folke/lsp-colors.nvim"
-    use "airblade/vim-rooter"
 
     -- Telescope
     use {
@@ -44,18 +41,30 @@ return require("packer").startup(
         {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
       }
     }
+
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup {}
+      end
+    }
     -- Git
     use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
     use "TimUntersberger/neogit" -- Magit clone for Neovim
     use "rhysd/committia.vim" -- More Pleasant Editing on Commit Message
     use "lewis6991/gitsigns.nvim"
+    use "sindrets/diffview.nvim"
 
-    -- Misk
+    -- Comments
     use "b3nj5m1n/kommentary" -- comments
     use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
+
+    -- Misc
     use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- startup screen
     use "andymass/vim-matchup" -- navigate and highlight matching words
+
+    -- Terminal
     use "akinsho/nvim-toggleterm.lua" -- terminal
     -- use "mattn/emmet-vim"
     use "mg979/vim-visual-multi" -- select multiple words under cursor
@@ -83,6 +92,7 @@ return require("packer").startup(
     use {"rrethy/vim-hexokinase", run = "make hexokinase"} -- show colors
     use "kyazdani42/nvim-web-devicons"
     use "glepnir/galaxyline.nvim" -- status line
+
     -- Theme
     use "tjdevries/colorbuddy.vim" -- used to create my own theme
     use "folke/tokyonight.nvim"

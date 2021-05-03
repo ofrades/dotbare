@@ -332,6 +332,14 @@ Group.new("GitSignsAdd", c.green500)
 Group.new("GitSignsChange", c.yellow500)
 Group.new("GitSignsDelete", c.red500)
 
+-- which key
+Group.new("WhichKey", c.red500)
+Group.new("WhichKeyGroup", c.yellow500)
+Group.new("WhichKeySeparator", c.blue500)
+Group.new("WhichKeyDesc", c.green500)
+Group.new("WhichKeyFloat", c.blue500, c.grey900)
+Group.new("WhichKeyValue", c.yellow500)
+
 require("gitsigns").setup {
   signs = {
     add = {hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
@@ -403,5 +411,4 @@ global.terminal_color_15 = c.grey800:to_rgb()
  '#FFCB6B'
  '#82AAFF'
  '#C792EA'
- '#89DDFF'
- '#EEFFFF' ]]
+ '#89DDFF' '#EEFFFF' ]]

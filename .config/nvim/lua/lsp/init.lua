@@ -9,35 +9,50 @@ local on_attach = function(client, bufnr)
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits"
-    }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits"
   }
-  return {
-    capabilities = capabilities,
-    on_attach = on_attach
-  }
-end
+}
 
 require "lspinstall".setup()
 local servers = require "lspinstall".installed_servers()
 for _, server in pairs(servers) do
-  local config = make_config()
-  require "lspconfig"[server].setup {config}
+  require "lspconfig"[server].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+  if (server == "tsserver" or server == "typescript") then
+    require "lspconfig"[server].setup {
+      on_attach = function(client, bufnr)
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup {
+          -- disable_commands = false,
+          enable_import_on_completion = true,
+          -- import_on_completion_timeout = 5000,
+          -- eslint
+          eslint_bin = "eslint_d",
+          eslint_args = {"-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
+          eslint_enable_diagnostics = true,
+          -- eslint_diagnostics_debounce = 250,
+          -- prettier
+          enable_formatting = true,
+          formatter = "prettier",
+          formatter_args = {"--stdin-filepath", "$FILENAME"},
+          format_on_save = true
+        }
+        -- required to enable ESLint code actions and formatting
+        ts_utils.setup_client(client)
+      end
+    }
+  end
 end
-
 -- TS
-require "lsp.tsutils"
-
--- UI
-local saga = require "lspsaga"
-saga.init_lsp_saga()
+-- require "lsp.tsutils"
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
@@ -45,8 +60,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   {
     underline = true,
     virtual_text = true,
-    signs = true,
-    update_in_insert = true
+    signs = false,
+    update_in_insert = false
   }
 )
 

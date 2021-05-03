@@ -8,15 +8,12 @@ end
 
 globals(
   {
-    ale_fixers = {"prettier", "eslint"},
-    mapleader = " ",
     -- theme
+    mapleader = " ",
     teppz_italic = true,
-    rooter_targets = ".git package.json .eslintrc",
     teppz_italic_comments = 1,
     teppz_italic_keywords = 1,
     teppz_italic_functions = 1,
-    qs_highlight_on_keys = {"f", "F"},
     -- setup
     python_host_prog = "/usr/bin/python",
     python3_host_prog = "/usr/bin/python3",
@@ -58,52 +55,10 @@ globals(
     webdevicons_enable_startify = 1,
     startify_enable_special = 1,
     startify_files_number = 10,
-    startify_update_oldfiles = 1,
-    -- tree
-    nvim_tree_side = "left",
-    nvim_tree_ignore = {
-      ".git",
-      "node_modules",
-      "dist",
-      ".cache"
-    },
-    nvim_tree_auto_open = 0,
-    nvim_tree_auto_close = 0,
-    nvim_tree_follow = 1,
-    nvim_tree_indent_markers = 1,
-    nvim_tree_hide_dotfiles = 0,
-    nvim_tree_git_hl = 1,
-    nvim_tree_root_folder_modifier = ":~",
-    nvim_tree_tab_open = 0,
-    nvim_tree_show_icons = {git = 0, folders = 1, files = 1},
-    nvim_tree_icons = {
-      default = "",
-      symlink = "",
-      git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★"
-      },
-      folder = {default = "", open = " "}
-    }
+    startify_update_oldfiles = 1
   }
 )
 
--- rooter
---[[ require "rooter".setup {
-  echo = false,
-  patterns = {
-    -- the patterns to find
-    ".git/", -- same as patterns passed to nvim_lsp.util.root_pattern(patterns...)
-    ".git", -- same as patterns passed to nvim_lsp.util.root_pattern(patterns...)
-    "package.json",
-    "init.lua",
-    ".env"
-  },
-  non_project_files = "current"
-} ]]
 -- icons
 require "nvim-web-devicons".setup()
 
@@ -126,7 +81,7 @@ local fn = vim.fn
 local prettier = {
   function()
     return {
-      exe = "node_modules/.bin/prettier",
+      exe = "prettier",
       args = {
         "--stdin-filepath",
         api.nvim_buf_get_name(0)
