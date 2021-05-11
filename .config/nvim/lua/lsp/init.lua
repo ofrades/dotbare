@@ -1,58 +1,7 @@
--- Completion
+require('lspkind').init()
 require "lsp.compe"
-
-local on_attach = function(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits"
-  }
-}
-
-require "lspinstall".setup()
-local servers = require "lspinstall".installed_servers()
-for _, server in pairs(servers) do
-  require "lspconfig"[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
-  if (server == "tsserver" or server == "typescript") then
-    require "lspconfig"[server].setup {
-      on_attach = function(client, bufnr)
-        local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup {
-          -- disable_commands = false,
-          enable_import_on_completion = true,
-          -- import_on_completion_timeout = 5000,
-          -- eslint
-          eslint_bin = "eslint_d",
-          eslint_args = {"-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
-          eslint_enable_diagnostics = true,
-          -- eslint_diagnostics_debounce = 250,
-          -- prettier
-          enable_formatting = true,
-          formatter = "prettier",
-          formatter_args = {"--stdin-filepath", "$FILENAME"},
-          format_on_save = true
-        }
-        -- required to enable ESLint code actions and formatting
-        ts_utils.setup_client(client)
-      end
-    }
-  end
-end
--- TS
--- require "lsp.tsutils"
+require "lsp.servers"
+require'nlspsettings'.setup()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(

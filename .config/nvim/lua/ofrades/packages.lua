@@ -30,7 +30,9 @@ return require("packer").startup(
         require("trouble").setup {}
       end
     }
+    use {"onsails/lspkind-nvim"}
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use "tamago324/nlsp-settings.nvim"
 
     -- Telescope
     use {
@@ -60,7 +62,7 @@ return require("packer").startup(
     use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
 
     -- Misc
-    use "kevinhwang91/nvim-bqf" -- better quickfix
+    -- use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- startup screen
     use "andymass/vim-matchup" -- navigate and highlight matching words
 
@@ -91,7 +93,8 @@ return require("packer").startup(
     -- UI
     use {"rrethy/vim-hexokinase", run = "make hexokinase"} -- show colors
     use "kyazdani42/nvim-web-devicons"
-    use "glepnir/galaxyline.nvim" -- status line
+    use "tjdevries/express_line.nvim"
+    use "nvim-lua/lsp-status.nvim"
 
     -- Theme
     use "tjdevries/colorbuddy.vim" -- used to create my own theme

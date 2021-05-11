@@ -1,11 +1,3 @@
-local cmd = vim.cmd
-local fn = vim.fn
-local gl = require("galaxyline")
-local section = gl.section
-local condition = require("galaxyline.condition")
-
-gl.short_line_list = {"NvimTree", "packager", "vista", "Floaterm", "startify"}
-
 local theme = require("colorbuddy").colors
 
 local colors = {
@@ -18,222 +10,110 @@ local colors = {
   red = theme.red500:to_rgb()
 }
 
-local mode_color = function()
-  local mode_colors = {
-    n = colors.bg,
-    i = colors.green,
-    c = colors.red,
-    V = colors.yellow,
-    [""] = colors.yellow,
-    v = colors.yellow,
-    R = colors.blue,
-    r = colors.blue,
-    rm = colors.blue,
-    ["r?"] = colors.blue,
-    ["!"] = colors.red,
-    t = colors.bg
-  }
+-- express
 
-  return mode_colors[vim.fn.mode()]
-end
+vim.cmd [[packadd express_line.nvim]]
 
-section.left[1] = {
-  ViMode = {
-    provider = function()
-      local alias = {
-        n = "[N]",
-        i = "[I]",
-        c = "[C]",
-        V = "[V]",
-        [""] = "[V]",
-        v = "[V]",
-        R = "[R]",
-        r = "[r]",
-        rm = "[rm]",
-        ["r?"] = "[r?]",
-        ["!"] = "[!]",
-        t = "[t]"
-      }
-      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color() .. " gui=bold")
-      return "  " .. alias[vim.fn.mode()]
-    end,
-    highlight = {colors.dark, colors.dark},
-    separator = " "
-  }
-}
+require('el').reset_windows()
 
-print(vim.fn.getbufvar(0, "ts"))
-vim.fn.getbufvar(0, "ts")
+local builtin = require('el.builtin')
+local extensions = require('el.extensions')
+local sections = require('el.sections')
+local subscribe = require('el.subscribe')
+local lsp_statusline = require('el.plugins.lsp_status')
+local helper = require('el.helper')
 
-section.left[2] = {
-  FileIcon = {
-    provider = "FileIcon",
-    condition = condition.buffer_not_empty,
-    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.dark}
-  }
-}
+local has_lsp_extensions, ws_diagnostics = pcall(require, 'lsp_extensions.workspace.diagnostic')
 
-local checkwidth = function()
-  local squeeze_width = fn.winwidth(0) / 2
-  if squeeze_width > 40 then
-    return true
+local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
+  local icon = extensions.file_icon(_, bufnr)
+  if icon then
+    return icon .. ' '
   end
-  return false
-end
 
-local FilePath = function()
-  local squeeze_width = fn.winwidth(0) / 2
-  if squeeze_width > 70 then
-    return fn.expand("%")
+  return ''
+end)
+
+local git_branch = subscribe.buf_autocmd(
+  "el_git_branch",
+  "BufEnter",
+  function(window, buffer)
+    local branch = extensions.git_branch(window, buffer)
+    if branch then
+      return ' ' .. extensions.git_icon() .. ' ' .. branch
+    end
   end
-  return fn.pathshorten(fn.expand("%"))
+)
+
+local git_changes = subscribe.buf_autocmd(
+  "el_git_changes",
+  "BufWritePost",
+  function(window, buffer)
+    return extensions.git_changes(window, buffer)
+  end
+)
+
+local ws_diagnostic_counts = function(_, buffer)
+  if not has_lsp_extensions then
+    return ''
+  end
+
+  local messages = {}
+
+  local error_count = ws_diagnostics.get_count(buffer.bufnr, "Error")
+
+  local x = "⬤"
+  if error_count == 0 then
+    -- pass
+  elseif error_count < 5 then
+    table.insert(messages, string.format('%s#%s#%s%%*', '%', "StatuslineError" .. error_count, x))
+  else
+    table.insert(messages, string.format('%s#%s#%s%%*', '%', "StatuslineError5", x))
+  end
+
+  return table.concat(messages, "")
 end
 
-section.left[3] = {
-  FileName = {
-    provider = FilePath,
-    separator = "  ",
-    condition = condition.buffer_not_empty,
-    highlight = {colors.green, colors.dark, "bold"}
-  }
-}
-section.left[4] = {
-  LeftEnd = {
-    provider = function()
-      return " "
-    end,
-    separator = " ",
-    separator_highlight = {colors.bg, colors.bg},
-    highlight = {colors.dark, colors.bg}
-  }
-}
-section.right[1] = {
-  GitBranch = {
-    provider = "GitBranch",
-    separator = " ",
-    condition = condition.check_git_workspace,
-    separator_highlight = {colors.bg, colors.dark},
-    icon = "  ",
-    highlight = {colors.fg, colors.dark, "bold"}
-  }
+local show_current_func = function(window, buffer)
+  if buffer.filetype == 'lua' then
+    return ''
+  end
+
+  return lsp_statusline.current_function(window, buffer)
+end
+
+require('el').setup {
+  generator = function(_, _)
+    return {
+      extensions.gen_mode {
+        format_string = ' %s '
+      },
+      git_branch,
+      ' ',
+      sections.split,
+      git_icon,
+      sections.maximum_width(
+        builtin.responsive_file(140, 90),
+        0.30
+      ),
+      sections.collapse_builtin {
+        ' ',
+        builtin.modified_flag
+      },
+      sections.split,
+      show_current_func,
+      lsp_statusline.server_progress,
+      ws_diagnostic_counts,
+      git_changes,
+      '[', builtin.line_with_width(3), ':',  builtin.column_with_width(2), ']',
+      sections.collapse_builtin {
+        '[',
+        builtin.help_list,
+        builtin.readonly_list,
+        ']',
+      },
+      builtin.filetype,
+    }
+  end
 }
 
-section.right[2] = {
-  DiffAdd = {
-    provider = "DiffAdd",
-    condition = checkwidth,
-    separator = " ",
-    icon = " ",
-    highlight = {colors.green, colors.dark}
-  }
-}
-
-section.right[3] = {
-  DiffModified = {
-    provider = "DiffModified",
-    condition = checkwidth,
-    icon = " ",
-    highlight = {colors.yellow, colors.dark}
-  }
-}
-
-section.right[4] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    condition = checkwidth,
-    icon = " ",
-    highlight = {colors.red, colors.dark}
-  }
-}
-
-section.right[5] = {
-  GetLspClient = {
-    provider = "GetLspClient",
-    separator = " ",
-    separator_highlight = {colors.fg, colors.dark},
-    highlight = {colors.fg, colors.dark}
-  }
-}
-
-section.right[6] = {
-  DiagnosticError = {
-    separator = " ",
-    provider = "DiagnosticError",
-    icon = "  ",
-    highlight = {colors.red, colors.dark}
-  }
-}
-
-section.right[7] = {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "  ",
-    highlight = {colors.yellow, colors.dark}
-  }
-}
-
-section.right[8] = {
-  DiagnosticInfo = {
-    provider = "DiagnosticInfo",
-    icon = "  ",
-    highlight = {colors.green, colors.dark}
-  }
-}
-
-section.right[9] = {
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    icon = "  ",
-    highlight = {colors.blue, colors.dark}
-  }
-}
-
-section.right[10] = {
-  LineInfo = {
-    separator = " ",
-    provider = "LineColumn",
-    highlight = {colors.fg, colors.dark}
-  }
-}
-
-section.right[11] = {
-  PerCent = {
-    provider = "LinePercent",
-    separator = " ",
-    highlight = {colors.fg, colors.dark}
-  }
-}
-section.right[12] = {
-  ScrollBar = {
-    provider = "ScrollBar",
-    separator = " ",
-    separator_highlight = {colors.blue, colors.dark},
-    highlight = {colors.fg, colors.dark}
-  }
-}
--- -------------------------Short status line---------------------------------------
-section.short_line_left[1] = {
-  SFileIcon = {
-    provider = "FileIcon",
-    highlight = {colors.fg, colors.dark}
-  }
-}
-
-section.short_line_left[2] = {
-  SFileName = {
-    provider = "FileName",
-    highlight = {colors.fg, colors.dark},
-    separator = " "
-  }
-}
-
-section.short_line_left[3] = {
-  LeftEnd = {
-    provider = function()
-      return " "
-    end,
-    separator = " ",
-    separator_highlight = {colors.bg, colors.bg},
-    highlight = {colors.dark, colors.bg}
-  }
-}

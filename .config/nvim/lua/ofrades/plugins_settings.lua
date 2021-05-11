@@ -67,10 +67,12 @@ local neogit = require("neogit")
 neogit.setup {}
 
 require "toggleterm".setup {
-  -- size = 10,
-  open_mapping = [[<c-\>]]
+  -- size = 20,
+  open_mapping = [[<c-\>]],
+  hide_numbers = true,
+  start_in_insert = false
+  -- direction = "float"
   -- shade_filetypes = {},
-  -- start_in_insert = false,
   -- persist_size = true,
   -- direction = "horizontal"
 }

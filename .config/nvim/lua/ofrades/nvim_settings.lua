@@ -40,6 +40,7 @@ options(
     startofline = false, -- don't go to the start of the line when moving to another file
     swapfile = false, -- disable swapfile
     termguicolors = true, -- truecolours for better experience
+    t_Co = 256,
     wrap = true,
     spell = true,
     -- String value
@@ -80,9 +81,13 @@ options(
   }
 )
 
+-- Disable Netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- autocmds
 
-vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 500})"
+vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"
 
 --[[ cmd "au BufNewFile,BufRead .eslintignore,.prettierignore,.aliases setf conf"
 cmd "au BufNewFile,BufRead .eslintrc,.prettierrc,tsconfig.json setf json" ]]

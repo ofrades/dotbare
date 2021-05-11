@@ -58,15 +58,6 @@ map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
 map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
 map("n", "<leader>[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {})
 map("n", "<leader>]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {})
-
-map("n", "<leader>t", ":Telescope <CR>")
-map("n", "<leader>p", ":Telescope find_files hidden=true<CR>")
-map("n", "<leader>f", ":Telescope live_grep<CR>") -- <C-q> to send search to list
-map("n", "<leader>o", ":Telescope oldfiles<CR>")
-
-map("n", "<leader>b", ":Telescope buffers<CR>")
-map("n", "<leader>c", ":Telescope commands<CR>")
-
 -- Telescope LSP
 map("n", "gr", ":Telescope lsp_references<CR>")
 map("n", "gy", ":Telescope lsp_document_symbols<CR>")
@@ -79,6 +70,14 @@ map(
 map("n", "gx", ":Telescope lsp_document_diagnostics<CR>", {})
 map("n", "gX", ":Telescope lsp_workspace_diagnostics<CR>", {})
 map("n", "gd", ":Telescope lsp_definitions<CR>", {})
+
+map("n", "<leader>t", ":Telescope <CR>")
+map("n", "<leader>p", ":Telescope find_files hidden=true<CR>")
+map("n", "<leader>f", ":Telescope live_grep<CR>") -- <C-q> to send search to list
+map("n", "<leader>o", ":Telescope oldfiles<CR>")
+
+map("n", "<leader>b", ":Telescope buffers<CR>")
+map("n", "<leader>c", ":Telescope commands<CR>")
 
 -- Registers
 map("n", "<leader>R", ":Telescope registers<CR>")

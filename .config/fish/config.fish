@@ -24,7 +24,7 @@ alias gc='git commit -am'
 alias gp='git push'
 alias ct='bat ~/.gitmessage'
 
-alias e='nvim'
+alias e='nvim .'
 alias v='nvim'
 alias vim='nvim'
 

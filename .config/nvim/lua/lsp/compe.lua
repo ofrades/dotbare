@@ -9,7 +9,7 @@ require "compe".setup {
   enabled = true,
   autocomplete = true,
   debug = false,
-  min_length = 1;
+  min_length = 1,
   preselect = "enable",
   throttle_time = 80,
   source_timeout = 200,
@@ -20,104 +20,39 @@ require "compe".setup {
   documentation = true,
   source = {
     path = {
-      menu = " PATH",
       priority = 9
     },
     buffer = {
-      menu = " BUFFER",
       priority = 8
     },
     calc = {
-      menu = " CALC",
       priority = 4
     },
     vsnip = {
-      menu = "陼 SNIP",
       priority = 7
     },
     nvim_lsp = {
-      menu = "滑 LSP",
       priority = 9
     },
     nvim_lua = {
-      menu = " LUA",
       priority = 9
     },
     tabnine = {
-      menu = " TABNINE",
       priority = 1
     },
     spell = {
-      menu = "韛 SPELL",
       priority = 0
     },
     treesitter = {
-      menu = "侮 TREESITTER",
       priority = 2
     },
     tags = {
-      menu = " TAGS",
       priority = 3
     },
     omni = {
-      menu = " OMNI",
       priority = 3
     }
   }
-}
-
-local filetypes = {
-  "javascript",
-  "javascriptreact",
-  "typescript",
-  "typescriptreact",
-  "lua",
-  "go",
-  "vim",
-  "php",
-  "python",
-  "vue",
-  "html",
-  "css"
-}
-
-vim.cmd [[augroup vimrc_lsp]]
-vim.cmd [[autocmd!]]
-vim.cmd(string.format("autocmd FileType %s call v:lua.hover()", table.concat(filetypes, ",")))
-vim.cmd [[augroup END]]
-
-function _G.hover()
-  -- vim.cmd[[autocmd CursorHold <buffer> silent! lua require('lspsaga.hover').render_hover_doc()]]
-  -- vim.cmd[[autocmd CursorHold <buffer> silent! lua require"lspsaga.diagnostic".show_line_diagnostics()]]
-  vim.cmd [[autocmd CursorHoldI <buffer> silent! lua require"lspsaga.signaturehelp".signature_help()]]
-end
-
-protocol.CompletionItemKind = {
-  "ﮜ [text]",
-  " [method]",
-  " [function]",
-  " [constructor]",
-  "ﰠ [field]",
-  " [variable]",
-  " [class]",
-  " [interface]",
-  " [module]",
-  " [property]",
-  " [unit]",
-  " [value]",
-  " [enum]",
-  " [key]",
-  " [snippet]",
-  " [color]",
-  " [file]",
-  " [reference]",
-  " [folder]",
-  " [enum member]",
-  " [constant]",
-  " [struct]",
-  "⌘ [event]",
-  " [operator]",
-  "⌂ [type]"
 }
 
 local t = function(str)
