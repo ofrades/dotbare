@@ -24,11 +24,10 @@ end
 -- Keymaps
 --
 map("n", "<Space>", "<Nop>")
-map("n", "s", "<Nop>")
-
 -- Reload nvim config
 map("n", "<leader>x", ":lua Reload()<CR>", {})
 
+map("n", "<Esc>", ":noh<CR>", {})
 -- File explorer
 -- map("n", "<leader><leader>", ":lua require'lir.float'.toggle()<CR>")
 map("n", "<leader><leader>", ":e %:p:h<CR>")

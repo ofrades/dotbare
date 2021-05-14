@@ -30,7 +30,8 @@ return require("packer").startup(
         require("trouble").setup {}
       end
     }
-    use {"onsails/lspkind-nvim"}
+
+    use "onsails/lspkind-nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "tamago324/nlsp-settings.nvim"
 
@@ -50,12 +51,18 @@ return require("packer").startup(
         require("which-key").setup {}
       end
     }
+    use {
+      "folke/todo-comments.nvim",
+      config = function()
+        require("todo-comments").setup {}
+      end
+    }
     -- Git
-    use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
     use "TimUntersberger/neogit" -- Magit clone for Neovim
     use "rhysd/committia.vim" -- More Pleasant Editing on Commit Message
     use "lewis6991/gitsigns.nvim"
     use "sindrets/diffview.nvim"
+    -- use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
 
     -- Comments
     use "b3nj5m1n/kommentary" -- comments
@@ -84,7 +91,6 @@ return require("packer").startup(
 
     -- Import Snippets
     use "dsznajder/vscode-es7-javascript-react-snippets"
-    use "sdras/vue-vscode-snippets"
     use "xabikos/vscode-javascript"
     use "burkeholland/simple-react-snippets"
     use "mlaursen/vim-react-snippets"
@@ -99,6 +105,9 @@ return require("packer").startup(
     -- Theme
     use "tjdevries/colorbuddy.vim" -- used to create my own theme
     use "folke/tokyonight.nvim"
+
+    -- Browser
+    -- use "glacambre/firenvim"
 
     -- Tree-sitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- tresitter highlights for better syntax highlights

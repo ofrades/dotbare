@@ -68,6 +68,7 @@ neogit.setup {}
 
 require "toggleterm".setup {
   -- size = 20,
+  shade_terminals = true,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   start_in_insert = false

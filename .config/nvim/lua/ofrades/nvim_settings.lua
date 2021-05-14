@@ -34,7 +34,7 @@ options(
     lazyredraw = true, -- lazyredraw to make macro faster
     list = true, -- display listchars
     number = true, -- enable number
-    relativenumber = true, -- enable relativenumber
+    relativenumber = false, -- enable relativenumber
     splitbelow = true, -- split below instead of above
     splitright = true, -- split right instead of left
     startofline = false, -- don't go to the start of the line when moving to another file

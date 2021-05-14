@@ -378,13 +378,13 @@ require("gitsigns").setup {
   update_debounce = 100,
   status_formatter = nil, -- Use default
   use_decoration_api = true,
-  use_internal_diff = true -- If luajit is present
+  use_internal_diff = false -- If luajit is present
 }
 
 ---------------------
 -- TERMINAL COLORS --
 ---------------------
-global.terminal_color_0 = c.dark:to_rgb()
+--[[ global.terminal_color_0 = c.grey800:to_rgb()
 global.terminal_color_1 = c.red400:to_rgb()
 global.terminal_color_2 = c.green500:to_rgb()
 global.terminal_color_3 = c.yellow400:to_rgb()
@@ -399,20 +399,4 @@ global.terminal_color_11 = c.yellow500:to_rgb()
 global.terminal_color_12 = c.blue500:to_rgb()
 global.terminal_color_13 = c.red400:to_rgb()
 global.terminal_color_14 = c.blue700:to_rgb()
-global.terminal_color_15 = c.grey800:to_rgb()
-
---[[ '#000000'
-'#F07178'
-'#C3E88D'
-'#FFCB6B'
-'#82AAFF'
-'#C792EA'
-'#89DDFF'
-'#EEFFFF'
-'#000000'
-'#F07178'
- '#C3E88D'
- '#FFCB6B'
- '#82AAFF'
- '#C792EA'
- '#89DDFF' '#EEFFFF' ]]
+global.terminal_color_15 = c.grey700:to_rgb() ]]
