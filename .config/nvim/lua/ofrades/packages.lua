@@ -35,6 +35,8 @@ return require("packer").startup(
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "tamago324/nlsp-settings.nvim"
 
+    use "soywod/himalaya"
+
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim", -- navigate the galaxy

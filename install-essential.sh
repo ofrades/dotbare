@@ -19,7 +19,7 @@ sudo apt-get install -y \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments
+    libltdl-dev flex bison fontforge python3-pygments pass gnupg2
 
 
 echo "-> Essential linux packages installed"
@@ -121,6 +121,7 @@ if ! [ -x "$(command -v cargo)" ]; then
     # rust webassembly
     curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
     cargo install cargo-generate
+    cargo install deno
 else
     echo "-> Rust already installed"
 fi

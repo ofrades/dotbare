@@ -5,7 +5,6 @@ local function globals(opts)
     g[k] = v
   end
 end
-
 globals(
   {
     -- theme
@@ -55,9 +54,12 @@ globals(
     webdevicons_enable_startify = 1,
     startify_enable_special = 1,
     startify_files_number = 10,
-    startify_update_oldfiles = 1
+    startify_update_oldfiles = 1,
   }
 )
+vim.o.runtimepath = vim.o.runtimepath..',/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/'
+vim.g['himalaya_mailbox_picker'] = 'telescope'
+
 
 -- icons
 require "nvim-web-devicons".setup()
@@ -68,7 +70,7 @@ neogit.setup {}
 
 require "toggleterm".setup {
   -- size = 20,
-  shade_terminals = true,
+  shade_terminals = false,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   start_in_insert = false

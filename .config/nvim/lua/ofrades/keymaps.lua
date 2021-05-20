@@ -36,8 +36,7 @@ map("n", "<leader><leader>", ":e %:p:h<CR>")
 map("n", "<leader>S", ":lua require('spectre').open()<CR>")
 
 -- Escape alt
-map("i", "kj", "<esc>")
-map("i", "jk", "<esc>")
+map("i", "jj", "<esc>")
 
 map("n", "<Up>", "<C-y>")
 map("n", "<Down>", "<C-e>")
