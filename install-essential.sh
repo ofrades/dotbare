@@ -144,3 +144,7 @@ if ! [ -x "$(command -v jekyll)" ]; then
 else
     echo "-> jekyll already installed"
 fi
+
+# gnome-terminal
+echo "-> Loading gnome-terminal configs"
+dconf load /org/gnome/terminal/ < ~/.config/.gterminal
