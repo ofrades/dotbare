@@ -99,6 +99,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
+  himalaya = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya"
+  },
   ["html-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"

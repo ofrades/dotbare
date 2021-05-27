@@ -107,6 +107,9 @@ return require("packer").startup(
     -- Theme
     use "tjdevries/colorbuddy.vim" -- used to create my own theme
     use "folke/tokyonight.nvim"
+    use "eddyekofo94/gruvbox-flat.nvim"
+    use "shaunsingh/nord.nvim"
+    use "marko-cerovac/material.nvim"
 
     -- Browser
     -- use "glacambre/firenvim"

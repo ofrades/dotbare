@@ -9,10 +9,6 @@ globals(
   {
     -- theme
     mapleader = " ",
-    teppz_italic = true,
-    teppz_italic_comments = 1,
-    teppz_italic_keywords = 1,
-    teppz_italic_functions = 1,
     -- setup
     python_host_prog = "/usr/bin/python",
     python3_host_prog = "/usr/bin/python3",
@@ -54,12 +50,11 @@ globals(
     webdevicons_enable_startify = 1,
     startify_enable_special = 1,
     startify_files_number = 10,
-    startify_update_oldfiles = 1,
+    startify_update_oldfiles = 1
   }
 )
-vim.o.runtimepath = vim.o.runtimepath..',/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/'
-vim.g['himalaya_mailbox_picker'] = 'telescope'
-
+vim.o.runtimepath = vim.o.runtimepath .. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
+vim.g["himalaya_mailbox_picker"] = "telescope"
 
 -- icons
 require "nvim-web-devicons".setup()

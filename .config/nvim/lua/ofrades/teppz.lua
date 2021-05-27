@@ -1,6 +1,7 @@
+local global = vim.g
 local Color, c, Group, g, s = require("colorbuddy").setup()
 
-local global = vim.g
+vim.g.colors_name = "teppz"
 
 ---------------------
 --  COLOR PALETTE  --
@@ -113,7 +114,7 @@ Group.new("Visual", nil, c.blue700, s.bold)
 Group.new("VisualNOS", c.dark, c.yellow400, g.Visual)
 Group.new("StatusLineTerm", c.dark, c.green500)
 Group.new("StatusLineTermNC", c.dark, c.grey800)
-Group.new("Conditional", c.grey300)
+Group.new("Conditional", c.red300)
 Group.new("QuickFixLine", g.Search, g.Search, g.Search)
 Group.new("TabLine", c.grey500, c.dark)
 Group.new("TabLineFill", c.grey500, c.dark)
@@ -153,7 +154,7 @@ Group.new("TSType", c.red500)
 Group.new("TSTypeBuiltin", c.red500)
 Group.new("TSLabel", c.yellow700)
 Group.new("TSCharacter", c.blue200)
-Group.new("TSConditional", c.red300)
+Group.new("TSConditional", c.yellow400)
 Group.new("TSRepeat", c.yellow600)
 Group.new("TSConstant", c.blue600)
 Group.new("TSConstBuiltin", c.blue600)
@@ -168,7 +169,7 @@ Group.new("TSTag", c.blue500)
 Group.new("TSTagDelimiter", c.grey400)
 Group.new("TSNumber", c.blue400)
 Group.new("TSInclude", c.red600)
-Group.new("TSKeyword", c.yellow600)
+Group.new("TSKeyword", c.red300)
 Group.new("TSKeywordFunction", c.green500)
 Group.new("TSKeywordOperator", c.yellow600)
 Group.new("TSException", c.red500)
@@ -185,9 +186,9 @@ Group.new("TSPunctDelimiter", c.grey300)
 Group.new("TSPunctBracket", c.grey300)
 Group.new("TSPunctSpecial", c.grey300)
 Group.new("TSOperator", c.grey100)
-Group.new("TSProperty", c.red300)
+Group.new("TSProperty", c.yellow600)
 Group.new("TSTitle", c.grey100)
-Group.new("TSNone", c.grey600)
+Group.new("TSNone", c.grey500)
 
 --------------------------------------------------------------------------
 --                        COLOR SETTINGS                       --
@@ -346,43 +347,6 @@ Group.new("WhichKeyDesc", c.green500)
 Group.new("WhichKeyFloat", c.blue500, c.grey900)
 Group.new("WhichKeyValue", c.yellow500)
 
-require("gitsigns").setup {
-  signs = {
-    add = {hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
-    change = {hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
-    delete = {hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-    topdelete = {hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-    changedelete = {hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
-  },
-  numhl = false,
-  linehl = false,
-  keymaps = {
-    -- Default keymap options
-    noremap = true,
-    buffer = true,
-    ["n ]c"] = {expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
-    ["n [c"] = {expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
-    ["n <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-    ["n <leader>hu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-    ["n <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-    ["n <leader>hR"] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-    ["n <leader>d"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-    ["n <leader>b"] = '<cmd>lua require"gitsigns".blame_line()<CR>',
-    -- Text objects
-    ["o ih"] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
-    ["x ih"] = ':<C-U>lua require"gitsigns".select_hunk()<CR>'
-  },
-  watch_index = {
-    interval = 1000
-  },
-  current_line_blame = false,
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  use_decoration_api = true,
-  use_internal_diff = false -- If luajit is present
-}
-
 ---------------------
 -- TERMINAL COLORS --
 ---------------------
@@ -402,3 +366,8 @@ global.terminal_color_12 = c.blue500:to_rgb()
 global.terminal_color_13 = c.red400:to_rgb()
 global.terminal_color_14 = c.blue600:to_rgb()
 global.terminal_color_15 = c.grey700:to_rgb()
+
+vim.g.teppz_italic = true
+vim.g.teppz_italic_comments = 1
+vim.g.teppz_italic_keywords = 1
+vim.g.teppz_italic_functions = 1

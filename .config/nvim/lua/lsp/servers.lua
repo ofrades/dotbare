@@ -74,7 +74,7 @@ require "lspinstall".post_install_hook = function()
 end
 
 -- ts
-require"lspconfig".typescript.setup {
+require "lspconfig".typescript.setup {
   config = make_config(),
   on_attach = function(client, bufnr)
     local ts_utils = require("nvim-lsp-ts-utils")
@@ -95,9 +95,9 @@ require"lspconfig".typescript.setup {
     }
     -- required to enable ESLint code actions and formatting
     ts_utils.setup_client(client)
-  end,
+  end
 }
--- efm
+--[[ -- efm
 local util = require "lspconfig/util"
 
 local prettier = {
@@ -117,7 +117,7 @@ local luaFormat = {
   formatCommand = "npx luafmt --indent-count 2 --stdin",
   formatStdin = true
 }
-require"lspconfig".efm.setup {
+require "lspconfig".efm.setup {
   root_dir = util.root_pattern(".git", vim.fn.getcwd()),
   config = make_config(),
   on_attach = function(client)
@@ -155,12 +155,13 @@ require"lspconfig".efm.setup {
       conf = {prettier}
     }
   }
-}
-require"lspconfig".jsonls.setup {
+} ]]
+
+require "lspconfig".jsonls.setup {
   -- Set the schema so that it can be completed in settings json file.
   settings = {
     json = {
-      schemas = require'nlspsettings.jsonls'.get_default_schemas()
+      schemas = require "nlspsettings.jsonls".get_default_schemas()
     }
   }
 }

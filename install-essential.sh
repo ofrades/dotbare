@@ -11,23 +11,23 @@ mkdir -p ~/build
 sudo apt update
 
 sudo apt-get install -y \
-    kitty tmux fzf bat ripgrep fd-find silversearcher-ag  \
-    make cmake \
+    tmux fzf bat ripgrep fd-find silversearcher-ag  \ # terminal
+    make cmake \ # c
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev \
-    git nodejs npm python3-pip python3-neovim golang-go \
-    texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments pass gnupg2
+    git nodejs npm python3-pip python3-neovim golang-go \ # neovim
+    texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \ 
+    libltdl-dev flex bison fontforge python3-pygments \ # latex
+    pass gnupg2 apt-transport-https # misc
 
 
 echo "-> Essential linux packages installed"
 
 # install yarn
-
 if ! [ -x "$(command -v yarn)" ]; then
-	echo "-> Yarn is installing"
+  echo "-> Yarn is installing"
   sudo npm install --global yarn
   elif ! [ -x "$(command -v prettier)" ]; then
     echo "-> Yarn apps installing"
@@ -49,7 +49,6 @@ if ! [ -d $HOME/build/neovim ]; then
 else
     echo "-> Neovim already installed"
 fi
-
 
 # fish as default shell
 if ! [ -x "$(command -v fish)" ]; then
@@ -115,7 +114,6 @@ fi
 
 # rust
 if ! [ -x "$(command -v cargo)" ]; then
-
     echo "-> Installing rust"
     curl https://sh.rustup.rs -sSf | sh
     # rust webassembly
@@ -125,4 +123,24 @@ if ! [ -x "$(command -v cargo)" ]; then
 else
     echo "-> Rust already installed"
 fi
-end
+
+# brave
+if ! [ -x "$(command -v brave-browser)" ]; then
+    echo "-> Installing brave"
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    sudo apt update
+    sudo apt install brave-browser
+else
+    echo "-> Brave already installed"
+fi
+
+# jekyll
+if ! [ -x "$(command -v jekyll)" ]; then
+    echo "-> Installing jekyll"
+    sudo gem install bundler jekyll
+    sudo apt install ruby-dev
+    sudo apt install pipenv
+else
+    echo "-> jekyll already installed"
+fi
