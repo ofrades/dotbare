@@ -5,7 +5,6 @@
 
 echo "-> Tools installation just started"
 
-
 mkdir -p ~/build
 
 sudo apt update
@@ -67,17 +66,6 @@ else
     echo "-> Startship already installed"
 fi
 
-# install pop shell
-if ! [ -d $HOME/build/shell ]; then
-    echo "-> Pop shell installing"
-    git clone https://github.com/pop-os/shell ~/build/shell
-    cd ~/build/shell/
-    make local-install
-    cd ~/
-else
-    echo "-> Pop shell already installed"
-fi
-
 # install autojump
 if ! [ -x "$(command -v jump)" ]; then
     echo "-> Autojump installing"
@@ -85,18 +73,6 @@ if ! [ -x "$(command -v jump)" ]; then
     sudo dpkg -i jump_0.40.0_amd64.deb
 else
     echo "-> Autojump already installed"
-fi
-
-# install gregorio
-if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "-> Gregorio installing"
-    git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
-    cd ~/build/gregorio
-    ./build.sh
-    sudo ./install.sh
-    cd ~/
-else
-    echo "-> Gregorio already installed"
 fi
 
 # get dotfiles
@@ -112,6 +88,10 @@ else
     echo "-> Dotfiles already present"
 fi
 
+# gnome-terminal
+echo "-> Loading gnome-terminal configs"
+dconf load /org/gnome/terminal/ < ~/.config/.gterminal
+
 # rust
 if ! [ -x "$(command -v cargo)" ]; then
     echo "-> Installing rust"
@@ -124,17 +104,6 @@ else
     echo "-> Rust already installed"
 fi
 
-# brave
-if ! [ -x "$(command -v brave-browser)" ]; then
-    echo "-> Installing brave"
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    sudo apt update
-    sudo apt install brave-browser
-else
-    echo "-> Brave already installed"
-fi
-
 # jekyll
 if ! [ -x "$(command -v jekyll)" ]; then
     echo "-> Installing jekyll"
@@ -145,6 +114,15 @@ else
     echo "-> jekyll already installed"
 fi
 
-# gnome-terminal
-echo "-> Loading gnome-terminal configs"
-dconf load /org/gnome/terminal/ < ~/.config/.gterminal
+# install gregorio
+if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
+    echo "-> Gregorio installing"
+    git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
+    cd ~/build/gregorio
+    ./build.sh
+    sudo ./install.sh
+    cd ~/
+else
+    echo "-> Gregorio already installed"
+fi
+
