@@ -41,10 +41,17 @@ map("i", "jj", "<esc>")
 map("n", "<Up>", "<C-y>")
 map("n", "<Down>", "<C-e>")
 
-map("n", "<A-right>", "<C-w><")
-map("n", "<A-left>", "<C-w>>")
-map("n", "<A-up>", "<C-w>+")
-map("n", "<A-down>", "<C-w>-")
+-- resize panes
+map("n", "H", "<C-w><")
+map("n", "K", "<C-w>+")
+map("n", "L", "<C-w>>")
+map("n", "J", "<C-w>-")
+
+-- move between panes
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-l>", "<C-w>l")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-j>", "<C-w>j")
 
 -- Search settings
 map("n", "<leader>.", ":lua TelescopeDotfiles()<CR>")

@@ -1,4 +1,5 @@
 vim.cmd [[colorscheme gruvbox-flat]]
+vim.g.gruvbox_sidebars = {"qf", "terminal", "packer"}
 local function options(opts)
   for k, v in pairs(opts) do
     if v == true then
