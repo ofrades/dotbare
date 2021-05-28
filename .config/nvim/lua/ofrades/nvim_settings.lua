@@ -1,68 +1,51 @@
-vim.cmd [[colorscheme gruvbox-flat]]
 vim.g.gruvbox_sidebars = {"qf", "terminal", "packer", "lir"}
 vim.g.gruvbox_transparent = true
 vim.g.gruvbox_flat_style = "dark"
 
-local function options(opts)
-  for k, v in pairs(opts) do
-    if v == true then
-      vim.cmd("set " .. k)
-    elseif v == false then
-      vim.cmd(string.format("set no%s", k))
-    else
-      vim.cmd(string.format("set %s=%s", k, v))
-    end
-  end
-end
-
-options(
-  {
-    incsearch = true,
-    compatible = false,
-    wildmenu = true,
-    autoindent = true,
-    smartcase = true, -- improve searching using '/'
-    smartindent = true, -- smarter indentation
-    smarttab = true, -- make tab behaviour smarter
-    undofile = true,
-    showmatch = true, -- highlight matching [{()}]
-    showcmd = true, -- disable mode display since lightline display
-    showmode = false, -- don't show mode
-    backup = false, -- disable backup
-    writebackup = false, -- disable backup
-    cursorline = true, -- enable cursorline
-    expandtab = true, -- use spaces instead of tabs
-    hidden = true, -- keep hidden buffers
-    hlsearch = true, -- highlight matching search
-    ignorecase = true, -- case insensitive on search
-    list = true, -- display listchars
-    number = true, -- enable number
-    relativenumber = false, -- enable relativenumber
-    swapfile = false, -- disable swapfile
-    spell = false,
-    encoding = "UTF-8", -- set encoding
-    mouse = "a", -- enable mouse support
-    signcolumn = "yes", -- enable sign column all the time, 4 column
-    clipboard = "unnamedplus", -- use system clipboard
-    shell = "fish", -- fish as shell
-    syntax = "on", -- syntax enable
-    undodir = "/tmp/",
-    foldmethod = "expr",
-    foldexpr = "nvim_treesitter#foldexpr()",
-    listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
-    wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
-    foldlevel = 10,
-    laststatus = 2, -- always enable statusline
-    pumheight = 20, -- limit completion items
-    scrolloff = 5, -- make scrolling better
-    sidescroll = 2, -- make scrolling better
-    sidescrolloff = 15, -- make scrolling better
-    synmaxcol = 500, -- set limit for syntax highlighting in a single line
-    shiftwidth = 2, -- set indentation width
-    tabstop = 2, -- tabsize
-    softtabstop = 2
-  }
-)
+vim.opt.incsearch = true
+vim.opt.compatible = false
+vim.opt.wildmenu = true
+vim.opt.autoindent = true
+vim.opt.smartcase = true -- improve searching using '/'
+vim.opt.smartindent = true -- smarter indentation
+vim.opt.smarttab = true -- make tab behaviour smarter
+vim.opt.undofile = true
+vim.opt.showmatch = true -- highlight matching [{()}]
+vim.opt.showcmd = true -- disable mode display since lightline display
+vim.opt.showmode = false -- don't show mode
+vim.opt.backup = false -- disable backup
+vim.opt.writebackup = false -- disable backup
+vim.opt.cursorline = true -- enable cursorline
+vim.opt.expandtab = true -- use spaces instead of tabs
+vim.opt.hidden = true -- keep hidden buffers
+vim.opt.hlsearch = true -- highlight matching search
+vim.opt.ignorecase = true -- case insensitive on search
+vim.opt.list = true -- display listchars
+vim.opt.number = true -- enable number
+vim.opt.relativenumber = false -- enable relativenumber
+vim.opt.swapfile = false -- disable swapfile
+vim.opt.spell = false
+vim.opt.encoding = "UTF-8" -- set encoding
+vim.opt.mouse = "a" -- enable mouse support
+vim.opt.signcolumn = "yes" -- enable sign column all the time, 4 column
+vim.opt.clipboard = "unnamedplus" -- use system clipboard
+vim.opt.shell = "fish" -- fish as shell
+vim.opt.syntax = "on" -- syntax enable
+vim.opt.undodir = "/tmp/"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.listchars = {"eol:↲", "tab:»-", "extends:>", "precedes:<", "trail:·", "nbsp:␣ list"}
+vim.opt.wildignore = {".git", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**"}
+vim.opt.foldlevel = 10
+vim.opt.laststatus = 2 -- always enable statusline
+vim.opt.pumheight = 20 -- limit completion items
+vim.opt.scrolloff = 5 -- make scrolling better
+vim.opt.sidescroll = 2 -- make scrolling better
+vim.opt.sidescrolloff = 15 -- make scrolling better
+vim.opt.synmaxcol = 500 -- set limit for syntax highlighting in a single line
+vim.opt.shiftwidth = 2 -- set indentation width
+vim.opt.tabstop = 2 -- tabsize
+vim.opt.softtabstop = 2
 
 -- Disable Netrw
 vim.g.loaded_netrw = 1
@@ -70,4 +53,5 @@ vim.g.loaded_netrwPlugin = 1
 
 -- autocmds
 
+vim.cmd "colorscheme gruvbox-flat"
 vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"

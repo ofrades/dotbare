@@ -8,6 +8,7 @@ end
 globals(
   {
     -- theme
+    vimruntime = true,
     mapleader = " ",
     -- setup
     python_host_prog = "/usr/bin/python",

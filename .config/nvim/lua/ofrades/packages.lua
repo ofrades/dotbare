@@ -53,6 +53,7 @@ return require("packer").startup(
         require("which-key").setup {}
       end
     }
+    use "folke/lua-dev.nvim"
     use {
       "folke/todo-comments.nvim",
       config = function()

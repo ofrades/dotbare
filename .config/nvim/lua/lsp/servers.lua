@@ -165,3 +165,11 @@ require "lspconfig".jsonls.setup {
     }
   }
 }
+
+
+local luadev =
+  require("lua-dev").setup(
+)
+
+local lspconfig = require("lspconfig")
+lspconfig.lua.setup(luadev)
