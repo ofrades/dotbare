@@ -1,5 +1,8 @@
 vim.cmd [[colorscheme gruvbox-flat]]
-vim.g.gruvbox_sidebars = {"qf", "terminal", "packer"}
+vim.g.gruvbox_sidebars = {"qf", "terminal", "packer", "lir"}
+vim.g.gruvbox_transparent = true
+vim.g.gruvbox_flat_style = "dark"
+
 local function options(opts)
   for k, v in pairs(opts) do
     if v == true then
@@ -46,7 +49,6 @@ options(
     undodir = "/tmp/",
     foldmethod = "expr",
     foldexpr = "nvim_treesitter#foldexpr()",
-    -- fillchars = "eob:·,vert:·",
     listchars = "eol:↲,tab:»-,extends:>,precedes:<,trail:·,nbsp:␣ list",
     wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
     foldlevel = 10,
@@ -59,7 +61,6 @@ options(
     shiftwidth = 2, -- set indentation width
     tabstop = 2, -- tabsize
     softtabstop = 2
-    -- modifiable = true
   }
 )
 
