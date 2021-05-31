@@ -52,6 +52,5 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- autocmds
-
 vim.cmd "colorscheme gruvbox-flat"
 vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"

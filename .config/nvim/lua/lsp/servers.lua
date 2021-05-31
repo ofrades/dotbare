@@ -97,65 +97,6 @@ require "lspconfig".typescript.setup {
     ts_utils.setup_client(client)
   end
 }
---[[ -- efm
-local util = require "lspconfig/util"
-
-local prettier = {
-  formatCommand = "prettier --stdin-filepath ${INPUT} --single-quote --arrow-parens 'avoid' --trailing-comma all",
-  formatStdin = true
-}
-
-local eslint_d = {
-  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-  lintStdin = true,
-  lintFormats = {"%f:%l:%c: %m"},
-  lintIgnoreExitCode = true,
-  formatCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --fix-to-stdout",
-  formatStdin = true
-}
-local luaFormat = {
-  formatCommand = "npx luafmt --indent-count 2 --stdin",
-  formatStdin = true
-}
-require "lspconfig".efm.setup {
-  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
-  config = make_config(),
-  on_attach = function(client)
-    client.resolved_capabilities.document_formatting = true
-  end,
-  init_options = {
-    documentFormatting = true,
-    codeAction = true
-  },
-  filetypes = {
-    -- "javascript",
-    -- "typescript",
-    -- "typescriptreact",
-    -- "javascriptreact",
-    "vue",
-    "lua",
-    "css",
-    "scss",
-    "html"
-  },
-  settings = {
-    rootMarkers = {"package.json", ".git"},
-    lintDebounce = 500,
-    languages = {
-      typescript = {eslint_d},
-      javascript = {eslint_d, prettier},
-      typescriptreact = {eslint_d, prettier},
-      javascriptreact = {eslint_d, prettier},
-      vue = {eslint_d, prettier},
-      lua = {luaFormat},
-      html = {prettier},
-      css = {prettier},
-      scss = {eslint_d, prettier},
-      json = {prettier},
-      conf = {prettier}
-    }
-  }
-} ]]
 
 require "lspconfig".jsonls.setup {
   -- Set the schema so that it can be completed in settings json file.
@@ -166,10 +107,7 @@ require "lspconfig".jsonls.setup {
   }
 }
 
-
-local luadev =
-  require("lua-dev").setup(
-)
+local luadev = require("lua-dev").setup()
 
 local lspconfig = require("lspconfig")
 lspconfig.lua.setup(luadev)

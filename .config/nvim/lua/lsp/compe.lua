@@ -28,9 +28,9 @@ require "compe".setup {
     calc = {
       priority = 4
     },
-    vsnip = {
+    --[[ vsnip = {
       priority = 7
-    },
+    }, ]]
     nvim_lsp = {
       priority = 9
     },

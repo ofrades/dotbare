@@ -4,7 +4,8 @@ vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", {})
 -- Reload nvim config
 vim.api.nvim_set_keymap("n", "<leader>x", ":lua Reload()<CR>", {})
 
-vim.api.nvim_set_keymap("n", "<Esc>", ":noh<CR>", {})
+vim.api.nvim_set_keymap("n", "<Escape>", ":noh<CR>", {})
+
 -- File explorer
 -- vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua require'lir.float'.toggle()<CR>")
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":e %:p:h<CR>", {})
@@ -12,23 +13,33 @@ vim.api.nvim_set_keymap("n", "<leader><leader>", ":e %:p:h<CR>", {})
 -- Try search and replace
 vim.api.nvim_set_keymap("n", "<leader>S", ":lua require('spectre').open()<CR>", {})
 
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
+vim.api.nvim_set_keymap("n", "<C-\\>", ":split | term<CR>", {})
+
 -- Escape alt
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
 
-vim.api.nvim_set_keymap("n", "<Up>", "<C-y>", {})
-vim.api.nvim_set_keymap("n", "<Down>", "<C-e>", {})
-
+--[[ vim.api.nvim_set_keymap("n", "<Up>", "<C-y>", {})
+vim.api.nvim_set_keymap("n", "<Down>", "<C-e>", {}) ]]
 -- resize panes
-vim.api.nvim_set_keymap("n", "H", "<C-w><", {})
-vim.api.nvim_set_keymap("n", "K", "<C-w>+", {})
-vim.api.nvim_set_keymap("n", "L", "<C-w>>", {})
-vim.api.nvim_set_keymap("n", "J", "<C-w>-", {})
+vim.api.nvim_set_keymap("n", "<RIGHT>", "<C-w><", {})
+vim.api.nvim_set_keymap("n", "<UP>", "<C-w>+", {})
+vim.api.nvim_set_keymap("n", "<LEFT>", "<C-w>>", {})
+vim.api.nvim_set_keymap("n", "<DOWN>", "<C-w>-", {})
 
 -- move between panes
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {})
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {})
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", {})
 vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", {})
+vim.api.nvim_set_keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", {})
+vim.api.nvim_set_keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", {})
+vim.api.nvim_set_keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", {})
+vim.api.nvim_set_keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", {})
+vim.api.nvim_set_keymap("i", "<C-h>", "<C-\\><C-N><C-w>h", {})
+vim.api.nvim_set_keymap("i", "<C-j>", "<C-\\><C-N><C-w>j", {})
+vim.api.nvim_set_keymap("i", "<C-k>", "<C-\\><C-N><C-w>k", {})
+vim.api.nvim_set_keymap("i", "<C-l>", "<C-\\><C-N><C-w>l", {})
 
 -- Search settings
 vim.api.nvim_set_keymap("n", "<leader>.", ":lua TelescopeDotfiles()<CR>", {})
@@ -95,26 +106,12 @@ vim.api.nvim_set_keymap("n", "Y", "y$", {})
 vim.api.nvim_set_keymap("n", "D", "d$", {})
 vim.api.nvim_set_keymap("n", "C", "c$", {})
 
--- Easier Moving between splits
-vim.api.nvim_set_keymap("n", "<Down>", "<C-W><C-J>", {})
-vim.api.nvim_set_keymap("n", "<Up>", "<C-W><C-K>", {})
-vim.api.nvim_set_keymap("n", "<Right>", "<C-W><C-L>", {})
-vim.api.nvim_set_keymap("n", "<Left>", "<C-W><C-H>", {})
-
 -- Startify
 vim.api.nvim_set_keymap("n", "<leader>,", ":Startify<CR>", {})
-
--- Move to the end of yanked text after yank and paste
-vim.api.nvim_set_keymap("n", "p", "p`]", {})
-vim.api.nvim_set_keymap("v", "y", "y`]", {})
-vim.api.nvim_set_keymap("v", "p", "p`]", {})
 
 -- Compe
 vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
-vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {expr = true})
-vim.api.nvim_set_keymap("i", "C-u", "compe#scroll({ 'delta': +4 })", {noremap = false, expr = true})
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = false, expr = true})
 
 -- Reload function
 function Reload()
