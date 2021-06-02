@@ -10,16 +10,16 @@ mkdir -p ~/build
 sudo apt update
 
 sudo apt-get install -y \
-    tmux fzf bat ripgrep fd-find silversearcher-ag  \ # terminal
-    make cmake \ # c
+    tmux fzf bat ripgrep fd-find silversearcher-ag  \
+    make cmake \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev \
-    git nodejs npm python3-pip python3-neovim golang-go \ # neovim
-    texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \ 
-    libltdl-dev flex bison fontforge python3-pygments \ # latex
-    pass gnupg2 apt-transport-https # misc
+    git nodejs npm python3-pip python3-neovim golang-go \
+    texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
+    libltdl-dev flex bison fontforge python3-pygments \
+    pass gnupg2 apt-transport-https
 
 
 echo "-> Essential linux packages installed"

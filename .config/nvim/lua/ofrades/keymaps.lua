@@ -98,9 +98,8 @@ vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_branches<CR>", {})
 -- Better indenting
 vim.api.nvim_set_keymap("v", "<", "<gv", {})
 vim.api.nvim_set_keymap("n", "<", "<<", {})
-vim.api.nvim_set_keymap("n", ">", ">>", {})
-vim.api.nvim_set_keymap("v", ">", ">gv", {})
-
+--[[ vim.api.nvim_set_keymap("n", ">", ">>", {})
+vim.api.nvim_set_keymap("v", ">", ">gv", {}) ]]
 -- Yank till the end of line
 vim.api.nvim_set_keymap("n", "Y", "y$", {})
 vim.api.nvim_set_keymap("n", "D", "d$", {})
