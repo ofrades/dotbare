@@ -112,6 +112,16 @@ else
     echo "-> jekyll already installed"
 fi
 
+# lazygit
+if ! [ -x "$(command -v lazygit)" ]; then
+    echo "-> Installing lazygit"
+    sudo add-apt-repository ppa:lazygit-team/release
+    sudo apt-get update
+    sudo apt-get install lazygit
+else
+    echo "-> lazygit already installed"
+fi
+
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
     echo "-> Gregorio installing"
