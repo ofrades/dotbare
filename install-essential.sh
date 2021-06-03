@@ -21,7 +21,6 @@ sudo apt-get install -y \
     libltdl-dev flex bison fontforge python3-pygments \
     neofetch flameshot
 
-
 echo "-> Essential linux packages installed"
 
 # install yarn
