@@ -19,7 +19,7 @@ sudo apt-get install -y \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
     libltdl-dev flex bison fontforge python3-pygments \
-    pass gnupg2 apt-transport-https
+    neofetch flameshot
 
 
 echo "-> Essential linux packages installed"
