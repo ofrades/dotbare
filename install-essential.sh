@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# install linux essential stuff to work
-# with pop-os
+# install linux essential stuff to work with pop-os
 
 echo "-> Tools installation just started"
 

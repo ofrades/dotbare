@@ -17,9 +17,6 @@
     keepBackup = false
     trustexitcode = true
 
-[credential]
-    helper = store
-
 [user]
     email = mig.silva@gmail.com
 
