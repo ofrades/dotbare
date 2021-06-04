@@ -34,7 +34,6 @@ return require("packer").startup(
     use "onsails/lspkind-nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "tamago324/nlsp-settings.nvim"
-
     use "ray-x/lsp_signature.nvim"
 
     -- Telescope
@@ -68,13 +67,14 @@ return require("packer").startup(
     -- use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
 
     -- Comments
-    use "b3nj5m1n/kommentary" -- comments
+    -- use "b3nj5m1n/kommentary" -- comments
     use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
+    use "tpope/vim-commentary"
 
     -- Misc
     -- use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- startup screen
-    use "andymass/vim-matchup" -- navigate and highlight matching words
+    -- use "andymass/vim-matchup" -- navigate and highlight matching words
 
     -- Terminal
     use "akinsho/nvim-toggleterm.lua" -- terminal
@@ -106,11 +106,9 @@ return require("packer").startup(
     use "nvim-lua/lsp-status.nvim"
 
     -- Theme
-    use "tjdevries/colorbuddy.vim" -- used to create my own theme
+    -- use "tjdevries/colorbuddy.vim" -- used to create my own theme
     use "folke/tokyonight.nvim"
     use "eddyekofo94/gruvbox-flat.nvim"
-    use "shaunsingh/nord.nvim"
-    use "marko-cerovac/material.nvim"
 
     -- Browser
     -- use "glacambre/firenvim"

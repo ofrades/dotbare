@@ -21,12 +21,6 @@ globals(
       "  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  "
     },
     startify_custom_header = "startify#center(g:ascii)",
-    startify_lists = {
-      {type = "files", header = {"          Files"}},
-      {type = "commands", header = {"        גּ  Commands"}},
-      {type = "sessions", header = {"          Sessions"}},
-      {type = "bookmarks", header = {"          Bookmarks"}}
-    },
     startify_commands = {
       {o = {"Recent Files", ":Telescope oldfiles hidden=true"}},
       {p = {"Find Files", ":Telescope find_files hidden=true"}},
@@ -63,18 +57,6 @@ require "nvim-web-devicons".setup()
 -- git
 local neogit = require("neogit")
 neogit.setup {}
-
-require "toggleterm".setup {
-  -- size = 20,
-  shade_terminals = false,
-  -- open_mapping = [[<c-\>]],
-  hide_numbers = true,
-  start_in_insert = false
-  -- direction = "float"
-  -- shade_filetypes = {},
-  -- persist_size = true,
-  -- direction = "horizontal"
-}
 
 local api = vim.api
 local fn = vim.fn

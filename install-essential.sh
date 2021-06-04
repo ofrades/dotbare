@@ -122,6 +122,16 @@ else
     echo "-> lazygit already installed"
 fi
 
+# xournal
+if ! [ -x "$(command -v xournal)" ]; then
+    echo "-> Installing xournal"
+    sudo add-apt-repository ppa:apandada1/xournalpp-stable
+    sudo apt update
+    sudo apt install xournalpp
+else
+    echo "-> xournal already installed"
+fi
+
 # install gregorio
 if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
     echo "-> Gregorio installing"
