@@ -76,10 +76,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/committia.vim"
   },
-  ["compe-tabnine"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/compe-tabnine"
-  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/diffview.nvim"
@@ -88,11 +84,8 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/express_line.nvim"
   },
-  ["formatter.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/formatter.nvim"
-  },
   ["gitsigns.nvim"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
@@ -130,6 +123,7 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lua-dev.nvim"
   },
   neogit = {
+    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vneogit\frequire\0" },
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/neogit"
   },
@@ -140,6 +134,10 @@ _G.packer_plugins = {
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
+  },
+  ["nvim-bqf"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-bqf"
   },
   ["nvim-compe"] = {
     loaded = true,
@@ -157,13 +155,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
+  ["nvim-nonicons"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-nonicons"
+  },
   ["nvim-spectre"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-spectre"
-  },
-  ["nvim-toggleterm.lua"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -210,10 +208,6 @@ _G.packer_plugins = {
     config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0" },
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -267,14 +261,22 @@ time("Defining packer_plugins", false)
 time("Config for todo-comments.nvim", true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time("Config for todo-comments.nvim", false)
--- Config for: which-key.nvim
-time("Config for which-key.nvim", true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time("Config for which-key.nvim", false)
+-- Config for: neogit
+time("Config for neogit", true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vneogit\frequire\0", "config", "neogit")
+time("Config for neogit", false)
+-- Config for: gitsigns.nvim
+time("Config for gitsigns.nvim", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time("Config for gitsigns.nvim", false)
 -- Config for: lsp-trouble.nvim
 time("Config for lsp-trouble.nvim", true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "lsp-trouble.nvim")
 time("Config for lsp-trouble.nvim", false)
+-- Config for: which-key.nvim
+time("Config for which-key.nvim", true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time("Config for which-key.nvim", false)
 if should_profile then save_profiles() end
 
 END
