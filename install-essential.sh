@@ -9,16 +9,14 @@ mkdir -p ~/build
 sudo apt update
 
 sudo apt-get install -y \
-    tmux fzf bat ripgrep fd-find silversearcher-ag  \
-    make cmake \
+    make cmake tmux fzf bat ripgrep fd-find silversearcher-ag  \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments \
-    neofetch flameshot
+    libltdl-dev flex bison fontforge python3-pygments neofetch flameshot
 
 echo "-> Essential linux packages installed"
 
@@ -26,13 +24,17 @@ echo "-> Essential linux packages installed"
 if ! [ -x "$(command -v yarn)" ]; then
   echo "-> Yarn is installing"
   sudo npm install --global yarn
-  elif ! [ -x "$(command -v prettier)" ]; then
-    echo "-> Yarn apps installing"
-    yarn global add prettier eslint eslint_d typescript
   else
     echo "-> Yarn already installed"
 fi
 
+# install yarn packages
+if ! [ -x "$(command -v prettier)" ]; then
+  echo "-> Yarn packages are installing"
+  yarn global add prettier eslint eslint_d typescript
+  else
+    echo "-> Yarn already installed"
+fi
 
 # install neovim
 if ! [ -d $HOME/build/neovim ]; then

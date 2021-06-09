@@ -3,9 +3,7 @@ set fish_greeting
 # vim
 fish_vi_key_bindings
 # Example aliases
-alias zconfig="nvim ~/.zshrc"
 alias fconfig="nvim ~/.config/fish/config.fish"
-alias dots="dotbare fedit"
 alias bat='batcat'
 
 # ls
@@ -33,6 +31,7 @@ alias cp='cp -riv'
 alias mkdir='mkdir -vp'
 alias z='j'
 
+# dotbare config
 alias configs="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 
@@ -50,3 +49,5 @@ starship init fish | source
 
 # autojump
 status --is-interactive; and source (jump shell fish | psub)
+
+xrandr --output HDMI-0 --mode 1920x1080 --rate 59.00 && xrandr --output VGA-1-1 --mode 1920x1080

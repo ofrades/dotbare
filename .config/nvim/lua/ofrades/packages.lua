@@ -33,6 +33,7 @@ return require("packer").startup(
 
     use "onsails/lspkind-nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use "jose-elias-alvarez/null-ls.nvim"
     use "tamago324/nlsp-settings.nvim"
     use "ray-x/lsp_signature.nvim"
 
@@ -59,65 +60,33 @@ return require("packer").startup(
         require("todo-comments").setup {}
       end
     }
-    -- Git
     use "TimUntersberger/neogit" -- Magit clone for Neovim
     use "rhysd/committia.vim" -- More Pleasant Editing on Commit Message
-    use "lewis6991/gitsigns.nvim"
-    use "sindrets/diffview.nvim"
-    -- use "tpope/vim-fugitive" -- A Git wrapper so awesome, it should be illegal
-
-    -- Comments
-    -- use "b3nj5m1n/kommentary" -- comments
+    use "lewis6991/gitsigns.nvim" -- git signs
+    use "sindrets/diffview.nvim" -- tree like git diff
+    use "tpope/vim-commentary" -- comments
     use "JoosepAlviste/nvim-ts-context-commentstring" -- comments with context
-    use "tpope/vim-commentary"
-
-    -- Misc
     -- use "kevinhwang91/nvim-bqf" -- better quickfix
     use "mhinz/vim-startify" -- startup screen
-    -- use "andymass/vim-matchup" -- navigate and highlight matching words
-
-    -- Terminal
-    use "akinsho/nvim-toggleterm.lua" -- terminal
-    -- use "mattn/emmet-vim"
     use "mg979/vim-visual-multi" -- select multiple words under cursor
     use "psliwka/vim-smoothie" -- smooth scrool
-
-    -- Format
-    use "mhartington/formatter.nvim" -- only using this because vue lsp
-
-    -- search and replace
     use "windwp/nvim-spectre" -- search and replace
-
     -- Snippets
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
-
-    -- Import Snippets
     use "dsznajder/vscode-es7-javascript-react-snippets"
     use "xabikos/vscode-javascript"
     use "burkeholland/simple-react-snippets"
     use "mlaursen/vim-react-snippets"
     use "abusaidm/html-snippets"
 
-    -- UI
     use {"rrethy/vim-hexokinase", run = "make hexokinase"} -- show colors
-    use "kyazdani42/nvim-web-devicons"
-    use "tjdevries/express_line.nvim"
-    use "nvim-lua/lsp-status.nvim"
-
-    -- Theme
-    -- use "tjdevries/colorbuddy.vim" -- used to create my own theme
-    use "folke/tokyonight.nvim"
-    use "eddyekofo94/gruvbox-flat.nvim"
-
-    -- Browser
-    -- use "glacambre/firenvim"
-
-    -- Tree-sitter
+    use "kyazdani42/nvim-web-devicons" -- icons
+    use "tjdevries/express_line.nvim" --statusline
+    use "nvim-lua/lsp-status.nvim" -- statuline
+    use "eddyekofo94/gruvbox-flat.nvim" -- theme
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} -- tresitter highlights for better syntax highlights
     use "nvim-treesitter/playground" -- to check syntax under cursor
-
-    -- File explorer
     use "tamago324/lir.nvim" -- tree project view
   end
 )

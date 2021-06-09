@@ -62,8 +62,9 @@ time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
@@ -71,10 +72,6 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
-  ["colorbuddy.vim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/colorbuddy.vim"
-  },
   ["committia.vim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/committia.vim"
@@ -103,17 +100,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/gruvbox-flat.nvim"
   },
-  himalaya = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya"
-  },
   ["html-snippets"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/html-snippets"
-  },
-  kommentary = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lir.nvim"] = {
     loaded = true,
@@ -128,6 +117,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lsp-trouble.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
@@ -135,10 +128,6 @@ _G.packer_plugins = {
   ["lua-dev.nvim"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/lua-dev.nvim"
-  },
-  ["material.nvim"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/material.nvim"
   },
   neogit = {
     loaded = true,
@@ -148,9 +137,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim"
   },
-  ["nord.nvim"] = {
+  ["null-ls.nvim"] = {
     loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/nord.nvim"
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
   },
   ["nvim-compe"] = {
     loaded = true,
@@ -226,13 +215,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
   ["vim-hexokinase"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-hexokinase"
-  },
-  ["vim-matchup"] = {
-    loaded = true,
-    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vim-matchup"
   },
   ["vim-react-snippets"] = {
     loaded = true,
@@ -265,6 +254,11 @@ _G.packer_plugins = {
   ["vscode-javascript"] = {
     loaded = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/vscode-javascript"
+  },
+  ["which-key.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
+    loaded = true,
+    path = "/home/ofrades/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 
@@ -273,6 +267,10 @@ time("Defining packer_plugins", false)
 time("Config for todo-comments.nvim", true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time("Config for todo-comments.nvim", false)
+-- Config for: which-key.nvim
+time("Config for which-key.nvim", true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time("Config for which-key.nvim", false)
 -- Config for: lsp-trouble.nvim
 time("Config for lsp-trouble.nvim", true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "lsp-trouble.nvim")
