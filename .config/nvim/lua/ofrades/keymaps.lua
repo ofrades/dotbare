@@ -114,7 +114,7 @@ vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 
 -- Reload function
 function Reload()
-  local modules = {"lsp", "ofrades"}
+  local modules = { "ofrades" }
   for _, moduleName in pairs(modules) do
     for packageName, _ in pairs(package.loaded) do
       if string.find(packageName, "^" .. moduleName) then
