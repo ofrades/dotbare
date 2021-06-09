@@ -100,6 +100,7 @@ if ! [ -x "$(command -v cargo)" ]; then
     curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
     cargo install cargo-generate
     cargo install deno
+    cargo install stylua
 else
     echo "-> Rust already installed"
 fi
