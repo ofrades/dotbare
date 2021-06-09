@@ -1,5 +1,5 @@
 require('lspkind').init()
-require "ofrades.compe"
+require "ofrades.completion"
 require "ofrades.servers"
 require'nlspsettings'.setup()
 
