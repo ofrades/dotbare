@@ -70,13 +70,14 @@ vim.api.nvim_set_keymap("n", "C", "c$", {})
 -- Startify
 vim.api.nvim_set_keymap("n", "<leader>,", ":Startify<CR>", {})
 -- Completion
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
+vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { expr = true })
 -- Reload function
 function Reload()
-   for k, v in pairs(package.loaded) do
-    if string.match(k, "^ofrades") then
-      package.loaded[k] = nil
-    end
-  end  print("Editor configs reloaded")
+	for k, v in pairs(package.loaded) do
+		if string.match(k, "^ofrades") then
+			package.loaded[k] = nil
+		end
+	end
+	print("Editor configs reloaded")
 end

@@ -1,4 +1,4 @@
-vim.g.gruvbox_sidebars = {"qf", "terminal", "packer", "lir"}
+vim.g.gruvbox_sidebars = { "qf", "terminal", "packer", "lir", "DiffviewFiles" }
 vim.g.gruvbox_transparent = true
 vim.g.gruvbox_flat_style = "dark"
 
@@ -35,7 +35,7 @@ vim.opt.undodir = "/tmp/"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.listchars = {"eol:↲", "tab:»-", "extends:>", "precedes:<", "trail:·", "nbsp:␣ list"}
-vim.opt.wildignore = {".git", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**"}
+vim.opt.wildignore = { ".git", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**" }
 vim.opt.foldlevel = 10
 vim.opt.laststatus = 2 -- always enable statusline
 vim.opt.pumheight = 20 -- limit completion items
@@ -51,28 +51,27 @@ vim.opt.softtabstop = 2
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
 vim.g.vimruntime = true
 vim.g.mapleader = " "
 vim.g.python_host_prog = "/usr/bin/python"
 vim.g.python3_host_prog = "/usr/bin/python3"
-vim.g.Hexokinase_highlighters = {"virtual"}
+vim.g.Hexokinase_highlighters = { "virtual" }
 vim.g.ascii = {
-  " _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ",
-  "  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  "
+	" _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ",
+	"  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ",
 }
 vim.g.startify_commands = {
-  {o = {"Recent Files", ":Telescope oldfiles hidden=true"}},
-  {p = {"Find Files", ":Telescope find_files hidden=true"}},
-  {b = {"File Browser", ":Telescope file_browser"}},
-  {t = {"Telescope builtin", ":Telescope"}},
-  {g = {"Git", ":Neogit"}},
-  {n = {"Nvim Files", ":lua TelescopeDotfiles()"}},
-  {z = {"Notes", ":lua TelescopeNotes()"}},
-  {h = {"Check Vim health", ":checkhealth"}},
-  {i = {"Install Plugins", ":PackerInstall"}},
-  {u = {"Update Plugin", ":PackerUpdate"}},
-  {c = {"Clean Plugin", ":PackerClean"}}
+	{ o = { "Recent Files", ":Telescope oldfiles hidden=true" } },
+	{ p = { "Find Files", ":Telescope find_files hidden=true" } },
+	{ b = { "File Browser", ":Telescope file_browser" } },
+	{ t = { "Telescope builtin", ":Telescope" } },
+	{ g = { "Git", ":Neogit" } },
+	{ n = { "Nvim Files", ":lua TelescopeDotfiles()" } },
+	{ z = { "Notes", ":lua TelescopeNotes()" } },
+	{ h = { "Check Vim health", ":checkhealth" } },
+	{ i = { "Install Plugins", ":PackerInstall" } },
+	{ u = { "Update Plugin", ":PackerUpdate" } },
+	{ c = { "Clean Plugin", ":PackerClean" } },
 }
 vim.g.startify_custom_header = "startify#center(g:ascii)"
 vim.g.startify_session_sort = 1
@@ -91,28 +90,28 @@ vim.o.runtimepath = vim.o.runtimepath .. ",/home/ofrades/.local/share/nvim/site/
 vim.g["himalaya_mailbox_picker"] = "telescope"
 
 -- autocmds
-vim.cmd "colorscheme gruvbox-flat"
-vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"
+vim.cmd("colorscheme gruvbox-flat")
+vim.cmd("au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})")
 
-require "nvim-treesitter.configs".setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true -- false will disable the whole extension
-  },
-  incremental_selection = {
-    enable = true
-  },
-  indent = {
-    enable = true
-  },
-  autotag = {
-    enable = true
-  },
-  context_commentstring = {
-    enable = true
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true
-  }
-}
+require("nvim-treesitter.configs").setup({
+	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	highlight = {
+		enable = true, -- false will disable the whole extension
+	},
+	incremental_selection = {
+		enable = true,
+	},
+	indent = {
+		enable = true,
+	},
+	autotag = {
+		enable = true,
+	},
+	context_commentstring = {
+		enable = true,
+	},
+	rainbow = {
+		enable = true,
+		extended_mode = true,
+	},
+})
