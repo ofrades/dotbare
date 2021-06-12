@@ -58,6 +58,7 @@ return require("packer").startup(function()
 	use("mg979/vim-visual-multi") -- select multiple words under cursor
 	use("psliwka/vim-smoothie") -- smooth scrool
 	use("windwp/nvim-spectre") -- search and replace
+	use("L3MON4D3/LuaSnip")
 	use("hrsh7th/vim-vsnip")
 	use("hrsh7th/vim-vsnip-integ")
 	use("dsznajder/vscode-es7-javascript-react-snippets")

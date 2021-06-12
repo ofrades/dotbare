@@ -15,15 +15,12 @@ alias lr='ls -R'
 alias lg='ls -l --group-directories-first'
 
 # git
-alias gcl='git clone --depth 1'
-alias gi='git init'
 alias ga='git add'
 alias gc='git commit -am'
-alias gp='git push'
-alias ct='bat ~/.gitmessage'
+alias gp='git pull'
 
 alias e='nvim'
-alias v='nvim'
+alias edit='nvim'
 alias vim='nvim'
 
 alias mv='mv -iv'

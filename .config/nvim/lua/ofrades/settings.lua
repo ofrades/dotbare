@@ -89,8 +89,8 @@ vim.g.startify_update_oldfiles = 1
 vim.o.runtimepath = vim.o.runtimepath .. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
 vim.g["himalaya_mailbox_picker"] = "telescope"
 
--- autocmds
 vim.cmd("colorscheme gruvbox-flat")
+-- autocmds
 vim.cmd("au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})")
 
 require("nvim-treesitter.configs").setup({

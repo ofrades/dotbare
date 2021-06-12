@@ -26,20 +26,20 @@ local on_attach = function(client, bufnr)
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts)
-	buf_set_keymap("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gsh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "gR", ":Telescope lsp_references<CR>", opts)
-	buf_set_keymap("n", "gse", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-	buf_set_keymap("n", "g[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	buf_set_keymap("n", "g]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	buf_set_keymap("n", "gq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "ga", ":Telescope lsp_code_actions<CR>", opts)
-	buf_set_keymap("n", "gA", ":Telescope lsp_range_code_actions<CR>", opts)
+	buf_set_keymap("n", "<leader>lD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "<leader>ld", ":Telescope lsp_definitions<CR>", opts)
+	buf_set_keymap("n", "<leader>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	buf_set_keymap("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	buf_set_keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	buf_set_keymap("n", "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	buf_set_keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	buf_set_keymap("n", "<leader>lR", ":Telescope lsp_references<CR>", opts)
+	buf_set_keymap("n", "<leader>lS", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+	buf_set_keymap("n", "<leader>l[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+	buf_set_keymap("n", "<leader>l]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+	buf_set_keymap("n", "<leader>la", ":Telescope lsp_code_actions<CR>", opts)
+	buf_set_keymap("n", "<leader>lA", ":Telescope lsp_range_code_actions<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
 		setup_formatting(bufnr)
@@ -100,13 +100,20 @@ local function attach_tsserver(client, bufnr)
 
 	local ts_utils = require("nvim-lsp-ts-utils")
 	ts_utils.setup({
+		enable_import_on_completion = true,
 		eslint_bin = "eslint_d",
 		eslint_enable_diagnostics = true,
-		eslint_diagnostics_debounce = 500,
-		enable_formatting = true,
-		formatter = "prettier",
+		eslint_enable_code_actions = true,
+		complete_parens = true,
+		signature_help_in_parens = true,
+		update_imports_on_move = true,
+		require_confirmation_on_move = true,
 	})
 	ts_utils.setup_client(client)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", { silent = true })
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", ":TSLspFixCurrent<CR>", { silent = true })
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lF", ":TSLspRenameFile<CR>", { silent = true })
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lI", ":TSLspImportAll<CR>", { silent = true })
 end
 
 -- server names from lspinstall
