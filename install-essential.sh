@@ -18,6 +18,9 @@ sudo apt-get install -y \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
     libltdl-dev flex bison fontforge python3-pygments neofetch flameshot
 
+flatpak install \
+    slack mattermost postman peek figma blender krita qbittorrent
+
 echo "-> Essential linux packages installed"
 
 # install yarn
