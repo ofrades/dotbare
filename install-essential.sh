@@ -20,7 +20,8 @@ sudo apt-get install -y \
     neofetch flameshot gnome-tweaks google-chrome-stable htop
 
 flatpak install \
-    slack mattermost postman peek figma blender krita qbittorrent teams
+    slack mattermost postman peek figma blender krita \
+    qbittorrent teams
 
 echo "-> Essential linux packages installed"
 
