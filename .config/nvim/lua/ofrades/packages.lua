@@ -31,6 +31,16 @@ return require("packer").startup(function()
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 	})
+use {'kevinhwang91/nvim-hlslens'}
+
+	  use {
+	    'phaazon/hop.nvim',
+	    as = 'hop',
+	    config = function()
+	      -- you can configure Hop the way you like here; see :h hop-config
+	      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+	    end
+	  }
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 	use("folke/lua-dev.nvim")

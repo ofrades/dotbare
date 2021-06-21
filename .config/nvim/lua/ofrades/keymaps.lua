@@ -9,9 +9,12 @@ vim.api.nvim_set_keymap("n", "<leader><leader>", ":e %:p:h<CR>", {})
 -- Search and replace
 vim.api.nvim_set_keymap("n", "<leader>S", ":lua require('spectre').open()<CR>", {})
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
-vim.api.nvim_set_keymap("n", "<C-\\>", ":split | term<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>th", ":split | term<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit | term<CR>", {})
+vim.api.nvim_set_keymap('n', "<leader>h", "<cmd>lua require'hop'.hint_words()<cr>", {})
 -- Escape alt
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
+vim.api.nvim_set_keymap("i", "kk", "<esc>", {})
 -- resize panes
 vim.api.nvim_set_keymap("n", "<RIGHT>", "<C-w><", {})
 vim.api.nvim_set_keymap("n", "<UP>", "<C-w>+", {})
@@ -34,7 +37,7 @@ vim.api.nvim_set_keymap("i", "<C-l>", "<C-\\><C-N><C-w>l", {})
 vim.api.nvim_set_keymap("n", "<leader>.", ":lua TelescopeDotfiles()<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>z", ":lua TelescopeNotes()<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>k", ":Telescope keymaps<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope <CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>te", ":Telescope <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope find_files hidden=true<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope live_grep<CR>", {}) -- <C-q> to send search to list
 vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope oldfiles<CR>", {})

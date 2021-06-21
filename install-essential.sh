@@ -16,10 +16,11 @@ sudo apt-get install -y \
     xz-utils tk-dev libffi-dev liblzma-dev \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
-    libltdl-dev flex bison fontforge python3-pygments neofetch flameshot
+    libltdl-dev flex bison fontforge python3-pygments \
+    neofetch flameshot gnome-tweaks google-chrome-stable htop
 
 flatpak install \
-    slack mattermost postman peek figma blender krita qbittorrent
+    slack mattermost postman peek figma blender krita qbittorrent teams
 
 echo "-> Essential linux packages installed"
 

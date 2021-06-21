@@ -1,6 +1,7 @@
-vim.g.gruvbox_sidebars = { "qf", "terminal", "packer", "lir", "DiffviewFiles" }
+vim.g.gruvbox_sidebars = { "qf", "terminal", "term", "packer", "lir", "DiffviewFiles" }
 vim.g.gruvbox_transparent = true
 vim.g.gruvbox_flat_style = "dark"
+vim.g.gruvbox_italic_functions = true
 
 vim.opt.incsearch = true
 vim.opt.compatible = false

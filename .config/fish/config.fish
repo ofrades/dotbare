@@ -21,6 +21,7 @@ alias gp='git pull'
 
 alias e='nvim'
 alias edit='nvim'
+alias vi='nvim'
 alias vim='nvim'
 
 alias mv='mv -iv'
@@ -47,4 +48,4 @@ starship init fish | source
 # autojump
 status --is-interactive; and source (jump shell fish | psub)
 
-xrandr --output HDMI-0 --mode 1920x1080 --rate 59.00 && xrandr --output VGA-1-1 --mode 1920x1080
+#xrandr --output HDMI-0 --mode 1920x1080 --rate 59.00 && xrandr --output VGA-1-1 --mode 1920x1080
