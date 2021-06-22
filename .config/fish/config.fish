@@ -7,31 +7,40 @@ alias fconfig="nvim ~/.config/fish/config.fish"
 alias bat='batcat'
 
 # ls
-alias l='ls -lh'
-alias ll='ls -lah'
-alias la='ls -A'
-alias lm='ls -m'
-alias lr='ls -R'
-alias lg='ls -l --group-directories-first'
+abbr l 'ls -lh'
+abbr ll 'ls -lah'
+abbr la 'ls -A'
+abbr lm 'ls -m'
+abbr lr 'ls -R'
+abbr lg 'ls -l --group-directories-first'
 
 # git
-alias ga='git add'
-alias gc='git commit -am'
-alias gp='git pull'
+abbr ga 'git add'
+abbr gc 'git commit -am'
+abbr gp 'git pull'
 
-alias e='nvim'
-alias edit='nvim'
+# neovim
+abbr vi 'nvim'
+abbr vim 'nvim'
 alias vi='nvim'
 alias vim='nvim'
 
-alias mv='mv -iv'
-alias cp='cp -riv'
-alias mkdir='mkdir -vp'
-alias z='j'
+abbr mv 'mv -iv'
+abbr cp 'cp -riv'
+abbr mkdir 'mkdir -vp'
+abbr z 'j'
 
 # dotbare config
 alias configs="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
+# tmux
+abbr t tmux
+abbr tc 'tmux attach'
+abbr ta 'tmux attach -t'
+abbr tad 'tmux attach -d -t'
+abbr ts 'tmux new -s'
+abbr tl 'tmux ls'
+abbr tk 'tmux kill-session -t'
 
 # Environment Variables
 set -ga fish_user_paths /usr/local/go/bin

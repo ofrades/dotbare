@@ -1,6 +1,28 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_cp:cp\x20\x2driv
+SETUVAR _fish_abbr_ga:git\x20add
+SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dam
+SETUVAR _fish_abbr_gp:git\x20pull
+SETUVAR _fish_abbr_l:ls\x20\x2dlh
+SETUVAR _fish_abbr_la:ls\x20\x2dA
+SETUVAR _fish_abbr_lg:ls\x20\x2dl\x20\x2d\x2dgroup\x2ddirectories\x2dfirst
+SETUVAR _fish_abbr_ll:ls\x20\x2dlah
+SETUVAR _fish_abbr_lm:ls\x20\x2dm
+SETUVAR _fish_abbr_lr:ls\x20\x2dR
+SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dvp
+SETUVAR _fish_abbr_mv:mv\x20\x2div
+SETUVAR _fish_abbr_t:tmux
+SETUVAR _fish_abbr_ta:tmux\x20attach\x20\x2dt
+SETUVAR _fish_abbr_tad:tmux\x20attach\x20\x2dd\x20\x2dt
+SETUVAR _fish_abbr_tc:tmux\x20attach
+SETUVAR _fish_abbr_tk:tmux\x20kill\x2dsession\x20\x2dt
+SETUVAR _fish_abbr_tl:tmux\x20ls
+SETUVAR _fish_abbr_ts:tmux\x20new\x20\x2ds
+SETUVAR _fish_abbr_vi:nvim
+SETUVAR _fish_abbr_vim:nvim
+SETUVAR _fish_abbr_z:j
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/ofrades/\x2econfig/fish/functions/fisher\x2efish\x1e/home/ofrades/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR fish_color_autosuggestion:73767c

@@ -13,7 +13,7 @@ sudo apt-get install -y \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev docker.io \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
     libltdl-dev flex bison fontforge python3-pygments \
@@ -21,7 +21,7 @@ sudo apt-get install -y \
 
 flatpak install \
     slack mattermost postman peek figma blender krita \
-    qbittorrent teams
+    qbittorrent microsoft.teams
 
 echo "-> Essential linux packages installed"
 
@@ -94,6 +94,8 @@ else
 fi
 
 # gnome-terminal
+# save with:
+# dconf dump /org/gnome/terminal:/ > ~/.config/.gterminal
 echo "-> Loading gnome-terminal configs"
 dconf load /org/gnome/terminal/ < ~/.config/.gterminal
 
@@ -122,10 +124,11 @@ fi
 
 # lazygit
 if ! [ -x "$(command -v lazygit)" ]; then
-    echo "-> Installing lazygit"
+    echo "-> Installing lazygit and lazydocker"
     sudo add-apt-repository ppa:lazygit-team/release
     sudo apt-get update
     sudo apt-get install lazygit
+    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 else
     echo "-> lazygit already installed"
 fi

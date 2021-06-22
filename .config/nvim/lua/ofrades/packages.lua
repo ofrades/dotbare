@@ -25,22 +25,17 @@ return require("packer").startup(function()
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("tamago324/nlsp-settings.nvim")
 	use("ray-x/lsp_signature.nvim")
-	use({
-		"nvim-telescope/telescope.nvim",
+	use({ "nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 	})
-use {'kevinhwang91/nvim-hlslens'}
+  use {'kevinhwang91/nvim-hlslens'}
 
-	  use {
-	    'phaazon/hop.nvim',
-	    as = 'hop',
-	    config = function()
-	      -- you can configure Hop the way you like here; see :h hop-config
-	      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-	    end
-	  }
+  use ({ 'phaazon/hop.nvim', as = 'hop', config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end })
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 	use("folke/lua-dev.nvim")
@@ -66,7 +61,10 @@ use {'kevinhwang91/nvim-hlslens'}
 	use("kevinhwang91/nvim-bqf") -- better quickfix
 	use("mhinz/vim-startify") -- startup screen
 	use("mg979/vim-visual-multi") -- select multiple words under cursor
-	use("psliwka/vim-smoothie") -- smooth scrool
+	use("psliwka/vim-smoothie") -- select multiple words under cursor
+  -- use({"karb94/neoscroll.nvim", config = function ()
+  --   require("neoscroll").setup()
+  -- end })
 	use("windwp/nvim-spectre") -- search and replace
 	use("L3MON4D3/LuaSnip")
 	use("hrsh7th/vim-vsnip")

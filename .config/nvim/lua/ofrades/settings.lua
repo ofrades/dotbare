@@ -1,11 +1,15 @@
 vim.g.gruvbox_sidebars = { "qf", "terminal", "term", "packer", "lir", "DiffviewFiles" }
-vim.g.gruvbox_transparent = true
+vim.g.gruvbox_transparent = false
 vim.g.gruvbox_flat_style = "dark"
 vim.g.gruvbox_italic_functions = true
 
+vim.opt.autowrite = true
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.incsearch = true
 vim.opt.compatible = false
 vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.autoindent = true
 vim.opt.smartcase = true -- improve searching using '/'
 vim.opt.smartindent = true -- smarter indentation
@@ -37,13 +41,15 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.listchars = {"eol:↲", "tab:»-", "extends:>", "precedes:<", "trail:·", "nbsp:␣ list"}
 vim.opt.wildignore = { ".git", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**" }
-vim.opt.foldlevel = 10
+vim.opt.foldlevel = 6
 vim.opt.laststatus = 2 -- always enable statusline
-vim.opt.pumheight = 20 -- limit completion items
+vim.opt.pumblend = 10 -- Popup blend
+vim.opt.pumheight = 10 -- limit completion items
 vim.opt.scrolloff = 5 -- make scrolling better
 vim.opt.sidescroll = 2 -- make scrolling better
-vim.opt.sidescrolloff = 15 -- make scrolling better
+vim.opt.sidescrolloff = 8 -- make scrolling better
 vim.opt.synmaxcol = 500 -- set limit for syntax highlighting in a single line
+vim.opt.shiftround = true -- set indentation width
 vim.opt.shiftwidth = 2 -- set indentation width
 vim.opt.tabstop = 2 -- tabsize
 vim.opt.softtabstop = 2
@@ -89,8 +95,23 @@ vim.g.startify_files_number = 10
 vim.g.startify_update_oldfiles = 1
 vim.o.runtimepath = vim.o.runtimepath .. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
 vim.g["himalaya_mailbox_picker"] = "telescope"
-
+vim.cmd("set sessionoptions-=folds")
+-- Check if we need to reload the file when it changed
+vim.cmd("au FocusGained * :checktime")
 vim.cmd("colorscheme gruvbox-flat")
+
+-- syntax
+vim.cmd("syntax enable")
+vim.cmd("filetype plugin indent on")
+-- show cursor line only in active window
+vim.cmd([[
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
+]])
+-- go to last loc when opening a buffer
+vim.cmd([[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]])
 -- autocmds
 vim.cmd("au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})")
 

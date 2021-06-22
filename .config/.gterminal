@@ -9,7 +9,7 @@ zoom-in='<Primary>plus'
 zoom-out='<Primary>underscore'
 
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-background-color='rgb(50,48,47)'
+background-color='rgb(40,40,40)'
 background-transparency-percent=0
 bold-is-bright=false
 cell-height-scale=1.0
