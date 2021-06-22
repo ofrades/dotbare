@@ -20,6 +20,7 @@ SETUVAR _fish_abbr_tc:tmux\x20attach
 SETUVAR _fish_abbr_tk:tmux\x20kill\x2dsession\x20\x2dt
 SETUVAR _fish_abbr_tl:tmux\x20ls
 SETUVAR _fish_abbr_ts:tmux\x20new\x20\x2ds
+SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_vi:nvim
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fish_abbr_z:j

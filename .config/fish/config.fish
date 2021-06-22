@@ -20,8 +20,10 @@ abbr gc 'git commit -am'
 abbr gp 'git pull'
 
 # neovim
+abbr v 'nvim'
 abbr vi 'nvim'
 abbr vim 'nvim'
+alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 

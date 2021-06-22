@@ -94,11 +94,13 @@ else
     echo "-> Dotfiles already present"
 fi
 
-# gnome-terminal
-# save with:
-# dconf dump /org/gnome/terminal:/ > ~/.config/.gterminal
-echo "-> Loading gnome-terminal configs"
-dconf load /org/gnome/terminal/ < ~/.config/.gterminal
+# gnome
+# save with something like:
+# dconf dump /org/gnome/terminal:/ > ~/.config/gnome/terminal
+echo "-> Loading gnome configs"
+dconf load /org/gnome/terminal/ < ~/.config/gnome/terminal
+dconf load /org/gnome/wm/keybindings/ < ~/.config/gnome/keybindings
+dconf load /org/gnome/wm/preferences/ < ~/.config/gnome/preferences
 
 # rust
 if ! [ -x "$(command -v cargo)" ]; then
