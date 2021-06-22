@@ -48,13 +48,13 @@ return require("packer").startup(function()
 	use({ "folke/todo-comments.nvim", config = function()
 		require("todo-comments").setup({})
 	end })
-	use({ "TimUntersberger/neogit", config = function()
+	use({ "timuntersberger/neogit", config = function()
 		require("neogit").setup()
-	end }) -- Magit
+	end }) -- magit
 	use({ "lewis6991/gitsigns.nvim", config = function()
 		require("gitsigns").setup()
 	end }) -- git signs
-	use("rhysd/committia.vim") -- More Pleasant Editing on Commit Message
+	use("rhysd/committia.vim") -- more pleasant editing on commit message
 	use("sindrets/diffview.nvim") -- tree like git diff
 	use("tpope/vim-commentary") -- comments
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- comments with context
@@ -62,9 +62,6 @@ return require("packer").startup(function()
 	use("mhinz/vim-startify") -- startup screen
 	use("mg979/vim-visual-multi") -- select multiple words under cursor
 	use("psliwka/vim-smoothie") -- select multiple words under cursor
-  -- use({"karb94/neoscroll.nvim", config = function ()
-  --   require("neoscroll").setup()
-  -- end })
 	use("windwp/nvim-spectre") -- search and replace
 	use("L3MON4D3/LuaSnip")
 	use("hrsh7th/vim-vsnip")
@@ -83,5 +80,13 @@ return require("packer").startup(function()
 	use("eddyekofo94/gruvbox-flat.nvim") -- theme
 	use("tamago324/lir.nvim") -- tree project view
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("nvim-treesitter/playground") -- to check syntax under cursor
+  use("nvim-treesitter/playground") -- to check syntax under cursor
+
+  -- TODO: try this packages
+  -- use { 'vhyrro/neorg', config = function()
+  --   require('neorg').setup {}
+  -- end}
+  -- use({"karb94/neoscroll.nvim", config = function ()
+  --   require("neoscroll").setup()
+  -- end })
 end)

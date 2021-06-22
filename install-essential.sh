@@ -22,7 +22,7 @@ sudo apt-get install -y \
 
 flatpak install \
     slack mattermost postman peek figma blender krita \
-    qbittorrent microsoft.teams
+    qbittorrent microsoft.teams calibre
 
 echo "-> Essential linux packages installed"
 
@@ -101,6 +101,7 @@ echo "-> Loading gnome configs"
 dconf load /org/gnome/terminal/ < ~/.config/gnome/terminal
 dconf load /org/gnome/wm/keybindings/ < ~/.config/gnome/keybindings
 dconf load /org/gnome/wm/preferences/ < ~/.config/gnome/preferences
+dconf load /org/gnome/desktop/background/ < ~/.config/gnome/background
 
 # rust
 if ! [ -x "$(command -v cargo)" ]; then

@@ -4,6 +4,7 @@ SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_cp:cp\x20\x2driv
 SETUVAR _fish_abbr_ga:git\x20add
 SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dam
+SETUVAR _fish_abbr_gl:git\x20log\x20\x2dp
 SETUVAR _fish_abbr_gp:git\x20pull
 SETUVAR _fish_abbr_l:ls\x20\x2dlh
 SETUVAR _fish_abbr_la:ls\x20\x2dA

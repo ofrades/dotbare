@@ -18,6 +18,7 @@ abbr lg 'ls -l --group-directories-first'
 abbr ga 'git add'
 abbr gc 'git commit -am'
 abbr gp 'git pull'
+abbr gl 'git log -p'
 
 # neovim
 abbr v 'nvim'
@@ -58,5 +59,3 @@ starship init fish | source
 
 # autojump
 status --is-interactive; and source (jump shell fish | psub)
-
-#xrandr --output HDMI-0 --mode 1920x1080 --rate 59.00 && xrandr --output VGA-1-1 --mode 1920x1080
