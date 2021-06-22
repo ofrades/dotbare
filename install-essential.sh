@@ -5,6 +5,7 @@
 echo "-> Tools installation just started"
 
 mkdir -p ~/build
+mkdir -p ~/notes
 
 sudo apt update
 
