@@ -1,11 +1,11 @@
-local finders = require("telescope.builtin")
-local actions = require("telescope.actions")
-local telescope = require("telescope")
-local trouble = require("trouble.providers.telescope")
+local finders = require "telescope.builtin"
+local actions = require "telescope.actions"
+local telescope = require "telescope"
+local trouble = require "trouble.providers.telescope"
 
-require("telescope").load_extension("fzf")
+require("telescope").load_extension "fzf"
 
-telescope.setup({
+telescope.setup {
 	defaults = {
 		vimgrep_arguments = {
 			"rg",
@@ -51,18 +51,18 @@ telescope.setup({
 			-- the default case_mode is "smart_case"
 		},
 	},
-})
+}
 
 function TelescopeDotfiles()
-	require("telescope.builtin").find_files({
+	require("telescope.builtin").find_files {
 		prompt_title = "Neovim files",
 		cwd = "~/.config/nvim/",
-	})
+	}
 end
 
 function TelescopeNotes()
-	require("telescope.builtin").file_browser({
+	require("telescope.builtin").file_browser {
 		prompt_title = "Notes",
 		cwd = "~/notes",
-	})
+	}
 end

@@ -84,3 +84,9 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
+
+[lua]
+symbol = " "
+
+[cmake]
+symbol = " "

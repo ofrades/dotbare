@@ -7,11 +7,21 @@ vim.api.nvim_set_keymap("n", "<Escape>", ":noh<CR>", {})
 -- vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua require'lir.float'.toggle()<CR>")
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":e %:p:h<CR>", {})
 -- Search and replace
-vim.api.nvim_set_keymap("n", "<leader>S", ":lua require('spectre').open()<CR>", {})
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>S",
+	":lua require('spectre').open()<CR>",
+	{}
+)
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
 vim.api.nvim_set_keymap("n", "<leader>th", ":split | term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit | term<CR>", {})
-vim.api.nvim_set_keymap('n', "<leader>h", "<cmd>lua require'hop'.hint_words()<cr>", {})
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>h",
+	"<cmd>lua require'hop'.hint_words()<cr>",
+	{}
+)
 -- Escape alt
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
 vim.api.nvim_set_keymap("i", "kk", "<esc>", {})
@@ -38,7 +48,12 @@ vim.api.nvim_set_keymap("n", "<leader>.", ":lua TelescopeDotfiles()<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>z", ":lua TelescopeNotes()<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>k", ":Telescope keymaps<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>te", ":Telescope <CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope find_files hidden=true<CR>", {})
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>p",
+	":Telescope find_files hidden=true<CR>",
+	{}
+)
 vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope live_grep<CR>", {}) -- <C-q> to send search to list
 vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope oldfiles<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<CR>", {})
@@ -82,5 +97,5 @@ function Reload()
 			package.loaded[k] = nil
 		end
 	end
-	print("Editor configs reloaded")
+	print "Editor configs reloaded"
 end

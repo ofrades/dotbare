@@ -1,4 +1,11 @@
-vim.g.gruvbox_sidebars = { "qf", "terminal", "term", "packer", "lir", "DiffviewFiles" }
+vim.g.gruvbox_sidebars = {
+	"qf",
+	"terminal",
+	"term",
+	"packer",
+	"lir",
+	"DiffviewFiles",
+}
 vim.g.gruvbox_transparent = false
 vim.g.gruvbox_flat_style = "dark"
 vim.g.gruvbox_italic_functions = true
@@ -40,7 +47,13 @@ vim.opt.undodir = "/tmp/"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.listchars = {"eol:↲", "tab:»-", "extends:>", "precedes:<", "trail:·", "nbsp:␣ list"}
-vim.opt.wildignore = { ".git", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**" }
+vim.opt.wildignore = {
+	".git",
+	"*.zip",
+	"**/tmp/**",
+	"*.DS_Store",
+	"**/node_modules/**",
+}
 vim.opt.foldlevel = 6
 vim.opt.laststatus = 2 -- always enable statusline
 vim.opt.pumblend = 10 -- Popup blend
@@ -93,29 +106,30 @@ vim.g.webdevicons_enable_startify = 1
 vim.g.startify_enable_special = 1
 vim.g.startify_files_number = 10
 vim.g.startify_update_oldfiles = 1
-vim.o.runtimepath = vim.o.runtimepath .. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
+vim.o.runtimepath = vim.o.runtimepath
+	.. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
 vim.g["himalaya_mailbox_picker"] = "telescope"
-vim.cmd("set sessionoptions-=folds")
+vim.cmd "set sessionoptions-=folds"
 -- Check if we need to reload the file when it changed
-vim.cmd("au FocusGained * :checktime")
-vim.cmd("colorscheme gruvbox-flat")
+vim.cmd "au FocusGained * :checktime"
+vim.cmd "colorscheme gruvbox-flat"
 
 -- syntax
-vim.cmd("syntax enable")
-vim.cmd("filetype plugin indent on")
+vim.cmd "syntax enable"
+vim.cmd "filetype plugin indent on"
 -- show cursor line only in active window
-vim.cmd([[
+vim.cmd [[
   autocmd InsertLeave,WinEnter * set cursorline
   autocmd InsertEnter,WinLeave * set nocursorline
-]])
+]]
 -- go to last loc when opening a buffer
-vim.cmd([[
+vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-]])
+]]
 -- autocmds
-vim.cmd("au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})")
+vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup {
 	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
 		enable = true, -- false will disable the whole extension
@@ -136,4 +150,4 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		extended_mode = true,
 	},
-})
+}

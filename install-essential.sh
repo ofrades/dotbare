@@ -104,16 +104,22 @@ dconf load /org/gnome/wm/preferences/ < ~/.config/gnome/preferences
 dconf load /org/gnome/desktop/background/ < ~/.config/gnome/background
 
 # rust
+# rust
 if ! [ -x "$(command -v cargo)" ]; then
     echo "-> Installing rust"
     curl https://sh.rustup.rs -sSf | sh
-    # rust webassembly
-    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-    cargo install cargo-generate
-    cargo install deno
-    cargo install stylua
 else
     echo "-> Rust already installed"
+fi
+
+if ! [ -x "$(command -v stylua)" ]; then
+    echo "-> Installing rust packages"
+    cargo install cargo-generate
+    cargo install stylua
+    cargo install deno
+    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+else
+    echo "-> Rust packages already installed"
 fi
 
 # jekyll

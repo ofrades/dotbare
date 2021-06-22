@@ -1,4 +1,4 @@
-require("neogit").setup({
+require("neogit").setup {
 	disable_signs = false,
 	disable_context_highlighting = false,
 	disable_commit_confirmation = false,
@@ -22,15 +22,40 @@ require("neogit").setup({
 			["s"] = "",
 		},
 	},
-})
+}
 
-require("gitsigns").setup({
+require("gitsigns").setup {
 	signs = {
-		add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-		change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+		add = {
+			hl = "GitSignsAdd",
+			text = "│",
+			numhl = "GitSignsAddNr",
+			linehl = "GitSignsAddLn",
+		},
+		change = {
+			hl = "GitSignsChange",
+			text = "│",
+			numhl = "GitSignsChangeNr",
+			linehl = "GitSignsChangeLn",
+		},
+		delete = {
+			hl = "GitSignsDelete",
+			text = "_",
+			numhl = "GitSignsDeleteNr",
+			linehl = "GitSignsDeleteLn",
+		},
+		topdelete = {
+			hl = "GitSignsDelete",
+			text = "‾",
+			numhl = "GitSignsDeleteNr",
+			linehl = "GitSignsDeleteLn",
+		},
+		changedelete = {
+			hl = "GitSignsChange",
+			text = "~",
+			numhl = "GitSignsChangeNr",
+			linehl = "GitSignsChangeLn",
+		},
 	},
 	numhl = false,
 	linehl = false,
@@ -38,8 +63,14 @@ require("gitsigns").setup({
 		-- Default keymap options
 		noremap = true,
 		buffer = true,
-		["n ]c"] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'" },
-		["n [c"] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'" },
+		["n ]c"] = {
+			expr = true,
+			"&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
+		},
+		["n [c"] = {
+			expr = true,
+			"&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
+		},
 		["n <leader>ghs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
 		["n <leader>ghu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
 		["n <leader>ghr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
@@ -59,4 +90,4 @@ require("gitsigns").setup({
 	status_formatter = nil, -- Use default
 	use_decoration_api = true,
 	use_internal_diff = false, -- If luajit is present
-})
+}

@@ -1,8 +1,8 @@
-local actions = require("lir.actions")
-local mark_actions = require("lir.mark.actions")
-local clipboard_actions = require("lir.clipboard.actions")
+local actions = require "lir.actions"
+local mark_actions = require "lir.mark.actions"
+local clipboard_actions = require "lir.clipboard.actions"
 
-require("lir").setup({
+require("lir").setup {
 	show_hidden_files = true,
 	devicons_enable = true,
 	mappings = {
@@ -16,7 +16,7 @@ require("lir").setup({
 		["A"] = actions.mkdir,
 		["<Tab>"] = function()
 			mark_actions.toggle_mark()
-			vim.cmd("normal! j")
+			vim.cmd "normal! j"
 		end,
 		["a"] = actions.newfile,
 		["d"] = actions.delete,
@@ -33,4 +33,4 @@ require("lir").setup({
 		winblend = 0,
 	},
 	hide_cursor = true,
-})
+}
