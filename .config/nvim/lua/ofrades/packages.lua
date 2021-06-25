@@ -72,6 +72,8 @@ return require("packer").startup(function()
 		end,
 	}
 	use "rhysd/committia.vim"
+	use "airblade/vim-rooter"
+	use { "lukas-reineke/indent-blankline.nvim", branch = "lua" }
 	use "sindrets/diffview.nvim"
 	use "tpope/vim-commentary"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
@@ -88,7 +90,7 @@ return require("packer").startup(function()
 	use "burkeholland/simple-react-snippets"
 	use "mlaursen/vim-react-snippets"
 	use "abusaidm/html-snippets"
-	use { "rrethy/vim-hexokinase", run = "make hexokinase" }
+	-- use { "rrethy/vim-hexokinase", run = "make hexokinase" }
 	use {
 		"kyazdani42/nvim-web-devicons",
 		config = function()

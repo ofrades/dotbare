@@ -98,10 +98,7 @@ fi
 # save with something like:
 # dconf dump /org/gnome/terminal:/ > ~/.config/gnome/terminal
 echo "-> Loading gnome configs"
-dconf load /org/gnome/terminal/ < ~/.config/gnome/terminal
-dconf load /org/gnome/wm/keybindings/ < ~/.config/gnome/keybindings
-dconf load /org/gnome/wm/preferences/ < ~/.config/gnome/preferences
-dconf load /org/gnome/desktop/background/ < ~/.config/gnome/background
+dconf load / < ~/.config/gnome/dconf-settings.ini
 
 # rust
 # rust
