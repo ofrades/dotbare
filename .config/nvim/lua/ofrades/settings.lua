@@ -6,7 +6,7 @@ vim.g.gruvbox_sidebars = {
 	"lir",
 	"DiffviewFiles",
 }
-vim.g.gruvbox_transparent = false
+vim.g.gruvbox_transparent = true
 vim.g.gruvbox_flat_style = "dark"
 vim.g.gruvbox_italic_functions = true
 

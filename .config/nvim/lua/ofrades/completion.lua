@@ -1,8 +1,3 @@
-vim.cmd [[packadd nvim-compe]]
-vim.cmd [[packadd vim-vsnip]]
-vim.cmd [[packadd vim-vsnip-integ]]
-local protocol = require "vim.lsp.protocol"
-vim.cmd [[set shortmess+=c]]
 vim.o.completeopt = "menuone,noselect"
 
 require("compe").setup {
@@ -19,39 +14,20 @@ require("compe").setup {
 	max_menu_width = 100,
 	documentation = true,
 	source = {
-		path = {
-			priority = 9,
-		},
-		buffer = {
-			priority = 8,
-		},
-		calc = {
-			priority = 4,
-		},
-		vsnip = {
-			priority = 7,
-		},
-		nvim_lsp = {
-			priority = 9,
-		},
-		nvim_lua = {
-			priority = 9,
-		},
-		tabnine = {
-			priority = 1,
-		},
-		spell = {
-			priority = 0,
-		},
-		treesitter = {
-			priority = 2,
-		},
-		tags = {
-			priority = 3,
-		},
-		omni = {
-			priority = 3,
-		},
+		path = true,
+		buffer = true,
+		calc = true,
+		vsnip = true,
+		nvim_lsp = true,
+		nvim_lua = true,
+		tabnine = true,
+		spell = true,
+		treesitter = true,
+		tags = true,
+		omni = true,
+		emoji = true,
+		luasnip = true,
+		orgmode = true,
 	},
 }
 
@@ -88,6 +64,7 @@ _G.s_tab_complete = function()
 	elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
 		return t "<Plug>(vsnip-jump-prev)"
 	else
+		-- If <S-Tab> is not working in your terminal, change it to <C-h>
 		return t "<S-Tab>"
 	end
 end
@@ -106,3 +83,7 @@ vim.api.nvim_set_keymap(
 	"v:lua.s_tab_complete()",
 	{ expr = true }
 )
+
+-- Completion
+vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { expr = true })

@@ -19,6 +19,11 @@ return require("packer").startup(function()
 	use { "wbthomason/packer.nvim", opt = true }
 	use "neovim/nvim-lspconfig"
 	use "hrsh7th/nvim-compe"
+	use {
+		"tzachar/compe-tabnine",
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-compe",
+	}
 	use "kabouzeid/nvim-lspinstall"
 	use "onsails/lspkind-nvim"
 	use "jose-elias-alvarez/nvim-lsp-ts-utils"
@@ -90,7 +95,10 @@ return require("packer").startup(function()
 	use "burkeholland/simple-react-snippets"
 	use "mlaursen/vim-react-snippets"
 	use "abusaidm/html-snippets"
-	-- use { "rrethy/vim-hexokinase", run = "make hexokinase" }
+	use {
+		"kristijanhusak/orgmode.nvim",
+	}
+	use { "rrethy/vim-hexokinase", run = "make hexokinase" }
 	use {
 		"kyazdani42/nvim-web-devicons",
 		config = function()
@@ -103,12 +111,4 @@ return require("packer").startup(function()
 	use "tamago324/lir.nvim"
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "nvim-treesitter/playground"
-
-	-- TODO: try this packages
-	-- use { 'vhyrro/neorg', config = function()
-	--   require('neorg').setup {}
-	-- end}
-	-- use({"karb94/neoscroll.nvim", config = function ()
-	--   require("neoscroll").setup()
-	-- end })
 end)

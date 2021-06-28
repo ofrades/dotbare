@@ -21,8 +21,8 @@ sudo apt-get install -y \
     neofetch flameshot gnome-tweaks google-chrome-stable htop
 
 flatpak install \
-    slack mattermost postman peek figma blender krita \
-    qbittorrent microsoft.teams calibre
+    slack discod microsoft.teams postman \
+    calibre krita peek figma
 
 echo "-> Essential linux packages installed"
 
@@ -94,13 +94,12 @@ else
     echo "-> Dotfiles already present"
 fi
 
-# gnome
-# save with something like:
-# dconf dump /org/gnome/terminal:/ > ~/.config/gnome/terminal
+# gnome options setup
+# save in file with something like:
+# dconf dump / > ~/.config/gnome/dconf-settings.ini
 echo "-> Loading gnome configs"
 dconf load / < ~/.config/gnome/dconf-settings.ini
 
-# rust
 # rust
 if ! [ -x "$(command -v cargo)" ]; then
     echo "-> Installing rust"

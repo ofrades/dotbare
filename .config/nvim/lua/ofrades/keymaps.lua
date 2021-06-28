@@ -14,6 +14,7 @@ vim.api.nvim_set_keymap(
 	{}
 )
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
+vim.api.nvim_set_keymap("n", "<leader>tt", ":term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>th", ":split | term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit | term<CR>", {})
 vim.api.nvim_set_keymap(
@@ -26,10 +27,10 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
 vim.api.nvim_set_keymap("i", "kk", "<esc>", {})
 -- resize panes
-vim.api.nvim_set_keymap("n", "<RIGHT>", "<C-w><", {})
-vim.api.nvim_set_keymap("n", "<UP>", "<C-w>+", {})
-vim.api.nvim_set_keymap("n", "<LEFT>", "<C-w>>", {})
-vim.api.nvim_set_keymap("n", "<DOWN>", "<C-w>-", {})
+vim.api.nvim_set_keymap("n", "<LEFT>", "<C-w><", {})
+vim.api.nvim_set_keymap("n", "<DOWN>", "<C-w>+", {})
+vim.api.nvim_set_keymap("n", "<RIGHT>", "<C-w>>", {})
+vim.api.nvim_set_keymap("n", "<UP>", "<C-w>-", {})
 -- move between panes
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {})
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {})
@@ -46,8 +47,7 @@ vim.api.nvim_set_keymap("i", "<C-l>", "<C-\\><C-N><C-w>l", {})
 -- Search
 vim.api.nvim_set_keymap("n", "<leader>.", ":lua TelescopeDotfiles()<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>z", ":lua TelescopeNotes()<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>k", ":Telescope keymaps<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>te", ":Telescope <CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>T", ":Telescope <CR>", {})
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>p",
@@ -55,7 +55,6 @@ vim.api.nvim_set_keymap(
 	{}
 )
 vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope live_grep<CR>", {}) -- <C-q> to send search to list
-vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope oldfiles<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope commands<CR>", {})
 -- Registers
@@ -87,9 +86,6 @@ vim.api.nvim_set_keymap("n", "D", "d$", {})
 vim.api.nvim_set_keymap("n", "C", "c$", {})
 -- Startify
 vim.api.nvim_set_keymap("n", "<leader>,", ":Startify<CR>", {})
--- Completion
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { expr = true })
 -- Reload function
 function Reload()
 	for k, v in pairs(package.loaded) do
