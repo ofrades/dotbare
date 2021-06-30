@@ -84,6 +84,16 @@ return require("packer").startup(function()
 		"tamago324/lir.nvim",
 		opt = true,
 		event = "BufRead",
+		requires = {
+			{
+				"tamago324/lir-git-status.nvim",
+				config = function()
+					require("lir.git_status").setup {
+						show_ignored = false,
+					}
+				end,
+			},
+		},
 		config = function()
 			require "ofrades.explorer"
 		end,
