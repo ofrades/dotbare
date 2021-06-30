@@ -1,11 +1,18 @@
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+local install_path = vim.fn.stdpath "data"
+	.. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.api.nvim_command("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.api.nvim_command(
+		"!git clone https://github.com/wbthomason/packer.nvim " .. install_path
+	)
 	vim.api.nvim_command "packadd packer.nvim"
 end
 
+-- if using packer with opt
 vim.cmd [[ packadd packer.nvim ]]
+
+-- sync when this file is changed
+vim.cmd [[ autocmd BufWritePost packages.lua PackerSync ]]
 
 return require("packer").startup(function()
 	use { "wbthomason/packer.nvim", opt = true }
@@ -24,14 +31,14 @@ return require("packer").startup(function()
 		opt = true,
 		event = "VimEnter",
 		config = function()
-      vim.g.gruvbox_sidebars = {
-        "qf",
-        "terminal",
-        "term",
-        "packer",
-        "lir",
-        "DiffviewFiles",
-      }
+			vim.g.gruvbox_sidebars = {
+				"qf",
+				"terminal",
+				"term",
+				"packer",
+				"lir",
+				"DiffviewFiles",
+			}
 			vim.g.gruvbox_transparent = true
 			vim.g.gruvbox_flat_style = "dark"
 			vim.g.gruvbox_italic_functions = true
@@ -58,23 +65,27 @@ return require("packer").startup(function()
 		"neovim/nvim-lspconfig",
 		event = "BufRead",
 		requires = {
+			{ "kabouzeid/nvim-lspinstall" },
+			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
-			{ "tamago324/nlsp-settings.nvim" },
 			{ "ray-x/lsp_signature.nvim" },
 			{ "nvim-lua/lsp-status.nvim" },
-      { "kabouzeid/nvim-lspinstall" },
+			{ "folke/lua-dev.nvim" },
 		},
 		config = function()
-      require("nlspsettings").setup()
-      require("nlspsettings").setup()
-      require("lspinstall").setup()
+			require "ofrades.lsphandlers"
+			require "ofrades.lspservers"
 		end,
 	}
-			use { "jose-elias-alvarez/null-ls.nvim", opt = true, event = "BufRead",
+	use {
+		"tamago324/nlsp-settings.nvim",
+		opt = true,
+		event = "BufRead",
+		wants = "nvim-lspconfig",
 		config = function()
-			require "ofrades.null-ls"
+			require("nlspsettings").setup()
 		end,
-    }
+	}
 	use {
 		"andymass/vim-matchup",
 		opt = true,

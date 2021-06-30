@@ -56,8 +56,8 @@ vim.opt.tabstop = 2 -- tabsize
 vim.opt.softtabstop = 2
 
 vim.g.vimruntime = true
--- vim.g.python_host_prog = "/usr/bin/python"
--- vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python_host_prog = "/usr/bin/python"
+vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.Hexokinase_highlighters = { "virtual" }
 vim.g.startify_commands = {
 	{ o = { "Recent Files", ":Telescope oldfiles hidden=true" } },
@@ -67,11 +67,20 @@ vim.g.startify_commands = {
 	{ g = { "Git", ":Neogit" } },
 	{ n = { "Nvim Files", ":lua TelescopeDotfiles()" } },
 	{ z = { "Notes", ":lua TelescopeNotes()" } },
-	{ h = { "Check Vim health", ":checkhealth" } },
-	{ i = { "Install Plugins", ":PackerInstall" } },
-	{ u = { "Update Plugin", ":PackerUpdate" } },
-	{ c = { "Clean Plugin", ":PackerClean" } },
+	{ s = { "Packer Sync", ":PackerSync" } },
 }
+
+vim.g.startify_enable_special = 0
+vim.g.startify_files_number = 3
+vim.g.startify_relative_path = 1
+vim.g.startify_change_to_dir = 1
+vim.g.startify_update_oldfiles = 1
+vim.g.startify_session_autoload = 1
+vim.g.startify_session_persistence = 1
+vim.g.startify_skiplist = { "COMMIT_EDITMSG" }
+
+
+vim.g.startify_custom_footer = { "Beauty will save the world!" }
 
 -- Check if we need to reload the file when it changed
 vim.cmd "au FocusGained * :checktime"
