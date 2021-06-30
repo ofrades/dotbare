@@ -1,8 +1,8 @@
-local actions = require("lir.actions")
-local mark_actions = require("lir.mark.actions")
-local clipboard_actions = require("lir.clipboard.actions")
+local actions = require "lir.actions"
+local mark_actions = require "lir.mark.actions"
+local clipboard_actions = require "lir.clipboard.actions"
 
-require("lir").setup({
+require("lir").setup {
 	show_hidden_files = true,
 	devicons_enable = true,
 	mappings = {
@@ -29,7 +29,9 @@ require("lir").setup({
 		["p"] = clipboard_actions.paste,
 	},
 	float = {
+		size_percentage = 0.5,
 		winblend = 0,
+		border = false,
 	},
 	hide_cursor = false,
-})
+}

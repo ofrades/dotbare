@@ -194,12 +194,6 @@ return require("packer").startup(function()
 		opt = true,
 		event = "BufRead",
 	}
-	use {
-		"lukas-reineke/indent-blankline.nvim",
-		opt = true,
-		event = "BufRead",
-		branch = "lua",
-	}
 	use { "airblade/vim-rooter", opt = true, event = "BufRead" }
 	use { "mg979/vim-visual-multi", opt = true, event = "BufRead" }
 	use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
