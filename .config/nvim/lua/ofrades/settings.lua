@@ -1,3 +1,18 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- disable builtin plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_spec = 1
+
 vim.opt.autowrite = true
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -58,29 +73,6 @@ vim.opt.softtabstop = 2
 vim.g.vimruntime = true
 vim.g.python_host_prog = "/usr/bin/python"
 vim.g.python3_host_prog = "/usr/bin/python3"
-vim.g.Hexokinase_highlighters = { "virtual" }
-vim.g.startify_commands = {
-	{ o = { "Recent Files", ":Telescope oldfiles hidden=true" } },
-	{ p = { "Find Files", ":Telescope find_files hidden=true" } },
-	{ b = { "File Browser", ":Telescope file_browser" } },
-	{ t = { "Telescope builtin", ":Telescope" } },
-	{ g = { "Git", ":Neogit" } },
-	{ n = { "Nvim Files", ":lua TelescopeDotfiles()" } },
-	{ z = { "Notes", ":lua TelescopeNotes()" } },
-	{ s = { "Packer Sync", ":PackerSync" } },
-}
-
-vim.g.startify_enable_special = 0
-vim.g.startify_files_number = 3
-vim.g.startify_relative_path = 1
-vim.g.startify_change_to_dir = 1
-vim.g.startify_update_oldfiles = 1
-vim.g.startify_session_autoload = 1
-vim.g.startify_session_persistence = 1
-vim.g.startify_skiplist = { "COMMIT_EDITMSG" }
-
-
-vim.g.startify_custom_footer = { "Beauty will save the world!" }
 
 -- Check if we need to reload the file when it changed
 vim.cmd "au FocusGained * :checktime"

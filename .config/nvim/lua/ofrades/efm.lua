@@ -1,4 +1,3 @@
-local nvim_lsp = require "lspconfig"
 local stylua = { formatCommand = "stylua -", formatStdin = true }
 local selene = {
 	lintCommand = "selene --display-style quiet -",
@@ -77,5 +76,3 @@ for lang, tools in pairs(config.settings.languages) do
 		end
 	end
 end
-
-nvim_lsp.bash.setup { config }

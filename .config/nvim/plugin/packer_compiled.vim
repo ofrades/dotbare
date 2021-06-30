@@ -73,7 +73,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
-    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21ofrades.snippets\frequire\0" },
+    config = { "\27LJ\2\n°\1\0\0\3\0\a\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0009\0\3\0005\2\4\0B\0\2\0016\0\0\0'\2\5\0B\0\2\0029\0\6\0B\0\1\1K\0\1\0\tload luasnip/loaders/from_vscode\1\0\2\fhistory\2\17updateevents\29TextChanged,TextChangedI\15set_config\vconfig\fluasnip\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/LuaSnip"
@@ -215,7 +215,7 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
   },
   ["orgmode.nvim"] = {
-    config = { "\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16ofrades.org\frequire\0" },
+    config = { "\27LJ\2\nà\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\rmappings\vglobal\1\0\0\1\0\2\16org_capture\15<leader>oc\15org_agenda\15<leader>oa\21org_agenda_files\1\0\1\27org_default_notes_file\23~/notes/refile.org\1\2\0\0\14~/notes/*\nsetup\forgmode\frequire\0" },
     loaded = false,
     needs_bufread = true,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/orgmode.nvim"
@@ -272,6 +272,7 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-commentary"
   },
   ["vim-hexokinase"] = {
+    config = { "\27LJ\2\nE\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\fvirtual\28Hexokinase_highlighters\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-hexokinase"
@@ -293,6 +294,7 @@ _G.packer_plugins = {
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-smoothie"
   },
   ["vim-startify"] = {
+    config = { '\27LJ\2\n™\a\0\0\4\0%\0I6\0\0\0009\0\1\0004\1\t\0005\2\4\0005\3\3\0=\3\5\2>\2\1\0015\2\a\0005\3\6\0=\3\b\2>\2\2\0015\2\n\0005\3\t\0=\3\v\2>\2\3\0015\2\r\0005\3\f\0=\3\14\2>\2\4\0015\2\16\0005\3\15\0=\3\1\2>\2\5\0015\2\18\0005\3\17\0=\3\19\2>\2\6\0015\2\21\0005\3\20\0=\3\22\2>\2\a\0015\2\24\0005\3\23\0=\3\25\2>\2\b\1=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\26\0006\0\0\0009\0\1\0)\1\3\0=\1\27\0006\0\0\0009\0\1\0)\1\1\0=\1\28\0006\0\0\0009\0\1\0)\1\1\0=\1\29\0006\0\0\0009\0\1\0)\1\1\0=\1\30\0006\0\0\0009\0\1\0)\1\1\0=\1\31\0006\0\0\0009\0\1\0)\1\1\0=\1 \0006\0\0\0009\0\1\0005\1"\0=\1!\0006\0\0\0009\0\1\0005\1$\0=\1#\0K\0\1\0\1\2\0\0(Beauty will save the world! ><(((*>\27startify_custom_footer\1\2\0\0\19COMMIT_EDITMSG\22startify_skiplist!startify_session_persistence\30startify_session_autoload\29startify_update_oldfiles\27startify_change_to_dir\27startify_relative_path\26startify_files_number\28startify_enable_special\6s\1\0\0\1\3\0\0\16Packer Sync\16:PackerSync\6z\1\0\0\1\3\0\0\nNotes\26:lua TelescopeNotes()\6n\1\0\0\1\3\0\0\15Nvim Files\29:lua TelescopeDotfiles()\1\0\0\1\3\0\0\bGit\f:Neogit\6t\1\0\0\1\3\0\0\22Telescope builtin\15:Telescope\6b\1\0\0\1\3\0\0\17File Browser\28:Telescope file_browser\6p\1\0\0\1\3\0\0\15Find Files&:Telescope find_files hidden=true\6o\1\0\0\1\3\0\0\17Recent Files$:Telescope oldfiles hidden=true\22startify_commands\6g\bvim\0' },
     loaded = false,
     needs_bufread = false,
     path = "/home/ofrades/.local/share/nvim/site/pack/packer/opt/vim-startify"
@@ -338,29 +340,29 @@ end
 
 -- Setup for: vim-matchup
 time([[Setup for vim-matchup]], true)
-try_loadstring("\27LJ\2\nj\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\14highlight\vNormal\14fullwidth\2\vmethod\npopup!matchup_matchparen_offscreen\6g\bvim\0", "setup", "vim-matchup")
+try_loadstring("\27LJ\2\nj\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\vmethod\npopup\14fullwidth\2\14highlight\vNormal!matchup_matchparen_offscreen\6g\bvim\0", "setup", "vim-matchup")
 time([[Setup for vim-matchup]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file TroubleToggle lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Trouble lua require("packer.load")({'trouble.nvim'}, { cmd = "Trouble", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file TodoTelescope lua require("packer.load")({'todo-comments.nvim'}, { cmd = "TodoTelescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file TodoTrouble lua require("packer.load")({'todo-comments.nvim'}, { cmd = "TodoTrouble", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewOpen lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewClose lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewToggleFiles lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewToggleFiles", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewFocusFiles lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewFocusFiles", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TroubleToggle lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Trouble lua require("packer.load")({'trouble.nvim'}, { cmd = "Trouble", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TodoTrouble lua require("packer.load")({'todo-comments.nvim'}, { cmd = "TodoTrouble", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TodoTelescope lua require("packer.load")({'todo-comments.nvim'}, { cmd = "TodoTelescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewOpen lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file DiffviewClose lua require("packer.load")({'diffview.nvim'}, { cmd = "DiffviewClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'gruvbox-flat.nvim', 'nvim-web-devicons', 'committia.vim', 'vim-startify', 'express_line.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'gruvbox-flat.nvim', 'vim-startify', 'nvim-web-devicons', 'committia.vim', 'express_line.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'lightspeed.nvim', 'lir.nvim', 'nvim-spectre', 'nvim-treesitter', 'nlsp-settings.nvim', 'nvim-lspconfig', 'orgmode.nvim', 'telescope.nvim', 'todo-comments.nvim', 'vim-commentary', 'nvim-ts-context-commentstring', 'vim-hexokinase', 'neogit', 'trouble.nvim', 'vim-rooter', 'vim-smoothie', 'vim-visual-multi', 'which-key.nvim', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'trouble.nvim', 'lightspeed.nvim', 'vim-rooter', 'lir.nvim', 'vim-visual-multi', 'which-key.nvim', 'nlsp-settings.nvim', 'nvim-spectre', 'nvim-treesitter', 'nvim-ts-context-commentstring', 'vim-hexokinase', 'vim-commentary', 'orgmode.nvim', 'indent-blankline.nvim', 'telescope.nvim', 'neogit', 'todo-comments.nvim', 'nvim-lspconfig', 'vim-smoothie', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)

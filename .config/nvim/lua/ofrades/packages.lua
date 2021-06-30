@@ -16,7 +16,34 @@ vim.cmd [[ autocmd BufWritePost packages.lua PackerSync ]]
 
 return require("packer").startup(function()
 	use { "wbthomason/packer.nvim", opt = true }
-	use { "mhinz/vim-startify", opt = true, event = "VimEnter" }
+	use {
+		"mhinz/vim-startify",
+		opt = true,
+		event = "VimEnter",
+		config = function()
+			vim.g.startify_commands = {
+				{ o = { "Recent Files", ":Telescope oldfiles hidden=true" } },
+				{ p = { "Find Files", ":Telescope find_files hidden=true" } },
+				{ b = { "File Browser", ":Telescope file_browser" } },
+				{ t = { "Telescope builtin", ":Telescope" } },
+				{ g = { "Git", ":Neogit" } },
+				{ n = { "Nvim Files", ":lua TelescopeDotfiles()" } },
+				{ z = { "Notes", ":lua TelescopeNotes()" } },
+				{ s = { "Packer Sync", ":PackerSync" } },
+			}
+
+			vim.g.startify_enable_special = 0
+			vim.g.startify_files_number = 3
+			vim.g.startify_relative_path = 1
+			vim.g.startify_change_to_dir = 1
+			vim.g.startify_update_oldfiles = 1
+			vim.g.startify_session_autoload = 1
+			vim.g.startify_session_persistence = 1
+			vim.g.startify_skiplist = { "COMMIT_EDITMSG" }
+
+			vim.g.startify_custom_footer = { "Beauty will save the world! ><(((*>" }
+		end,
+	}
 	use {
 		"tjdevries/express_line.nvim",
 		opt = true,
@@ -172,6 +199,9 @@ return require("packer").startup(function()
 		opt = true,
 		run = "make hexokinase",
 		event = "BufRead",
+		config = function()
+			vim.g.Hexokinase_highlighters = { "virtual" }
+		end,
 	}
 	use { "ggandor/lightspeed.nvim", opt = true, event = "BufRead" }
 	use {
@@ -206,7 +236,16 @@ return require("packer").startup(function()
 		opt = true,
 		event = "BufRead",
 		config = function()
-			require "ofrades.org"
+			require("orgmode").setup {
+				org_agenda_files = { "~/notes/*" },
+				org_default_notes_file = "~/notes/refile.org",
+				mappings = {
+					global = {
+						org_agenda = "<leader>oa",
+						org_capture = "<leader>oc",
+					},
+				},
+			}
 		end,
 	}
 	use {
@@ -223,7 +262,11 @@ return require("packer").startup(function()
 				"L3MON4D3/LuaSnip",
 				event = "InsertCharPre",
 				config = function()
-					require "ofrades.snippets"
+					require("luasnip").config.set_config {
+						history = true,
+						updateevents = "TextChanged,TextChangedI",
+					}
+					require("luasnip/loaders/from_vscode").load()
 				end,
 				requires = {
 					"rafamadriz/friendly-snippets",
