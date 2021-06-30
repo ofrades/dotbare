@@ -1,114 +1,244 @@
-local exec = vim.api.nvim_command
-local fn, cmd = vim.fn, vim.cmd
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 
-local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-	exec("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-	exec "packadd packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.api.nvim_command("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.api.nvim_command "packadd packer.nvim"
 end
 
--- Only required if you have packer in your `opt` pack
-cmd [[packadd packer.nvim]]
-
--- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-cmd [[ autocmd BufWritePost ofrades.lua PackerCompile ]]
+vim.cmd [[ packadd packer.nvim ]]
 
 return require("packer").startup(function()
-	-- Packer can manage itself as an optional plugin
 	use { "wbthomason/packer.nvim", opt = true }
-	use "neovim/nvim-lspconfig"
-	use "hrsh7th/nvim-compe"
+	use { "mhinz/vim-startify", opt = true, event = "VimEnter" }
 	use {
-		"tzachar/compe-tabnine",
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-compe",
-	}
-	use "kabouzeid/nvim-lspinstall"
-	use "onsails/lspkind-nvim"
-	use "jose-elias-alvarez/nvim-lsp-ts-utils"
-	use "jose-elias-alvarez/null-ls.nvim"
-	use "tamago324/nlsp-settings.nvim"
-	use "ray-x/lsp_signature.nvim"
-	use { "nvim-telescope/telescope.nvim", requires = {
-		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-	} }
-	use { "kevinhwang91/nvim-hlslens" }
-
-	use {
-		"phaazon/hop.nvim",
-		as = "hop",
+		"tjdevries/express_line.nvim",
+		opt = true,
+		event = "VimEnter",
+		wants = "lsp-status.nvim",
 		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
+			require "ofrades.statusline"
 		end,
 	}
-	use "nvim-lua/popup.nvim"
-	use "nvim-lua/plenary.nvim"
-	use "folke/lua-dev.nvim"
 	use {
-		"folke/lsp-trouble.nvim",
+		"eddyekofo94/gruvbox-flat.nvim",
+		opt = true,
+		event = "VimEnter",
 		config = function()
-			require("trouble").setup {}
+      vim.g.gruvbox_sidebars = {
+        "qf",
+        "terminal",
+        "term",
+        "packer",
+        "lir",
+        "DiffviewFiles",
+      }
+			vim.g.gruvbox_transparent = true
+			vim.g.gruvbox_flat_style = "dark"
+			vim.g.gruvbox_italic_functions = true
+			vim.cmd "colorscheme gruvbox-flat"
+		end,
+	}
+	use {
+		"kyazdani42/nvim-web-devicons",
+		opt = true,
+		event = "VimEnter",
+		config = function()
+			require("nvim-web-devicons").setup()
+		end,
+	}
+	use {
+		"tamago324/lir.nvim",
+		opt = true,
+		event = "BufRead",
+		config = function()
+			require "ofrades.explorer"
+		end,
+	}
+	use {
+		"neovim/nvim-lspconfig",
+		opt = true,
+		event = "BufRead",
+		requires = {
+			{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
+			{ "tamago324/nlsp-settings.nvim", config = function()
+      require("nlspsettings").setup()
+        end,
+      },
+			{ "ray-x/lsp_signature.nvim" },
+			{ "nvim-lua/lsp-status.nvim" },
+		},
+		config = function()
+			require "ofrades.lsp"
+		end,
+	}
+			use { "jose-elias-alvarez/null-ls.nvim", opt = true, event = "BufRead",
+		config = function()
+			require "ofrades.null-ls"
+		end,
+    }
+	use { "kabouzeid/nvim-lspinstall", opt = true, event = "VimEnter" }
+	use { "folke/lua-dev.nvim", opt = true, event = "VimEnter" }
+	use {
+		"andymass/vim-matchup",
+		opt = true,
+		event = "CursorMoved",
+		setup = function()
+			vim.g.matchup_matchparen_offscreen = {
+				method = "popup",
+				fullwidth = true,
+				highlight = "Normal",
+			}
+		end,
+	}
+	use {
+		"nvim-telescope/telescope.nvim",
+		event = "BufRead",
+		wants = "trouble.nvim",
+		requires = {
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "make",
+			},
+			{ "nvim-lua/popup.nvim", module = "popup" },
+			{ "nvim-lua/plenary.nvim", module = "plenary" },
+		},
+		config = function()
+			require "ofrades.telescope"
+		end,
+	}
+	use {
+		"lewis6991/gitsigns.nvim",
+		opt = true,
+		event = "BufRead",
+		config = function()
+			require "ofrades.gitsigns"
+		end,
+	}
+	use {
+		"timuntersberger/neogit",
+		opt = true,
+		event = "BufRead",
+		requires = {
+			{
+				"sindrets/diffview.nvim",
+				cmd = {
+					"DiffviewOpen",
+					"DiffviewClose",
+					"DiffviewToggleFiles",
+					"DiffviewFocusFiles",
+				},
+			},
+		},
+		config = function()
+			require "ofrades.neogit"
+		end,
+	}
+	use {
+		"windwp/nvim-spectre",
+		event = "BufRead",
+		opt = true,
+		module = "spectre",
+		wants = { "plenary.nvim", "popup.nvim" },
+		requires = {
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	}
+	use {
+		"tpope/vim-commentary",
+		opt = true,
+		event = "BufRead",
+	}
+	use {
+		"lukas-reineke/indent-blankline.nvim",
+		opt = true,
+		event = "BufRead",
+		branch = "lua",
+	}
+	use { "airblade/vim-rooter", opt = true, event = "BufRead" }
+	use { "mg979/vim-visual-multi", opt = true, event = "BufRead" }
+	use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
+	use { "rhysd/committia.vim", opt = true, event = "VimEnter" }
+	use {
+		"rrethy/vim-hexokinase",
+		opt = true,
+		run = "make hexokinase",
+		event = "BufRead",
+	}
+	use { "ggandor/lightspeed.nvim", opt = true, event = "BufRead" }
+	use {
+		"folke/trouble.nvim",
+		opt = true,
+		event = "BufRead",
+		cmd = { "TroubleToggle", "Trouble" },
+		config = function()
+			require("trouble").setup { auto_open = false }
 		end,
 	}
 	use {
 		"folke/which-key.nvim",
+		opt = true,
+		event = "BufRead",
+		module = "which-key",
 		config = function()
 			require("which-key").setup {}
 		end,
 	}
 	use {
 		"folke/todo-comments.nvim",
+		opt = true,
+		event = "BufRead",
+		cmd = { "TodoTrouble", "TodoTelescope" },
 		config = function()
 			require("todo-comments").setup {}
 		end,
 	}
 	use {
-		"timuntersberger/neogit",
-		config = function()
-			require("neogit").setup()
-		end,
-	}
-	use {
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	}
-	use "rhysd/committia.vim"
-	use "airblade/vim-rooter"
-	use { "lukas-reineke/indent-blankline.nvim", branch = "lua" }
-	use "sindrets/diffview.nvim"
-	use "tpope/vim-commentary"
-	use "JoosepAlviste/nvim-ts-context-commentstring"
-	use "kevinhwang91/nvim-bqf"
-	use "mhinz/vim-startify"
-	use "mg979/vim-visual-multi"
-	use "psliwka/vim-smoothie"
-	use "windwp/nvim-spectre"
-	use "L3MON4D3/LuaSnip"
-	use "hrsh7th/vim-vsnip"
-	use "hrsh7th/vim-vsnip-integ"
-	use "dsznajder/vscode-es7-javascript-react-snippets"
-	use "xabikos/vscode-javascript"
-	use "burkeholland/simple-react-snippets"
-	use "mlaursen/vim-react-snippets"
-	use "abusaidm/html-snippets"
-	use {
 		"kristijanhusak/orgmode.nvim",
-	}
-	use { "rrethy/vim-hexokinase", run = "make hexokinase" }
-	use {
-		"kyazdani42/nvim-web-devicons",
+		opt = true,
+		event = "BufRead",
 		config = function()
-			require("nvim-web-devicons").setup()
+			require "ofrades.org"
 		end,
 	}
-	use "tjdevries/express_line.nvim"
-	use "nvim-lua/lsp-status.nvim"
-	use "eddyekofo94/gruvbox-flat.nvim"
-	use "tamago324/lir.nvim"
-	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-	use "nvim-treesitter/playground"
+	use {
+		"hrsh7th/nvim-compe",
+		event = "InsertEnter",
+		wants = "LuaSnip",
+		requires = {
+			"onsails/lspkind-nvim",
+			{
+				"tzachar/compe-tabnine",
+				run = "./install.sh",
+			},
+			{
+				"L3MON4D3/LuaSnip",
+				event = "InsertCharPre",
+				config = function()
+					require "ofrades.snippets"
+				end,
+				requires = {
+					"rafamadriz/friendly-snippets",
+				},
+			},
+		},
+		config = function()
+			require "ofrades.completion"
+		end,
+	}
+	use {
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		opt = true,
+		event = "BufRead",
+	}
+	use {
+		"nvim-treesitter/nvim-treesitter",
+		opt = true,
+		event = "BufRead",
+		run = ":TSUpdate",
+		config = function()
+			require "ofrades.treesitter"
+		end,
+	}
+	use { "tweekmonster/startuptime.vim", cmd = "StartupTime" }
 end)

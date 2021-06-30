@@ -1,11 +1,9 @@
 -- Keymaps
 vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", {})
--- Reload nvim config
-vim.api.nvim_set_keymap("n", "<leader>x", ":lua Reload()<CR>", {})
 vim.api.nvim_set_keymap("n", "<Escape>", ":noh<CR>", {})
 -- File explorer
--- vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua require'lir.float'.toggle()<CR>")
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":e %:p:h<CR>", {})
+-- vim.api.nvim_set_keymap("n", "<leader><leader>", ":lua require'lir.float'.toggle()<CR>", {})
 -- Search and replace
 vim.api.nvim_set_keymap(
 	"n",
@@ -14,15 +12,10 @@ vim.api.nvim_set_keymap(
 	{}
 )
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
+-- Terminal
 vim.api.nvim_set_keymap("n", "<leader>tt", ":term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>th", ":split | term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit | term<CR>", {})
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>h",
-	"<cmd>lua require'hop'.hint_words()<cr>",
-	{}
-)
 -- Escape alt
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
 vim.api.nvim_set_keymap("i", "kk", "<esc>", {})
@@ -75,10 +68,11 @@ vim.api.nvim_set_keymap("n", "<leader>gC", ":Telescope git_commits<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_bcommits<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gs", ":Telescope git_status<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_branches<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>gd", ":Gitsigns preview_hunk<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", {})
+
 -- Better indenting
 vim.api.nvim_set_keymap("v", "<", "<gv", {})
-vim.api.nvim_set_keymap("n", "<", "<<", {})
-vim.api.nvim_set_keymap("n", ">", ">>", {})
 vim.api.nvim_set_keymap("v", ">", ">gv", {})
 -- Yank till the end of line
 vim.api.nvim_set_keymap("n", "Y", "y$", {})
@@ -86,12 +80,3 @@ vim.api.nvim_set_keymap("n", "D", "d$", {})
 vim.api.nvim_set_keymap("n", "C", "c$", {})
 -- Startify
 vim.api.nvim_set_keymap("n", "<leader>,", ":Startify<CR>", {})
--- Reload function
-function Reload()
-	for k, v in pairs(package.loaded) do
-		if string.match(k, "^ofrades") then
-			package.loaded[k] = nil
-		end
-	end
-	print "Editor configs reloaded"
-end

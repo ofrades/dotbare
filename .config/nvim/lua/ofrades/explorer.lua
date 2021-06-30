@@ -13,10 +13,10 @@ require("lir").setup {
 		["<CR>"] = actions.edit,
 		["h"] = actions.up,
 		["q"] = actions.quit,
+		["<esc>"] = actions.quit,
 		["A"] = actions.mkdir,
 		["<Tab>"] = function()
 			mark_actions.toggle_mark()
-			vim.cmd "normal! j"
 		end,
 		["a"] = actions.newfile,
 		["d"] = actions.delete,
@@ -29,7 +29,6 @@ require("lir").setup {
 		["p"] = clipboard_actions.paste,
 	},
 	float = {
-		-- size_percentage = 0.25,
 		winblend = 0,
 	},
 	hide_cursor = true,

@@ -1,15 +1,3 @@
-vim.g.gruvbox_sidebars = {
-	"qf",
-	"terminal",
-	"term",
-	"packer",
-	"lir",
-	"DiffviewFiles",
-}
-vim.g.gruvbox_transparent = true
-vim.g.gruvbox_flat_style = "dark"
-vim.g.gruvbox_italic_functions = true
-
 vim.opt.autowrite = true
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -67,19 +55,10 @@ vim.opt.shiftwidth = 2 -- set indentation width
 vim.opt.tabstop = 2 -- tabsize
 vim.opt.softtabstop = 2
 
--- Disable Netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.g.vimruntime = true
-vim.g.mapleader = " "
-vim.g.python_host_prog = "/usr/bin/python"
-vim.g.python3_host_prog = "/usr/bin/python3"
+-- vim.g.python_host_prog = "/usr/bin/python"
+-- vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.Hexokinase_highlighters = { "virtual" }
-vim.g.ascii = {
-	" _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_ ",
-	"  |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |  ",
-}
 vim.g.startify_commands = {
 	{ o = { "Recent Files", ":Telescope oldfiles hidden=true" } },
 	{ p = { "Find Files", ":Telescope find_files hidden=true" } },
@@ -93,61 +72,20 @@ vim.g.startify_commands = {
 	{ u = { "Update Plugin", ":PackerUpdate" } },
 	{ c = { "Clean Plugin", ":PackerClean" } },
 }
-vim.g.startify_custom_header = "startify#center(g:ascii)"
-vim.g.startify_session_sort = 1
-vim.g.startify_change_to_dir = 1
-vim.g.startify_session_autoload = 1
-vim.g.startify_session_delete_buffers = 0
-vim.g.startify_session_persistence = 1
-vim.g.startify_session_dir = "~/.config/nvim/sessions/"
-vim.g.startify_change_to_vcs_root = 1
-vim.g.startify_padding_left = 6
-vim.g.webdevicons_enable_startify = 1
-vim.g.startify_enable_special = 1
-vim.g.startify_files_number = 10
-vim.g.startify_update_oldfiles = 1
-vim.o.runtimepath = vim.o.runtimepath
-	.. ",/home/ofrades/.local/share/nvim/site/pack/packer/start/himalaya/vim/"
-vim.g["himalaya_mailbox_picker"] = "telescope"
-vim.cmd "set sessionoptions-=folds"
+
 -- Check if we need to reload the file when it changed
 vim.cmd "au FocusGained * :checktime"
-vim.cmd "colorscheme gruvbox-flat"
 
--- syntax
-vim.cmd "syntax enable"
-vim.cmd "filetype plugin indent on"
 -- show cursor line only in active window
 vim.cmd [[
   autocmd InsertLeave,WinEnter * set cursorline
   autocmd InsertEnter,WinLeave * set nocursorline
 ]]
+
 -- go to last loc when opening a buffer
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 ]]
+
 -- autocmds
 vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"
-
-require("nvim-treesitter.configs").setup {
-	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-	highlight = {
-		enable = true, -- false will disable the whole extension
-	},
-	incremental_selection = {
-		enable = true,
-	},
-	indent = {
-		enable = true,
-	},
-	autotag = {
-		enable = true,
-	},
-	context_commentstring = {
-		enable = true,
-	},
-	rainbow = {
-		enable = true,
-		extended_mode = true,
-	},
-}
