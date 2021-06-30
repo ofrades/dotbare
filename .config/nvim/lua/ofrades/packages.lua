@@ -56,19 +56,18 @@ return require("packer").startup(function()
 	}
 	use {
 		"neovim/nvim-lspconfig",
-		opt = true,
 		event = "BufRead",
 		requires = {
 			{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
-			{ "tamago324/nlsp-settings.nvim", config = function()
-      require("nlspsettings").setup()
-        end,
-      },
+			{ "tamago324/nlsp-settings.nvim" },
 			{ "ray-x/lsp_signature.nvim" },
 			{ "nvim-lua/lsp-status.nvim" },
+      { "kabouzeid/nvim-lspinstall" },
 		},
 		config = function()
-			require "ofrades.lsp"
+      require("nlspsettings").setup()
+      require("nlspsettings").setup()
+      require("lspinstall").setup()
 		end,
 	}
 			use { "jose-elias-alvarez/null-ls.nvim", opt = true, event = "BufRead",
@@ -76,8 +75,6 @@ return require("packer").startup(function()
 			require "ofrades.null-ls"
 		end,
     }
-	use { "kabouzeid/nvim-lspinstall", opt = true, event = "VimEnter" }
-	use { "folke/lua-dev.nvim", opt = true, event = "VimEnter" }
 	use {
 		"andymass/vim-matchup",
 		opt = true,

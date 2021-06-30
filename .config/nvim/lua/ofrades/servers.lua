@@ -1,6 +1,4 @@
 local nvim_lsp = require "lspconfig"
-local luadev = require("lua-dev").setup {}
-require("lspinstall").setup()
 
 local function setup_formatting(bufnr)
 	local opts = { noremap = true, silent = true }
@@ -201,4 +199,4 @@ nvim_lsp.typescript.setup {
 	on_attach = attach_tsserver,
 	capabilities = capabilities,
 }
-nvim_lsp.lua.setup(luadev)
+nvim_lsp.lua.setup { on_attach = on_attach, capabilities = capabilities }
