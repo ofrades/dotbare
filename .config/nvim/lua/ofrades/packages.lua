@@ -215,8 +215,7 @@ return require("packer").startup(function()
 	}
 	use {
 		"folke/which-key.nvim",
-		opt = true,
-		event = "BufRead",
+		event = "VimEnter",
 		module = "which-key",
 		config = function()
 			require("which-key").setup {}
