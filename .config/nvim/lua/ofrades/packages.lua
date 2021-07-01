@@ -31,14 +31,7 @@ return require("packer").startup(function()
 				{ z = { "Notes", ":lua TelescopeNotes()" } },
 				{ s = { "Packer Sync", ":PackerSync" } },
 			}
-
-			vim.g.startify_enable_special = 0
 			vim.g.startify_files_number = 3
-			vim.g.startify_relative_path = 1
-			vim.g.startify_change_to_dir = 1
-			vim.g.startify_update_oldfiles = 1
-			vim.g.startify_session_autoload = 1
-			vim.g.startify_session_persistence = 1
 			vim.g.startify_skiplist = { "COMMIT_EDITMSG" }
 
 			vim.g.startify_custom_footer = { "Beauty will save the world! ><(((*>" }
@@ -105,11 +98,30 @@ return require("packer").startup(function()
 		wants = "nvim-lspinstall",
 		requires = {
 			{ "kabouzeid/nvim-lspinstall", event = "BufRead" },
-			{ "jose-elias-alvarez/null-ls.nvim" },
-			{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
+			{ "jose-elias-alvarez/null-ls.nvim", filetype = {
+				"html",
+				"css",
+				"json",
+				"yaml",
+				"markdown",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"lua",
+			} },
+			{
+				"jose-elias-alvarez/nvim-lsp-ts-utils",
+				filetype = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
+			},
 			{ "ray-x/lsp_signature.nvim" },
 			{ "nvim-lua/lsp-status.nvim" },
-			{ "folke/lua-dev.nvim" },
+			{ "folke/lua-dev.nvim", filetype = "lua" },
 		},
 		config = function()
 			require "ofrades.lsphandlers"
@@ -189,8 +201,30 @@ return require("packer").startup(function()
 	}
 	use { "airblade/vim-rooter", opt = true, event = "BufRead" }
 	use { "mg979/vim-visual-multi", opt = true, event = "BufRead" }
-	use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
-	use { "rhysd/committia.vim", opt = true, event = "VimEnter" }
+	-- use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
+	use {
+		"karb94/neoscroll.nvim",
+		opt = true,
+		event = "BufRead",
+		config = function()
+			require("neoscroll").setup {
+				mappings = {
+					"<C-u>",
+					"<C-d>",
+					"<C-b>",
+					"<C-f>",
+					"<C-y>",
+					"<C-e>",
+					"zt",
+					"zz",
+					"zb",
+					-- "gg",
+					-- "G",
+				},
+			}
+		end,
+	}
+	use { "rhysd/committia.vim" }
 	use {
 		"rrethy/vim-hexokinase",
 		opt = true,
@@ -200,7 +234,7 @@ return require("packer").startup(function()
 			vim.g.Hexokinase_highlighters = { "virtual" }
 		end,
 	}
-	use { "ggandor/lightspeed.nvim", opt = true, event = "BufRead" }
+	use { "ggandor/lightspeed.nvim", event = "VimEnter" }
 	use {
 		"folke/trouble.nvim",
 		opt = true,
@@ -272,6 +306,16 @@ return require("packer").startup(function()
 		},
 		config = function()
 			require "ofrades.completion"
+		end,
+	}
+	use {
+		"mattn/emmet-vim",
+		event = "BufRead",
+		cmd = "EmmetInstall",
+		setup = function()
+			vim.g.emmet_install_global = 0
+			vim.g.user_emmet_leader_key = ","
+			vim.cmd [[ autocmd FileType html, css, javascriptreact, typescriptreact]]
 		end,
 	}
 	use {

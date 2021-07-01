@@ -49,6 +49,9 @@ vim.opt.syntax = "on" -- syntax enable
 vim.opt.undodir = "/tmp/"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.o.completeopt = "menuone,noselect"
+
 -- vim.opt.listchars = {"eol:↲", "tab:»-", "extends:>", "precedes:<", "trail:·", "nbsp:␣ list"}
 vim.opt.wildignore = {
 	".git",
@@ -70,7 +73,7 @@ vim.opt.shiftwidth = 2 -- set indentation width
 vim.opt.tabstop = 2 -- tabsize
 vim.opt.softtabstop = 2
 
-vim.g.vimruntime = true
+vim.g.vimruntime = false
 vim.g.python_host_prog = "/usr/bin/python"
 vim.g.python3_host_prog = "/usr/bin/python3"
 
@@ -90,3 +93,5 @@ vim.cmd [[
 
 -- autocmds
 vim.cmd "au TextYankPost * silent! lua require'vim.highlight'.on_yank({higroup = 'IncSearch', timeout = 500, on_visual = true})"
+
+vim.g.completion_trigger_character = { "." }
