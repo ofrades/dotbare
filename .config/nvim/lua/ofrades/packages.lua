@@ -199,6 +199,16 @@ return require("packer").startup(function()
 		opt = true,
 		event = "BufRead",
 	}
+	use {
+		"tpope/vim-surround",
+		opt = true,
+		event = "BufRead",
+	}
+	use {
+		"tpope/vim-repeat",
+		opt = true,
+		event = "BufRead",
+	}
 	use { "airblade/vim-rooter", opt = true, event = "BufRead" }
 	use { "mg979/vim-visual-multi", opt = true, event = "BufRead" }
 	-- use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
