@@ -10,7 +10,7 @@ mkdir -p ~/notes
 sudo apt update
 
 sudo apt-get install -y \
-    make cmake tmux fzf bat ripgrep fd-find silversearcher-ag tree  \
+    make cmake tmux fzf bat ripgrep fd-find silversearcher-ag tree kitty  \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
@@ -18,7 +18,7 @@ sudo apt-get install -y \
     git nodejs npm python3-pip python3-neovim golang-go \
     texlive-luatex texlive-fonts-recommended texlive-fonts-extra latexmk \
     libltdl-dev flex bison fontforge python3-pygments \
-    neofetch flameshot gnome-tweaks google-chrome-stable htop
+    neofetch flameshot google-chrome-stable htop code
 
 flatpak install \
     slack discod microsoft.teams postman \
@@ -37,7 +37,7 @@ fi
 # install yarn packages
 if ! [ -x "$(command -v prettier)" ]; then
   echo "-> Yarn packages are installing"
-  yarn global add prettier eslint eslint_d typescript
+  yarn global add prettier eslint eslint_d typescript write-good
   else
     echo "-> Yarn already installed"
 fi
@@ -55,14 +55,6 @@ else
     echo "-> Neovim already installed"
 fi
 
-# fish as default shell
-if ! [ -x "$(command -v fish)" ]; then
-    echo "-> Setting fish as default shell"
-    sudo apt install fish
-    chsh -s `which fish`
-else
-    echo "-> Fish already installed"
-fi
 
 # install starship
 if ! [ -x "$(command -v starship)" ]; then
@@ -150,14 +142,33 @@ else
 fi
 
 # install gregorio
-if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
-    echo "-> Gregorio installing"
-    git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
-    cd ~/build/gregorio
-    ./build.sh
-    sudo ./install.sh
-    cd ~/
+# if ! [ -d $HOME/build/gregorio ] && ! [ -x "$(command -v gregorio)" ]; then
+#     echo "-> Gregorio installing"
+#     git clone https://github.com/gregorio-project/gregorio ~/build/gregorio
+#     cd ~/build/gregorio
+#     ./build.sh
+#     sudo ./install.sh
+#     cd ~/
+# else
+#     echo "-> Gregorio already installed"
+# fi
+
+# gh
+if ! [ -x "$(command -v gh)" ]; then
+    echo "-> Installing gh"
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    sudo apt update
+    sudo apt install gh
 else
-    echo "-> Gregorio already installed"
+    echo "-> gh already installed"
 fi
 
+# fish as default shell
+if ! [ -x "$(command -v fish)" ]; then
+    echo "-> Setting fish as default shell"
+    sudo apt install fish
+    chsh -s `which fish`
+else
+    echo "-> Fish already installed"
+fi

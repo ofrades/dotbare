@@ -52,7 +52,8 @@ set -ga fish_user_paths ~/.yarn/bin
 set -x DENO_INSTALL /Users/YOUR_USER/.deno
 set -x PATH $DENO_INSTALL/bin:$PATH
 set -ga fish_user_paths ~/.cargo/bin
-
+set -ga NVM_DIR ~/.nvm
+set --universal nvm_default_version v14
 set -gx EDITOR nvim
 
 starship init fish | source

@@ -1,22 +1,16 @@
-local install_path = vim.fn.stdpath "data"
-	.. "/site/pack/packer/opt/packer.nvim"
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.api.nvim_command(
-		"!git clone https://github.com/wbthomason/packer.nvim " .. install_path
-	)
-	vim.api.nvim_command "packadd packer.nvim"
+	vim.api.nvim_command("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.api.nvim_command("packadd packer.nvim")
 end
 
 -- if using packer with opt
-vim.cmd [[ packadd packer.nvim ]]
-
--- sync when this file is changed
-vim.cmd [[ autocmd BufWritePost packages.lua PackerSync ]]
+vim.cmd([[ packadd packer.nvim ]])
 
 return require("packer").startup(function()
-	use { "wbthomason/packer.nvim", opt = true }
-	use {
+	use({ "wbthomason/packer.nvim", opt = true })
+	use({
 		"mhinz/vim-startify",
 		opt = true,
 		event = "VimEnter",
@@ -36,17 +30,17 @@ return require("packer").startup(function()
 
 			vim.g.startify_custom_footer = { "Beauty will save the world! ><(((*>" }
 		end,
-	}
-	use {
+	})
+	use({
 		"tjdevries/express_line.nvim",
 		opt = true,
 		event = "VimEnter",
 		wants = "lsp-status.nvim",
 		config = function()
-			require "ofrades.statusline"
+			require("ofrades.statusline")
 		end,
-	}
-	use {
+	})
+	use({
 		"eddyekofo94/gruvbox-flat.nvim",
 		opt = true,
 		event = "VimEnter",
@@ -61,11 +55,11 @@ return require("packer").startup(function()
 			}
 			vim.g.gruvbox_transparent = true
 			vim.g.gruvbox_flat_style = "dark"
-			vim.g.gruvbox_italic_functions = true
-			vim.cmd "colorscheme gruvbox-flat"
+			-- vim.g.gruvbox_italic_functions = true
+			vim.cmd("colorscheme gruvbox-flat")
 		end,
-	}
-	use {
+	})
+	use({
 		"kyazdani42/nvim-web-devicons",
 		opt = true,
 		event = "VimEnter",
@@ -73,8 +67,8 @@ return require("packer").startup(function()
 		config = function()
 			require("nvim-web-devicons").setup()
 		end,
-	}
-	use {
+	})
+	use({
 		"tamago324/lir.nvim",
 		opt = true,
 		event = "BufRead",
@@ -82,17 +76,17 @@ return require("packer").startup(function()
 			{
 				"tamago324/lir-git-status.nvim",
 				config = function()
-					require("lir.git_status").setup {
+					require("lir.git_status").setup({
 						show_ignored = false,
-					}
+					})
 				end,
 			},
 		},
 		config = function()
-			require "ofrades.explorer"
+			require("ofrades.explorer")
 		end,
-	}
-	use {
+	})
+	use({
 		"neovim/nvim-lspconfig",
 		event = "BufRead",
 		wants = "nvim-lspinstall",
@@ -124,11 +118,11 @@ return require("packer").startup(function()
 			{ "folke/lua-dev.nvim", filetype = "lua" },
 		},
 		config = function()
-			require "ofrades.lsphandlers"
-			require "ofrades.lspservers"
+			require("ofrades.lsphandlers")
+			require("ofrades.lspservers")
 		end,
-	}
-	use {
+	})
+	use({
 		"andymass/vim-matchup",
 		opt = true,
 		event = "CursorMoved",
@@ -139,8 +133,8 @@ return require("packer").startup(function()
 				highlight = "Normal",
 			}
 		end,
-	}
-	use {
+	})
+	use({
 		"nvim-telescope/telescope.nvim",
 		event = "BufRead",
 		wants = "trouble.nvim",
@@ -153,18 +147,18 @@ return require("packer").startup(function()
 			{ "nvim-lua/plenary.nvim", module = "plenary" },
 		},
 		config = function()
-			require "ofrades.telescope"
+			require("ofrades.telescope")
 		end,
-	}
-	use {
+	})
+	use({
 		"lewis6991/gitsigns.nvim",
 		opt = true,
 		event = "BufRead",
 		config = function()
-			require "ofrades.gitsigns"
+			require("ofrades.gitsigns")
 		end,
-	}
-	use {
+	})
+	use({
 		"timuntersberger/neogit",
 		opt = true,
 		event = "BufRead",
@@ -177,13 +171,49 @@ return require("packer").startup(function()
 					"DiffviewToggleFiles",
 					"DiffviewFocusFiles",
 				},
+				config = function()
+					local cb = require("diffview.config").diffview_callback
+					require("diffview").setup({
+						diff_binaries = false,
+						file_panel = {
+							width = 35,
+							use_icons = true,
+						},
+						key_bindings = {
+							disable_defaults = false,
+							view = {
+								["<tab>"] = cb("select_next_entry"),
+								["<s-tab>"] = cb("select_prev_entry"),
+								["<leader>e"] = cb("focus_files"),
+								["<leader>b"] = cb("toggle_files"),
+							},
+							file_panel = {
+								["j"] = cb("next_entry"),
+								["<down>"] = cb("next_entry"),
+								["k"] = cb("prev_entry"),
+								["<up>"] = cb("prev_entry"),
+								["<cr>"] = cb("select_entry"),
+								["o"] = cb("select_entry"),
+								["<2-LeftMouse>"] = cb("select_entry"),
+								["-"] = cb("toggle_stage_entry"),
+								["S"] = cb("stage_all"),
+								["U"] = cb("unstage_all"),
+								["R"] = cb("refresh_files"),
+								["<tab>"] = cb("select_next_entry"),
+								["<s-tab>"] = cb("select_prev_entry"),
+								["<leader>e"] = cb("focus_files"),
+								["<leader>b"] = cb("toggle_files"),
+							},
+						},
+					})
+				end,
 			},
 		},
 		config = function()
-			require "ofrades.neogit"
+			require("ofrades.neogit")
 		end,
-	}
-	use {
+	})
+	use({
 		"windwp/nvim-spectre",
 		event = "BufRead",
 		opt = true,
@@ -193,31 +223,31 @@ return require("packer").startup(function()
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 		},
-	}
-	use {
+	})
+	use({
 		"tpope/vim-commentary",
 		opt = true,
 		event = "BufRead",
-	}
-	use {
+	})
+	use({
 		"tpope/vim-surround",
 		opt = true,
 		event = "BufRead",
-	}
-	use {
+	})
+	use({
 		"tpope/vim-repeat",
 		opt = true,
 		event = "BufRead",
-	}
-	use { "airblade/vim-rooter", opt = true, event = "BufRead" }
-	use { "mg979/vim-visual-multi", opt = true, event = "BufRead" }
+	})
+	use({ "airblade/vim-rooter", opt = true, event = "BufRead" })
+	use({ "mg979/vim-visual-multi", opt = true, event = "BufRead" })
 	-- use { "psliwka/vim-smoothie", opt = true, event = "BufRead" }
-	use {
+	use({
 		"karb94/neoscroll.nvim",
 		opt = true,
 		event = "BufRead",
 		config = function()
-			require("neoscroll").setup {
+			require("neoscroll").setup({
 				mappings = {
 					"<C-u>",
 					"<C-d>",
@@ -231,11 +261,11 @@ return require("packer").startup(function()
 					-- "gg",
 					-- "G",
 				},
-			}
+			})
 		end,
-	}
-	use { "rhysd/committia.vim" }
-	use {
+	})
+	use({ "rhysd/committia.vim" })
+	use({
 		"rrethy/vim-hexokinase",
 		opt = true,
 		run = "make hexokinase",
@@ -243,40 +273,39 @@ return require("packer").startup(function()
 		config = function()
 			vim.g.Hexokinase_highlighters = { "virtual" }
 		end,
-	}
-	use { "ggandor/lightspeed.nvim", event = "VimEnter" }
-	use {
+	})
+	use({
 		"folke/trouble.nvim",
 		opt = true,
 		event = "BufRead",
 		cmd = { "TroubleToggle", "Trouble" },
 		config = function()
-			require("trouble").setup { auto_open = false }
+			require("trouble").setup({ auto_open = false })
 		end,
-	}
-	use {
+	})
+	use({
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		module = "which-key",
 		config = function()
-			require("which-key").setup {}
+			require("which-key").setup({})
 		end,
-	}
-	use {
+	})
+	use({
 		"folke/todo-comments.nvim",
 		opt = true,
 		event = "BufRead",
 		cmd = { "TodoTrouble", "TodoTelescope" },
 		config = function()
-			require("todo-comments").setup {}
+			require("todo-comments").setup({})
 		end,
-	}
-	use {
+	})
+	use({
 		"kristijanhusak/orgmode.nvim",
 		opt = true,
 		event = "BufRead",
 		config = function()
-			require("orgmode").setup {
+			require("orgmode").setup({
 				org_agenda_files = { "~/notes/*" },
 				org_default_notes_file = "~/notes/refile.org",
 				mappings = {
@@ -285,10 +314,10 @@ return require("packer").startup(function()
 						org_capture = "<leader>oc",
 					},
 				},
-			}
+			})
 		end,
-	}
-	use {
+	})
+	use({
 		"hrsh7th/nvim-compe",
 		event = "InsertEnter",
 		wants = "LuaSnip",
@@ -303,10 +332,10 @@ return require("packer").startup(function()
 				"L3MON4D3/LuaSnip",
 				event = "InsertCharPre",
 				config = function()
-					require("luasnip").config.set_config {
+					require("luasnip").config.set_config({
 						history = true,
 						updateevents = "TextChanged,TextChangedI",
-					}
+					})
 					require("luasnip/loaders/from_vscode").load()
 				end,
 				requires = {
@@ -315,32 +344,34 @@ return require("packer").startup(function()
 			},
 		},
 		config = function()
-			require "ofrades.completion"
+			require("ofrades.completion")
 		end,
-	}
-	use {
+	})
+	use({
 		"mattn/emmet-vim",
 		event = "BufRead",
-		cmd = "EmmetInstall",
-		setup = function()
+		config = function()
 			vim.g.emmet_install_global = 0
-			vim.g.user_emmet_leader_key = ","
-			vim.cmd [[ autocmd FileType html, css, javascriptreact, typescriptreact]]
+			-- vim.g.user_emmet_leader_key = ","
+			vim.api.nvim_command("autocmd FileType html, css, javascriptreact, typescriptreact EmmetInstall")
 		end,
-	}
-	use {
+	})
+	use({
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		opt = true,
 		event = "BufRead",
-	}
-	use {
+	})
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		opt = true,
 		event = "BufRead",
 		run = ":TSUpdate",
+		requires = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		config = function()
-			require "ofrades.treesitter"
+			require("ofrades.treesitter")
 		end,
-	}
-	use { "tweekmonster/startuptime.vim", cmd = "StartupTime" }
+	})
+	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 end)

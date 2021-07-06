@@ -17,6 +17,15 @@ vim.api.nvim_set_keymap(
 	{}
 )
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {})
+vim.api.nvim_set_keymap("n", "H", "^", {})
+vim.api.nvim_set_keymap("o", "H", "^", {})
+vim.api.nvim_set_keymap("x", "H", "^", {})
+vim.api.nvim_set_keymap("n", "L", "$", {})
+vim.api.nvim_set_keymap("o", "L", "$", {})
+vim.api.nvim_set_keymap("x", "L", "$", {})
+-- vim.api.nvim_set_keymap("n", "<Tab>", "%", {})
+-- vim.api.nvim_set_keymap("x", "<Tab>", "%", {})
+-- vim.api.nvim_set_keymap("o", "<Tab>", "%", {})
 -- Terminal
 vim.api.nvim_set_keymap("n", "<leader>tt", ":term<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>th", ":split | term<CR>", {})
@@ -24,6 +33,8 @@ vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit | term<CR>", {})
 -- Escape alt
 vim.api.nvim_set_keymap("i", "jj", "<esc>", {})
 vim.api.nvim_set_keymap("i", "kk", "<esc>", {})
+-- select all text
+vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", {})
 -- resize panes
 vim.api.nvim_set_keymap("n", "<LEFT>", "<C-w><", {})
 vim.api.nvim_set_keymap("n", "<DOWN>", "<C-w>+", {})
@@ -53,6 +64,7 @@ vim.api.nvim_set_keymap(
 	{}
 )
 vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope live_grep<CR>", {}) -- <C-q> to send search to list
+vim.api.nvim_set_keymap("n", "<leader>O", ":Telescope oldfiles<CR>", {}) -- <C-q> to send search to list
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope commands<CR>", {})
 -- Registers
@@ -67,13 +79,15 @@ vim.api.nvim_set_keymap("n", "<leader>q", ":q<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>w", ":w!<CR>", {})
 -- Git
 vim.api.nvim_set_keymap("n", "<leader>gg", ":Neogit<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>gd", ":DiffviewOpen<CR>", {})
+
 -- Telescope Git
 vim.api.nvim_set_keymap("n", "<leader>gf", ":Telescope git_files<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gC", ":Telescope git_commits<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_bcommits<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gs", ":Telescope git_status<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_branches<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>gd", ":Gitsigns preview_hunk<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", {})
 
 -- Better indenting
