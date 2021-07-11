@@ -19,6 +19,7 @@
 
 [user]
     email = mig.silva@gmail.com
+	name = Miguel Bastos
 
 [alias]
     ci = commit
