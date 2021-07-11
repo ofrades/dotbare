@@ -2,11 +2,11 @@
 --         ><(((*>
 
 -- neovim settings
-require("ofrades/settings")
+require("config/settings")
 
 -- lazyloading
 -- plugins and their configuration
-require("ofrades/packages")
+require("config/packages")
 
 -- neovim keymaps
-require("ofrades/keymaps")
+require("config/keymaps")

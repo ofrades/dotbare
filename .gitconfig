@@ -1,5 +1,5 @@
 [pull]
-    rebase = false
+    rebase = true
 
 [diff]
     tool = vimdiff
