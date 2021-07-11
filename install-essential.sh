@@ -10,7 +10,7 @@ mkdir -p ~/notes
 sudo apt update
 
 sudo apt-get install -y \
-    make cmake tmux fzf bat ripgrep fd-find silversearcher-ag tree kitty  \
+    make cmake fzf bat ripgrep fd-find silversearcher-ag tree kitty  \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
